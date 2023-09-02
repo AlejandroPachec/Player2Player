@@ -1,23 +1,22 @@
 //Conexion base de datos
-const mysql = require('mysql2/promise')
+const mysql = require("mysql2/promise");
 
 const dbConfig = {
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "1234",
-  timezone: "local"
-}
+  host: process.env.MYSQL_HOST,
+  port: process.env.PORT,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  timezone: "local",
+};
 
-let pool
+let pool;
 
 async function getPool() {
-  if(!pool){
-    pool = await mysql.createPool(dbConfig)
+  if (!pool) {
+    pool = await mysql.createPool(dbConfig);
   }
-  
-  return pool
+
+  return pool;
 }
 
-module.exports = getPool
-
+module.exports = getPool;
