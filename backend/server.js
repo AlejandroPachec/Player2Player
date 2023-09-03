@@ -3,14 +3,14 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 
-//Routers
+// Routers
 const userRouter = require('./routes/userRouter');
 
 
 app.use(express.json());
 
-app.use('user/', userRouter);
+userRouter.use('user/', userRouter);
 
 app.listen(5002, () => {
-    console.log(`Escuchando el puerto ...`);
+    console.log('Escuchando el puerto ...');
 });

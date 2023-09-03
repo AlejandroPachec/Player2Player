@@ -8,6 +8,8 @@ async function createUser (req, res, next) {
 
     await pool.query(`INSERT INTO users(user_id, first_name, last_name, password, second_last_name, email, avatar) 
     values (?, ?, ?, ?, ?, ?, ?)`, [id, firstName, lastName, secondLastName, email, password, avatar]);
+
+    res.send('ok');
 }
 
 module.exports = createUser;
