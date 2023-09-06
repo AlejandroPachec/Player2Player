@@ -1,5 +1,6 @@
 const getPool = require('../db/connectDB');
 const crypto = require('node:crypto');
+const bcrypt = require('bcrypt');
 const createUserSchema = require('../schema/createUserSchema');
 const generateError = require('../helpers/generateError');
 
@@ -12,15 +13,32 @@ async function createUser (req, res, next) {
     }
 
     try {
-        const { firstName, lastName, secondLastName, email, password, avatar } = req.body;
-        console.log(firstName);
+        const { firstName, lastName, secondLastName, email, password } = req.body;
         const id = crypto.randomUUID();
         const pool = await getPool();
 
-        await pool.query(`INSERT INTO users(user_id, first_name, last_name, second_last_name, email, password, avatar) 
-            values (?, ?, ?, ?, ?, ?, ?)`, [id, firstName, lastName, secondLastName, email, password, avatar]);
+        const [userEmail] = await pool.query('SELECT email FROM users WHERE email = ?', [email]);
+        if (userEmail.length > 0) {
+            return next(generateError('El email indicado ya está en uso', 400));
+        };
 
-        res.send(req.body);
+        const registrationCode = crypto.randomUUID();
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        await pool.query(`INSERT INTO users(user_id, first_name, last_name, second_last_name, email, password, registration_code) 
+            values (?, ?, ?, ?, ?, ?, ?)`, [id, firstName, lastName, secondLastName, email, hashedPassword, registrationCode]);
+
+        res.status(200).send({
+            status: 'Ok',
+            message: 'Usuario creado correctamente',
+            data: {
+                user_id: id,
+                firstName,
+                lastName,
+                secondLastName,
+                email
+            }
+        });
     } catch (error) {
         next(error);
     }

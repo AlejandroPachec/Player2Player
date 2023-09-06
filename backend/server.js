@@ -10,6 +10,7 @@ app.use(express.json());
 // Routers
 app.use('/user', userRouter);
 
+const { PORT } = process.env;
 
 // Other errors
 app.use((error, req, res, next) => {
@@ -23,10 +24,10 @@ app.use((error, req, res, next) => {
 // Middleware for 404 errors
 app.use((res, req) => {
     res.status(404).send({
-        messge: '¡No encontrado!'
+        message: '¡No encontrado!'
     });
 });
 
 app.listen(5002, () => {
-    console.log('Escuchando el puerto ...');
+    console.log(`Server listening at http://localhost:${PORT}...`);
 });

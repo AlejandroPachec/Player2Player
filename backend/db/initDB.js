@@ -1,14 +1,15 @@
-const getPool = require("./connectDB");
+/* eslint-disable no-tabs */
+const getPool = require('./connectDB');
 
-async function createDB() {
+async function createDB () {
     try {
         const pool = await getPool();
 
-        await pool.query("CREATE DATABASE IF NOT EXISTS amazonia;");
-        await pool.query("USE amazonia;");
+        await pool.query('CREATE DATABASE IF NOT EXISTS amazonia;');
+        await pool.query('USE amazonia;');
 
         await pool.query(
-            "DROP TABLE IF EXISTS orders_products, orders, reviews, products, categories, users_addresses, addresses, users;"
+            'DROP TABLE IF EXISTS orders_products, orders, reviews, products, categories, users_addresses, addresses, users;'
         );
 
         await pool.query(`CREATE TABLE IF NOT EXISTS users (
@@ -16,8 +17,8 @@ async function createDB() {
         first_name VARCHAR(50) NOT NULL,
         last_name VARCHAR(50) NOT NULL,
         second_last_name VARCHAR(50) NULL,
-        password VARCHAR(50) NOT NULL,
-        email VARCHAR(100) NOT NULL,
+        password VARCHAR(100) NOT NULL,
+        email VARCHAR(100) NOT NULL UNIQUE,
         avatar VARCHAR(100) NULL,
         registration_code VARCHAR(100) NULL,
         role ENUM('admin', 'user') NOT NULL DEFAULT 'user',
