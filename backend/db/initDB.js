@@ -9,7 +9,7 @@ async function createDB () {
         await pool.query('USE amazonia;');
 
         await pool.query(
-            'DROP TABLE IF EXISTS orders_products, orders, reviews, products, categories, users_addresses, addresses, users;'
+            'DROP TABLE IF EXISTS  orders, reviews, product_photo, products, categories, users_addresses, addresses, users;'
         );
 
         await pool.query(`CREATE TABLE IF NOT EXISTS users (
@@ -61,8 +61,8 @@ async function createDB () {
       	product_image VARCHAR(100) NOT NULL,
       	stock INT NULL,
       	modified_at DATETIME NULL,
-      	created_at DATETIME NULL DEFAULT NOW(),
-		  );`);
+      	created_at DATETIME NULL DEFAULT NOW()
+		);`);
 		/* category_id VARCHAR(50) NOT NULL,
       	FOREIGN KEY (category_id) REFERENCES categories (id)
         	ON DELETE RESTRICT
