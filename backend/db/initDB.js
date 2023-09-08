@@ -47,11 +47,10 @@ async function createDB () {
         ON UPDATE CASCADE
     	);`);
 
-		/* Falta elegir tematica
 		await pool.query(`CREATE TABLE IF NOT EXISTS categories (
       	id VARCHAR(50) NOT NULL PRIMARY KEY,
-      	category ENUM ('', '', '', '', '') NOT NULL,
-    	);`); */
+      	category ENUM('Consolas', 'Videojuegos', 'Accesorios', 'Retro', 'Ordenadores') NOT NULL,
+    	);`);
 
         await pool.query(`CREATE TABLE IF NOT EXISTS products (
       	id VARCHAR(50) NOT NULL PRIMARY KEY,
@@ -61,12 +60,12 @@ async function createDB () {
       	product_image VARCHAR(100) NOT NULL,
       	stock INT NULL,
       	modified_at DATETIME NULL,
-      	created_at DATETIME NULL DEFAULT NOW()
+      	created_at DATETIME NULL DEFAULT NOW(),
+		category_id VARCHAR(50) NOT NULL,
+		FOREIGN KEY (category_id) REFERENCES categories (id)
+			  ON DELETE RESTRICT
+			  ON UPDATE CASCADE
 		);`);
-		/* category_id VARCHAR(50) NOT NULL,
-      	FOREIGN KEY (category_id) REFERENCES categories (id)
-        	ON DELETE RESTRICT
-        	ON UPDATE CASCADE */
 
 		await pool.query(`CREATE TABLE IF NOT EXISTS product_photo (
 		id VARCHAR(50) NOT NULL PRIMARY KEY,
@@ -83,7 +82,7 @@ async function createDB () {
 		id VARCHAR(50) NOT NULL PRIMARY KEY,
 		title VARCHAR(150) NOT NULL,
 		text TEXT NULL,  
-		stars ENUM('0', '1', '2', '3', '4', '5') NOT NULL,
+		stars ENUM('1', '2', '3', '4', '5') NOT NULL,
 		created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 		modified_at DATETIME NULL,
 		product_id VARCHAR(100) NOT NULL,
@@ -103,8 +102,8 @@ async function createDB () {
 		FOREIGN KEY (user_buyer_id) REFERENCES users (id)
 			ON DELETE RESTRICT
 			ON UPDATE CASCADE,
-		user_owner_id VARCHAR(50) NOT NULL,
-		FOREIGN KEY (user_owner_id) REFERENCES users (id)
+		user_seller_id VARCHAR(50) NOT NULL,
+		FOREIGN KEY (user_seller_id) REFERENCES users (id)
 			ON DELETE RESTRICT
 			ON UPDATE CASCADE,
 		product_id VARCHAR(100) NOT NULL,
