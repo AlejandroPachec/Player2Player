@@ -13,12 +13,13 @@ async function createDB () {
         );
 
         await pool.query(`CREATE TABLE IF NOT EXISTS users (
-        user_id VARCHAR(50) NOT NULL PRIMARY KEY,
+        id VARCHAR(50) NOT NULL PRIMARY KEY,
         first_name VARCHAR(50) NOT NULL,
         last_name VARCHAR(50) NOT NULL,
-        second_last_name VARCHAR(50) NULL,
+        second_last_name VARCHAR(50) NULL,		
         password VARCHAR(100) NOT NULL,
         email VARCHAR(100) NOT NULL UNIQUE,
+		phone_number VARCHAR(15) NOT NULL,
         avatar VARCHAR(100) NULL,
         registration_code VARCHAR(100) NULL,
         role ENUM('admin', 'user') NOT NULL DEFAULT 'user',
@@ -28,7 +29,7 @@ async function createDB () {
         );`);
 
         await pool.query(`CREATE TABLE IF NOT EXISTS addresses (
-     	address_id VARCHAR(50) NOT NULL PRIMARY KEY,
+     	id VARCHAR(50) NOT NULL PRIMARY KEY,
      	address VARCHAR(50) NOT NULL,
      	city VARCHAR(50) NOT NULL,
      	province VARCHAR(50) NOT NULL,
@@ -41,18 +42,19 @@ async function createDB () {
         await pool.query(`CREATE TABLE IF NOT EXISTS users_addresses (
       	address_id INT NOT NULL PRIMARY KEY,
       	user_id VARCHAR(50) NOT NULL,
-      	FOREIGN KEY (user_id) REFERENCES users (user_id)
+      	FOREIGN KEY (user_id) REFERENCES users (id)
         ON DELETE RESTRICT
         ON UPDATE CASCADE
     	);`);
 
-        await pool.query(`CREATE TABLE IF NOT EXISTS categories (
-      	category_id VARCHAR(50) NOT NULL PRIMARY KEY,
-      	name VARCHAR(50) NOT NULL
-    	);`);
+		/* Falta elegir tematica
+		await pool.query(`CREATE TABLE IF NOT EXISTS categories (
+      	id VARCHAR(50) NOT NULL PRIMARY KEY,
+      	category ENUM ('', '', '', '', '') NOT NULL,
+    	);`); */
 
         await pool.query(`CREATE TABLE IF NOT EXISTS products (
-      	product_id VARCHAR(50) NOT NULL PRIMARY KEY,
+      	id VARCHAR(50) NOT NULL PRIMARY KEY,
       	name VARCHAR(150) NOT NULL,
       	description TEXT(500) NULL,
       	price DECIMAL(6,2) NULL,
@@ -60,49 +62,55 @@ async function createDB () {
       	stock INT NULL,
       	modified_at DATETIME NULL,
       	created_at DATETIME NULL DEFAULT NOW(),
-      	category_id VARCHAR(50) NOT NULL,
-      	FOREIGN KEY (category_id) REFERENCES categories (category_id)
+		  );`);
+		/* category_id VARCHAR(50) NOT NULL,
+      	FOREIGN KEY (category_id) REFERENCES categories (id)
         	ON DELETE RESTRICT
-        	ON UPDATE CASCADE
-    	);`);
+        	ON UPDATE CASCADE */
+
+		await pool.query(`CREATE TABLE IF NOT EXISTS product_photo (
+		id VARCHAR(50) NOT NULL PRIMARY KEY,
+		name VARCHAR(100) NOT NULL,
+		modified_at DATETIME NULL,
+		created_at DATETIME NULL DEFAULT NOW(),
+		product_id VARCHAR(50) NOT NULL,
+		FOREIGN KEY (product_id) REFERENCES products (id)
+			ON DELETE RESTRICT
+			ON UPDATE CASCADE
+		)`);
 
         await pool.query(`CREATE TABLE IF NOT EXISTS reviews (
-		review_id VARCHAR(50) NOT NULL PRIMARY KEY,
+		id VARCHAR(50) NOT NULL PRIMARY KEY,
 		title VARCHAR(150) NOT NULL,
 		text TEXT NULL,  
 		stars ENUM('0', '1', '2', '3', '4', '5') NOT NULL,
 		created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 		modified_at DATETIME NULL,
 		product_id VARCHAR(100) NOT NULL,
-		FOREIGN KEY (product_id) REFERENCES products (product_id)
+		FOREIGN KEY (product_id) REFERENCES products (id)
 			ON DELETE RESTRICT
 			ON UPDATE CASCADE,
 		user_id VARCHAR(50) NOT NULL,
-		FOREIGN KEY (user_id) REFERENCES users (user_id)
+		FOREIGN KEY (user_id) REFERENCES users (id)
 			ON DELETE RESTRICT
 			ON UPDATE CASCADE
     	);`);
 
         await pool.query(`CREATE TABLE IF NOT EXISTS orders (
-   	    order_id VARCHAR(50) NOT NULL PRIMARY KEY,
+   	    id VARCHAR(50) NOT NULL PRIMARY KEY,
 		created_at DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-		modified_at DATETIME NULL,
-		user_id VARCHAR(50) NOT NULL,
-		FOREIGN KEY (user_id) REFERENCES users (user_id)
+		user_buyer_id VARCHAR(50) NOT NULL,
+		FOREIGN KEY (user_buyer_id) REFERENCES users (id)
+			ON DELETE RESTRICT
+			ON UPDATE CASCADE,
+		user_owner_id VARCHAR(50) NOT NULL,
+		FOREIGN KEY (user_owner_id) REFERENCES users (id)
+			ON DELETE RESTRICT
+			ON UPDATE CASCADE,
+		product_id VARCHAR(100) NOT NULL,
+		FOREIGN KEY (product_id) REFERENCES products (id)
 			ON DELETE RESTRICT
 			ON UPDATE CASCADE
-    	);`);
-
-        await pool.query(`CREATE TABLE IF NOT EXISTS orders_products (
-      	order_id VARCHAR(50) NOT NULL,
-      	FOREIGN KEY (order_id) REFERENCES orders (order_id)
-        	ON DELETE RESTRICT
-        	ON UPDATE CASCADE,
-      	product_id VARCHAR(100) NOT NULL,
-      	FOREIGN KEY (product_id) REFERENCES products (product_id)
-        	ON DELETE RESTRICT
-        	ON UPDATE CASCADE,
-      	PRIMARY KEY (order_id, product_id)
     	);`);
 
         process.exit(0);
