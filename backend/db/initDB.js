@@ -19,7 +19,7 @@ async function createDB () {
         second_last_name VARCHAR(50) NULL,		
         password VARCHAR(100) NOT NULL,
         email VARCHAR(100) NOT NULL UNIQUE,
-		phone_number VARCHAR(15) NOT NULL,
+			  phone_number VARCHAR(15) NOT NULL,
         avatar VARCHAR(100) NULL,
         registration_code VARCHAR(100) NULL,
         role ENUM('admin', 'user') NOT NULL DEFAULT 'user',
@@ -61,8 +61,12 @@ async function createDB () {
       	stock INT NULL,
       	modified_at DATETIME NULL,
       	created_at DATETIME NULL DEFAULT NOW(),
-		category_id VARCHAR(50) NOT NULL,
-		FOREIGN KEY (category_id) REFERENCES categories (id)
+				category_id VARCHAR(50) NOT NULL,
+				FOREIGN KEY (category_id) REFERENCES categories (id)
+			  ON DELETE RESTRICT
+			  ON UPDATE CASCADE,
+		    user_id VARCHAR(50) NOT NULL,
+				FOREIGN KEY (user_id) REFERENCES users (id)
 			  ON DELETE RESTRICT
 			  ON UPDATE CASCADE
 		);`);
