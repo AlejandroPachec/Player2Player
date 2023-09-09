@@ -49,7 +49,7 @@ async function createDB () {
 
 		await pool.query(`CREATE TABLE IF NOT EXISTS categories (
       	id VARCHAR(50) NOT NULL PRIMARY KEY,
-      	category ENUM('Consolas', 'Videojuegos', 'Accesorios', 'Retro', 'Ordenadores') NOT NULL,
+      	category ENUM('Consolas', 'Videojuegos', 'Accesorios', 'Retro', 'Ordenadores') NOT NULL
     	);`);
 
         await pool.query(`CREATE TABLE IF NOT EXISTS products (

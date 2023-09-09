@@ -13,7 +13,7 @@ async function createUser (req, res, next) {
     }
 
     try {
-        const { firstName, lastName, secondLastName, email, password } = req.body;
+        const { firstName, lastName, secondLastName, email, password, phone } = req.body;
         const id = crypto.randomUUID();
         const pool = await getPool();
 
@@ -25,8 +25,8 @@ async function createUser (req, res, next) {
         const registrationCode = crypto.randomUUID();
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        await pool.query(`INSERT INTO users(user_id, first_name, last_name, second_last_name, email, password, registration_code) 
-            values (?, ?, ?, ?, ?, ?, ?)`, [id, firstName, lastName, secondLastName, email, hashedPassword, registrationCode]);
+        await pool.query(`INSERT INTO users(id, first_name, last_name, second_last_name, email, password, registration_code, phone_number) 
+            values (?, ?, ?, ?, ?, ?, ?, ?)`, [id, firstName, lastName, secondLastName, email, hashedPassword, registrationCode, phone]);
 
         res.status(200).send({
             status: 'Ok',
@@ -36,6 +36,7 @@ async function createUser (req, res, next) {
                 firstName,
                 lastName,
                 secondLastName,
+                phone,
                 email
             }
         });
