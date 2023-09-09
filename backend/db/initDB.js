@@ -47,7 +47,7 @@ async function createDB () {
         ON UPDATE CASCADE
     	);`);
 
-		await pool.query(`CREATE TABLE IF NOT EXISTS categories (
+        await pool.query(`CREATE TABLE IF NOT EXISTS categories (
       	id VARCHAR(50) NOT NULL PRIMARY KEY,
       	category ENUM('Consolas', 'Videojuegos', 'Accesorios', 'Retro', 'Ordenadores') NOT NULL
     	);`);
@@ -67,7 +67,7 @@ async function createDB () {
 			  ON UPDATE CASCADE
 		);`);
 
-		await pool.query(`CREATE TABLE IF NOT EXISTS product_photo (
+        await pool.query(`CREATE TABLE IF NOT EXISTS product_photo (
 		id VARCHAR(50) NOT NULL PRIMARY KEY,
 		name VARCHAR(100) NOT NULL,
 		modified_at DATETIME NULL,
