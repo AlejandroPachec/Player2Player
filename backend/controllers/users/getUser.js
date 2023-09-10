@@ -13,27 +13,16 @@ async function getUser (req, res, next) {
             return next(generateError(`El usuario con el id ${userId} no existe`, 404));
         }
 
-        const userInfo = {
-            ...user
-        };
+
 
         const [[products]] = await pool.query(`SELECT name, description, product_image, category FROM products
             WHERE user_id = ?`, [userId]);
 
-        let productsInfo;
-        if (!products) {
-            productsInfo = {};
-        } else {
-            productsInfo = {
-                ...products
-            };
-        }
-
         res.status(200).send({
             status: 'ok',
             data: {
-                userInfo,
-                productsInfo
+                user,
+                products: [products]
             }
         });
     } catch (error) {
