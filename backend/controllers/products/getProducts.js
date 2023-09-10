@@ -1,5 +1,4 @@
-const getPool = require('../db/connectDB');
-
+const getPool = require('../../db/connectDB');
 
 async function getProducts (req, res, next) {
     try {
@@ -18,7 +17,6 @@ async function getProducts (req, res, next) {
     } catch (error) {
         next(error);
     }
-
 }
 
 module.exports = getProducts;

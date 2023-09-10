@@ -1,8 +1,8 @@
-const getPool = require('../db/connectDB');
+const getPool = require('../../db/connectDB');
 const crypto = require('node:crypto');
 const bcrypt = require('bcrypt');
-const createUserSchema = require('../schema/createUserSchema');
-const generateError = require('../helpers/generateError');
+const createUserSchema = require('../../schema/createUserSchema');
+const generateError = require('../../helpers/generateError');
 
 
 async function createUser (req, res, next) {

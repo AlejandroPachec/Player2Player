@@ -19,7 +19,7 @@ async function createDB () {
         second_last_name VARCHAR(50) NULL,		
         password VARCHAR(100) NOT NULL,
         email VARCHAR(100) NOT NULL UNIQUE,
-			  phone_number VARCHAR(15) NOT NULL,
+		phone_number VARCHAR(15) NOT NULL,
         avatar VARCHAR(100) NULL,
         registration_code VARCHAR(100) NULL,
         role ENUM('admin', 'user') NOT NULL DEFAULT 'user',
@@ -52,14 +52,14 @@ async function createDB () {
       	name VARCHAR(150) NOT NULL,
       	description TEXT(500) NULL,
       	price DECIMAL(6,2) NULL,
-      	product_image VARCHAR(100) NOT NULL,
+      	product_image VARCHAR(100) NULL,
       	modified_at DATETIME NULL,
       	created_at DATETIME NULL DEFAULT NOW(),
-				category ENUM('Consolas', 'Videojuegos', 'Accesorios', 'Retro', 'Ordenadores') NOT NULL,
-		    user_id VARCHAR(50) NOT NULL,
-				FOREIGN KEY (user_id) REFERENCES users (id)
-			  ON DELETE RESTRICT
-			  ON UPDATE CASCADE
+		category ENUM('Consolas', 'Videojuegos', 'Accesorios', 'Retro', 'Ordenadores') NOT NULL,
+		user_id VARCHAR(50) NOT NULL,
+		FOREIGN KEY (user_id) REFERENCES users (id)
+			ON DELETE RESTRICT
+			ON UPDATE CASCADE
 		);`);
 
         await pool.query(`CREATE TABLE IF NOT EXISTS product_photo (

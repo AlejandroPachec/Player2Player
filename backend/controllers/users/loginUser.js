@@ -1,9 +1,9 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const getConnection = require('../db/connectDB');
-const loginUserSchema = require('../schema/loginUserSchema');
-const generateError = require('../helpers/generateError');
+const getConnection = require('../../db/connectDB');
+const loginUserSchema = require('../../schema/loginUserSchema');
+const generateError = require('../../helpers/generateError');
 
 async function loginUser (req, res, next) {
     const { error } = loginUserSchema.validate(req.body);
