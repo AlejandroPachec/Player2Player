@@ -16,3 +16,16 @@ With the theme and structure decided, team members present searched for inspirat
 In addition to the above, possible new endpoints for the backend were proposed, and priorities were assigned to both these new endpoints and the ones already defined. It was decided that each team member would self-assign tasks, which would be listed as "In Progress" while being worked on and moved to "Done" once completed. When sprint deadlines were determined, maximum delivery dates would also be assigned to ensure tasks fit within the sprint timelines. All of this would be managed using the Trello platform.
 
 To conclude the day's meeting, a brainstorming session was conducted to suggest possible names for the website. The goal was to lay the groundwork for the next full team meeting.
+
+ 
+## Day 2:
+
+In the afternoon, the entire development team gathered, and the following topics were discussed:
+
+1. Database: The categories table is removed, and product categories are incorporated into the products table.
+
+2. The process of task allocation to each team member is discussed. In the backend, it is decided to pair team members to handle related endpoints, thus limiting potential conflicts when working simultaneously on related files. This approach allows progress on different functionalities without waiting for the previous ones to be completed.
+
+3. After a new brainstorming session for possible project names, it was decided that the final name, subject to revision if necessary, would be "player2player," and hence the acronym "p2p."
+
+The meeting concludes, pending the determination of sprint deadlines.
