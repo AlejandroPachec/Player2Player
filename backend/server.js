@@ -3,12 +3,14 @@ const express = require('express');
 const app = express();
 
 const userRouter = require('./routes/userRouter');
+const productsRouter = require('./routes/productRouter');
 
 app.use(express.json());
 
 
 // Routers
 app.use('/user', userRouter);
+app.use('/products', productsRouter);
 
 const { PORT } = process.env;
 
@@ -22,7 +24,7 @@ app.use((error, req, res, next) => {
 });
 
 // Middleware for 404 errors
-app.use((res, req) => {
+app.use((req, res) => {
     res.status(404).send({
         message: '¡No encontrado!'
     });
