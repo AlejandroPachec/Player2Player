@@ -12,7 +12,7 @@ app.use(express.json());
 app.use('/user', userRouter);
 app.use('/products', productsRouter);
 
-const { PORT } = process.env;
+const { SERVER_PORT } = process.env;
 
 // Other errors
 app.use((error, req, res, next) => {
@@ -31,5 +31,5 @@ app.use((req, res) => {
 });
 
 app.listen(5002, () => {
-    console.log(`Server listening at http://localhost:${PORT}...`);
+    console.log(`Server listening at http://localhost:${SERVER_PORT}...`);
 });

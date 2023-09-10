@@ -4,7 +4,7 @@
  ## Day 1:
  
  Morning Meeting:
-In the morning, Abdullah, Nair, and Juli gathered for a meeting. During this meeting, they discussed the database and the application's structure, aiming to adapt them so that users can act as both buyers and sellers simultaneously.
+In the morning, Abdullah, Nair, and Juli gathered for a meeting. During this meeting, they discussed the database and the application's structure, aiming to adapt them so that users can act both as buyers and sellers simultaneously.
 
 Furthermore, there was a discussion about giving the project's website a specific theme. After considering several options, they reached a consensus, which was later confirmed in an afternoon meeting. The chosen theme for the website was video games.
 
