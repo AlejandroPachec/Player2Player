@@ -4,9 +4,8 @@ require('dotenv').config();
 
 const dbConfig = {
     host: process.env.MYSQL_HOST,
-    port: process.env.PORT,
     user: process.env.MYSQL_USER,
-    database: 'amazonia',
+    database: process.env.MYSQL_DB_NAME,
     password: process.env.MYSQL_PASSWORD,
     timezone: 'local'
 };
