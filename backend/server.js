@@ -4,13 +4,14 @@ const app = express();
 
 const userRouter = require('./routes/userRouter');
 const productsRouter = require('./routes/productRouter');
+const authUser = require('./middlewares/authUser');
 
 app.use(express.json());
 
 
 // Routers
 app.use('/user', userRouter);
-app.use('/products', productsRouter);
+app.use('/products', authUser, productsRouter);
 
 const { PORT } = process.env;
 
