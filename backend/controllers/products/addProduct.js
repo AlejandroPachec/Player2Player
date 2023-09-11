@@ -11,7 +11,7 @@ async function addProduct (req, res, next) {
     }
 
     try {
-        const { name, description, price, category } = req.body;
+        const { name, description, price, category, state } = req.body;
         const id = crypto.randomUUID();
         const pool = await getPool();
 
@@ -21,7 +21,7 @@ async function addProduct (req, res, next) {
             return next(generateError('Ya existe un producto con esa descripción', 400));
         }
 
-        await pool.query('INSERT INTO products(id, name, description, price, category, user_id) VALUES (?, ?, ?, ?, ?, ?)', [id, name, description, price, category, req.user.id]);
+        await pool.query('INSERT INTO products(id, name, description, price, category, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)', [id, name, description, price, category, state, req.user.id]);
 
         res.status(200).send({
             status: 'Ok',
@@ -32,6 +32,7 @@ async function addProduct (req, res, next) {
                 description,
                 price,
                 category,
+                state,
                 user_id: req.user.id
             }
         });
