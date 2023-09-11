@@ -3,7 +3,7 @@ const getPool = require('../../db/connectDB');
 async function getAllProducts (req, res, next) {
     try {
         const pool = await getPool();
-        const [products] = await pool.query(`SELECT id, name, description, price, product_image, category, user_id 
+        const [products] = await pool.query(`SELECT id, name, description, price, category, user_id 
                                           FROM products`);
         res.status(200).send({
             status: 'Ok',

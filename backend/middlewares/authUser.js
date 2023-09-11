@@ -14,7 +14,7 @@ const authUser = async (req, res, next) => {
 
     const pool = await getPool();
     const [[user]] = await pool.query(
-      "SELECT email, avatar, role FROM users WHERE id = ?",
+      "SELECT email, avatar FROM users WHERE id = ?",
       [tokenInfo.id]
     );
 

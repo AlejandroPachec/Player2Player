@@ -35,7 +35,7 @@ async function createUser (req, res, next) {
         await emailVerification(email, subject, html);
 
         await pool.query(`INSERT INTO users(id, first_name, last_name, email, password, registration_code, phone_number) 
-            values (?, ?, ?, ?, ?, ?, ?, ?)`, [id, firstName, lastName, email, hashedPassword, registrationCode, phone]);
+            values (?, ?, ?, ?, ?, ?, ?)`, [id, firstName, lastName, email, hashedPassword, registrationCode, phone]);
 
         res.status(200).send({
             status: 'Ok',
