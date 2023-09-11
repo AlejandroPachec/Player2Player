@@ -5,21 +5,23 @@ async function createDB () {
     try {
         const pool = await getPool();
 
-        await pool.query('CREATE DATABASE IF NOT EXISTS amazonia;');
-        await pool.query('USE amazonia;');
+        await pool.query('CREATE DATABASE IF NOT EXISTS p2p_db;');
+        await pool.query('USE p2p_db;');
 
         await pool.query(
-            'DROP TABLE IF EXISTS  orders, reviews, product_photo, products, users_addresses, addresses, users;'
+            'DROP TABLE IF EXISTS  orders, reviews, product_photo, products, users;'
         );
 
         await pool.query(`CREATE TABLE IF NOT EXISTS users (
         id VARCHAR(50) NOT NULL PRIMARY KEY,
         first_name VARCHAR(50) NOT NULL,
         last_name VARCHAR(50) NOT NULL,
-        second_last_name VARCHAR(50) NULL,		
+        bio TEXT(500) NULL,		
         password VARCHAR(100) NOT NULL,
         email VARCHAR(100) NOT NULL UNIQUE,
 		phone_number VARCHAR(15) NOT NULL,
+		city VARCHAR(50) NULL,
+		postal_code VARCHAR(10) NULL,
         avatar VARCHAR(100) NULL,
         registration_code VARCHAR(100) NULL,
         role ENUM('admin', 'user') NOT NULL DEFAULT 'user',
@@ -28,34 +30,17 @@ async function createDB () {
         modified_at DATETIME NULL
         );`);
 
-        await pool.query(`CREATE TABLE IF NOT EXISTS addresses (
-     	id VARCHAR(50) NOT NULL PRIMARY KEY,
-     	address VARCHAR(50) NOT NULL,
-     	city VARCHAR(50) NOT NULL,
-     	province VARCHAR(50) NOT NULL,
-     	postal_code VARCHAR(10) NOT NULL,
-      	country VARCHAR(50) NOT NULL,
-    	created_at DATETIME NOT NULL DEFAULT NOW(),
-      	modified_at DATETIME NULL
-    	);`);
-
-        await pool.query(`CREATE TABLE IF NOT EXISTS users_addresses (
-      	address_id INT NOT NULL PRIMARY KEY,
-      	user_id VARCHAR(50) NOT NULL,
-      	FOREIGN KEY (user_id) REFERENCES users (id)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE
-    	);`);
-
         await pool.query(`CREATE TABLE IF NOT EXISTS products (
       	id VARCHAR(50) NOT NULL PRIMARY KEY,
       	name VARCHAR(150) NOT NULL,
-      	description TEXT(500) NULL,
+      	description TEXT NULL,
+		category ENUM('Consolas', 'Videojuegos', 'Accesorios', 'Retro', 'Ordenadores') NOT NULL,
+		state ENUM('Nuevo', 'En buen estado', 'Aceptable', 'No da para mas') NOT NULL, 
       	price DECIMAL(6,2) NULL,
+		availability TINYINT UNSIGNED DEFAULT 1 NOT NULL,
       	product_image VARCHAR(100) NULL,
       	modified_at DATETIME NULL,
       	created_at DATETIME NULL DEFAULT NOW(),
-		category ENUM('Consolas', 'Videojuegos', 'Accesorios', 'Retro', 'Ordenadores') NOT NULL,
 		user_id VARCHAR(50) NOT NULL,
 		FOREIGN KEY (user_id) REFERENCES users (id)
 			ON DELETE RESTRICT
@@ -84,27 +69,33 @@ async function createDB () {
 		FOREIGN KEY (product_id) REFERENCES products (id)
 			ON DELETE RESTRICT
 			ON UPDATE CASCADE,
-		user_id VARCHAR(50) NOT NULL,
-		FOREIGN KEY (user_id) REFERENCES users (id)
-			ON DELETE RESTRICT
-			ON UPDATE CASCADE
-    	);`);
-
-        await pool.query(`CREATE TABLE IF NOT EXISTS orders (
-   	    id VARCHAR(50) NOT NULL PRIMARY KEY,
-		created_at DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
-		user_buyer_id VARCHAR(50) NOT NULL,
-		FOREIGN KEY (user_buyer_id) REFERENCES users (id)
-			ON DELETE RESTRICT
-			ON UPDATE CASCADE,
 		user_seller_id VARCHAR(50) NOT NULL,
 		FOREIGN KEY (user_seller_id) REFERENCES users (id)
 			ON DELETE RESTRICT
 			ON UPDATE CASCADE,
+		user_buyer_id VARCHAR(50) NOT NULL,
+		FOREIGN KEY (user_buyer_id) REFERENCES users (id)
+		   ON DELETE RESTRICT
+		   ON UPDATE CASCADE
+    	);`);
+
+        await pool.query(`CREATE TABLE IF NOT EXISTS orders (
+   	    id VARCHAR(50) NOT NULL PRIMARY KEY,
+		exchange_place VARCHAR(100) NOT NULL,
+		exchange_time DATETIME NOT NULL,	
+		user_buyer_id VARCHAR(50) NOT NULL,
+		FOREIGN KEY (user_buyer_id) REFERENCES users (id)
+		   ON DELETE RESTRICT
+		   ON UPDATE CASCADE,
+		user_seller_id VARCHAR(50) NOT NULL,
+		FOREIGN KEY (user_seller_id) REFERENCES users (id)
+		   ON DELETE RESTRICT
+		   ON UPDATE CASCADE,
 		product_id VARCHAR(100) NOT NULL,
 		FOREIGN KEY (product_id) REFERENCES products (id)
-			ON DELETE RESTRICT
-			ON UPDATE CASCADE
+		   ON DELETE RESTRICT
+		   ON UPDATE CASCADE,
+		created_at DATETIME NULL DEFAULT CURRENT_TIMESTAMP
     	);`);
 
         process.exit(0);
