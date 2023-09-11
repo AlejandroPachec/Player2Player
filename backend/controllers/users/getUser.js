@@ -6,7 +6,7 @@ async function getUser (req, res, next) {
         const { userId } = req.params;
         const pool = await getPool();
 
-        const [[user]] = await pool.query(`SELECT first_name, last_name, second_last_name, email, phone_number, avatar FROM users
+        const [[user]] = await pool.query(`SELECT first_name, last_name, email, phone_number, avatar FROM users
         WHERE users.id = ?
         `, [userId]);
         if (!user) {

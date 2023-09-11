@@ -35,7 +35,7 @@ async function createDB () {
       	name VARCHAR(150) NOT NULL,
       	description TEXT NULL,
 		category ENUM('Consolas', 'Videojuegos', 'Accesorios', 'Retro', 'Ordenadores') NOT NULL,
-		state ENUM('Nuevo', 'En buen estado', 'Aceptable', 'No da para mas') NOT NULL, 
+		state ENUM('Nuevo', 'En buen estado', 'Aceptable', 'No da para más') NOT NULL, 
       	price DECIMAL(6,2) NULL,
 		availability TINYINT UNSIGNED DEFAULT 1 NOT NULL,
       	product_image VARCHAR(100) NULL,

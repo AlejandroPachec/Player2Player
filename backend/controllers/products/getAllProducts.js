@@ -1,6 +1,6 @@
 const getPool = require('../../db/connectDB');
 
-async function getProducts (req, res, next) {
+async function getAllProducts (req, res, next) {
     try {
         const pool = await getPool();
         const [products] = await pool.query(`SELECT id, name, description, price, product_image, category, user_id 
@@ -17,4 +17,4 @@ async function getProducts (req, res, next) {
     }
 }
 
-module.exports = getProducts;
+module.exports = getAllProducts;
