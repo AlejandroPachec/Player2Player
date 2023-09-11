@@ -24,7 +24,6 @@ async function createDB () {
 		postal_code VARCHAR(10) NULL,
         avatar VARCHAR(100) NULL,
         registration_code VARCHAR(100) NULL,
-        role ENUM('admin', 'user') NOT NULL DEFAULT 'user',
         active TINYINT UNSIGNED NOT NULL DEFAULT 0,
         created_at DATETIME NOT NULL DEFAULT NOW(),
         modified_at DATETIME NULL
@@ -38,7 +37,6 @@ async function createDB () {
 		state ENUM('Nuevo', 'En buen estado', 'Aceptable', 'No da para mas') NOT NULL, 
       	price DECIMAL(6,2) NULL,
 		availability TINYINT UNSIGNED DEFAULT 1 NOT NULL,
-      	product_image VARCHAR(100) NULL,
       	modified_at DATETIME NULL,
       	created_at DATETIME NULL DEFAULT NOW(),
 		user_id VARCHAR(50) NOT NULL,

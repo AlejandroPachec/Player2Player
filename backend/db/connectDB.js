@@ -5,7 +5,7 @@ require('dotenv').config();
 const dbConfig = {
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
-/*     database: process.env.MYSQL_DB_NAME, */
+    database: process.env.MYSQL_DB_NAME,
     password: process.env.MYSQL_PASSWORD,
     timezone: 'local'
 };

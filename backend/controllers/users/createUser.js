@@ -16,7 +16,7 @@ async function createUser (req, res, next) {
     }
 
     try {
-        const { firstName, lastName, secondLastName, email, password, phone } = req.body;
+        const { firstName, lastName, email, password, phone } = req.body;
         const id = crypto.randomUUID();
         const pool = await getPool();
 
@@ -34,8 +34,8 @@ async function createUser (req, res, next) {
 
         await emailVerification(email, subject, html);
 
-        await pool.query(`INSERT INTO users(id, first_name, last_name, second_last_name, email, password, registration_code, phone_number) 
-            values (?, ?, ?, ?, ?, ?, ?, ?)`, [id, firstName, lastName, secondLastName, email, hashedPassword, registrationCode, phone]);
+        await pool.query(`INSERT INTO users(id, first_name, last_name, email, password, registration_code, phone_number) 
+            values (?, ?, ?, ?, ?, ?, ?, ?)`, [id, firstName, lastName, email, hashedPassword, registrationCode, phone]);
 
         res.status(200).send({
             status: 'Ok',
@@ -44,7 +44,6 @@ async function createUser (req, res, next) {
                 user_id: id,
                 firstName,
                 lastName,
-                secondLastName,
                 phone,
                 email,
                 registrationCode

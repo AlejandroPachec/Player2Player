@@ -6,7 +6,7 @@ async function getUser (req, res, next) {
         const { userId } = req.params;
         const pool = await getPool();
 
-        const [[user]] = await pool.query(`SELECT first_name, last_name, second_last_name, email, phone_number, avatar FROM users
+        const [[user]] = await pool.query(`SELECT first_name, last_name, bio, city, phone_number, avatar FROM users
         WHERE users.id = ?
         `, [userId]);
         if (!user) {
@@ -15,8 +15,10 @@ async function getUser (req, res, next) {
 
 
 
-        const [[products]] = await pool.query(`SELECT name, description, product_image, category FROM products
-            WHERE user_id = ?`, [userId]);
+        const [[products]] = await pool.query(`SELECT products.name, products.description, products.category, products.state, products.price, products.availability FROM 
+        INNER JOIN product_photo
+        ON products.id = product_photo.product_id
+        WHERE products.user_id = ?`, [userId]);
 
         res.status(200).send({
             status: 'ok',
