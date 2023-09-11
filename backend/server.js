@@ -11,7 +11,7 @@ app.use(express.json());
 
 // Routers
 app.use('/user', userRouter);
-app.use('/products', authUser, productsRouter);
+app.use('/products', productsRouter);
 
 const { PORT } = process.env;
 
