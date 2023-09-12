@@ -1,38 +1,35 @@
-const express = require("express");
+// IMPORTS FROM NODE_MODULES
+const express = require('express');
 const app = express();
-require("dotenv").config();
-const getPool = require("./db/connectDB");
 
-const fs = require("fs/promises");
-const productsRouter = require("./routes/productsRouter");
+const userRouter = require('./routes/userRouter');
+const productsRouter = require('./routes/productRouter');
+
 app.use(express.json());
 
-app.use("/products", productsRouter);
 
-app.use(async (error, req, res, next) => {
-  const errorCode = error.code || 500;
+// Routers
+app.use('/user', userRouter);
+app.use('/products', productsRouter);
 
-  console.log(error.message);
+const { PORT } = process.env;
 
-  res.status(errorCode).send({
-    ok: false,
-    data: null,
-    error: error.message,
-    message: null,
-  });
+// Other errors
+app.use((error, req, res, next) => {
+    const errorCode = error.statusCode ?? 500;
+
+    res.status(errorCode).send({
+        error: error.message
+    });
 });
 
+// Middleware for 404 errors
 app.use((req, res) => {
-  res.status(404).send({
-    ok: false,
-    data: null,
-    error: null,
-    message: "Doesn't exist",
-  });
+    res.status(404).send({
+        message: '¡No encontrado!'
+    });
 });
 
-const PORT = 5100;
-
-app.listen(PORT, () => {
-  console.log(`Escuchando el puerto ${PORT}...`);
+app.listen(5002, () => {
+    console.log(`Server listening at http://localhost:${PORT}...`);
 });
