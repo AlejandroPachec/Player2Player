@@ -13,17 +13,19 @@ async function getUser (req, res, next) {
             return next(generateError(`El usuario con el id ${userId} no existe`, 404));
         }
 
+        const [[reviews]] = await pool.query(`SELECT title, text, stars FROM reviews
+        WHERE user_seller_id = ? `, [userId]);
 
-
-        const [[products]] = await pool.query(`SELECT products.name, products.description, products.category, products.state, products.price, products.availability FROM 
+        const [[products]] = await pool.query(`SELECT products.name, products.description, products.category, products.state, products.availability, product_photo.name AS photo
+        FROM products
         INNER JOIN product_photo
-        ON products.id = product_photo.product_id
-        WHERE products.user_id = ?`, [userId]);
+        ON products.id = product_photo.product_id`);
 
         res.status(200).send({
             status: 'ok',
             data: {
                 user,
+                reviews,
                 products: [products]
             }
         });
