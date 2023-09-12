@@ -5,7 +5,7 @@ const generateError = require('../helpers/generateError');
 const { SMTP_USER, SMTP_PASSWORD } = process.env;
 
 const transport = nodemailer.createTransport({
-    host: 'api.brevo.com or smtp-relay.brevo.com',
+    host: 'smtp-relay.brevo.com',
     port: 587,
     auth: {
         user: SMTP_USER,
