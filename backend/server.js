@@ -4,7 +4,6 @@ const app = express();
 
 const userRouter = require('./routes/userRouter');
 const productsRouter = require('./routes/productRouter');
-const authUser = require('./middlewares/authUser');
 
 app.use(express.json());
 

@@ -26,14 +26,15 @@ async function activateUser (req, res, next) {
         await pool.query(`
 			UPDATE users 
 			SET registration_code = null,
-			activate = true,
+			active = true,
 			modified_at = ?
 			WHERE registration_code = ?`
         , [new Date(), registrationCode]);
 
     } catch (error) {
-
+        next(error);
     }
+
     res.status(200).send({
         status: 'ok',
         message: 'Usuario activado correctamente'
