@@ -5,6 +5,7 @@ const app = express();
 
 const userRouter = require('./routes/userRouter');
 const productsRouter = require('./routes/productRouter');
+const ordersRouter = require('./routes/ordersRouter');
 
 app.use(express.json());
 app.use(fileUpload());
@@ -12,6 +13,7 @@ app.use(fileUpload());
 // Routers
 app.use('/user', userRouter);
 app.use('/products', productsRouter);
+app.use('/orders', ordersRouter);
 
 const { PORT } = process.env;
 
