@@ -14,13 +14,30 @@ async function editUser (req, res, next) {
         const { firstName, lastName, bio, password, email, phone, city, postalCode } = req.body;
 
         const pool = await getPool();
-        await pool.query(`
-            UPDATE users
-            SET first_name = ?, last_name = ?, bio = ?, password = ?, email = ?, phone_number = ?, city = ?, postal_code = ? 
-            WHERE id = ?
-        `, [firstName, lastName, bio, password, email, phone, city, postalCode, userId]);
 
-        const [[editedUser]] = await pool.query('SELECT * FROM users WHERE id = ?;', [userId]);
+        await pool.query(`UPDATE users
+            SET first_name = COALESCE(?, first_name),
+            last_name = COALESCE(?, last_name),
+            bio = COALESCE(?, bio),
+            password = COALESCE(?, password),
+            email = COALESCE(?, email),
+            phone_number = COALESCE(?, phone_number),
+            city = COALESCE(?, city),
+            postal_code = COALESCE(?, postal_code)
+            WHERE id = ?
+        `, [
+            firstName,
+            lastName,
+            bio,
+            password,
+            email,
+            phone,
+            city,
+            postalCode,
+            userId
+        ]);
+
+        const [[editedUser]] = await pool.query('SELECT first_name, last_name, bio, password, email, phone_number, city, postal_code FROM users WHERE id = ?', [userId]);
 
         res.status(200).send({
             status: 'ok',
