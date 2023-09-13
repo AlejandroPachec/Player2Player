@@ -8,7 +8,7 @@ require('dotenv').config();
 
 async function deletePhoto (photoName) {
 
-    const imagePath = path.resolver(__dirname, '../', process.env.UPLOADS_DIR, photoName);
+    const imagePath = path.resolve(__dirname, '../', process.env.UPLOADS_DIR, photoName);
 
     try {
         await fs.access(imagePath);
@@ -20,5 +20,4 @@ async function deletePhoto (photoName) {
 }
 
 module.exports = deletePhoto;
-
 

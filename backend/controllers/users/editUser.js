@@ -1,4 +1,5 @@
 const getPool = require('../../db/connectDB');
+const deletePhoto = require('../../helpers/deletePhoto');
 const generateError = require('../../helpers/generateError');
 const savePhoto = require('../../helpers/savePhoto');
 const editUserSchema = require('../../schema/editUserSchema');
@@ -16,9 +17,15 @@ async function editUser (req, res, next) {
 
         const pool = await getPool();
 
+        const [user] = await pool.query('SELECT avatar from users WHERE id = ?', [userId]);
+
+        if (user[0].avatar) {
+            await deletePhoto(user[0].avatar);
+        }
         if (req.files?.avatar) {
             avatar = await savePhoto(req.files.avatar, 150);
         }
+
 
         await pool.query(`UPDATE users
             SET first_name = COALESCE(?, first_name),
