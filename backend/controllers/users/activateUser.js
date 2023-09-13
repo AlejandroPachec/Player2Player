@@ -1,5 +1,4 @@
-/* eslint-disable no-tabs */
-const Joi = require('joi');
+/* const Joi = require('joi');
 const generateError = require('../../helpers/generateError');
 const getConnection = require('../../db/connectDB');
 
@@ -41,4 +40,4 @@ async function activateUser (req, res, next) {
     });
 };
 
-module.exports = activateUser;
+module.exports = activateUser; */
