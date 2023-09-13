@@ -1,12 +1,13 @@
 // IMPORTS FROM NODE_MODULES
 const express = require('express');
+const fileUpload = require('express-fileupload');
 const app = express();
 
 const userRouter = require('./routes/userRouter');
 const productsRouter = require('./routes/productRouter');
 
 app.use(express.json());
-
+app.use(fileUpload());
 
 // Routers
 app.use('/user', userRouter);

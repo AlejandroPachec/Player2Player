@@ -1,19 +1,24 @@
 const getPool = require('../../db/connectDB');
 const generateError = require('../../helpers/generateError');
+const savePhoto = require('../../helpers/savePhoto');
 const editUserSchema = require('../../schema/editUserSchema');
 
 
 async function editUser (req, res, next) {
     try {
-        const { userId } = req.params;
         const { error } = editUserSchema.validate(req.body);
         if (error) {
             return next(generateError(error.details[0].message, 400));
         }
-
+        const userId = req.user.id;
         const { firstName, lastName, bio, password, email, phone, city, postalCode } = req.body;
+        let avatar;
 
         const pool = await getPool();
+
+        if (req.files?.avatar) {
+            avatar = await savePhoto(req.files.avatar, 150);
+        }
 
         await pool.query(`UPDATE users
             SET first_name = COALESCE(?, first_name),
@@ -23,7 +28,8 @@ async function editUser (req, res, next) {
             email = COALESCE(?, email),
             phone_number = COALESCE(?, phone_number),
             city = COALESCE(?, city),
-            postal_code = COALESCE(?, postal_code)
+            postal_code = COALESCE(?, postal_code),
+            avatar = COALESCE(?, avatar)
             WHERE id = ?
         `, [
             firstName,
@@ -34,15 +40,18 @@ async function editUser (req, res, next) {
             phone,
             city,
             postalCode,
+            avatar,
             userId
         ]);
 
-        const [[editedUser]] = await pool.query('SELECT first_name, last_name, bio, password, email, phone_number, city, postal_code FROM users WHERE id = ?', [userId]);
+        const [[updatedUser]] = await pool.query('SELECT first_name, last_name, bio, password, email, phone_number, city, postal_code, avatar FROM users WHERE id = ?', [userId]);
 
         res.status(200).send({
             status: 'ok',
             message: 'El perfil fue editado correctamente!',
-            data: editedUser
+            data: {
+                updatedUser
+            }
         });
     } catch (error) {
         next(error);

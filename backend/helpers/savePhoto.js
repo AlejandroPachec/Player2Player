@@ -24,7 +24,7 @@ async function savePhoto (photo, width) {
 
         const imagePath = path.join(uploadsPath, imageName);
 
-        image.toFile(imagePath);
+        await image.toFile(imagePath);
 
         return imageName;
     } catch (error) {
