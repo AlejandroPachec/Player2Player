@@ -1,0 +1,24 @@
+const path = require('node:path');
+const fs = require('node:fs/promises');
+const { promisify } = require('node:util');
+
+const generateError = require('./generateError');
+
+require('dotenv').config();
+
+async function deletePhoto (photoName) {
+
+    const imagePath = path.resolver(__dirname, '../', process.env.UPLOADS_DIR, photoName);
+
+    try {
+        await fs.access(imagePath);
+        await promisify(fs.unlink)(imagePath);
+
+    } catch (error) {
+        throw generateError('No se ha podido eliminar la imagen', 500);
+    }
+}
+
+module.exports = deletePhoto;
+
+
