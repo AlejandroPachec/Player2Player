@@ -37,11 +37,16 @@ async function getProduct (req, res, next) {
                 p.id, p.user_id, ph.name
     `, [idProduct]);
 
+        const productPhotos = await pool.query(
+            'SELECT name FROM product_photo WHERE product_id = ?', [idProduct]
+        );
+
         if (productInfo.length === 0) {
             res.status(404).send({
                 status: 'Not Found',
                 message: 'Producto no encontrado'
             });
+
         } else {
             const user = {
                 id: productInfo[0].seller_id,
@@ -49,8 +54,8 @@ async function getProduct (req, res, next) {
                 last_name: productInfo[0].seller_last_name
             };
 
-            const productImages = productInfo.map((product) => ({
-                url: `${config.imageUrlBase}${product.product_photo}`
+            const productImages = productPhotos.map((photo) => ({
+                url: `${config.imageUrlBase}/${photo.name}`
             }));
 
             const product = {
