@@ -6,18 +6,15 @@ async function getUser (req, res, next) {
         const { userId } = req.params;
         const pool = await getPool();
 
-        const [[user]] = await pool.query(`SELECT first_name, last_name, bio, city, phone_number, avatar FROM users
-        WHERE users.id = ?
-        `, [userId]);
-        if (!user) {
-            return next(generateError(`El usuario con el id ${userId} no existe`, 404));
-        }
-
-        const [[reviews]] = await pool.query(`SELECT U.first_name, U.last_name, U.bio, U.city, U.postal_code, U.phone_number, U.avatar, userAvgReviews
+        const [[user]] = await pool.query(`SELECT U.first_name, U.last_name, U.bio, U.city, U.postal_code, U.phone_number, U.avatar, userAvgReviews
         FROM users U
         INNER JOIN (SELECT user_seller_id, AVG(stars) AS userAvgReviews FROM reviews GROUP BY user_seller_id) AS avgReviews
         ON U.id = avgReviews.user_seller_id
         WHERE U.id = ?; `, [userId]);
+
+        if (!user) {
+            return next(generateError(`El usuario con el id ${userId} no existe`, 404));
+        }
 
         const [[products]] = await pool.query(`SELECT P.name, P.description, P.category, P.state, P.price, PP.name AS photo
         FROM products P
@@ -30,7 +27,6 @@ async function getUser (req, res, next) {
             status: 'ok',
             data: {
                 user,
-                reviews,
                 products: [products]
             }
         });

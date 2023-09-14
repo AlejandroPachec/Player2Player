@@ -23,6 +23,10 @@ async function addOrder (req, res, next) {
         const { idProduct } = req.params;
         const { value: { userSellerId } } = validateUserSellerId;
 
+        if (userBuyerId === userSellerId) {
+            throw generateError('No puedes comprarte a ti mismo', 403);
+        }
+
         await pool.query(`
 			INSERT INTO orders (id, user_buyer_id, user_seller_id, product_id)
 			VALUES (?, ?, ?, ?)

@@ -19,10 +19,11 @@ async function editUser (req, res, next) {
 
         const [user] = await pool.query('SELECT avatar from users WHERE id = ?', [userId]);
 
-        if (user[0].avatar) {
-            await deletePhoto(user[0].avatar);
-        }
+        
         if (req.files?.avatar) {
+            if (user[0].avatar) {
+                await deletePhoto(user[0].avatar);
+            };
             avatar = await savePhoto(req.files.avatar, 150);
         }
 
