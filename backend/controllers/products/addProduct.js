@@ -6,14 +6,13 @@ const savePhoto = require('../../helpers/savePhoto');
 
 async function addProduct (req, res, next) {
     const { error } = addProductSchema.validate(req.body);
-
     if (error) {
         return next(generateError(error.details[0].message, 400));
     }
 
     try {
         const pool = await getPool();
-        
+
         const { name, description, price, category, state } = req.body;
 
         // //* Verificamos que no exista un producto con la misma descripción
@@ -23,31 +22,44 @@ async function addProduct (req, res, next) {
             return next(generateError('Ya existe un producto con esa descripción', 400));
         }
 
-        //* Generamos un id random tanto para el producto como para la foto
+        //* Generamos un id random  para el producto
 
         const id = crypto.randomUUID();
 
-        //* Generamos el nombre de la foto y la guardamos
         
+        //* Damos error si no subimos ninguna foto
+        
+        if (!req.files?.photos) {
+            return next(generateError('No has subido ninguna foto', 400));
+        }
+        //* Insertamos el producto
+    
         await pool.query('INSERT INTO products(id, name, description, price, category, state, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)', [id, name, description, price, category, state, req.user.id]);
         
-        if (req.files.photos && Object.keys(req.files.photos).length > 0) {
-            
-        //* Guardamos las primeras 7 fotos
+        //* Guardamos e insertamos las fotos
 
-            for (const photo of Object.values(req.files.photos).slice(0, 7)) {
-                const photoName = await savePhoto(photo, 500);
-                const photo_id = crypto.randomUUID();
+        let insertedPhotos = [];	
+        if (Object.keys(req.files).length >= 1 && Object.values(req.files.photos).length < 8) {
+            console.log("cheguei aqui");
+                for (const photo of Object.values(req.files.photos)) {
+                    const photoName = await savePhoto(photo, 500);
                 
-        //* Guardamos la foto en la base de datos      
-          
-                await pool.query(
-                `INSERT INTO product_photo (id ,name, product_id) VALUES (?, ?, ?)`,
-                [photo_id, photoName, id]
-              );
-            }
-          }
+                    const photo_id = crypto.randomUUID();
+                
+                    await pool.query(
+                    `INSERT INTO product_photo (id ,name, product_id) VALUES (?, ?, ?)`,
+                    [photo_id, photoName, id]
+                    );
+                    
+                    insertedPhotos.push(photoName);
+                    
+                };
+                
+            } else if (Object.keys(req.files.photos).length > 7) {
+                return next(generateError('Has subido más de las 7 fotos permitidas', 400));
+            };
 
+            
         res.status(200).send({
             status: 'Ok',
             message: 'Producto creado correctamente',
@@ -59,11 +71,11 @@ async function addProduct (req, res, next) {
                 category,
                 state,
                 user_id: req.user.id,
-                
+                photos: insertedPhotos
             }
         });
     } catch (error) {
-        throw generateError(error, 500);
+        console.error(error);
         next(error);
     }
 }

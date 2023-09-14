@@ -28,7 +28,8 @@ async function savePhoto (photo, width) {
 
         return imageName;
     } catch (error) {
-        throw generateError(error, 500);
+        // throw generateError(error, 500);
+        console.error(error);
     }
 }
 
