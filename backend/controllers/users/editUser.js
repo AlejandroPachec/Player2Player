@@ -22,6 +22,7 @@ async function editUser (req, res, next) {
         if (user[0].avatar) {
             await deletePhoto(user[0].avatar);
         }
+
         if (req.files?.avatar) {
             avatar = await savePhoto(req.files.avatar, 150);
         }
