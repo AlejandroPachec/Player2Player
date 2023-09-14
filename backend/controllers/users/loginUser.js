@@ -9,7 +9,7 @@ async function loginUser (req, res, next) {
     const { error } = loginUserSchema.validate(req.body);
 
     if (error) {
-        return next(generateError(error.details[0].message, 400));
+        return next(generateError(error.message, 400));
     }
 
     try {
