@@ -27,13 +27,6 @@ const addProductSchema = Joi.object({
         'any.only': 'El estado debe ser uno de [Nuevo, En buen estado, Aceptable, No da para más]',
         'any.required': 'El estado del producto es obligatorio.'
     }),
-    photo: Joi.object({
-        fieldName: Joi.string().valid('file'),
-        originalNme: Joi.string(),
-        mimetype: Joi.string().valid('image/jpeg', 'image/png', 'image/jpg')
-    }).messages({
-        'object.base': 'Tienes que subir al menos una foto del producto.'
-    }).required(),
 });
 
 module.exports = addProductSchema;
