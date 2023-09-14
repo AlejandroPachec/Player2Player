@@ -9,7 +9,7 @@ async function editUser (req, res, next) {
     try {
         const { error } = editUserSchema.validate(req.body);
         if (error) {
-            return next(generateError(error.details[0].message, 400));
+            return next(generateError(error.message, 400));
         }
         const userId = req.user.id;
         const { firstName, lastName, bio, password, email, phone, city, postalCode } = req.body;
@@ -19,7 +19,6 @@ async function editUser (req, res, next) {
 
         const [user] = await pool.query('SELECT avatar from users WHERE id = ?', [userId]);
 
-        
         if (req.files?.avatar) {
             if (user[0].avatar) {
                 await deletePhoto(user[0].avatar);
