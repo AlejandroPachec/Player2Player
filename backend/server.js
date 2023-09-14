@@ -1,16 +1,19 @@
 // IMPORTS FROM NODE_MODULES
 const express = require('express');
+const fileUpload = require('express-fileupload');
 const app = express();
 
 const userRouter = require('./routes/userRouter');
 const productsRouter = require('./routes/productRouter');
+const ordersRouter = require('./routes/ordersRouter');
 
 app.use(express.json());
-
+app.use(fileUpload());
 
 // Routers
 app.use('/user', userRouter);
 app.use('/products', productsRouter);
+app.use('/orders', ordersRouter);
 
 const { PORT } = process.env;
 

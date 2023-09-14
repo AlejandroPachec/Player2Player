@@ -13,13 +13,18 @@ async function getUser (req, res, next) {
             return next(generateError(`El usuario con el id ${userId} no existe`, 404));
         }
 
-        const [[reviews]] = await pool.query(`SELECT title, text, stars FROM reviews
-        WHERE user_seller_id = ? `, [userId]);
+        const [[reviews]] = await pool.query(`SELECT U.first_name, U.last_name, U.bio, U.city, U.postal_code, U.phone_number, U.avatar, userAvgReviews
+        FROM users U
+        INNER JOIN (SELECT user_seller_id, AVG(stars) AS userAvgReviews FROM reviews GROUP BY user_seller_id) AS avgReviews
+        ON U.id = avgReviews.user_seller_id
+        WHERE U.id = ?; `, [userId]);
 
-        const [[products]] = await pool.query(`SELECT products.name, products.description, products.category, products.state, products.availability, product_photo.name AS photo
-        FROM products
-        INNER JOIN product_photo
-        ON products.id = product_photo.product_id`);
+        const [[products]] = await pool.query(`SELECT P.name, P.description, P.category, P.state, P.price, PP.name AS photo
+        FROM products P
+        INNER JOIN users U ON P.user_id = U.id
+        INNER JOIN product_photo PP ON PP.product_id = P.id
+        WHERE U.id = ?;`, [userId]);
+
 
         res.status(200).send({
             status: 'ok',

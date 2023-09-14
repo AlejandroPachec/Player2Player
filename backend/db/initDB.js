@@ -79,8 +79,8 @@ async function createDB () {
 
         await pool.query(`CREATE TABLE IF NOT EXISTS orders (
    	    id VARCHAR(50) NOT NULL PRIMARY KEY,
-		exchange_place VARCHAR(100) NOT NULL,
-		exchange_time DATETIME NOT NULL,	
+		exchange_place VARCHAR(100) NULL,
+		exchange_time DATETIME NULL,	
 		user_buyer_id VARCHAR(50) NOT NULL,
 		FOREIGN KEY (user_buyer_id) REFERENCES users (id)
 		   ON DELETE RESTRICT
