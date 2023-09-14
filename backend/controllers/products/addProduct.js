@@ -32,21 +32,18 @@ async function addProduct (req, res, next) {
         if (!req.files?.photos) {
             return next(generateError('No has subido ninguna foto', 400));
         }
-        //* Insertamos el producto
-    
-        await pool.query('INSERT INTO products(id, name, description, price, category, state, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)', [id, name, description, price, category, state, req.user.id]);
         
         //* Guardamos e insertamos las fotos
-
+        
         let insertedPhotos = [];	
         if (Object.keys(req.files).length >= 1 && Object.values(req.files.photos).length < 8) {
             console.log("cheguei aqui");
-                for (const photo of Object.values(req.files.photos)) {
-                    const photoName = await savePhoto(photo, 500);
+            for (const photo of Object.values(req.files.photos)) {
+                const photoName = await savePhoto(photo, 500);
                 
-                    const photo_id = crypto.randomUUID();
+                const photo_id = crypto.randomUUID();
                 
-                    await pool.query(
+                await pool.query(
                     `INSERT INTO product_photo (id ,name, product_id) VALUES (?, ?, ?)`,
                     [photo_id, photoName, id]
                     );
@@ -55,11 +52,14 @@ async function addProduct (req, res, next) {
                     
                 };
                 
+                await pool.query('INSERT INTO products(id, name, description, price, category, state, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)', [id, name, description, price, category, state, req.user.id]);
+                
             } else if (Object.keys(req.files.photos).length > 7) {
                 return next(generateError('Has subido más de las 7 fotos permitidas', 400));
             };
-
             
+            //* Insertamos el producto
+        
         res.status(200).send({
             status: 'Ok',
             message: 'Producto creado correctamente',
