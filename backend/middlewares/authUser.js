@@ -19,6 +19,7 @@ const authUser = async (req, res, next) => {
 
         req.user = tokenInfo;
 
+        next();
     } catch (error) {
         next(error);
     }
