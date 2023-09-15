@@ -3,7 +3,7 @@ const getPool = require('../../db/connectDB');
 async function getUserOrder (req, res, next) {
     try {
         const pool = await getPool();
-        const userId = req.body.id;
+        const userId = req.user.id;
         const orderId = req.params.idOrder;
 
         let query;
@@ -28,7 +28,7 @@ async function getUserOrder (req, res, next) {
         const [orders] = await pool.query(query, queryParams);
 
         if (orders.length === 0) {
-            res.status(404).json({ message: 'Orden no encontrada' });
+            res.status(404).json({ message: 'No se encontraron órdenes' });
         } else {
             res.json(orders);
         }
