@@ -3,10 +3,10 @@ const generateError = require('../helpers/generateError');
 
 const authUser = async (req, res, next) => {
     try {
-        const token = req.headers.token;
+        const { token } = req.headers;
 
         if (!token) {
-            generateError('Falta la cabecera de autorización', 401);
+            return next(generateError('Falta la cabecera de autorización', 401));
         }
 
         let tokenInfo;

@@ -1,6 +1,5 @@
 const path = require('node:path');
 const fs = require('node:fs/promises');
-const { promisify } = require('node:util');
 
 const generateError = require('./generateError');
 
@@ -12,7 +11,7 @@ async function deletePhoto (photoName) {
 
     try {
         await fs.access(imagePath);
-        await promisify(fs.unlink)(imagePath);
+        await fs.unlink(imagePath);
 
     } catch (error) {
         throw generateError('No se ha podido eliminar la imagen', 500);

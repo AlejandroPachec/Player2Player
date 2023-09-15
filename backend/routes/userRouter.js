@@ -14,6 +14,6 @@ userRouter.post('/create', createUser);
 userRouter.post('/login', loginUser);
 // userRouter.post('/user/reviews/:userId', authUser, addUserReview);
 userRouter.get('/profile/:userId', getUser);
-userRouter.put('/:userId/edit', authUser, editUser);
+userRouter.put('/edit', authUser, editUser);
 
 module.exports = userRouter;
