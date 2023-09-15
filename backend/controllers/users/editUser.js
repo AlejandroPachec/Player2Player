@@ -20,6 +20,7 @@ async function editUser (req, res, next) {
         const [user] = await pool.query('SELECT avatar from users WHERE id = ?', [userId]);
 
         if (req.files?.avatar) {
+            console.log(user[0].avatar)
             if (user[0].avatar) {
                 await deletePhoto(user[0].avatar);
             };
@@ -35,8 +36,7 @@ async function editUser (req, res, next) {
             email = COALESCE(?, email),
             phone_number = COALESCE(?, phone_number),
             city = COALESCE(?, city),
-            postal_code = COALESCE(?, postal_code),
-            avatar = COALESCE(?, avatar)
+            postal_code = COALESCE(?, postal_code)
             WHERE id = ?
         `, [
             firstName,
@@ -54,7 +54,7 @@ async function editUser (req, res, next) {
         const [[updatedUser]] = await pool.query('SELECT first_name, last_name, bio, password, email, phone_number, city, postal_code, avatar FROM users WHERE id = ?', [userId]);
 
         res.status(200).send({
-            status: 'ok',
+            status: 'Ok',
             message: 'El perfil fue editado correctamente!',
             data: {
                 updatedUser
