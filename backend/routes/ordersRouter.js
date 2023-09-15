@@ -3,9 +3,11 @@ const orderRouter = express.Router();
 const authUser = require('../middlewares/authUser');
 
 const addOrder = require('../controllers/orders/addOrder');
-const confirmOrder = require('../controllers/orders/confirmOrder');
+const getUserOrder = require('../controllers/orders/getUserOrder');
+
 
 orderRouter.post('/user/:idProduct', authUser, addOrder);
-orderRouter.put('/user/confirm/:idProduct', authUser, confirmOrder);
+orderRouter.get('/:idOrder?', authUser, getUserOrder);
+
 
 module.exports = orderRouter;
