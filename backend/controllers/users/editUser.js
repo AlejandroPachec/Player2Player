@@ -3,19 +3,27 @@ const deletePhoto = require('../../helpers/deletePhoto');
 const generateError = require('../../helpers/generateError');
 const savePhoto = require('../../helpers/savePhoto');
 const editUserSchema = require('../../schema/editUserSchema');
+const { photoSchema } = require('../../schema/PhotoSchema');
 
 async function editUser (req, res, next) {
     try {
-        const { error } = editUserSchema.validate(req.body);
-        if (error) {
-            return next(generateError(error.message, 400));
+        const { error: errorUser } = editUserSchema.validate(req.body);
+        const { error: errorPhoto } = photoSchema.validate(req.files?.avatar);
+
+        if (errorUser) {
+            return next(generateError(errorUser.message, 400));
         }
+
+        if (errorPhoto) {
+            return next(generateError(errorPhoto.details[0].message, 400));
+        }
+
         const userId = req.user.id;
         const { firstName, lastName, bio, password, email, phone, city, postalCode } = req.body;
         let avatar;
 
-        if (!firstName && !lastName && !bio && !password && !email && !phone && !city && !postalCode && !req.files.avatar) {
-            throw generateError('Debes modificar algún campo', 400);
+        if (!firstName && !lastName && !bio && !password && !email && !phone && !city && !postalCode && !req.files?.avatar) {
+            return next(generateError('Debes modificar algún campo', 400));
         }
 
         const pool = await getPool();
@@ -23,7 +31,6 @@ async function editUser (req, res, next) {
         const [user] = await pool.query('SELECT avatar from users WHERE id = ?', [userId]);
 
         if (req.files?.avatar) {
-            console.log(user[0].avatar);
             if (user[0].avatar) {
                 await deletePhoto(user[0].avatar);
             };
@@ -39,7 +46,7 @@ async function editUser (req, res, next) {
             phone_number = COALESCE(?, phone_number),
             city = COALESCE(?, city),
             postal_code = COALESCE(?, postal_code),
-            avatar = ?
+            avatar = COALESCE(?, avatar)
             WHERE id = ?
         `, [
             firstName,
