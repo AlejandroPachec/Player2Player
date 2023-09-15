@@ -20,12 +20,10 @@ async function createUser (req, res, next) {
         const id = crypto.randomUUID();
         const pool = await getPool();
 
-        /*
         const [userEmail] = await pool.query('SELECT email FROM users WHERE email = ?', [email]);
         if (userEmail.length > 0) {
             return next(generateError('El email indicado ya está en uso', 400));
         };
-        */
 
         const registrationCode = crypto.randomUUID();
         const hashedPassword = await bcrypt.hash(password, 10);
