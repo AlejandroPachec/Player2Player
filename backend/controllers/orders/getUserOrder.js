@@ -33,7 +33,6 @@ async function getUserOrder (req, res, next) {
             res.json(orders);
         }
     } catch (error) {
-        console.error(error);
         res.status(500).json({ message: 'Error al obtener las órdenes' });
     }
 }

@@ -9,4 +9,5 @@ const getUserOrder = require('../controllers/orders/getUserOrder');
 orderRouter.post('/user/:idProduct', authUser, addOrder);
 orderRouter.get('/:idOrder?', authUser, getUserOrder);
 
+
 module.exports = orderRouter;

@@ -9,7 +9,7 @@ async function loginUser (req, res, next) {
     const { error } = loginUserSchema.validate(req.body);
 
     if (error) {
-        return next(generateError(error.details[0].message, 400));
+        return next(generateError(error.message, 400));
     }
 
     try {
@@ -31,7 +31,6 @@ async function loginUser (req, res, next) {
             return next(generateError('Email y/o contraseña incorrectos', 404));
         }
 
-
         /*
         if (userInfo[0].active === 0) {
             return next(generateError('Debes activar tu usuario primero. Revisa la bandeja de entrada o spam de tu correo.', 403));
@@ -39,8 +38,7 @@ async function loginUser (req, res, next) {
         */
 
         const payload = {
-            id: userInfo[0].id,
-            role: userInfo[0].role
+            id: userInfo[0].id
         };
 
         const { SECRET } = process.env;
