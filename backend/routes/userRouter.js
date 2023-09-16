@@ -12,7 +12,7 @@ const addUserReview = require('../controllers/users/addUserReview');
 userRouter.post('/create', createUser);
 /* userRouter.get('/activate/:registrationCode', activateUser); */
 userRouter.post('/login', loginUser);
-// userRouter.post('/user/reviews/:userId', authUser, addUserReview);
+userRouter.post('/reviews/:orderId', authUser, addUserReview);
 userRouter.get('/profile/:userId', getUser);
 userRouter.put('/edit', authUser, editUser);
 
