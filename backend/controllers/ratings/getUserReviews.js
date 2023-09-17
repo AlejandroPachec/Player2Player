@@ -31,7 +31,7 @@ async function getUserReviews (req, res, next) {
         GROUP BY 
         R.title, R.text, R.stars, R.created_at, 
         U.first_name, U.last_name, R.product_id;
-		`, [idUser]);
+        `, [idUser]);
 
         res.status(200).send({
             status: 'Ok',
