@@ -8,8 +8,9 @@ const { photoSchema, arrayPhotoSchema } = require('../../schema/PhotoSchema');
 async function addProduct (req, res, next) {
     const insertedPhotos = [];
     let errorSchema;
+
     const photos = req.files?.photos;
-    
+
     if (!photos || photos.length === 0) {
         return next(generateError('No has subido ninguna foto', 400));
     };
@@ -17,27 +18,27 @@ async function addProduct (req, res, next) {
         return next(generateError('Has subido demasiadas fotos. Máximo 8', 400));
     };
     if (Array.isArray(photos)) {
-         const { error } = await arrayPhotoSchema.validateAsync(photos)
-            errorSchema = error;
-        } else {
-            const { error } = await photoSchema.validateAsync(photos);
-            errorSchema = error;
-        }; 
-        
-        //! CONSULTAR SAMU
+        const { error } = await arrayPhotoSchema.validateAsync(photos);
+        errorSchema = error;
+    } else {
+        const { error } = await photoSchema.validateAsync(photos);
+        errorSchema = error;
+    };
+
+    //! CONSULTAR SAMU
 
     if (errorSchema) {
-            return next(generateError(errorSchema.details[0].message, 400));
-        };
+        return next(generateError(errorSchema.details[0].message, 400));
+    };
 
-        //! CONSULTAR SAMU
-        
-        const { error } = addProductSchema.validate(req.body);
-    
+    //! CONSULTAR SAMU
+
+    const { error } = addProductSchema.validate(req.body);
+
     if (error) {
-            return next(generateError(error.message, 400))
-        };
-       
+        return next(generateError(error.message, 400));
+    };
+
     try {
         const pool = await getPool();
         const { name, description, price, category, state } = req.body;
@@ -48,24 +49,24 @@ async function addProduct (req, res, next) {
             return next(generateError('Ya existe un producto con esa descripción', 400));
         }
 
-        const id = crypto.randomUUID();       
-                
+        const id = crypto.randomUUID();
+
         await pool.query('INSERT INTO products(id, name, description, price, category, state, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)', [id, name, description, price, category, state, req.user.id]);
-        
+
         if (Array.isArray(photos)) {
             for (const photo of photos) {
                 const photoId = crypto.randomUUID();
                 const photoName = await savePhoto(photo, 500);
-                await pool.query(`INSERT INTO product_photo (id, name, product_id) VALUES (?, ?, ?)`, [photoId, photoName, id]);
+                await pool.query('INSERT INTO product_photo (id, name, product_id) VALUES (?, ?, ?)', [photoId, photoName, id]);
 
                 insertedPhotos.push(photoName);
             }
-           } else {
-           const photoId = crypto.randomUUID();
-           const photoName = await savePhoto(photos, 500);
-           await pool.query(`INSERT INTO product_photo (id, name, product_id) VALUES (?, ?, ?)`, [photoId, photoName, id]);
-           insertedPhotos.push(photoName);
-           };   
+        } else {
+            const photoId = crypto.randomUUID();
+            const photoName = await savePhoto(photos, 500);
+            await pool.query('INSERT INTO product_photo (id, name, product_id) VALUES (?, ?, ?)', [photoId, photoName, id]);
+            insertedPhotos.push(photoName);
+        };
 
         res.status(200).send({
             status: 'Ok',

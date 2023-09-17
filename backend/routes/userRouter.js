@@ -7,12 +7,12 @@ const createUser = require('../controllers/users/createUser');
 const loginUser = require('../controllers/users/loginUser');
 const getUser = require('../controllers/users/getUser');
 const editUser = require('../controllers/users/editUser');
-const addUserReview = require('../controllers/users/addUserReview');
+
 
 userRouter.post('/create', createUser);
 /* userRouter.get('/activate/:registrationCode', activateUser); */
 userRouter.post('/login', loginUser);
-userRouter.post('/reviews/:orderId', authUser, addUserReview);
+
 userRouter.get('/profile/:userId', getUser);
 userRouter.put('/edit', authUser, editUser);
 
