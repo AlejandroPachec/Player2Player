@@ -1,13 +1,13 @@
 const Joi = require('joi');
 
 const editUserSchema = Joi.object({
-    firstName: Joi.string().min(2).max(50).pattern(/^[A-Za-z\s]+$/).messages({
+    firstName: Joi.string().min(2).max(50).pattern(/^[A-Za-z\sáéíóúÁÉÍÓÚüÜ]+$/u).messages({
         'string.empty': 'El nombre no puede estar vacío',
         'string.min': 'El nombre tiene que tener mínimo 2 letras',
         'string.max': 'El nombre no puede tener más de 50 letras',
         'string.pattern.base': 'El nombre solo puede contener letras y espacios'
     }),
-    lastName: Joi.string().min(2).max(50).pattern(/^[A-Za-z\s]+$/).messages({
+    lastName: Joi.string().min(2).max(50).pattern(/^[A-Za-z\sáéíóúÁÉÍÓÚüÜ]+$/u).messages({
         'string.empty': 'El apellido no puede estar vacío',
         'string.min': 'El apellido tiene que tener mínimo 2 letras',
         'string.max': 'El apellido no puede tener más de 50 letras',
