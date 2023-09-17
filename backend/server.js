@@ -6,6 +6,10 @@ const app = express();
 const userRouter = require('./routes/userRouter');
 const productsRouter = require('./routes/productRouter');
 const ordersRouter = require('./routes/ordersRouter');
+const reviewsRouter = require('./routes/reviewsRouter');
+
+app.use(express.urlencoded({ extended: false, limit: '10mb' }));
+app.use(express.json({ limit: '10mb' }));
 
 app.use(express.json());
 app.use(fileUpload());
@@ -14,6 +18,7 @@ app.use(fileUpload());
 app.use('/user', userRouter);
 app.use('/products', productsRouter);
 app.use('/orders', ordersRouter);
+app.use('/reviews', reviewsRouter);
 
 const { PORT } = process.env;
 

@@ -1,22 +1,22 @@
 const Joi = require('joi');
 
 const editUserSchema = Joi.object({
-    firstName: Joi.string().min(2).max(50).pattern(/^[A-Za-z\s]+$/).messages({
+    firstName: Joi.string().min(2).max(50).pattern(/^[A-Za-zñÑ\sáéíóúÁÉÍÓÚüÜ]+$/u).messages({
         'string.empty': 'El nombre no puede estar vacío',
         'string.min': 'El nombre tiene que tener mínimo 2 letras',
         'string.max': 'El nombre no puede tener más de 50 letras',
         'string.pattern.base': 'El nombre solo puede contener letras y espacios'
     }),
-    lastName: Joi.string().min(2).max(50).pattern(/^[A-Za-z\s]+$/).messages({
+    lastName: Joi.string().min(2).max(50).pattern(/^[A-Za-zñÑ\sáéíóúÁÉÍÓÚüÜ]+$/u).messages({
         'string.empty': 'El apellido no puede estar vacío',
         'string.min': 'El apellido tiene que tener mínimo 2 letras',
         'string.max': 'El apellido no puede tener más de 50 letras',
         'string.pattern.base': 'El apellido solo puede contener letras y espacios'
     }),
-    bio: Joi.string().max(500).messages({
+    bio: Joi.string().max(500).pattern(/^[A-Za-zñÑ\sáéíóúÁÉÍÓÚüÜ]+$/u).messages({
         'string.max': 'Tu biografía no puede exceder los 500 caracters'
     }),
-    email: Joi.string().email().max(100).messages({
+    email: Joi.string().email().max(100).pattern(/^[A-Za-zñÑ\sáéíóúÁÉÍÓÚüÜ]+$/u).messages({
         'string.empty': 'El email no puede estar vacío',
         'string.email': 'El email no es válido',
         'string.max': 'El email no puede tener más de 100 caracteres'
@@ -31,7 +31,7 @@ const editUserSchema = Joi.object({
         'string.min': 'El número de teléfono debe tener mínimo 9 caracteres',
         'string.pattern.base': 'El número de teléfono no es válido'
     }),
-    city: Joi.string().max(50).messages({
+    city: Joi.string().max(50).pattern(/^[A-Za-zñÑ\sáéíóúÁÉÍÓÚüÜ]+$/u).messages({
         'string.empty': 'La ciudad no puede estar vacío',
         'string.max': 'La ciudad debe tener máximo 50 caracteres'
     }),

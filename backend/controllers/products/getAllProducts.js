@@ -20,6 +20,7 @@ async function getAllProducts (req, res, next) {
             p.price AS product_price,
             p.category AS product_category,
             p.user_id AS seller_id,
+            p.availability AS availability,
             u.first_name AS seller_first_name,
             u.last_name AS seller_last_name,
             r.title AS review_title,

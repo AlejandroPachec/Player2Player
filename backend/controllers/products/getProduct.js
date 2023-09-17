@@ -19,6 +19,7 @@ async function getProduct (req, res, next) {
                 p.price AS product_price,
                 p.category AS product_category,
                 p.user_id AS seller_id,
+                p.availability AS availability,
                 u.first_name AS seller_first_name,
                 u.last_name AS seller_last_name,
                 ph.name AS product_photo,
@@ -78,7 +79,7 @@ async function getProduct (req, res, next) {
             });
         }
     } catch (error) {
-        console.error(error);
+        next(error);
         res.status(500).send({
             status: 'Error',
             message: 'Se ha producido un error al obtener el producto'
