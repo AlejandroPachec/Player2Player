@@ -15,7 +15,7 @@ const createUserSchema = Joi.object({
         'string.pattern.base': 'El apellio solo puede contener letras y espacios',
         'any.required': 'El apellido es obligatorio'
     }),
-    email: Joi.string().email().max(100).pattern(/^[A-Za-zñÑ\sáéíóúÁÉÍÓÚüÜ]+$/u).required().messages({
+    email: Joi.string().email().max(100).required().messages({
         'string.empty': 'El email no puede estar vacío',
         'string.email': 'El email no es válido',
         'string.max': 'El email no puede tener más de 100 caracteres',
