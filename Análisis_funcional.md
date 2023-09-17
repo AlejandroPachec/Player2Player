@@ -50,7 +50,7 @@ A continuación se describen las principales funcionalidades del proyecto con la
 3. **Valoraciones:**
    - Después de la entrega exitosa de un artículo, el comprador tiene la opción de valorar al vendedor en la plataforma, proporcionando retroalimentación y una calificación.
 
-
+<img src="assets/PERFIL%20VALORACIONES.png">
 
 ## **Funcionalidades del Backend:**
 
@@ -67,11 +67,11 @@ A continuación se describen las principales funcionalidades del proyecto con la
    - Se implementa un middleware que se encarga de autentificar al usuario que intenta hacer uso de las funcionalidades de la plataforma que requieren autenticación.
 
 5. **Helpers:**
-   - Se crean funciones auxiliares que se encargan de realizar tareas de manejo de imágenes, validaciones y errores.
+   - Se crean funciones auxiliares que se encargan de realizar tareas de manejo de imágenes, validaciones y gestión de errores.
 
 6. **Endpoints API:**
    - Se crean endpoints API para las siguientes funciones:
-     - Registro y inicio de sesión de usuarios.
+     - Registro e inicio de sesión de usuarios.
      - Listado de productos, incluyendo información del vendedor y valoración media de éste.
      - Visualización detallada de un artículo, con información y valoración media del vendedor.
      - Filtros avanzados para la búsqueda de productos por nombre, categoría, localidad y precio.
