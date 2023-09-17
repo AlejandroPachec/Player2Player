@@ -7,6 +7,9 @@ const userRouter = require('./routes/userRouter');
 const productsRouter = require('./routes/productRouter');
 const ordersRouter = require('./routes/ordersRouter');
 
+app.use(express.urlencoded({ extended: false, limit: '10mb' }));
+app.use(express.json({ limit: '10mb' }));
+
 app.use(express.json());
 app.use(fileUpload());
 

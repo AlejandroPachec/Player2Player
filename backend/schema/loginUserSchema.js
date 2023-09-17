@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const loginUserSchema = Joi.object({
-    email: Joi.string().email().max(100).required().messages({
+    email: Joi.string().email().max(100).required().pattern(/^[A-Za-zñÑ\sáéíóúÁÉÍÓÚüÜ]+$/u).messages({
         'string.empty': 'El email no puede estar vacío',
         'string.email': 'El email no es válido',
         'string.max': 'El email no puede tener más de 100 caracteres',
