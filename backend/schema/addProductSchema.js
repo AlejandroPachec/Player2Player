@@ -14,6 +14,7 @@ const addProductSchema = Joi.object({
         'any.required': 'La descripción del producto es obligatoria.'
     }),
     price: Joi.number().positive().max(100000).required().messages({
+        'number.base': 'El precio debe contener sólo números',
         'number.empty': 'El precio del producto no puede estar vacío.',
         'number.positive': 'El precio del producto tiene que ser una cantidad positiva.',
         'any.required': 'El precio del producto es obligatorio.'
