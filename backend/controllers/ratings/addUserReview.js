@@ -17,7 +17,7 @@ async function addUserReview (req, res, next) {
         const { error } = addUserReviewSchema.validate({ title, text, stars });
 
         if (error) {
-            throw generateError(error.details[0].message, 400);
+            throw generateError(error.message, 400);
         };
 
         const [[orderData]] = await pool.query(

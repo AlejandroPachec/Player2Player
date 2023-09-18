@@ -6,6 +6,6 @@ const getUserReviews = require('../controllers/ratings/getUserReviews');
 const addUserReview = require('../controllers/ratings/addUserReview');
 
 reviewsRouter.get('/:idUser', getUserReviews);
-reviewsRouter.post('/reviews/:orderId', authUser, addUserReview);
+reviewsRouter.post('/:orderId', authUser, addUserReview);
 
 module.exports = reviewsRouter;
