@@ -16,7 +16,8 @@ async function getUser (req, res, next) {
 
         const [[avgReview]] = await pool.query(`
         SELECT user_seller_id, AVG(stars) AS userAvgReviews FROM reviews
-        WHERE user_seller_id = ?                                                                                  GROUP BY user_seller_id;
+        WHERE user_seller_id = ?
+        GROUP BY user_seller_id;
         `, [userId]);
 
 

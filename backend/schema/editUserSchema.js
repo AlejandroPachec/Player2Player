@@ -16,7 +16,7 @@ const editUserSchema = Joi.object({
     bio: Joi.string().max(500).pattern(/^[A-Za-zñÑ\sáéíóúÁÉÍÓÚüÜ]+$/u).messages({
         'string.max': 'Tu biografía no puede exceder los 500 caracters'
     }),
-    email: Joi.string().email().max(100).pattern(/^[A-Za-zñÑ\sáéíóúÁÉÍÓÚüÜ]+$/u).messages({
+    email: Joi.string().email().max(100).messages({
         'string.empty': 'El email no puede estar vacío',
         'string.email': 'El email no es válido',
         'string.max': 'El email no puede tener más de 100 caracteres'
@@ -33,7 +33,8 @@ const editUserSchema = Joi.object({
     }),
     city: Joi.string().max(50).pattern(/^[A-Za-zñÑ\sáéíóúÁÉÍÓÚüÜ]+$/u).messages({
         'string.empty': 'La ciudad no puede estar vacío',
-        'string.max': 'La ciudad debe tener máximo 50 caracteres'
+        'string.max': 'La ciudad debe tener máximo 50 caracteres',
+        'string.pattern.base': 'El nombre de la ciudad solo puede tener letras y espacios.'
     }),
     postalCode: Joi.string().min(4).max(10).messages({
         'string.empty': 'El código postal no puede estar vacío',
@@ -41,11 +42,17 @@ const editUserSchema = Joi.object({
         'string.max': 'El código postal tiene que tener máximo 10 caracteres'
     }),
     avatar: Joi.object({
-        fieldName: Joi.string().valid('file'),
-        originalNme: Joi.string(),
-        mimetype: Joi.string().valid('image/jpeg', 'image/png', 'image/jpg')
+        name: Joi.string().required(),
+        data: Joi.any().required(),
+        size: Joi.number().required(),
+        encoding: Joi.string(),
+        tempFilePath: Joi.any(),
+        truncated: Joi.boolean(),
+        mimetype: Joi.string().valid('image/jpg', 'image/jpeg', 'image/png').required(),
+        md5: Joi.string(),
+        mv: Joi.func()
     }).messages({
-        'object.base': 'Tienes que seleccionar un avatar'
+        'object.base': 'El avatar no puede estar vacío'
     })
 });
 
