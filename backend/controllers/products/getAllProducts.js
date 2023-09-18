@@ -6,6 +6,7 @@ async function getAllProducts (req, res, next) {
         const pool = await getPool();
 
         const conditions = [];
+        const priceRange = [];
 
         const categoryFilter = req.query?.category;
         const cityFilter = req.query?.city;
@@ -23,6 +24,7 @@ async function getAllProducts (req, res, next) {
             p.availability AS availability,
             u.first_name AS seller_first_name,
             u.last_name AS seller_last_name,
+            u.city AS seller_city,
             r.title AS review_title,
             r.text AS review_text,
             AVG(r.stars) AS average_review_stars,
@@ -49,7 +51,10 @@ async function getAllProducts (req, res, next) {
         }
 
         if (priceFilter) {
-            conditions.push('p.price = ?');
+            const [minPrice, maxPrice] = priceFilter.split('-');
+            conditions.push(`p.price BETWEEN ${minPrice} AND ${maxPrice}`);
+            priceRange.push(minPrice);
+            priceRange.push(maxPrice);
         }
 
         if (conditions.length > 0) {
@@ -58,14 +63,14 @@ async function getAllProducts (req, res, next) {
 
         query += `
         GROUP BY
-            p.id, p.name, p.description, p.price, p.category, p.user_id, u.first_name, u.last_name, r.title, r.text`;
+            p.id, p.name, p.description, p.category, p.user_id, u.first_name, u.last_name, u.city, r.title, r.text`;
 
-        const params = [categoryFilter, cityFilter, nameFilter, priceFilter].filter(value => value !== undefined);
+        const params = [categoryFilter, cityFilter, nameFilter, priceRange].filter(value => value !== undefined);
 
         const [products] = await pool.query(query, params);
 
         const config = {
-            imageUrlBase: path.join(__dirname, '../', process.env.UPLOADS_DIR)
+            imageUrlBase: path.join('../../', process.env.UPLOADS_DIR, '/')
         };
 
         const productsWithImages = products.map((product) => {
@@ -78,7 +83,7 @@ async function getAllProducts (req, res, next) {
             };
         });
 
-        res.status(200).json({
+        res.status(200).send({
             status: 'Ok',
             message: 'Productos disponibles',
             data: productsWithImages
