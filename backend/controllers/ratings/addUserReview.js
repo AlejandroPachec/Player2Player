@@ -20,13 +20,13 @@ async function addUserReview (req, res, next) {
             throw generateError(error.details[0].message, 400);
         };
 
-        const orderData = await pool.query(
+        const [[orderData]] = await pool.query(
             'SELECT product_id, user_seller_id, exchange_time FROM orders WHERE id = ?',
             [orderId]
         );
 
-        const orderInfo = orderData[0][0];
-        const { productId, userSellerId, exchangeTime } = orderInfo;
+        const { product_id: productId, user_seller_id: userSellerId, exchange_time: exchangeTime } = orderData;
+
 
         if (!productId) {
             throw generateError('No has comprado el producto', 400);
@@ -42,7 +42,6 @@ async function addUserReview (req, res, next) {
 
         const [existingReview] = await pool.query('SELECT * FROM reviews WHERE product_id = ?', [productId]);
 
-        console.error(existingReview.length);
         if (existingReview && existingReview.length > 0) {
             throw generateError('Ya has realizado una review para este producto', 400);
         }

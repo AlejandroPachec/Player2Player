@@ -18,15 +18,15 @@ async function confirmOrder (req, res, next) {
         /* const idUser = req.user.id; */
 
         await pool.query(`
-			UPDATE products
-			SET availability = 0
-			WHERE id = ?
-		`, [idProduct]);
+            UPDATE products
+            SET availability = 0
+            WHERE id = ?
+        `, [idProduct]);
 
         await pool.query(`
             UPDATE orders
             SET exchange_place = ?, exchange_time = ?
-            WHERE id = ?
+            WHERE product_id = ?
         `, [exchangePlace, exchangeTime, idProduct]);
         /*
         const [[{ email }]] = await pool.query(`SELECT email FROM users WHERE id = ?`,

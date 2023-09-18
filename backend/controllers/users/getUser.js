@@ -1,10 +1,18 @@
 const getPool = require('../../db/connectDB');
 const generateError = require('../../helpers/generateError');
+const Joi = require('joi');
 
 async function getUser (req, res, next) {
     try {
         const { userId } = req.params;
         const pool = await getPool();
+
+        const userIdSchema = Joi.string().uuid();
+        const { error } = userIdSchema.validate(userId);
+
+        if (error) {
+            return next(generateError('El id de usuario no es válido.'));
+        }
 
         const [[user]] = await pool.query(`SELECT first_name, last_name, bio, email, phone_number, city, postal_code, avatar
         FROM users

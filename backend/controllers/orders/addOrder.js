@@ -24,13 +24,12 @@ async function addOrder (req, res, next) {
         const { value: { userSellerId } } = validateUserSellerId;
 
         if (userBuyerId === userSellerId) {
-            throw generateError('No puedes comprarte a ti mismo', 403);
+            throw generateError('No puedes comprarte un producto a ti mismo', 403);
         }
 
-        await pool.query(`
-			INSERT INTO orders (id, user_buyer_id, user_seller_id, product_id)
-			VALUES (?, ?, ?, ?)
-		`, [id, userBuyerId, userSellerId, idProduct]);
+        await pool.query(`INSERT INTO orders (id, user_buyer_id, user_seller_id, product_id)
+        VALUES (?, ?, ?, ?)
+        `, [id, userBuyerId, userSellerId, idProduct]);
         /*
         const [[{ email }]] = await pool.query(`
             SELECT email FROM users WHERE id = ?
@@ -43,8 +42,12 @@ async function addOrder (req, res, next) {
         */
 
         const [[reservedProduct]] = await pool.query(`
-			SELECT name, description, category, state, price FROM products WHERE id = ?
-		`, [idProduct]);
+        SELECT p.name, p.description, p.category, p.state, p.price, o.id 
+        FROM products p
+        INNER JOIN orders o
+        ON p.id = o.product_id
+        WHERE p.id = ?
+        `, [idProduct]);
 
         res.status(200).send({
             status: 'Ok',
