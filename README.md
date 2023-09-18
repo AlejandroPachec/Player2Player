@@ -1,12 +1,16 @@
+   # **P2P - Player2Player**
+   
+   ## **Descripción del Proyecto:**
+   "P2P - Player2Player" es una plataforma en línea diseñada para la compra y venta de videojuegos, consolas y PCs de segunda mano. La plataforma permite a los usuarios buscar productos, registrarse para obtener acceso completo, publicar sus propios productos y llevar a cabo transacciones seguras. El proyecto consta de un frontend interactivo y un backend robusto.
+   
+   A continuación se describen las principales funcionalidades del proyecto con las respectivas imágenes del wireframe empezando por la pantalla de inicio.
 
-# **Análisis Funcional de P2P - Player2Player**
 
-## **Descripción del Proyecto:**
-"P2P - Player2Player" es una plataforma en línea diseñada para la compra y venta de videojuegos, consolas y PCs de segunda mano. La plataforma permite a los usuarios buscar productos, registrarse para obtener acceso completo, publicar sus propios productos y llevar a cabo transacciones seguras. El proyecto consta de un frontend interactivo y un backend robusto.
+<div align="center">
 
-A continuación se describen las principales funcionalidades del proyecto con las respectivas imágenes del wireframe empezando por la pantalla de inicio.
+![INICIO](assets/PANTALLA%20INICIO.png)
 
-<img src="assets/PANTALLA INICIO.png">
+</div>
 
 
 ## **Funcionalidades para Usuarios Anónimos:**
@@ -14,19 +18,31 @@ A continuación se describen las principales funcionalidades del proyecto con la
 1. **Búsqueda de productos:**
    - Los usuarios anónimos pueden buscar explorar productos y buscar productos utilizando varios criterios, como nombre, categoría, localidad y precio, para encontrar productos de su interés.
 
-<img src="assets/BUSCADOR.png">
+<div align="center">
+
+![BUSCADOR](assets/BUSCADOR.png)
+
+</div>
 
 1. **Autenticación:**
    - Los usuarios pueden registrarse para obtener una cuenta en la plataforma.
    - Se envía un correo electrónico de confirmación con un código para activar la cuenta antes de permitir el inicio de sesión.
 
 
-<img src="assets/REGISTRO.png">
+<div align="center">
+
+![REGISTRO](assets/REGISTRO.png)
+
+</div>
 
 
   - Una vez la cuenta ha sido activada, los usuarios pueden iniciar sesión y acceder a todos los servicios de la plataforma.
   
-<img src="assets/LOGIN.png">
+<div align="center">
+
+![LOGIN](assets/LOGIN.png)
+
+</div>
 
 
 ## **Funcionalidades para Usuarios Registrados:**
@@ -34,23 +50,57 @@ A continuación se describen las principales funcionalidades del proyecto con la
 1. **Gestión del Perfil:**
    - Los usuarios registrados tienen la capacidad de gestionar su perfil, lo que incluye la modificación de sus datos de registro, y la posibilidad de agregar una biografía y una foto de perfil personalizada.
 
-<img src="assets/EDITAR%20PERFIL.png">
+<div align="center">
+
+![EDITAR PERFIL](assets/EDITAR%20PERFIL.png)
+
+</div>
 
 
 1. **Publicación de Nuevos productos:**
    - Los usuarios registrados pueden publicar sus propios productos en la plataforma, proporcionando información detallada, como nombre, imagen, descripción, categoría, precio y localidad de venta.
 
-<img src="assets/AÑADIR%20PRODUCTO.png">
+<div align="center">
 
-2. **Proceso de Reserva de productos:**
+![AÑADIR PRODUCTO](assets/AÑADIR%20PRODUCTO.png)
+
+</div>
+
+1. **Proceso de Reserva de productos:**
    - Cuando un comprador está interesado en un artículo, puede realizar una propuesta de compra al vendedor a través de la plataforma.
-   - El vendedor recibe la propuesta de compra por correo electrónico y tiene la opción de aceptarla o proponer una hora y lugar de entrega.
+
+<div align="center">
+
+![COMPRAR PRODUCTO](assets/COMPRAR.png)
+
+</div>
+
+   - El vendedor recibe la propuesta de compra por correo electrónico y tiene la opción de aceptarla o rechazarla. 
+
+<div align="center">
+
+![ACEPTAR PEDIDO](assets/ACEPTAR%20PEDIDO.png)
+
+</div>
+
+   - Una vez aceptada la propuesta de compra, el vendedor selecciona un lugar y hora para la entrega.
+
+<div align="center">
+
+![AGENDAR VENTA](assets/AGENDAR%20VENTA.png)
+
+</div>
+
    - El comprador recibe una notificación por correo electrónico si la compra es aceptada, incluyendo detalles de la hora y lugar de entrega.
 
-3. **Valoraciones:**
+1. **Valoraciones:**
    - Después de la entrega exitosa de un artículo, el comprador tiene la opción de valorar al vendedor en la plataforma, proporcionando retroalimentación y una calificación.
 
-<img src="assets/PERFIL%20VALORACIONES.png">
+<div align="center">
+
+![AÑADIR VALORACIÓN](assets/AÑADIR%20REVIEW.png)
+
+</div>
 
 ## **Funcionalidades del Backend:**
 
@@ -85,4 +135,5 @@ A continuación se describen las principales funcionalidades del proyecto con la
 
 ## **Notas Adicionales:**
    - Se implementa validación de datos en todos los endpoints utilizando Joi para garantizar la integridad de la información en la base de datos.
-   - Se establecen medidas de seguridad sólidas para proteger la información de los usuarios y las transacciones mediante el uso de JWT (JSON Web Tokens) y bcrypt.
+   - Se establecen medidas de seguridad sólidas para proteger la información de los usuarios mediante el uso de JWT (JSON Web Token) y bcrypt.
+  </div>
