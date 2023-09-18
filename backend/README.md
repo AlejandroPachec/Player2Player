@@ -23,34 +23,36 @@
   </li>
 
 ## Sobre el proyecto
+**_P2P - Player2Player_** es una plataforma en línea diseñada para la compra y venta de videojuegos 👾, consolas 🎮 y PCs 💻 de segunda mano. 
 
+La plataforma permite a los usuarios buscar productos, registrarse para obtener acceso completo, publicar sus propios productos y realizar valoraciones tras sus compras. 
 
 
 ## Antes de empezar
 ### Instalación
-1. Clonar el repositorio
+* Clonar el repositorio
     ```
     git clone git@github.com:AlejandroPachec/Player2Player.git
     ```
-2. Instalar las dependencias necesarias que incluye el proyecto
+* Instalar las dependencias necesarias que incluye el proyecto
     ```
     npm install 
     ```
-3. Crear la base de datos en MySQL Workbench
+* Crear la base de datos en MySQL Workbench
    ```sql
    CREATE DATABASE IF NOT EXISTS p2p_db;
    ```
-4. Ejecutar la base de datos
+* Ejecutar la base de datos
     ```
     npm run db
     ```
-5. Arrancar el servidor
+* Arrancar el servidor
    ```
    npm run dev
    ```
 
 ### Endpoints
-  <table border width='400px'>
+  <table border>
     <tbody>
       <tr>
         <th colspan="2">USUARIOS</th>
@@ -69,12 +71,12 @@
       </tr>
       <tr>
         <td align="center">PUT</td>
-        <td>user/profile/edit/:idUser</td>
+        <td>user/edit</td>
       </tr>
     </tbody>
   </table>
-
-  <table border width='400px'>
+  
+  <table border>
     <tbody>
       <tr>
         <th colspan="2">PRODUCTOS</th>
@@ -91,49 +93,41 @@
         <td align="center">GET</td>
         <td>products/:idProduct</td>
       </tr>
-      <tr>
-        <td align="center">PUT</td>
-        <td>product/edit/:idProduct</td>
-      </tr>
-      <tr>
-        <td align="center">DELETE</td>
-        <td>product/delete/:idProduct</td>
-      </tr>
     </tbody>
   </table>
 
-  <table border width='400px'>
+  <table border>
     <tbody>
       <tr>
         <th colspan="2">REVIEWS</th>
       </tr>
       <tr>
         <td align="center">POST</td>
-        <td>product/review/:idUser</td>
+        <td>reviews/:idUser</td>
       </tr>
       <tr>
         <td align="center">GET</td>
-        <td>product/:idProduct/reviews</td>
+        <td>reviews/:idOrder</td>
       </tr>
     </tbody>
   </table>
    
-  <table border width='400px'>
+  <table border>
     <tbody>
       <tr>
         <th colspan="2">ORDERS</th>
       </tr>
       <tr>
         <td align="center">POST</td>
-        <td>user/addOrder</td>
+        <td>order/user/:idProduct</td>
       </tr>
       <tr>
         <td align="center">GET</td>
-        <td>user/order/:idOrder</td>
+        <td>order/:idOrder?</td>
       </tr>
       <tr>
-        <td align="center">GET</td>
-        <td>user/orders</td>
+        <td align="center">PUT</td>
+        <td>order/confirm/:idProduct</td>
       </tr>
     </tbody>
   </table>
@@ -152,5 +146,4 @@
 ## Autores
 <a href="https://github.com/AlejandroPachec/Player2Player/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=AlejandroPachec/Player2Player" />
-  <img src="https://avatars.githubusercontent.com/u/98481536?s=100&v=4" style="border-radius: 50px; height: 65px; border: 1px solid #ABAFAD">
 </a>
