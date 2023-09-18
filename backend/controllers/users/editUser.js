@@ -3,15 +3,24 @@ const deletePhoto = require('../../helpers/deletePhoto');
 const generateError = require('../../helpers/generateError');
 const savePhoto = require('../../helpers/savePhoto');
 const editUserSchema = require('../../schema/editUserSchema');
+const { photoSchema } = require('../../schema/PhotoSchema');
 
 async function editUser (req, res, next) {
     try {
-        const { error } = editUserSchema.validate(req.body);
+        const { error: errorUser } = editUserSchema.validate(req.body);
+        const { error: errorPhoto } = photoSchema.validate(req.files?.avatar);
 
-        if (error) {
-            return next(generateError(error.message, 400));
+        if (req.files?.avatar.length > 1) {
+            return next(generateError('No puedes subir más de una foto'));
         }
 
+        if (errorUser) {
+            return next(generateError(errorUser.message, 400));
+        }
+
+        if (errorPhoto) {
+            return next(generateError(errorPhoto.details[0].message, 400));
+        }
 
         const userId = req.user.id;
         const { firstName, lastName, bio, password, email, phone, city, postalCode } = req.body;

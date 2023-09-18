@@ -7,7 +7,7 @@ const loginUserSchema = Joi.object({
         'string.max': 'El email no puede tener más de 100 caracteres',
         'any.required': 'El email es obligatorio'
     }),
-    password: Joi.string().required().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/).messages({
+    password: Joi.string().required().pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/).messages({
         'string.empty': 'El password no puede estar vacío',
         'string.pattern.base': 'La contraseña debe tener entre 8 y 20 caracteres, contener una minúscula, una mayúscula, un número y un caracter especial.',
         'any.required': 'La contraseña es obligatoria'
