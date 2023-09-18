@@ -13,7 +13,7 @@ const editUserSchema = Joi.object({
         'string.max': 'El apellido no puede tener más de 50 letras',
         'string.pattern.base': 'El apellido solo puede contener letras y espacios'
     }),
-    bio: Joi.string().max(500).pattern(/^[A-Za-zñÑ\sáéíóúÁÉÍÓÚüÜ]+$/u).messages({
+    bio: Joi.string().max(500).messages({
         'string.max': 'Tu biografía no puede exceder los 500 caracters'
     }),
     email: Joi.string().email().max(100).messages({
