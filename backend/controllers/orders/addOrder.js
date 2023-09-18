@@ -36,7 +36,7 @@ async function addOrder (req, res, next) {
         `, [userBuyerId]);
 
         const subject = 'Propuesta de compra';
-        const html = `<p>Confirma tu venta en <a href="http://localhost:${process.env.PORT}/orders/user/confirmationOrder}">este enlace</a></p>`
+        const html = `<p>Confirma tu venta en <a href="http://localhost:${process.env.PORT}/orders/confirm/${idProduct}}">este enlace</a></p>`
 
         await emailVerification(email, subject, html);
         */
