@@ -3,6 +3,7 @@ const getConnection = require('../../db/connectDB');
 const Joi = require('joi');
 const generateError = require('../../helpers/generateError');
 const crypto = require('crypto');
+const { PORT } = require('../../config');
 
 async function addOrder (req, res, next) {
     const userSellerIdSchema = Joi.string().uuid().required();
@@ -23,6 +24,7 @@ async function addOrder (req, res, next) {
         const { idProduct } = req.params;
         const { value: { userSellerId } } = validateUserSellerId;
 
+
         if (userBuyerId === userSellerId) {
             throw generateError('No puedes comprarte un producto a ti mismo', 403);
         }
@@ -36,7 +38,7 @@ async function addOrder (req, res, next) {
         `, [userBuyerId]);
 
         const subject = 'Propuesta de compra';
-        const html = `<p>Confirma tu venta en <a href="http://localhost:${process.env.PORT}/orders/confirm/${idProduct}}">este enlace</a></p>`
+        const html = `<p>Confirma tu venta en <a href="http://localhost:${PORT}/orders/confirm/${idProduct}}">este enlace</a></p>`
 
         await emailVerification(email, subject, html);
         */

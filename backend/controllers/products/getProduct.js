@@ -1,6 +1,7 @@
 const getPool = require('../../db/connectDB');
 const path = require('node:path');
 require('dotenv').config();
+const { UPLOADS_DIR } = require('../../config');
 
 async function getProduct (req, res, next) {
     try {
@@ -8,7 +9,7 @@ async function getProduct (req, res, next) {
         const { idProduct } = req.params;
 
         const config = {
-            imageUrlBase: path.join(__dirname, '../', process.env.UPLOADS_DIR)
+            imageUrlBase: path.join(__dirname, '../', UPLOADS_DIR)
         };
 
         const [productInfo] = await pool.query(
