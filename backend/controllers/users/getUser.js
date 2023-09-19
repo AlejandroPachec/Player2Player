@@ -11,7 +11,7 @@ async function getUser (req, res, next) {
         const { error } = userIdSchema.validate(userId);
 
         if (error) {
-            return next(generateError('El id de usuario no es válido.'));
+            return next(generateError('El id de usuario no es válido.', 400));
         }
 
         const [[user]] = await pool.query(`SELECT first_name, last_name, bio, email, phone_number, city, postal_code, avatar
