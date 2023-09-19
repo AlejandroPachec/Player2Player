@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const generateError = require('../helpers/generateError');
 
 const photoSchema = Joi.object({
     name: Joi.string().required(),
@@ -7,9 +8,11 @@ const photoSchema = Joi.object({
     encoding: Joi.string(),
     tempFilePath: Joi.any(),
     truncated: Joi.boolean(),
-    mimetype: Joi.string().valid('image/jpg', 'image/jpeg', 'image/png').required(),
+    mimetype: Joi.string().valid('image/jpg', 'image/jpeg', 'image/png').required().error(() => generateError('El formato de la foto debe ser JPEG, PNG o JPG', 400)),
     md5: Joi.string(),
     mv: Joi.func()
+}).messages({
+
 });
 
 const arrayPhotoSchema = Joi.array().items(photoSchema);
