@@ -1,7 +1,7 @@
-// IMPORTS FROM NODE_MODULES
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const app = express();
+const { PORT } = require('./config'); 
 
 const userRouter = require('./routes/userRouter');
 const productsRouter = require('./routes/productRouter');
@@ -14,15 +14,11 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.json());
 app.use(fileUpload());
 
-// Routers
 app.use('/user', userRouter);
 app.use('/products', productsRouter);
 app.use('/orders', ordersRouter);
 app.use('/reviews', reviewsRouter);
 
-const { PORT } = process.env;
-
-// Other errors
 app.use((error, req, res, next) => {
     const errorCode = error.statusCode ?? 500;
 
@@ -31,7 +27,6 @@ app.use((error, req, res, next) => {
     });
 });
 
-// Middleware for 404 errors
 app.use((req, res) => {
     res.status(404).send({
         message: '¡No encontrado!'

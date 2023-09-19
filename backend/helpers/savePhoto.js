@@ -2,13 +2,12 @@ const fs = require('fs/promises');
 const path = require('path');
 const sharp = require('sharp');
 const randomstring = require('randomstring');
-
-const generateError = require('./generateError');
+const { UPLOADS_DIR } = require('../config');
 require('dotenv').config();
 
 async function savePhoto (photo, width) {
 
-    const uploadsPath = path.resolve(__dirname, '../', process.env.UPLOADS_DIR);
+    const uploadsPath = path.resolve(__dirname, '../', UPLOADS_DIR);
 
     try {
         await fs.access(uploadsPath);

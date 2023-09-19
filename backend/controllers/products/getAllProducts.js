@@ -1,5 +1,6 @@
 const getPool = require('../../db/connectDB');
 const path = require('node:path');
+const { UPLOADS_DIR } = require('../../config');
 
 async function getAllProducts (req, res, next) {
     try {
@@ -70,7 +71,7 @@ async function getAllProducts (req, res, next) {
         const [products] = await pool.query(query, params);
 
         const config = {
-            imageUrlBase: path.join('../../', process.env.UPLOADS_DIR, '/')
+            imageUrlBase: path.join('../../', UPLOADS_DIR, '/')
         };
 
         const productsWithImages = products.map((product) => {

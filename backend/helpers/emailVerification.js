@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 require('dotenv').config();
 const generateError = require('../helpers/generateError');
 
-const { SMTP_USER, SMTP_PASSWORD } = process.env;
+const { SMTP_USER, SMTP_PASSWORD } = require('../config');
 
 const transport = nodemailer.createTransport({
     host: 'smtp-relay.brevo.com',

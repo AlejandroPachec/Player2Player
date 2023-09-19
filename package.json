@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon ./backend/server.js",
-    "db": "node ./backend/db/initDB.js"
+    "db": "node ./backend/db/initDB.js",
+    "start": "node ./backend/server.js"
   },
   "author": "",
   "license": "ISC",

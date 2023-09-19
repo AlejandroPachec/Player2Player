@@ -3,11 +3,11 @@ const crypto = require('node:crypto');
 const bcrypt = require('bcrypt');
 const createUserSchema = require('../../schema/createUserSchema');
 const generateError = require('../../helpers/generateError');
+const { PORT } = require('../../config');
 /* const emailVerification = require('../../helpers/emailVerification'); */
 require('dotenv').config();
 
 async function createUser (req, res, next) {
-    /* const { PORT } = process.env; */
 
     const { error } = createUserSchema.validate(req.body);
 

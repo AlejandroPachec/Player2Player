@@ -4,6 +4,7 @@ require('dotenv').config();
 const getConnection = require('../../db/connectDB');
 const loginUserSchema = require('../../schema/loginUserSchema');
 const generateError = require('../../helpers/generateError');
+const { SECRET } = require('../../config');
 
 async function loginUser (req, res, next) {
     const { error } = loginUserSchema.validate(req.body);
@@ -41,7 +42,6 @@ async function loginUser (req, res, next) {
             id: userInfo[0].id
         };
 
-        const { SECRET } = process.env;
 
         const token = jwt.sign(payload, SECRET, { expiresIn: '1w' });
 

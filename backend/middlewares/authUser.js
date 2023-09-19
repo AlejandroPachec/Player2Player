@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const generateError = require('../helpers/generateError');
-
+const { SECRET } = require('../config');
 const authUser = async (req, res, next) => {
     try {
         const { token } = req.headers;
@@ -12,7 +12,7 @@ const authUser = async (req, res, next) => {
         let tokenInfo;
 
         try {
-            tokenInfo = await jwt.verify(token, process.env.SECRET);
+            tokenInfo = await jwt.verify(token, SECRET);
         } catch {
             throw generateError('Token incorrecto', 401);
         }
