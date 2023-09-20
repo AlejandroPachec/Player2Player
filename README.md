@@ -3,7 +3,7 @@
 ## **Descripción del Proyecto:**
 **_P2P - Player2Player_** es una plataforma en línea diseñada para la **compra** y **venta** de videojuegos, consolas y PCs de segunda mano. La plataforma permite a los usuarios buscar productos, registrarse para obtener acceso completo, publicar sus propios productos y llevar a cabo transacciones seguras. El proyecto consta de un frontend interactivo y un backend robusto.
    
-A continuación se describen las **principales funcionalidades** del proyecto con las respectivas imágenes del wireframe empezando por la pantalla de inicio.
+A continuación se describen las **principales funcionalidades** del proyecto con las respectivas imágenes del wireframe, empezando por la pantalla de inicio:
 
 <br/>
 
@@ -18,7 +18,7 @@ A continuación se describen las **principales funcionalidades** del proyecto co
 
 1. **Búsqueda de productos:**
    
-- Los usuarios anónimos pueden buscar explorar productos y buscar productos utilizando varios criterios, como nombre, categoría, localidad y precio, para encontrar productos de su interés.
+- Los usuarios anónimos pueden buscar explorar productos y buscar productos utilizando varios criterios, como nombre, categoría, localidad y rango de precio, para encontrar productos de su interés.
 
 <br/>
 
@@ -30,7 +30,7 @@ A continuación se describen las **principales funcionalidades** del proyecto co
 
 2. **Ver el perfil de otros usuarios:**
 
-- (DESCRIPCION)
+- Los usuarios anónimos pueden ver los perfiles de los usuarios, incluyendo los productos que estos tienen a la venta, las opiniones que han dejado otros usuarios sobre compras que le hayan hecho y los datos de contacto y biografía en caso de que el vendedor los quiera proporcionar.
 
 <div align="center">
 
@@ -44,7 +44,7 @@ A continuación se describen las **principales funcionalidades** del proyecto co
 
 1. **Autenticación:**
 
-- Los usuarios pueden registrarse para obtener una cuenta en la plataforma.
+- Los usuarios anónimos pueden registrarse para obtener una cuenta en la plataforma con un mínimo de datos requeridos.
 
 <br/>
 
@@ -54,7 +54,7 @@ A continuación se describen las **principales funcionalidades** del proyecto co
 
 </div>
 
-- Se envía un correo electrónico de confirmación con un código para activar la cuenta antes de permitir el inicio de sesión.
+- Se envía un correo electrónico de confirmación con un código para activar la cuenta antes de permitir el inicio de sesión. 
 
 <br/>
 
@@ -64,7 +64,7 @@ A continuación se describen las **principales funcionalidades** del proyecto co
 
 </div>  
 
-- Una vez la cuenta ha sido activada, los usuarios pueden iniciar sesión y acceder a todos los servicios de la plataforma.
+- Una vez la cuenta ha sido activada, los usuarios pueden iniciar sesión y acceder a todos los servicios que proporciona la plataforma.
 
 <br/>
   
@@ -79,7 +79,7 @@ A continuación se describen las **principales funcionalidades** del proyecto co
 
 1. **Gestión del Perfil:**
 
-- Los usuarios registrados tienen la capacidad de gestionar su perfil, lo que incluye la modificación de sus datos de registro, y la posibilidad de agregar una biografía y una foto de perfil personalizada.
+- Los usuarios registrados tienen la capacidad de gestionar su perfil, lo que incluye la modificación de sus datos de registro, y la posibilidad de agregar tanto datos de contacto, como su dirección, biografía y una foto de perfil personalizada, si así lo desea.
 
 <br/>
 
@@ -114,7 +114,7 @@ A continuación se describen las **principales funcionalidades** del proyecto co
 
 </div>
 
-- El vendedor recibe la propuesta de compra por correo electrónico y tiene la opción de aceptarla o rechazarla.
+- El vendedor recibe la propuesta de compra por correo electrónico y a través de un elace que le lleva a la pantalla de Solicitudes de compra, tiene la opción de aceptarla o rechazarla.
 
 <br/>
 
@@ -146,7 +146,7 @@ A continuación se describen las **principales funcionalidades** del proyecto co
 
 4. **Ver/Gestionar pedidos:**
 
-- (DEFINICION)
+- A través de la pantalla de pedidos, los usuarios pueden ver todos los pedidos que han realizado y el estado de estos.
 
 <div align="center">
 
@@ -154,15 +154,19 @@ A continuación se describen las **principales funcionalidades** del proyecto co
 
 </div>
 
+- En el caso de los pedidos aceptados, podrá comprobar el lugar y hora de entrega definido por el vendedor.
+  
 <div align="center">
+
+
 
 ![PEDIDO CONCRETO](assets/id_order.png)
 
 </div>
 
-5. **Valoraciones:**
+1. **Valoraciones:**
 
-- Después de la entrega exitosa de un artículo, el comprador tiene la opción de valorar al vendedor en la plataforma, proporcionando retroalimentación y una calificación.
+- Después de la entrega exitosa de un artículo, el comprador tiene la opción de valorar al vendedor en la plataforma, proporcionando feedback sobre la experiencia y una calificación de 1 a 5.
 
 <br/>
 
@@ -202,14 +206,14 @@ A continuación se describen las **principales funcionalidades** del proyecto co
      - Registro e inicio de sesión de usuarios.
      - Listado de productos, incluyendo información del vendedor y valoración media de éste.
      - Visualización detallada de un artículo, con información y valoración media del vendedor.
-     - Filtros avanzados para la búsqueda de productos por nombre, categoría, localidad y precio.
+     - Filtros avanzados para la búsqueda de productos por nombre, categoría, localidad y rango de precio.
      - Creación de nuevos productos.
      - Actualización de perfiles de usuarios.
      - Propuestas de compra y confirmación de compras.
      - Valoraciones de vendedores por parte de los compradores.
 
 7. **Documentación:**
-   - Se crea una documentación detallada en un archivo README.md, que incluye una descripción de la aplicación, instrucciones paso a paso para ejecutar el proyecto y un listado completo de los endpoints API disponibles.
+   - Se crea una documentación detallada en un archivo README.md, que incluye una descripción de la aplicación, instrucciones paso a paso para ejecutar el proyecto y un listado completo de los endpoints API disponibles, así como una colección de Postman para testear dichos endpoints en la carpeta docs del proyecto.
 
 ## **Notas Adicionales:**
    - Se implementa validación de datos en todos los endpoints utilizando Joi para garantizar la integridad de la información en la base de datos.
