@@ -1,3 +1,4 @@
+const generateError = require('../../helpers/generateError');
 const getPool = require('../../db/connectDB');
 
 async function getUserOrder (req, res, next) {
@@ -28,12 +29,17 @@ async function getUserOrder (req, res, next) {
         const [orders] = await pool.query(query, queryParams);
 
         if (orders.length === 0) {
-            res.status(404).json({ message: 'No se encontraron órdenes' });
-        } else {
-            res.json(orders);
+            return next(generateError('', 400));
         }
+
+        res.status(200).send({
+            status: 'Ok',
+            data: {
+                orders
+            }
+        });
     } catch (error) {
-        res.status(500).json({ message: 'Error al obtener las órdenes' });
+        next(error);
     }
 }
 

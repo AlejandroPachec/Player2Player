@@ -29,7 +29,7 @@ async function confirmOrder (req, res, next) {
             WHERE product_id = ?
         `, [exchangePlace, exchangeTime, idProduct]);
 
-        const [[{ email }]] = await pool.query(`SELECT email FROM users WHERE id = ?`,
+        const [[{ email }]] = await pool.query('SELECT email FROM users WHERE id = ?',
             [idUser]);
 
         const subject = 'Confirmación del pedido';

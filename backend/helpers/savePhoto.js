@@ -3,6 +3,7 @@ const path = require('path');
 const sharp = require('sharp');
 const randomstring = require('randomstring');
 const { UPLOADS_DIR } = require('../config');
+const generateError = require('../helpers/generateError');
 require('dotenv').config();
 
 async function savePhoto (photo, width) {
@@ -27,8 +28,7 @@ async function savePhoto (photo, width) {
 
         return imageName;
     } catch (error) {
-        // throw generateError(error, 500);
-        console.error(error);
+        throw generateError(error, 500);
     }
 }
 
