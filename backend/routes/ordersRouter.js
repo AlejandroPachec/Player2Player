@@ -8,6 +8,6 @@ const confirmOrder = require('../controllers/orders/confirmOrder');
 
 orderRouter.post('/user/:idProduct', authUser, addOrder);
 orderRouter.get('/:idOrder?', authUser, getUserOrder);
-orderRouter.put('/confirm/:idProduct', authUser, confirmOrder);
+orderRouter.put('/confirm/:idOrder', authUser, confirmOrder);
 
 module.exports = orderRouter;

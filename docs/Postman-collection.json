@@ -377,21 +377,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{server}}/orders/user/confirm/:idProduct",
+							"raw": "{{server}}/orders/confirm/15de38ad-a00d-439e-8da9-773347369c13",
 							"host": [
 								"{{server}}"
 							],
 							"path": [
 								"orders",
-								"user",
 								"confirm",
-								":idProduct"
-							],
-							"variable": [
-								{
-									"key": "idProduct",
-									"value": ""
-								}
+								"15de38ad-a00d-439e-8da9-773347369c13"
 							]
 						}
 					},

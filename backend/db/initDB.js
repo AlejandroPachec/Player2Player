@@ -18,7 +18,7 @@ async function createDB () {
         bio TEXT(500) NULL,
         password VARCHAR(100) NOT NULL,
         email VARCHAR(100) NOT NULL UNIQUE,
-		phone_number VARCHAR(15) NOT NULL,c
+		phone_number VARCHAR(15) NOT NULL,
 		city VARCHAR(50) NULL,
 		postal_code VARCHAR(10) NULL,
         avatar VARCHAR(100) NULL,

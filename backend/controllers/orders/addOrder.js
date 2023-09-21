@@ -35,7 +35,7 @@ async function addOrder (req, res, next) {
 
         const [[{ email }]] = await pool.query(`
             SELECT email FROM users WHERE id = ?
-        `, [userBuyerId]);
+        `, [userSellerId]);
 
         const subject = 'Propuesta de compra';
         const html = `<p>Confirma tu venta en <a href="http://localhost:${PORT}/orders/confirm/${idProduct}}">este enlace</a></p>`;
