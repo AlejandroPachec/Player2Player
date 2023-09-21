@@ -1,4 +1,4 @@
-/* const Joi = require('joi');
+const Joi = require('joi');
 const generateError = require('../../helpers/generateError');
 const getConnection = require('../../db/connectDB');
 
@@ -23,11 +23,11 @@ async function activateUser (req, res, next) {
         }
 
         await pool.query(`
-			UPDATE users 
-			SET registration_code = null,
-			active = true,
-			modified_at = ?
-			WHERE registration_code = ?`
+        UPDATE users 
+        SET registration_code = null,
+        active = true,
+        modified_at = ?
+        WHERE registration_code = ?`
         , [new Date(), registrationCode]);
 
     } catch (error) {
@@ -40,4 +40,4 @@ async function activateUser (req, res, next) {
     });
 };
 
-module.exports = activateUser; */
+module.exports = activateUser;

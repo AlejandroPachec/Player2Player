@@ -1,5 +1,5 @@
 const getConnection = require('../../db/connectDB');
-/* const emailVerification = require('../../helpers/emailVerification'); */
+const emailVerification = require('../../helpers/emailVerification');
 const Joi = require('joi');
 const generateError = require('../../helpers/generateError');
 const crypto = require('crypto');
@@ -32,16 +32,15 @@ async function addOrder (req, res, next) {
         await pool.query(`INSERT INTO orders (id, user_buyer_id, user_seller_id, product_id)
         VALUES (?, ?, ?, ?)
         `, [id, userBuyerId, userSellerId, idProduct]);
-        /*
+
         const [[{ email }]] = await pool.query(`
             SELECT email FROM users WHERE id = ?
         `, [userBuyerId]);
 
         const subject = 'Propuesta de compra';
-        const html = `<p>Confirma tu venta en <a href="http://localhost:${PORT}/orders/confirm/${idProduct}}">este enlace</a></p>`
+        const html = `<p>Confirma tu venta en <a href="http://localhost:${PORT}/orders/confirm/${idProduct}}">este enlace</a></p>`;
 
         await emailVerification(email, subject, html);
-        */
 
         const [[reservedProduct]] = await pool.query(`
         SELECT p.name, p.description, p.category, p.state, p.price, o.id 
