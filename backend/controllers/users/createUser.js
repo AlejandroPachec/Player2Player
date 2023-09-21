@@ -34,9 +34,7 @@ async function createUser (req, res, next) {
 
         const html = `<p>Activa tu usuario en <a href="http://localhost:${PORT}/user/activate/${registrationCode}">este enlace</a></p>`;
 
-
         await emailVerification(email, subject, html);
-
 
         await pool.query(`INSERT INTO users(id, first_name, last_name, email, password, registration_code, phone_number) 
             values (?, ?, ?, ?, ?, ?, ?)`, [id, firstName, lastName, email, hashedPassword, registrationCode, phone]);
