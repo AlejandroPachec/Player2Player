@@ -2,6 +2,7 @@ const getPool = require('../../db/connectDB');
 const path = require('node:path');
 require('dotenv').config();
 const { UPLOADS_DIR } = require('../../config');
+const generateError = require('../../helpers/generateError');
 
 async function getProduct (req, res, next) {
     try {
@@ -44,41 +45,38 @@ async function getProduct (req, res, next) {
         );
 
         if (productInfo.length === 0) {
-            res.status(404).send({
-                status: 'Not Found',
-                message: 'Producto no encontrado'
-            });
+            return next(generateError('El producto que buscas no existe', 400));
+        };
 
-        } else {
-            const user = {
-                id: productInfo[0].seller_id,
-                first_name: productInfo[0].seller_first_name,
-                last_name: productInfo[0].seller_last_name
-            };
+        const user = {
+            id: productInfo[0].seller_id,
+            first_name: productInfo[0].seller_first_name,
+            last_name: productInfo[0].seller_last_name
+        };
 
-            const productImages = productPhotos.map((photo) => ({
-                url: `${config.imageUrlBase}/${photo.name}`
-            }));
+        const productImages = productPhotos.map((photo) => ({
+            url: `${config.imageUrlBase}/${photo.name}`
+        }));
 
-            const product = {
-                id: productInfo[0].product_id,
-                name: productInfo[0].product_name,
-                description: productInfo[0].product_description,
-                price: productInfo[0].product_price,
-                category: productInfo[0].product_category,
-                avg_review_stars: productInfo[0].avg_review_stars
-            };
+        const product = {
+            id: productInfo[0].product_id,
+            name: productInfo[0].product_name,
+            description: productInfo[0].product_description,
+            price: productInfo[0].product_price,
+            category: productInfo[0].product_category,
+            avg_review_stars: productInfo[0].avg_review_stars
+        };
 
-            res.status(200).send({
-                status: 'Ok',
-                message: 'Producto encontrado',
-                data: {
-                    product,
-                    user,
-                    productImages
-                }
-            });
-        }
+        res.status(200).send({
+            status: 'Ok',
+            message: 'Producto encontrado',
+            data: {
+                product,
+                user,
+                productImages
+            }
+        });
+
     } catch (error) {
         next(error);
         res.status(500).send({
