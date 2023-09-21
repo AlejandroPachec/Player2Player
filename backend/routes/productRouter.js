@@ -10,5 +10,4 @@ productsRouter.get('/', getAllProducts);
 productsRouter.post('/addProduct', authUser, addProduct);
 productsRouter.get('/:idProduct', getProduct);
 
-
 module.exports = productsRouter;

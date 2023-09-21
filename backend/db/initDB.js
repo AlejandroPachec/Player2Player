@@ -1,4 +1,3 @@
-/* eslint-disable no-tabs */
 const getPool = require('./connectDB');
 
 async function createDB () {
@@ -16,10 +15,10 @@ async function createDB () {
         id VARCHAR(50) NOT NULL PRIMARY KEY,
         first_name VARCHAR(50) NOT NULL,
         last_name VARCHAR(50) NOT NULL,
-        bio TEXT(500) NULL,		
+        bio TEXT(500) NULL,
         password VARCHAR(100) NOT NULL,
         email VARCHAR(100) NOT NULL UNIQUE,
-		phone_number VARCHAR(15) NOT NULL,
+		phone_number VARCHAR(15) NOT NULL,c
 		city VARCHAR(50) NULL,
 		postal_code VARCHAR(10) NULL,
         avatar VARCHAR(100) NULL,

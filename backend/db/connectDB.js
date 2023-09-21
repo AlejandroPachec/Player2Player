@@ -1,4 +1,3 @@
-// Conexion base de datos
 const mysql = require('mysql2/promise');
 require('dotenv').config();
 const { MYSQL_USER, MYSQL_HOST, MYSQL_PASSWORD, MYSQL_DB_NAME, MYSQL_PORT } = require('../config');

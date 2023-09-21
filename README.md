@@ -32,6 +32,8 @@ A continuación se describen las **principales funcionalidades** del proyecto co
 
 - Los usuarios anónimos pueden ver los perfiles de los usuarios, incluyendo los productos que estos tienen a la venta, las opiniones que han dejado otros usuarios sobre compras que le hayan hecho y los datos de contacto y biografía en caso de que el vendedor los quiera proporcionar.
 
+<br/>
+
 <div align="center">
 
 ![PERFIL USUARIO](assets/profile_product.png)
@@ -60,7 +62,7 @@ A continuación se describen las **principales funcionalidades** del proyecto co
 
 <div align="center">
 
-![ACTIVACION CUENTA]()
+![ACTIVACION CUENTA](assets/verify_account.png)
 
 </div>  
 
@@ -120,6 +122,8 @@ A continuación se describen las **principales funcionalidades** del proyecto co
 
 <div align="center">
 
+![CORREO PEDIDOS](assets/email_order.png)
+
 ![ACEPTAR PEDIDO](assets/confirm_order.png)
 
 </div>
@@ -140,13 +144,15 @@ A continuación se describen las **principales funcionalidades** del proyecto co
 
 <div align="center">
 
-![CORREO CONFIRMACION COMPRA]()
+![CORREO CONFIRMACION COMPRA](assets/confirm_order_email.png)
 
 </div>
 
 4. **Ver/Gestionar pedidos:**
 
 - A través de la pantalla de pedidos, los usuarios pueden ver todos los pedidos que han realizado y el estado de estos.
+
+<br/>
 
 <div align="center">
 
@@ -155,10 +161,10 @@ A continuación se describen las **principales funcionalidades** del proyecto co
 </div>
 
 - En el caso de los pedidos aceptados, podrá comprobar el lugar y hora de entrega definido por el vendedor.
-  
+
+<br/>
+
 <div align="center">
-
-
 
 ![PEDIDO CONCRETO](assets/id_order.png)
 
