@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const createUserSchema = require('../../schema/createUserSchema');
 const generateError = require('../../helpers/generateError');
 const { PORT } = require('../../config');
-/* const emailVerification = require('../../helpers/emailVerification'); */
+const emailVerification = require('../../helpers/emailVerification');
 require('dotenv').config();
 
 async function createUser (req, res, next) {
@@ -28,7 +28,7 @@ async function createUser (req, res, next) {
         const registrationCode = crypto.randomUUID();
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        /*
+
         const subject = '[P2P] Completa tu registro';
 
 
@@ -36,7 +36,7 @@ async function createUser (req, res, next) {
 
 
         await emailVerification(email, subject, html);
-        */
+
 
         await pool.query(`INSERT INTO users(id, first_name, last_name, email, password, registration_code, phone_number) 
             values (?, ?, ?, ?, ?, ?, ?)`, [id, firstName, lastName, email, hashedPassword, registrationCode, phone]);

@@ -1,18 +1,18 @@
 const getConnection = require('../../db/connectDB');
 const generateError = require('../../helpers/generateError');
-/* const Joi = require('joi'); */
+const Joi = require('joi');
 
 async function getUserReviews (req, res, next) {
     const { idUser } = req.params;
     const pool = await getConnection();
 
-    /* const idUserSchema = Joi.string().uuid().required();
+    const idUserSchema = Joi.string().uuid().required();
 
     try {
         await idUserSchema.validateAsync(req.params.idUser);
     } catch (error) {
         return next(generateError('El id de usuario no es válido', 400));
-    } */
+    }
 
     try {
         const [[id]] = await pool.query('SELECT id FROM users WHERE id = ?', [idUser]);
