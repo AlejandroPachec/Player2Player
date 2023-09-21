@@ -29,7 +29,7 @@ async function getUserOrder (req, res, next) {
         const [orders] = await pool.query(query, queryParams);
 
         if (orders.length === 0) {
-            return next(generateError('', 400));
+            return next(generateError('No se ha encontrado ningún pedido', 400));
         }
 
         res.status(200).send({
