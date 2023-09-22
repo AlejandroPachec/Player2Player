@@ -30,13 +30,15 @@ async function confirmOrder (req, res, next) {
         await pool.query(`
             UPDATE orders
             SET exchange_place = ?, exchange_time = ?
-            WHERE order_id = ?
+            WHERE id = ?
         `, [exchangePlace, exchangeTime, order.id]);
 
         const [[{ email }]] = await pool.query('SELECT email FROM users WHERE id = ?',
             [order.user_buyer_id]);
 
-        const subject = 'Confirmación del pedido';
+        console.log(email);
+
+        const subject = '[Player2Player] Confirmación del pedido';
 
         const html = `<p>Disfruta de tu compra</p>
                         <p>Recogida:</p>
@@ -45,6 +47,16 @@ async function confirmOrder (req, res, next) {
                         <p>Comprueba el estado de tu pedido <a href="http://localhost:${PORT}/orders/${idOrder}">aquí</a></p>`;
 
         await emailVerification(email, subject, html);
+
+        const rejectOrders = await pool.query(`
+            SELECT U.email
+            FROM users U
+            INNER JOIN orders O
+            ON O.user_buyer_id = U.id
+            WHERE product_id = ? AND user_buyer_id != ?
+        `, [order.idProduct, order.user_buyer_id]);
+
+        console.log(rejectOrders);
 
         res.status(200).send({
             status: 'Ok',

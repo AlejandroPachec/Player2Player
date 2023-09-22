@@ -3,10 +3,9 @@ const generateError = require('../../helpers/generateError');
 const emailVerification = require('../../helpers/emailVerification');
 const { PORT } = require('../../config');
 
-async function denyOrder (req, res, next) {
+async function rejectOrder (req, res, next) {
     try {
         const pool = await getPool();
-
 
         const { idOrder } = req.params;
 
@@ -37,4 +36,4 @@ async function denyOrder (req, res, next) {
     }
 };
 
-module.exports = denyOrder;
+module.exports = rejectOrder;
