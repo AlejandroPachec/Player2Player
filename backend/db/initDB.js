@@ -81,6 +81,7 @@ async function createDB () {
 		exchange_place VARCHAR(100) NULL,
 		exchange_time DATETIME NULL,	
 		user_buyer_id VARCHAR(50) NOT NULL,
+		status ENUM('Aceptado', 'Rechazado', 'Pendiente') NOT NULL DEFAULT 'Pendiente',
 		FOREIGN KEY (user_buyer_id) REFERENCES users (id)
 		   ON DELETE RESTRICT
 		   ON UPDATE CASCADE,
