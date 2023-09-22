@@ -37,7 +37,7 @@ async function addOrder (req, res, next) {
             SELECT email FROM users WHERE id = ?
         `, [userSellerId]);
 
-        const subject = 'Propuesta de compra';
+        const subject = '[Player2Player] Propuesta de compra';
         const html = `<p>Confirma tu venta en <a href="http://localhost:${PORT}/orders/confirm/${idProduct}}">este enlace</a></p>`;
 
         await emailVerification(email, subject, html);

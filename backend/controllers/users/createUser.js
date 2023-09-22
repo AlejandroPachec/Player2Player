@@ -28,16 +28,14 @@ async function createUser (req, res, next) {
         const registrationCode = crypto.randomUUID();
         const hashedPassword = await bcrypt.hash(password, 10);
 
+        await pool.query(`INSERT INTO users(id, first_name, last_name, email, password, registration_code, phone_number) 
+            values (?, ?, ?, ?, ?, ?, ?)`, [id, firstName, lastName, email, hashedPassword, registrationCode, phone]);
 
-        const subject = '[P2P] Completa tu registro';
-
+        const subject = '[Player2Player] Completa tu registro';
 
         const html = `<p>Activa tu usuario en <a href="http://localhost:${PORT}/user/activate/${registrationCode}">este enlace</a></p>`;
 
         await emailVerification(email, subject, html);
-
-        await pool.query(`INSERT INTO users(id, first_name, last_name, email, password, registration_code, phone_number) 
-            values (?, ?, ?, ?, ?, ?, ?)`, [id, firstName, lastName, email, hashedPassword, registrationCode, phone]);
 
         res.status(200).send({
             status: 'Ok',

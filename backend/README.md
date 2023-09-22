@@ -55,23 +55,27 @@ La plataforma permite a los usuarios buscar productos, registrarse para obtener 
   <table border>
     <tbody>
       <tr>
-        <th colspan="2">USUARIOS</th>
+        <th colspan="3">USUARIOS</th>
       </tr>
       <tr>
         <td align="center">POST</td>
         <td>user/create</td>
+        <td>Crear un nuevo usuario</td>
       </tr>
       <tr>
         <td align="center">POST</td>
         <td>user/login</td>
+        <td>Loguear un usuario</td>
       </tr>
       <tr>
         <td align="center">GET</td>
         <td>user/profile/:idUser</td>
+        <td>Ver el perfil de un usuario</td>
       </tr>
       <tr>
         <td align="center">PUT</td>
         <td>user/edit</td>
+        <td>Editar tu perfil</td>
       </tr>
     </tbody>
   </table>
@@ -79,19 +83,22 @@ La plataforma permite a los usuarios buscar productos, registrarse para obtener 
   <table border>
     <tbody>
       <tr>
-        <th colspan="2">PRODUCTOS</th>
+        <th colspan="3">PRODUCTOS</th>
       </tr>
       <tr>
         <td align="center">POST</td>
         <td>products/addProduct</td>
+        <td>Añadir un nuevo producto</td>
       </tr>
       <tr>
         <td align="center">GET</td>
-        <td>products</td>
+        <td>products?name=&city=&category&price=</td>
+        <td>Obtener todos los productos. Se pueden filtrar por nombre, ciudad, categoría y rango de precio</td>
       </tr>
       <tr>
         <td align="center">GET</td>
         <td>products/:idProduct</td>
+        <td>Obtener un producto en concreto</td>
       </tr>
     </tbody>
   </table>
@@ -99,15 +106,17 @@ La plataforma permite a los usuarios buscar productos, registrarse para obtener 
   <table border>
     <tbody>
       <tr>
-        <th colspan="2">REVIEWS</th>
+        <th colspan="3">REVIEWS</th>
       </tr>
       <tr>
         <td align="center">POST</td>
-        <td>reviews/:idUser</td>
+        <td>reviews/:idOrder</td>
+        <td>Añadir una nueva valoración</td>
       </tr>
       <tr>
         <td align="center">GET</td>
-        <td>reviews/:idOrder</td>
+        <td>reviews/:idUser</td>
+        <td>Ver las valoraciones de un usuario</td>
       </tr>
     </tbody>
   </table>
@@ -115,19 +124,22 @@ La plataforma permite a los usuarios buscar productos, registrarse para obtener 
   <table border>
     <tbody>
       <tr>
-        <th colspan="2">ORDERS</th>
+        <th colspan="3">ORDERS</th>
       </tr>
       <tr>
         <td align="center">POST</td>
         <td>order/user/:idProduct</td>
+        <td>Añadir una nuevo pedido</td>
       </tr>
       <tr>
         <td align="center">GET</td>
         <td>order/:idOrder?</td>
+        <td>Obtener todos los pedidos o uno en concreto</td>
       </tr>
       <tr>
         <td align="center">PUT</td>
         <td>order/confirm/:idProduct</td>
+        <td>Confirmar una venta</td>
       </tr>
     </tbody>
   </table>
