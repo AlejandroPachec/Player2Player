@@ -148,7 +148,17 @@ A continuación se describen las **principales funcionalidades** del proyecto co
 
 </div>
 
-4. **Ver/Gestionar pedidos:**
+- (MAS COMPRADORES PARA EL MISMO PRODUCTO)
+
+<br/>
+
+<div align="center">
+
+![CORREO RECHAZO COMPRA](assets/email_reject_order.png)
+
+</div>
+
+1. **Ver/Gestionar pedidos:**
 
 - A través de la pantalla de pedidos, los usuarios pueden ver todos los pedidos que han realizado y el estado de estos.
 
