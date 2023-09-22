@@ -24,6 +24,12 @@ async function addOrder (req, res, next) {
         const { idProduct } = req.params;
         const { value: { userSellerId } } = validateUserSellerId;
 
+        const [[{ availability }]] = await pool.query('SELECT availability FROM products WHERE id = ?', [idProduct]);
+
+        if (availability === 0) {
+            throw generateError('Este producto ya no está disponible', 400);
+        }
+
 
         if (userBuyerId === userSellerId) {
             throw generateError('No puedes comprarte un producto a ti mismo', 403);
@@ -38,7 +44,7 @@ async function addOrder (req, res, next) {
         `, [userSellerId]);
 
         const subject = '[Player2Player] Propuesta de compra';
-        const html = `<p>Confirma tu venta en <a href="http://localhost:${PORT}/orders/confirm/${idProduct}}">este enlace</a></p>`;
+        const html = `<p>Confirma tu venta en <a href="http://localhost:${PORT}/orders/confirm/${id}}">este enlace</a></p>`;
 
         await emailVerification(email, subject, html);
 
@@ -49,6 +55,7 @@ async function addOrder (req, res, next) {
         ON p.id = o.product_id
         WHERE p.id = ?
         `, [idProduct]);
+
 
         res.status(200).send({
             status: 'Ok',
