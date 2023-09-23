@@ -13,51 +13,48 @@ async function confirmOrder (req, res, next) {
         if (error) {
             return next(generateError(error.message, 400));
         }
+
         const { exchangePlace, exchangeTime } = req.body;
         const { idOrder } = req.params;
 
-        const [[order]] = await pool.query(
-            `
+
+        const [[order]] = await pool.query(`
             SELECT * FROM orders WHERE id = ?
-        `,
-            [idOrder]
-        );
+        `, [idOrder]);
+
 
         if (order.status === 'Aceptado') {
             return next(generateError('Este pedido ya ha sido aceptado', 400));
         }
-        await pool.query(
-            `
+
+        await pool.query(`
             UPDATE products
             SET availability = 0
             WHERE id = ?
-        `,
-            [order.product_id]
-        );
+        `, [order.product_id]);
 
-        await pool.query(
-            `
+
+
+        await pool.query(`
             UPDATE orders
             SET exchange_place = ?, exchange_time = ?
             WHERE id = ?
-        `,
-            [exchangePlace, exchangeTime, order.id]
-        );
+        `, [exchangePlace, exchangeTime, order.id]);
 
-        await pool.query(
-            `
+
+
+        await pool.query(`
             UPDATE orders
             SET status = 'Aceptado'
             WHERE id = ?
-        `,
-            [order.id]
-        );
+        `, [order.id]);
+
+
 
         const [[{ email }]] = await pool.query(
             'SELECT email FROM users WHERE id = ?',
             [order.user_buyer_id]
         );
-
 
         const subject = '[Player2Player] Confirmación del pedido';
 
@@ -67,41 +64,35 @@ async function confirmOrder (req, res, next) {
                         <p>Lugar: ${exchangePlace}</p>
                         <p>Comprueba el estado de tu pedido <a href="http://localhost:${PORT}/orders/${idOrder}">aquí</a></p>`;
 
+
         await emailVerification(email, subject, html);
 
-        await pool.query(
-            `
-                            UPDATE orders
-                            SET status = 'Rechazado'
-                            WHERE product_id = ? AND status NOT LIKE '%Aceptado%'
-                        `,
-            [order.product_id]
-        );
+        await pool.query(`
+            UPDATE orders
+            SET status = 'Rechazado'
+            WHERE product_id = ? AND status NOT LIKE '%Aceptado%'
+        `, [order.product_id]);
 
 
         try {
-            const [email] = await pool.query(
-                `SELECT U.email FROM users U
+            const [emails] = await pool.query(`
+                SELECT U.email FROM users U
                 INNER JOIN orders O ON O.user_buyer_id = U.id
                 WHERE O.product_id = ? AND O.status LIKE 'Rechazado'
-                `,
-                [order.product_id]
-            );
-            console.log(email);
-/* 
-            const subject = '[Player2Player] Producto no disponible';
+            `, [order.product_id]);
 
-            const html = `<p>Lo sentimos mucho, este producto ya no está disponible</p>
-            <p>Pero tenemos buenas noticias: Tienes miles de productos que explorar en Player2Player, ¡te esperamos <a href="http://localhost:${PORT}/">aquí!</a></p>`; */
-/* 
-            await emailVerification(email, subject, html);
- */
+            const rejectionSubject = '[Player2Player] Producto no disponible';
+
+            const rejectionHtml = `<p>Lo sentimos mucho, este producto ya no está disponible</p>
+            <p>Pero tenemos buenas noticias: Tienes miles de productos que explorar en Player2Player, ¡te esperamos <a href="http://localhost:${PORT}/">aquí!</a></p>`;
+
+            for (const email of emails) {
+                await emailVerification(email.email, rejectionSubject, rejectionHtml);
+            }
         } catch (error) {
-            console.log(error);
+            console.error('Error sending rejection emails:', error);
             next(error);
-        };
-
-
+        }
 
         res.status(200).send({
             status: 'Ok',
@@ -112,6 +103,7 @@ async function confirmOrder (req, res, next) {
             }
         });
     } catch (error) {
+        console.error('Error in confirmOrder:', error);
         next(error);
     }
 }
