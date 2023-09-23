@@ -17,15 +17,10 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    semi: ["error", "always"],
-    indent: ["error", 4],
-    "no-multiple-empty-lines": [
-      "error",
-      {
-        "max": 5
-      }
-    ],
-    "no-unused-vars": "warn",
-    "padded-blocks": "off"
+    'react-refresh/only-export-components': 'warn',
+    semi: ['error', 'always'],
+    indent: ['error', 4],
+    'no-multiple-empty-lines': ['error', { max: 2 }],
+    'no-unused-vars': ['warn']
   },
 }
