@@ -4,9 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon ./backend/server.js",
-    "db": "node ./backend/db/initDB.js",
-    "start": "node ./backend/server.js"
+    "dev": "nodemon ./server.js",
+    "db": "node ./db/initDB.js",
+    "start": "node ./server.js"
   },
   "author": "",
   "license": "ISC",
