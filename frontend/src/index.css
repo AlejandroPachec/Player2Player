@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+:root {
+  --mainBackgroundColor: #252422;
+  --secondryBackgroundColor: rgba(64, 61, 57, 0.13);
+  --boxShadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  --mainFontColor: #fffcf2;
+  --seconderyFontColor: #eb5e28;
+  --placeHolderFontColor: rgba(204, 197, 185, 0.62);
+  --green: #32f569;
+  --yellow: #eaee34;
+  --red: #f14444;
+  --orangeGradient: linear-gradient(180deg, #EB5E28 0%, #FF922E 100%);
+  --blackGradient: linear-gradient(180deg, rgba(64, 63, 57, 0.63) 0%, rgba(64, 61, 57, 0.00) 100%);
+  --subtitleColor: rgba(204, 197, 185, 0.75);
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: 
+  url('./assets/fonts/Poppins-Regular.ttf'),
+  url('./assets/fonts/Poppins-Bold.ttf'),
+  url('./assets/fonts/Poppins-ExtraBold.ttf'),
+  url('./assets/fonts/Poppins-Light.ttf'),
+  url('./assets/fonts/Poppins-ExtraLight.ttf');
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
