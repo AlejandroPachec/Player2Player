@@ -18,6 +18,7 @@
   --orangeGradient: linear-gradient(180deg, #EB5E28 0%, #FF922E 100%);
   --blackGradient: linear-gradient(180deg, rgba(64, 63, 57, 0.63) 0%, rgba(64, 61, 57, 0.00) 100%);
   --subtitleColor: rgba(204, 197, 185, 0.75);
+  --inputHoverBoxShadow: 0 0 0 .10rem rgba(135, 207, 235, 0.186);
 }
 
 @font-face {
@@ -40,5 +41,6 @@ body {
   margin: 0 8rem;
   font-family: 'Poppins', sans-serif;
   background-color: var(--mainBackgroundColor);
+  color: var(--mainFontColor);
 }
 

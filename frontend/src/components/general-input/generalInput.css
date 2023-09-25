@@ -1,0 +1,22 @@
+.generalInput {
+    font-family: 'Poppins';
+    border: none;
+    background: var(--blackGradient);
+    color: var(--mainFontColor);
+    box-shadow: var(--boxShadow);
+    padding: 0.5rem;
+    border-radius: 0.8rem;
+    outline: none;
+}
+
+.generalInput:hover {
+    box-shadow: var(--inputHoverBoxShadow);
+}
+
+.generalInput:focus {
+    border: 1px solid skyblue;
+}
+
+.generalInput::placeholder {
+    color: var(--placeHolderFontColor);
+}
