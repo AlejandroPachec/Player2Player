@@ -30,7 +30,15 @@
   url('./assets/fonts/Poppins-ExtraLight.ttf');
 }
 
+@font-face {
+  font-family: 'Press Start';
+  src:
+  url('./assets/fonts/PressStart2P-Regular.ttf');
+}
+
 body {
+  margin: 0 8rem;
   font-family: 'Poppins', sans-serif;
+  background-color: var(--mainBackgroundColor);
 }
 
