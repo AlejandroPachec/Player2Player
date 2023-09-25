@@ -14,19 +14,20 @@ function Password () {
     }
 
     return (
-        <div className='password-input'>
-            <label>
-                <input
-                    type={showPassword ? 'text' : 'password'}
-                    className='password'
-                    placeholder='Password'
-                    value={password}
-                    onChange={handleChange} />
-            </label>
+
+        <label>
+            <input
+                type={showPassword ? 'text' : 'password'}
+                className='password'
+                placeholder='Password'
+                value={password}
+                onChange={handleChange} />
             <button
+                className='eye-button'
                 onClick={togglePasswordVisibility}
-            ><img src={showPassword ? '../../public/lock.png' : '../../public/unlock.png'} alt="lock and unlock icons" /></button>
-        </div>
+            ><img src={showPassword ? '../../public/MdiEyeOffOutline.svg' : '../../public/MdiEyeOutline.svg'} alt="lock and unlock icons" /></button>
+        </label>
+
     );
 }
 
