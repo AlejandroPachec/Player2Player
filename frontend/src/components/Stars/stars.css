@@ -1,0 +1,12 @@
+.box {
+  height: 25px;
+  width: 148px;
+}
+
+.box .stars {
+  height: 25px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 148px;
+}
