@@ -1,0 +1,50 @@
+.box {
+  height: 82px;
+  width: 464px;
+}
+
+.box .state {
+  height: 82px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 466px;
+}
+
+.box .overlap-group {
+  height: 82px;
+  position: relative;
+  width: 464px;
+}
+
+.box .rectangle {
+  background: linear-gradient(180deg, rgba(64, 63, 57, 0.63) 0%, rgba(64, 61, 57, 0) 100%);
+  border-radius: 40px;
+  box-shadow: 0px 4px 4px #00000040;
+  height: 78px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 464px;
+}
+
+.box .text-wrapper {
+  color: #ccc5b99e;
+  font-family: "Poppins", Helvetica;
+  font-size: 24px;
+  font-weight: 300;
+  left: 33px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 22px;
+  width: 276px;
+}
+
+.box .chevron-down {
+  height: 67px;
+  left: 396px;
+  position: absolute;
+  top: 15px;
+  width: 68px;
+}
