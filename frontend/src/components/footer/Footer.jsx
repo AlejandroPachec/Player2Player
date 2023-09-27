@@ -1,13 +1,13 @@
-import './footer.css';
-function Footer () {
+import github from '../../assets/github.svg';
+
+const Footer = () => {
     return (
-        <footer className='footer'>
+        <footer>
             <p>Copyright © 2023 Player2Player - Todos los derechos reservados</p>
-            <a href='https://github.com/AlejandroPachec/Player2Player' rel='noreferrer' target='_blank'>
-                <img src='../../public/github-icon.svg' alt='icono de GitHub' />
-            </a>
+            <a href="https://github.com/AlejandroPachec/Player2Player" rel='noreferrer' target='_blank' title='Github'>
+                <img src={github} alt="link al repositorio del github" /></a>
         </footer>
     );
-}
+};
 
 export default Footer;

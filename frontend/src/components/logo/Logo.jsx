@@ -1,10 +1,9 @@
-import LogoImg from '../../assets/logo.webp';
-import './logo.css';
+import LogoImage from '../../assets/logo.webp';
 
-const Logo = () => {
+function Logo () {
     return (
-        <img src={LogoImg} alt="Logo" className='logo'/>
+        <img src={LogoImage} alt="logo" />
     );
-};
+}
 
 export default Logo;
