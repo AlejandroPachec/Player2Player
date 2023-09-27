@@ -21,6 +21,8 @@ async function getAllProducts (req, res, next) {
             p.description AS product_description,
             p.price AS product_price,
             p.category AS product_category,
+            p.state AS product_state,
+            p.created_at AS product_time,
             p.user_id AS seller_id,
             p.availability AS availability,
             u.first_name AS seller_first_name,
@@ -70,13 +72,10 @@ async function getAllProducts (req, res, next) {
 
         const [products] = await pool.query(query, params);
 
-        const config = {
-            imageUrlBase: path.join('../../', UPLOADS_DIR, '/')
-        };
 
         const productsWithImages = products.map((product) => {
             const productPhotos = product.product_photos ? product.product_photos.split(',') : [];
-            const productImageUrls = productPhotos.map((photoName) => `${config.imageUrlBase}${photoName.trim()}`);
+            const productImageUrls = productPhotos.map((photoName) => `${photoName.trim()}`);
 
             return {
                 ...product,

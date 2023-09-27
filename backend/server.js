@@ -10,6 +10,7 @@ const ordersRouter = require('./routes/ordersRouter');
 const reviewsRouter = require('./routes/reviewsRouter');
 
 app.use(cors());
+app.use('/uploads', express.static('uploads'));
 app.use(express.urlencoded({ extended: false, limit: '10mb' }));
 app.use(express.json({ limit: '10mb' }));
 app.use(fileUpload());
