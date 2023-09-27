@@ -1,6 +1,4 @@
 const getPool = require('../../db/connectDB');
-const path = require('node:path');
-const { UPLOADS_DIR } = require('../../config');
 
 async function getAllProducts (req, res, next) {
     try {
