@@ -47,7 +47,7 @@ function SearchBar () {
             queryParams.set('category', category);
         }
 
-        params.push(`products/?${queryParams.toString()}`);
+        params.push(`/products/?${queryParams.toString()}`);
 
         navigate(params.toString());
 

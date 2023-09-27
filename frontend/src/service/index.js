@@ -11,7 +11,7 @@ export const getAllProductsService = async () => {
 };
 
 export const getSearchProductsService = async (params) => {
-    const response = await fetch(`http://localhost:5002/products/${params}`);
+    const response = await fetch(`http://localhost:5002/${params}`);
 
     const data = await response.json();
 
