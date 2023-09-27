@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
-const SearchCategoryItem = ({ categoryText }) => {
+const SearchCategoryItem = ({ categoryText, onClick }) => {
     return (
-        <button>
+        <button onClick={() => onClick(categoryText)}>
             <img src={`src/assets/${categoryText}.svg`} alt={categoryText} />
             <p>{categoryText}</p>
         </button>
@@ -10,7 +10,8 @@ const SearchCategoryItem = ({ categoryText }) => {
 };
 
 SearchCategoryItem.propTypes = {
-    categoryText: PropTypes.string.isRequired
+    categoryText: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired
 };
 
 export default SearchCategoryItem;
