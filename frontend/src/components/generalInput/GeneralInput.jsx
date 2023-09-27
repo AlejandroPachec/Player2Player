@@ -15,7 +15,7 @@ function GeneralInput ({ placeholder, value, type, handleChange }) {
 
 GeneralInput.propTypes = {
     placeholder: PropTypes.string.isRequired,
-    handleChange: PropTypes.func,
+    handleChange: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired
 };
