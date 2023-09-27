@@ -2,8 +2,10 @@ import GeneralInput from '../../components/generalInput/GeneralInput';
 import SearchCategoryItem from './SearchCategoryItem';
 import searchIcon from '../../assets/search.svg';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SearchBar () {
+    const navigate = useNavigate();
     const [formValues, setFormValues] = useState({
         productName: '',
         minPrice: '',
@@ -47,7 +49,10 @@ function SearchBar () {
 
         params.push(`products/?${queryParams.toString()}`);
 
-        const loadSearchProducts = async () => {
+        navigate(params.toString());
+
+
+        /*         const loadSearchProducts = async () => {
             try {
                 const response = await fetch(`http://localhost:5002/${params}`);
 
@@ -59,7 +64,7 @@ function SearchBar () {
             }
         };
 
-        loadSearchProducts();
+        loadSearchProducts(); */
     };
     return (
         <>
