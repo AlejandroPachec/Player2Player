@@ -2,8 +2,6 @@ import GeneralInput from '../../components/generalInput/GeneralInput';
 import SearchCategoryItem from './SearchCategoryItem';
 import searchIcon from '../../assets/search.svg';
 import { useState } from 'react';
-import { redirect } from 'react-router-dom';
-
 
 function SearchBar () {
     const [formValues, setFormValues] = useState({
@@ -54,7 +52,7 @@ function SearchBar () {
                 const response = await fetch(`http://localhost:5002/${params}`);
 
                 const data = await response.json();
-
+                console.log(data.data);
                 return data.data;
             } catch (error) {
                 throw new Error(error.message);
@@ -62,7 +60,6 @@ function SearchBar () {
         };
 
         loadSearchProducts();
-        redirect(`${params}`);
     };
     return (
         <>
@@ -84,7 +81,6 @@ function SearchBar () {
                     <p>€</p>
                 </div>
                 <GeneralInput placeholder={'¿Dónde lo buscas?'} type={'text'} value={'productLocation'} handleChange={handleChange} />
-
             </form>
         </>
     );

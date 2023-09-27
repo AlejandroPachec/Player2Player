@@ -1,8 +1,11 @@
 import LogoImage from '../../assets/logo.webp';
+import { Link } from 'react-router-dom';
 
 function Logo () {
     return (
-        <img src={LogoImage} alt="logo" />
+        <Link to='/'>
+            <img src={LogoImage} alt="logo" />
+        </Link>
     );
 }
 
