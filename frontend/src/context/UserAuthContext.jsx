@@ -4,8 +4,13 @@ import PropTypes from 'prop-types';
 const UserAuthContext = createContext();
 
 const UserAuthContextProvider = ({ children }) => {
-    const [user, setUser] = useState('');
-    const [token, setToken] = useState('');
+    const [user, setUser] = useState(() => {
+        const localStorageUser = localStorage.getItem('user');
+        return localStorageUser ? JSON.parse(localStorageUser) : null;
+    });
+    const [token, setToken] = useState(() => {
+        return localStorage.getItem('token') || '';
+    });
 
     useEffect(() => {
         localStorage.setItem('token', token);
@@ -18,7 +23,6 @@ const UserAuthContextProvider = ({ children }) => {
     };
 
     const login = (userAuth) => {
-        console.log(token);
         setToken(userAuth[0]);
         setUser(userAuth[1]);
     };
