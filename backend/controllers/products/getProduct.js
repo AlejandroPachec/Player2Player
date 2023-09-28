@@ -13,7 +13,7 @@ async function getProduct (req, res, next) {
             imageUrlBase: path.join(__dirname, '../', UPLOADS_DIR)
         };
 
-        const [[productInfo]] = await pool.query(
+        const [productInfo] = await pool.query(
             `SELECT
                 p.id AS product_id,
                 p.name AS product_name,
@@ -49,9 +49,9 @@ async function getProduct (req, res, next) {
         };
 
         const user = {
-            id: seller_id,
-            first_name: seller_first_name,
-            last_name: seller_last_name
+            id: productInfo[0].seller_id,
+            first_name: productInfo[0].seller_first_name,
+            last_name: productInfo[0].seller_last_name
         };
 
         const productImages = productPhotos.map((photo) => ({
@@ -59,12 +59,12 @@ async function getProduct (req, res, next) {
         }));
 
         const product = {
-            id: product_id,
-            name: product_name,
-            description: product_description,
-            price: product_price,
-            category: product_category,
-            avg_review_stars
+            id: productInfo[0].product_id,
+            name: productInfo[0].product_name,
+            description: productInfo[0].product_description,
+            price: productInfo[0].product_price,
+            category: productInfo[0].product_category,
+            avg_review_stars: productInfo[0].avg_review_stars
         };
 
         res.status(200).send({
