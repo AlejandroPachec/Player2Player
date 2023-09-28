@@ -50,21 +50,6 @@ function SearchBar () {
         params.push(`/products/?${queryParams.toString()}`);
 
         navigate(params.toString());
-
-
-        /*         const loadSearchProducts = async () => {
-            try {
-                const response = await fetch(`http://localhost:5002/${params}`);
-
-                const data = await response.json();
-                console.log(data.data);
-                return data.data;
-            } catch (error) {
-                throw new Error(error.message);
-            }
-        };
-
-        loadSearchProducts(); */
     };
     return (
         <>

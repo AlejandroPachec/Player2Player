@@ -8,7 +8,6 @@ import ProductItem from '../../components/product-item/ProductItem';
 const SearchPage = () => {
     const location = useLocation();
     const params = new URLSearchParams(location.search);
-    console.log(location.search);
     const { products, loading, error } = useSearchProducts('products/?' + params);
 
     if (loading) return <Loading/>;
