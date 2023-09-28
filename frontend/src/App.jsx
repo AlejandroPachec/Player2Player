@@ -3,6 +3,7 @@ import HomePage from './pages/home-page/HomePage';
 import LoginPage from './pages/login-page/LoginPage';
 import SearchPage from './pages/search-page/SeacrhPage';
 import RegisterPage from './pages/register-page/RegisterPage';
+import NotFoundPage from './pages/notFound-page/NotFoundPage';
 
 function App () {
     return (
@@ -11,7 +12,7 @@ function App () {
             <Route path='/:params' element={<SearchPage/>}/>
             <Route path='/user/login' element={<LoginPage/>} />
             <Route path='/user/create' element={<RegisterPage/>} />
-            {/* <Route path='*' element={NotFound} /> */}
+            <Route path='*' element={<NotFoundPage/>} />
         </Routes>
     );
 }

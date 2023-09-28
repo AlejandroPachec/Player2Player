@@ -31,6 +31,9 @@ const RegisterPage = () => {
 
     async function handleSubmit (event) {
         event.preventDefault();
+
+        setError('');
+
         if (formValues.password !== formValues.pass2) {
             setError('Los campos de contraseña no coinciden');
         }

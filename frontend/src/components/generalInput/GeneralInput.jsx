@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-
+import './generalInput.css';
 function GeneralInput ({ placeholder, value, type, handleChange }) {
     return (
         <label>
