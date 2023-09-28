@@ -48,7 +48,7 @@ async function getAllProducts (req, res, next) {
         }
 
         if (nameFilter) {
-            conditions.push('p.name = ?');
+            conditions.push('p.name LIKE ?');
         }
 
         if (priceFilter) {
@@ -66,7 +66,8 @@ async function getAllProducts (req, res, next) {
         GROUP BY
             p.id, p.name, p.description, p.category, p.user_id, u.first_name, u.last_name, u.city, r.title, r.text`;
 
-        const params = [categoryFilter, cityFilter, nameFilter, priceRange].filter(value => value !== undefined);
+        const nameFilterValue = nameFilter ? `%${nameFilter}%` : null;
+        const params = [categoryFilter, cityFilter, nameFilterValue, priceRange].filter(value => value !== undefined);
 
         const [products] = await pool.query(query, params);
 

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-
+import './generalInput.css';
 function GeneralInput ({ placeholder, value, type, handleChange }) {
     return (
         <label>
@@ -8,7 +8,8 @@ function GeneralInput ({ placeholder, value, type, handleChange }) {
                 placeholder={placeholder}
                 name={value}
                 id={value}
-                onChange={handleChange}/>
+                onChange={handleChange}
+                autoComplete={value}/>
         </label>
     );
 }

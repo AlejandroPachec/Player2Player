@@ -3,6 +3,7 @@ import Slider from './Slider';
 import ProductsList from './ProductsList';
 import Footer from '../../components/footer/Footer';
 
+
 function HomePage () {
     return (
         <>

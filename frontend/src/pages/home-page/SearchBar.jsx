@@ -2,8 +2,11 @@ import GeneralInput from '../../components/generalInput/GeneralInput';
 import SearchCategoryItem from './SearchCategoryItem';
 import searchIcon from '../../assets/search.svg';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SearchBar () {
+    const navigate = useNavigate();
+    const [error, setError] = useState(null);
     const [formValues, setFormValues] = useState({
         productName: '',
         minPrice: '',
@@ -45,21 +48,12 @@ function SearchBar () {
             queryParams.set('category', category);
         }
 
-        params.push(`products/?${queryParams.toString()}`);
-
-        const loadSearchProducts = async () => {
-            try {
-                const response = await fetch(`http://localhost:5002/${params}`);
-
-                const data = await response.json();
-                console.log(data.data);
-                return data.data;
-            } catch (error) {
-                throw new Error(error.message);
-            }
-        };
-
-        loadSearchProducts();
+        if (queryParams.toString() !== '') {
+            params.push(`/products/?${queryParams.toString()}`);
+            navigate(params.toString());
+        } else {
+            setError('Debes completar algún campo antes de buscar');
+        }
     };
     return (
         <>
@@ -81,6 +75,9 @@ function SearchBar () {
                     <p>€</p>
                 </div>
                 <GeneralInput placeholder={'¿Dónde lo buscas?'} type={'text'} value={'productLocation'} handleChange={handleChange} />
+                {
+                    error ? <p>{error}</p> : null
+                }
             </form>
         </>
     );

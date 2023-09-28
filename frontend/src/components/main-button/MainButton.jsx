@@ -9,7 +9,7 @@ const MainButton = ({ text, handleClick }) => {
 
 MainButton.propTypes = {
     text: PropTypes.string.isRequired,
-    handleClick: PropTypes.func.isRequired
+    handleClick: PropTypes.func
 };
 
 export default MainButton;
