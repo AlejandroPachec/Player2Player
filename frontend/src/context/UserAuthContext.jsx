@@ -5,7 +5,7 @@ const UserAuthContext = createContext();
 
 const UserAuthContextProvider = ({ children }) => {
     const [user, setUser] = useState('');
-    const [token, setToken] = useState(localStorage.getItem('token'));
+    const [token, setToken] = useState('');
 
     useEffect(() => {
         localStorage.setItem('token', token);
@@ -17,10 +17,10 @@ const UserAuthContextProvider = ({ children }) => {
         setUser(null);
     };
 
-    const login = (token, user) => {
-        console.log(token, user);
-        setToken(token);
-        setUser(user);
+    const login = (userAuth) => {
+        console.log(token);
+        setToken(userAuth[0]);
+        setUser(userAuth[1]);
     };
     return (
         <UserAuthContext.Provider value={{ token, user, login, logout }}>
