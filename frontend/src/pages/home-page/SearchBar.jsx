@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 function SearchBar () {
     const navigate = useNavigate();
+    const [error, setError] = useState(null);
     const [formValues, setFormValues] = useState({
         productName: '',
         minPrice: '',
@@ -47,9 +48,12 @@ function SearchBar () {
             queryParams.set('category', category);
         }
 
-        params.push(`/products/?${queryParams.toString()}`);
-
-        navigate(params.toString());
+        if (queryParams.toString() !== '') {
+            params.push(`/products/?${queryParams.toString()}`);
+            navigate(params.toString());
+        } else {
+            setError('Debes completar algún campo antes de buscar');
+        }
     };
     return (
         <>
@@ -71,6 +75,9 @@ function SearchBar () {
                     <p>€</p>
                 </div>
                 <GeneralInput placeholder={'¿Dónde lo buscas?'} type={'text'} value={'productLocation'} handleChange={handleChange} />
+                {
+                    error ? <p>{error}</p> : null
+                }
             </form>
         </>
     );

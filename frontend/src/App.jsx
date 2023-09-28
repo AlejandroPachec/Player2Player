@@ -8,10 +8,10 @@ import NotFoundPage from './pages/notFound-page/NotFoundPage';
 function App () {
     return (
         <Routes>
-            <Route path='/' element={<HomePage/>} />
-            <Route path='/:params' element={<SearchPage/>}/>
             <Route path='/user/login' element={<LoginPage/>} />
             <Route path='/user/create' element={<RegisterPage/>} />
+            <Route path='/:params' element={<SearchPage/>}/>
+            <Route path='/' element={<HomePage/>} />
             <Route path='*' element={<NotFoundPage/>} />
         </Routes>
     );

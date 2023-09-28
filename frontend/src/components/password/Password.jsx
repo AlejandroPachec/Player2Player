@@ -21,7 +21,8 @@ function Password ({ value, handleChange }) {
                 placeholder='Contraseña'
                 name={value}
                 id={value}
-                onChange={handleChange} />
+                onChange={handleChange}
+                autoComplete='current-password'/>
             <button
                 type='button'
                 className='eye-button'

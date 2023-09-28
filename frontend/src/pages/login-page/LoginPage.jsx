@@ -50,6 +50,9 @@ const LoginPage = () => {
                     <form onSubmit={handleSubmit}>
                         <GeneralInput placeholder={'correo@ejemplo.com'} type={'email'} value={'email'} handleChange={handleChange}/>
                         <Password value={'password'} handleChange={handleChange}/>
+                        {
+                            error ? <p>{error}</p> : null
+                        }
                         <MainButton text={'Iniciar sesión'}></MainButton>
                         <div>
                             <p>¿Todavía no tienes cuenta?</p>
