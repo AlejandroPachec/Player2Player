@@ -56,10 +56,9 @@ export const registerUserService = async ({ firstName, lastName, email, phone, p
 };
 
 export const getProductByIdService = async (idProduct) => {
-    console.log(`${import.meta.env.VITE_BACK_URL}/products/${idProduct}`);
     const response = await fetch(`${import.meta.env.VITE_BACK_URL}/products/${idProduct}`);
     const data = await response.json();
-    console.log(data);
+    console.log('esteee', data);
 
     if (!response.ok) {
         throw new Error(data.error);

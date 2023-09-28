@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getProductByIdService } from '../service';
 
 
-async function useGetProduct (idProduct) {
+function useGetProduct (idProduct) {
     const [data, setData] = useState([]);
     const [error, setError] = useState('');
 
@@ -11,15 +11,14 @@ async function useGetProduct (idProduct) {
             try {
                 const response = await getProductByIdService(idProduct);
                 setData(response);
-                console.log(response);
             } catch (error) {
                 setError(error.message);
             }
         };
         loadProduct();
-    }, []);
+    }, [idProduct]);
 
-    return { data, error /* loading */ };
+    return { data, error };
 }
 
 export default useGetProduct;

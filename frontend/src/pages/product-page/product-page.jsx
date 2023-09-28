@@ -2,13 +2,12 @@ import MainHeader from '../../components/header-main/MainHeader';
 import Footer from '../../components/footer/Footer';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import useGetProduct from '../../hooks/useGetProduct'
+import useGetProduct from '../../hooks/useGetProduct';
 
 const ProductPage = () => {
     const { idProduct } = useParams();
     const { data, error } = useGetProduct(idProduct);
-    // const { product, user, productImages } = data;
-
+    console.log(data);
 
     if (error) {
         return <p>{error}</p>;
@@ -19,9 +18,10 @@ const ProductPage = () => {
             <MainHeader/>
             <main>
                 <figure>
-                    <img></img>
+                    <img>
+                    </img>
                     <figcaption>
-                        {/* <p>{user.first_name} {user.last_name[0]}.</p> */}
+                        <p> {data.user.first_name} {data.user.last_name[0]}.</p>
                     </figcaption>
                 </figure>
 
