@@ -4,7 +4,7 @@ import LoginPage from './pages/login-page/LoginPage';
 import SearchPage from './pages/search-page/SeacrhPage';
 import RegisterPage from './pages/register-page/RegisterPage';
 import NotFoundPage from './pages/notFound-page/NotFoundPage';
-import ProductPage from './pages/product-page';
+import ProductPage from './pages/product-page/product-page';
 
 function App () {
     return (
