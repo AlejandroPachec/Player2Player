@@ -39,7 +39,7 @@ async function addOrder (req, res, next) {
         `, [idProduct, userBuyerId]);
 
         if (checkOrder.length > 0) {
-            throw generateError('No puedes commprar más de una vez el mismo producto', 403);
+            throw generateError('No puedes comprar más de una vez el mismo producto', 403);
         }
 
         await pool.query(`INSERT INTO orders (id, user_buyer_id, user_seller_id, product_id)
