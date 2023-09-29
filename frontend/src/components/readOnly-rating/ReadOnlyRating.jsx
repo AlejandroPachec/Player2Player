@@ -8,7 +8,7 @@ const ReadOnlyRating = ({ value }) => {
 };
 
 ReadOnlyRating.propTypes = {
-    value: PropTypes.number.isRequired
+    value: PropTypes.number
 };
 
 export default ReadOnlyRating;
