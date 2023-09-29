@@ -10,7 +10,7 @@ function HomePage () {
             <HomePageHeader />
             <main>
                 <section>
-                    <h1>Juega más, pasga menos</h1>
+                    <h1>Juega más, paga menos</h1>
                     <Slider />
                 </section>
                 <section>
