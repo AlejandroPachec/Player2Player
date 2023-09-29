@@ -85,7 +85,7 @@ export const addOrderService = async (idProduct, token, { userSellerId }) => {
 };
 
 
-export const getUserProfileService = async ({ idUser }) => {
+export const getUserProfileService = async (idUser) => {
     const response = await fetch(`${import.meta.env.VITE_BACK_URL}/user/profile/${idUser}`);
 
     const data = await response.json();
