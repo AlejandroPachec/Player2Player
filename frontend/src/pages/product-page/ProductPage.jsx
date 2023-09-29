@@ -9,6 +9,7 @@ import SliderPhotoProduct from './SliderPhotoProduct';
 import { useContext, useState } from 'react';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import { addOrderService } from '../../service';
+import ReadOnlyRating from '../../components/readOnly-rating/ReadOnlyRating';
 
 const ProductPage = () => {
     const [errorBack, setErrorBack] = useState(false);
@@ -26,10 +27,12 @@ const ProductPage = () => {
     const handleClick = async () => {
         try {
             await addOrderService(idProduct, token, { userSellerId });
-            navigate('..', { relative: '/' });
         } catch (error) {
             setErrorBack(error.message);
         }
+        setTimeout(() => {
+            navigate('/');
+        }, 3000);
     };
 
     return (
@@ -40,6 +43,7 @@ const ProductPage = () => {
                     username={user?.first_name}
                     lastName={user?.last_name}
                     avatar={`${import.meta.env.VITE_BACK_URL}/uploads/${user?.avatar}`}/>
+                <ReadOnlyRating value={product?.avg_review_stars}/>
                 <article>
                     <SliderPhotoProduct productImages={productImages}/>
                     <h2>{product?.name}</h2>
