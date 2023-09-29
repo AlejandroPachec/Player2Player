@@ -5,10 +5,12 @@ import SearchPage from './pages/search-page/SeacrhPage';
 import RegisterPage from './pages/register-page/RegisterPage';
 import NotFoundPage from './pages/notFound-page/NotFoundPage';
 import ProductPage from './pages/product-page/ProductPage';
+import UserProfilePage from './pages/userProfile-page/UserProfilePage';
 
 function App () {
     return (
         <Routes>
+            <Route path='/user/profile/:idUser' element={<UserProfilePage/>}/>
             <Route path='/product/:idProduct' element={<ProductPage/>}/>
             <Route path='/user/login' element={<LoginPage/>} />
             <Route path='/user/create' element={<RegisterPage/>} />

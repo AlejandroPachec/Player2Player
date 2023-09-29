@@ -43,7 +43,8 @@ const ProductPage = () => {
                 <UserWithRating
                     username={user?.first_name}
                     lastName={user?.last_name}
-                    avatar={`${import.meta.env.VITE_BACK_URL}/uploads/${user?.avatar}`}/>
+                    avatar={`${import.meta.env.VITE_BACK_URL}/uploads/${user?.avatar}`}
+                    idUser={user?.id}/>
                 <ReadOnlyRating value={product?.avg_review_stars}/>
                 <article>
                     <SliderPhotoProduct productImages={productImages}/>

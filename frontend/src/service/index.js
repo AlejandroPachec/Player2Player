@@ -83,3 +83,17 @@ export const addOrderService = async (idProduct, token, { userSellerId }) => {
         throw new Error(data.error);
     }
 };
+
+
+export const getUserProfileService = async ({ idUser }) => {
+    const response = await fetch(`${import.meta.env.VITE_BACK_URL}/user/profile/${idUser}`);
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error);
+    }
+
+    return data.data;
+};
+
