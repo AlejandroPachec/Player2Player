@@ -19,6 +19,7 @@ const ProductPage = () => {
     const navigate = useNavigate();
 
     const { product, productImages, user } = article;
+    console.log(product);
     const userSellerId = user?.id;
 
     if (loading) return <Loading/>;
