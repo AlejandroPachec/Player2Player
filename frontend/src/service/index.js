@@ -21,6 +21,7 @@ export const getSearchProductsService = async (params) => {
 
     return data.data;
 };
+
 export const loginUserService = async ({ email, password }) => {
     const response = await fetch(`${import.meta.env.VITE_BACK_URL}/user/login`, {
         method: 'POST',
@@ -58,11 +59,27 @@ export const registerUserService = async ({ firstName, lastName, email, phone, p
 export const getProductByIdService = async (idProduct) => {
     const response = await fetch(`${import.meta.env.VITE_BACK_URL}/products/${idProduct}`);
     const data = await response.json();
-    console.log('esteee', data);
 
     if (!response.ok) {
         throw new Error(data.error);
     }
 
     return data.data;
+};
+
+export const addOrderService = async (idProduct, token, { userSellerId }) => {
+    const response = await fetch(`${import.meta.env.VITE_BACK_URL}/orders/user/${idProduct}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            token
+        },
+        body: JSON.stringify({ userSellerId })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error);
+    }
 };
