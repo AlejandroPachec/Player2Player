@@ -92,29 +92,29 @@ async function backUpDB () {
     ('6d9b3f6c-4e53-4aa5-9a8c-6e2c78ab951c', 'H8wS4tMnJzL6XpV.png', NULL, NOW(), '7f1a5e8d-2a4e-4a88-bf4d-8b9f08c8b745');
     `);
 
-/*         await pool.query(`INSERT INTO reviews (id, title, text, stars, created_at, modified_at, product_id, user_seller_id, user_buyer_id)
+    await pool.query(`INSERT INTO reviews (id, title, text, stars, created_at, modified_at, product_id, user_seller_id, user_buyer_id)
     VALUES
-    ('4b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed1', 'Reseña 1', 'Descripción de Reseña 1', '5', NOW(), NULL, '9b9821c9-20c7-4f85-8f0b-0e2db0d99e99', '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed2'),
-    ('4b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed2', 'Reseña 2', 'Descripción de Reseña 2', '4', NOW(), NULL, 'a9d99eae-8697-4e12-88f0-152ad1f876c0', '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed3'),
-    ('4b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed3', 'Reseña 3', 'Descripción de Reseña 3', '3', NOW(), NULL, 'f47ac10b-58cc-4372-a567-0e02b2c3d479', '56a789cc-2b8e-47f9-b2f6-81c8e73998dd', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed4'),
-    ('4b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed4', 'Reseña 4', 'Descripción de Reseña 4', '2', NOW(), NULL, '98badf30-af02-4d58-8a30-8bb4b9df649d', '56a789cc-2b8e-47f9-b2f6-81c8e73998dd', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed5'),
-    ('4b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed5', 'Reseña 5', 'Descripción de Reseña 5', '1', NOW(), NULL, 'edd3b26d-5586-46d5-9d3a-3814641c68e6', 'f02baf4a-67d7-4c8e-92f0-e40c0e7cf1b1', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed1'),
-    ('4b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed6', 'Reseña 6', 'Descripción de Reseña 6', '5', NOW(), NULL, '521ae48a-6c6f-4931-8f51-7952c9154222', 'f02baf4a-67d7-4c8e-92f0-e40c0e7cf1b1', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed2'),
-    ('4b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed7', 'Reseña 7', 'Descripción de Reseña 7', '4', NOW(), NULL, 'c1833aef-6a6e-4b8c-9203-6dd2b7c9dbf8', '9a5e1a27-8e21-4f52-9547-6d4555a92456', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed3'),
-    ('4b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed8', 'Reseña 8', 'Descripción de Reseña 8', '3', NOW(), NULL, 'd6e6e47a-7d48-4c9a-94a9-29b6501e8254', '9a5e1a27-8e21-4f52-9547-6d4555a92456', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed4'),
-    ('4b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed9', 'Reseña 9', 'Descripción de Reseña 9', '2', NOW(), NULL, 'e23f0c89-ae56-4ca5-8a52-4d927b2ef8cb', '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed5'),
-    ('4b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed0', 'Reseña 10', 'Descripción de Reseña 10', '5', NOW(), NULL, '1f1e4b48-34e9-4f24-bfae-98675580f8a7', '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed2'),
-    ('4b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed1', 'Reseña 1', 'Descripción de Reseña 1', '5', NOW(), NULL, '5f8d3b77-64ef-4d5c-9e47-9c0c63f0b44a', 'c586d7bd-9e93-43b7-a67d-32a68278981f', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed2'),
-    ('4b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed2', 'Reseña 2', 'Descripción de Reseña 2', '4', NOW(), NULL, '86a3b22d-03f5-4b60-9fb0-1cf1a927853d', '8f3c6e0a-2c7d-4dd2-9eef-77f27ecf31ac', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed3'),
-    ('4b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed3', 'Reseña 3', 'Descripción de Reseña 3', '3', NOW(), NULL, '3f6d2b8c-79d0-44f9-a7c3-3d6e1cf9f17d', '45d84f9b-03a2-4d8c-af08-680efb8ca4ef', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed4'),
-    ('4b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed4', 'Reseña 4', 'Descripción de Reseña 4', '2', NOW(), NULL, '6c6f2951-8e03-4ab0-b943-19e6e1b26b3d', '45d84f9b-03a2-4d8c-af08-680efb8ca4ef', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed5'),
-    ('4b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed5', 'Reseña 5', 'Descripción de Reseña 5', '1', NOW(), NULL, 'bfa685f7-0c2c-4527-a7e9-8978c53446c0', '23f549c3-12c4-4e64-9ec3-5721a9c4d72c', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed1'),
-    ('4b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed6', 'Reseña 6', 'Descripción de Reseña 6', '5', NOW(), NULL, '7f1a5e8d-2a4e-4a88-bf4d-8b9f08c8b745', '716c7c46-d9f0-4b2a-8f8d-62d7df41820d', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed2');
+    ('c62f1f91-62a1-4be0-9a25-e02e7d27f8bf', 'Pokémon Amarillo', 'Todo perfecto!! Buena comunicacion, simpatico y atento! De 10!!', '5', NOW(), NULL, '9b9821c9-20c7-4f85-8f0b-0e2db0d99e99', '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af', '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7'),
+    ('2c4c6a2d-86c8-4e94-8b4f-5240b899a9d2', 'Google Nest Mini', 'Vendedor muy recomendable', '4', NOW(), NULL, 'a9d99eae-8697-4e12-88f0-152ad1f876c0', '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af', '56a789cc-2b8e-47f9-b2f6-81c8e73998dd'),
+    ('b7a2c6c4-d3e0-47d8-81d9-1f7f0c11c18e', 'Stardew Valley', 'Todo muy bien y correcto!!', '3', NOW(), NULL, 'f47ac10b-58cc-4372-a567-0e02b2c3d479', '56a789cc-2b8e-47f9-b2f6-81c8e73998dd', 'f02baf4a-67d7-4c8e-92f0-e40c0e7cf1b1'),
+    ('97f9b5e6-f8c5-4e95-97ad-6e363d2f731b', 'Nintendo Switch', 'Trato bueno, rápido y sin complicaciones. Buen comprador, puntual, cumple con lo acordado y no te deja tirado. ', '4', NOW(), NULL, '98badf30-af02-4d58-8a30-8bb4b9df649d', '56a789cc-2b8e-47f9-b2f6-81c8e73998dd', '9a5e1a27-8e21-4f52-9547-6d4555a92456'),
+    ('a3d7b17e-8e3e-4eab-95d1-f29bbae84c6f', 'Zelda Tears of the Kingdom', 'Todo perfecto, vendedor totalmente recomendable, muchas gracias', '5', NOW(), NULL, 'edd3b26d-5586-46d5-9d3a-3814641c68e6', 'f02baf4a-67d7-4c8e-92f0-e40c0e7cf1b1', '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af'),
+    ('6a74a0bc-65ac-4e5e-a172-d06c1818edc9', 'Alfombrilla LOL', 'Vendedor muy amable, contesta rápido y el artículo estaba mejor que nuevo.', '5', NOW(), NULL, '521ae48a-6c6f-4931-8f51-7952c9154222', 'f02baf4a-67d7-4c8e-92f0-e40c0e7cf1b1', 'c586d7bd-9e93-43b7-a67d-32a68278981f'),
+    ('e22b9f20-486c-4d72-9e56-95f0a1e7a5dd', 'Dark Souls III', 'La caja del articulo estaba un poco defectuosa', '3', NOW(), NULL, 'c1833aef-6a6e-4b8c-9203-6dd2b7c9dbf8', '9a5e1a27-8e21-4f52-9547-6d4555a92456', '8f3c6e0a-2c7d-4dd2-9eef-77f27ecf31ac'),
+    ('894e27a3-1d8a-4f5c-b75d-2b4813d3ec7f', 'PC Gamer', 'El vendedor tarda en contestar. No es puntual, por lo demás bien', '3', NOW(), NULL, 'd6e6e47a-7d48-4c9a-94a9-29b6501e8254', '9a5e1a27-8e21-4f52-9547-6d4555a92456', '45d84f9b-03a2-4d8c-af08-680efb8ca4ef'),
+    ('4e6d53dd-3e24-4f71-a5c1-1af2974f49c6', 'Minijuegos Switch', 'Artículo en perfecto estado. Vendedor 100% de confianza.', '4', NOW(), NULL, 'e23f0c89-ae56-4ca5-8a52-4d927b2ef8cb', '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7', '23f549c3-12c4-4e64-9ec3-5721a9c4d72c'),
+    ('5b23f6ca-345c-45e9-9a1a-8e40f4e0e903', 'RTX 2060 SUPER GIGABYTE', 'Todo perfecto, comprador absolutamente recomendable, no he tenido ningún problema con el.', '5', NOW(), NULL, '1f1e4b48-34e9-4f24-bfae-98675580f8a7', '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7', '716c7c46-d9f0-4b2a-8f8d-62d7df41820d'),
+    ('712fbc72-743f-42d3-845a-253a43a6655d', 'Game Boy poket', 'Muy bien', '5', NOW(), NULL, '5f8d3b77-64ef-4d5c-9e47-9c0c63f0b44a', 'c586d7bd-9e93-43b7-a67d-32a68278981f', '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af'),
+    ('61e53ef1-cc2a-442f-b752-45b8a1ea197a', 'Mortal Kombat', 'Recomendado 100%', '4', NOW(), NULL, '86a3b22d-03f5-4b60-9fb0-1cf1a927853d', '8f3c6e0a-2c7d-4dd2-9eef-77f27ecf31ac', '9a5e1a27-8e21-4f52-9547-6d4555a92456'),
+    ('7f21e1e6-46e3-4c66-9297-928e1595432a', 'Mando Xbox', 'Muy amable y atento, el producto genial y perfecto, lo recomiendo 100%', '3', NOW(), NULL, '3f6d2b8c-79d0-44f9-a7c3-3d6e1cf9f17d', '45d84f9b-03a2-4d8c-af08-680efb8ca4ef', 'c586d7bd-9e93-43b7-a67d-32a68278981f'),
+    ('e45f678f-8844-4f2b-9b68-1c38ffdb22a9', 'Ratón inalámbrico Razer', 'Excelente servicio', '4', NOW(), NULL, '6c6f2951-8e03-4ab0-b943-19e6e1b26b3d', '45d84f9b-03a2-4d8c-af08-680efb8ca4ef', '8f3c6e0a-2c7d-4dd2-9eef-77f27ecf31ac'),
+    ('82e4e63b-937d-4e1d-8349-4c62cfc153bb', 'Monitor Msi curvado', 'Perfecto gracias', '3', NOW(), NULL, 'bfa685f7-0c2c-4527-a7e9-8978c53446c0', '23f549c3-12c4-4e64-9ec3-5721a9c4d72c', '9a5e1a27-8e21-4f52-9547-6d4555a92456'),
+    ('9d7e3e6c-9621-41d9-9fc0-9c5f6a34e6c8', 'Guitarra Guitar Hero', 'Sin ningún problema, repetiría sin dudarlo.', '5', NOW(), NULL, '7f1a5e8d-2a4e-4a88-bf4d-8b9f08c8b745', '716c7c46-d9f0-4b2a-8f8d-62d7df41820d', '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af');
 
     `);
 
 
-        await pool.query(`INSERT INTO orders (id, exchange_place, exchange_time, user_buyer_id, user_seller_id, product_id, created_at)
+    /*    await pool.query(`INSERT INTO orders (id, exchange_place, exchange_time, user_buyer_id, user_seller_id, product_id, created_at)
     VALUES
     ('5b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed1', 'Lugar1', '2023-09-15 10:00:00', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed1', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed2', '2b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed1', NOW()),
     ('5b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed2', 'Lugar2', '2023-09-15 11:00:00', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed2', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed3', '2b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed2', NOW()),

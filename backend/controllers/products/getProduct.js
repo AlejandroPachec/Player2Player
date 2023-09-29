@@ -31,7 +31,7 @@ async function getProduct (req, res, next) {
             JOIN
                 users AS u ON p.user_id = u.id
             LEFT JOIN
-                reviews AS r ON p.id = r.product_id
+                reviews AS r ON r.user_seller_id = p.user_id
             LEFT JOIN
                 product_photo AS ph ON p.id = ph.product_id
             WHERE
