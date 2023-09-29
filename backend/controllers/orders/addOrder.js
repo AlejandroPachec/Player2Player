@@ -30,9 +30,16 @@ async function addOrder (req, res, next) {
             throw generateError('Este producto ya no está disponible', 400);
         }
 
-
         if (userBuyerId === userSellerId) {
             throw generateError('No puedes comprarte un producto a ti mismo', 403);
+        }
+
+        const [checkOrder] = await pool.query(`
+            SELECT id FROM orders WHERE product_id = ? AND user_buyer_id = ?
+        `, [idProduct, userBuyerId]);
+
+        if (checkOrder.length > 0) {
+            throw generateError('No puedes commprar más de una vez el mismo producto', 403);
         }
 
         await pool.query(`INSERT INTO orders (id, user_buyer_id, user_seller_id, product_id)
