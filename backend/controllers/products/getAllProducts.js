@@ -59,7 +59,7 @@ async function getAllProducts (req, res, next) {
         }
 
         if (conditions.length > 0) {
-            query += ' WHERE ' + conditions.join(' AND ');
+            query += ' WHERE' + conditions.join(' AND ');
         }
 
         query += `
