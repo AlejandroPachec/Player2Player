@@ -19,13 +19,13 @@ const ProductPage = () => {
     const navigate = useNavigate();
 
     const { product, productImages, user } = article;
-    console.log(product);
     const userSellerId = user?.id;
 
     if (loading) return <Loading/>;
     if (error) return <p>{error}</p>;
 
-    const handleClick = async () => {
+    const handleClick = async (event) => {
+        event.preventDefault();
         try {
             await addOrderService(idProduct, token, { userSellerId });
         } catch (error) {
@@ -33,7 +33,7 @@ const ProductPage = () => {
         }
         setTimeout(() => {
             navigate('/');
-        }, 3000);
+        }, 2000);
     };
 
     return (

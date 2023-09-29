@@ -9,10 +9,10 @@ import ProductPage from './pages/product-page/ProductPage';
 function App () {
     return (
         <Routes>
+            <Route path='/product/:idProduct' element={<ProductPage/>}/>
             <Route path='/user/login' element={<LoginPage/>} />
             <Route path='/user/create' element={<RegisterPage/>} />
             <Route path='/:params' element={<SearchPage/>}/>
-            <Route path='/product/:idProduct' element={<ProductPage/>}/>
             <Route path='/' element={<HomePage/>} />
             <Route path='*' element={<NotFoundPage/>} />
         </Routes>

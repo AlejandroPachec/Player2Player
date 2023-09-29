@@ -21,7 +21,7 @@ const SearchPage = () => {
                 {
                     products.length
                         ? <ul>
-                            {products.map((product) => {
+                            {products.filter((product) => product.availability === 1).map((product) => {
                                 return <li key={product.product_id}><ProductItem product={product}/></li>;
                             })}
                         </ul>
