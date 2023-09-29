@@ -8,10 +8,10 @@ function useGetUserProfile (idUser) {
     useEffect(() => {
         const loadUser = async () => {
             try {
-                console.log(user);
                 setLoading(true);
+
                 const data = await getUserProfileService(idUser);
-                console.log(user);
+
                 setUser(data);
             } catch (error) {
                 setError(error.message);
@@ -21,7 +21,7 @@ function useGetUserProfile (idUser) {
         };
 
         loadUser();
-    }, [idUser, user]);
+    }, [idUser]);
 
     return { user, error, loading };
 }

@@ -40,26 +40,31 @@ const ProductPage = () => {
         <>
             <MainHeader/>
             <main>
-                <UserWithRating
-                    username={user?.first_name}
-                    lastName={user?.last_name}
-                    avatar={`${import.meta.env.VITE_BACK_URL}/uploads/${user?.avatar}`}
-                    idUser={user?.id}/>
-                <ReadOnlyRating value={product?.avg_review_stars}/>
-                <article>
-                    <SliderPhotoProduct productImages={productImages}/>
-                    <h2>{product?.name}</h2>
-                    <p>{product?.category}</p>
-                    <p>{product?.description}</p>
-                    <p>{user?.city}, {new Date(product?.time).toLocaleString('es-ES', { month: 'short', day: '2-digit' })}</p>
-                    <p>{product?.state}</p>
-                    <p>{product?.price} €</p>
-                    {
-                        token
-                            ? <MainButton text={'Comprar'} handleClick={handleClick}/>
-                            : <Link to={'/user/login'}><MainButton text={'Comprar'}/></Link>
-                    }
-                </article>
+                { user
+                    ? <>
+                        <UserWithRating
+                            username={user.first_name}
+                            lastName={user.last_name}
+                            avatar={`${import.meta.env.VITE_BACK_URL}/uploads/${user.avatar}`}
+                            idUser={user.id}/>
+                        <ReadOnlyRating value={product.avg_review_stars}/>
+                        <article>
+                            <SliderPhotoProduct productImages={productImages}/>
+                            <h2>{product.name}</h2>
+                            <p>{product.category}</p>
+                            <p>{product.description}</p>
+                            <p>{user.city}, {new Date(product?.time).toLocaleString('es-ES', { month: 'short', day: '2-digit' })}</p>
+                            <p>{product.state}</p>
+                            <p>{product.price} €</p>
+                            {
+                                token
+                                    ? <MainButton text={'Comprar'} handleClick={handleClick}/>
+                                    : <Link to={'/user/login'}><MainButton text={'Comprar'}/></Link>
+                            }
+                        </article>
+                    </>
+                    : <p>No hemos encontrado el producto que buscabas</p>
+                }
                 {
                     errorBack ? <p>{errorBack}</p> : null
                 }
