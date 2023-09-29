@@ -5,7 +5,9 @@ const UserWithRating = ({ username, lastName, avatar, idUser }) => {
     return (
         <Link to={`/user/profile/${idUser}`}>
             <div>
-                <img src={avatar} alt="Foto de perfil" />
+                {
+                    avatar ? <img src={avatar} alt="Foto de perfil" /> : null
+                }
                 <p>{username} {lastName}</p>
             </div>
         </Link>
