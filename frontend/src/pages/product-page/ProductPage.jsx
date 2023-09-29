@@ -1,19 +1,21 @@
 import MainHeader from '../../components/header-main/MainHeader';
 import Footer from '../../components/footer/Footer';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import useGetProduct from '../../hooks/useGetProduct';
 import Loading from '../../components/loading/Loading';
 import UserWithRating from '../../components/user-with-rating/UserWithRating';
 import MainButton from '../../components/main-button/MainButton';
 import SliderPhotoProduct from './SliderPhotoProduct';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import { addOrderService } from '../../service';
 
 const ProductPage = () => {
+    const [errorBack, setErrorBack] = useState(false);
     const { idProduct } = useParams();
     const { article, error, loading } = useGetProduct(idProduct);
     const { token } = useContext(UserAuthContext);
+    const navigate = useNavigate();
 
     const { product, productImages, user } = article;
     const userSellerId = user?.id;
@@ -24,8 +26,9 @@ const ProductPage = () => {
     const handleClick = async () => {
         try {
             await addOrderService(idProduct, token, { userSellerId });
+            navigate('..', { relative: '/' });
         } catch (error) {
-            throw new Error(error.message);
+            setErrorBack(error.message);
         }
     };
 
@@ -47,12 +50,13 @@ const ProductPage = () => {
                     <p>{product?.price} €</p>
                     {
                         token
-                            ? <Link to={'/'}>
-                                <MainButton text={'Comprar'} handleClick={handleClick}/>
-                            </Link>
+                            ? <MainButton text={'Comprar'} handleClick={handleClick}/>
                             : <Link to={'/user/login'}><MainButton text={'Comprar'}/></Link>
                     }
                 </article>
+                {
+                    errorBack ? <p>{errorBack}</p> : null
+                }
             </main>
             <Footer/>
         </>

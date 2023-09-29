@@ -12,13 +12,11 @@ function ProductsList () {
     return (
         products.length
             ? <ul>
-                {products.map((product) => {
-                    return (
-                        <li key={product.product_id}>
-                            <ProductItem product={product} />
-                        </li>
-                    );
-                })}
+                {products.filter((product) => product.availability === 1).map((product) => (
+                    <li key={product.product_id}>
+                        <ProductItem product={product} />
+                    </li>
+                ))}
             </ul>
             : <p>No hay ningún producto disponible</p>
     );
