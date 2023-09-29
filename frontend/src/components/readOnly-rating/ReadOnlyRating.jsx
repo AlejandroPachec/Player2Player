@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ReadOnlyRating = ({ value }) => {
     return (
-        <Rating name="read-only" value={value} readOnly />
+        <Rating name="half-rating-read" value={value} precision={0.5} readOnly />
     );
 };
 
