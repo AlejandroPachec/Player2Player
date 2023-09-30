@@ -6,6 +6,7 @@ import RegisterPage from './pages/register-page/RegisterPage';
 import NotFoundPage from './pages/notFound-page/NotFoundPage';
 import ProductPage from './pages/product-page/ProductPage';
 import UserProfilePage from './pages/userProfile-page/UserProfilePage';
+import AddProductPage from './pages/addProduct-page/AddProductPage';
 
 function App () {
     return (
@@ -17,6 +18,7 @@ function App () {
             <Route path='/:params' element={<SearchPage/>}/>
             <Route path='/' element={<HomePage/>} />
             <Route path='*' element={<NotFoundPage/>} />
+            <Route path='/product/addProduct' element={<AddProductPage/>} />
         </Routes>
     );
 }

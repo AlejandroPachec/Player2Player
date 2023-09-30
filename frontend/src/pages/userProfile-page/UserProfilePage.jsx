@@ -71,7 +71,7 @@ const UserProfilePage = () => {
                                     return <li key={review.product_id}>
                                         <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${review.product_images}`} alt="Foto del producto" />
                                         <div>
-                                            <span>Por {review.first_name}{review.last_name} el </span>
+                                            <span>Por {review.first_name} {review.last_name} el </span>
                                             <span>{new Date(review.created_at).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: '2-digit' })}</span>
                                         </div>
                                         <p>{review.title}</p>
