@@ -1,6 +1,7 @@
 import MainHeader from '../../components/header-main/MainHeader';
 import MainButton from '../../components/main-button/MainButton';
 import GeneralInput from '../../components/generalInput/GeneralInput';
+import TextArea from '../../components/text-area/TextArea';
 
 
 function AddProductPage () {
@@ -13,9 +14,7 @@ function AddProductPage () {
                   <GeneralInput placeholder='Categoría'/>
                   <GeneralInput placeholder='Localidad'/>
                   <GeneralInput placeholder='0'/><p> €</p>
-                  
-
-                  
+                  <TextArea/>
                 </form>
             </main>
         </>
