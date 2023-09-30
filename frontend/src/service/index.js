@@ -40,21 +40,6 @@ export const loginUserService = async ({ email, password }) => {
 };
 
 
-export const registerUserService = async ({ firstName, lastName, email, phone, password }) => {
-    const response = await fetch(`${import.meta.env.VITE_BACK_URL}/user/create`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ firstName, lastName, email, phone, password })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-        throw new Error(data.error);
-    }
-};
 
 export const getProductByIdService = async (idProduct) => {
     const response = await fetch(`${import.meta.env.VITE_BACK_URL}/products/${idProduct}`);
@@ -107,7 +92,8 @@ export const getUserReviewsService = async (idUser) => {
     return data.data;
 };
 
-export async function addProductService (formData, token) {
+export async function addProductService (token, formData) {
+    console.log();
     const response = await fetch(`${import.meta.env.VITE_BACK_URL}/products/addProduct`, {
         method: 'POST',
         headers: {
@@ -125,4 +111,19 @@ export async function addProductService (formData, token) {
 
     return data;
 }
+export const registerUserService = async ({ firstName, lastName, email, phone, password }) => {
+    const response = await fetch(`${import.meta.env.VITE_BACK_URL}/user/create`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ firstName, lastName, email, phone, password })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error);
+    }
+};
 

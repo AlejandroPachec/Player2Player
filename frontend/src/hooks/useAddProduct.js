@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { addProductService } from '../service';
 
-function useAddProduct (initialState = {}) {
-    const [formData, setFormData] = useState(initialState);
+
+function useAddProduct (token, data) {
+    const [formData, setFormData] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submissionError, setSubmissionError] = useState(null);
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -14,23 +16,26 @@ function useAddProduct (initialState = {}) {
         });
     };
 
-    const handleSubmit = async () => {
-        setIsSubmitting(true);
+    useEffect(() => {
+        const handleSubmit = async () => {
+            setIsSubmitting(true);
 
-        try {
-            const response = await addProductService(formData);
-            setIsSubmitting(false);
-            setSubmissionError(null);
+            try {
+                const response = await addProductService(token, data);
+                setIsSubmitting(false);
+                setSubmissionError(null);
 
-            return response;
-        } catch (error) {
-            setIsSubmitting(false);
-            setSubmissionError(error.message);
-            return null;
-        }
-    };
+                return response;
+            } catch (error) {
+                setIsSubmitting(false);
+                setSubmissionError(error.message);
+                return null;
+            }
+        };
+        handleSubmit();
+    }, [data, token]);
 
-    return { formData, isSubmitting, submissionError, handleChange, handleSubmit };
+    return { formData, isSubmitting, submissionError, handleChange };
 }
 
 export default useAddProduct;
