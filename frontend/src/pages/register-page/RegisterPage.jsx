@@ -61,7 +61,7 @@ const RegisterPage = () => {
                     <Password value={'password'} handleChange={handleChange}/>
                     <Password value={'pass2'} handleChange={handleChange}/>
                     {error ? <p>{error}</p> : null}
-                    <MainButton text={'Registrarse'}/>
+                    <MainButton type='submit' text={'Registrarse'}/>
                 </form>
             </main>
             <Footer/>
