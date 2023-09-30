@@ -11,6 +11,7 @@ import AddProductPage from './pages/addProduct-page/AddProductPage';
 function App () {
     return (
         <Routes>
+            <Route path='/product/addProduct' element={<AddProductPage/>} />
             <Route path='/user/profile/:idUser' element={<UserProfilePage/>}/>
             <Route path='/product/:idProduct' element={<ProductPage/>}/>
             <Route path='/user/login' element={<LoginPage/>} />
@@ -18,7 +19,6 @@ function App () {
             <Route path='/:params' element={<SearchPage/>}/>
             <Route path='/' element={<HomePage/>} />
             <Route path='*' element={<NotFoundPage/>} />
-            <Route path='/product/addProduct' element={<AddProductPage/>} />
         </Routes>
     );
 }
