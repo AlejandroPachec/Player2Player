@@ -7,7 +7,8 @@ function TextArea ({ placeholder, value, handleChange }) {
             <textarea
                 className='textArea'
                 placeholder={placeholder}
-                value={value}
+                name={value}
+                id={value}
                 onChange={handleChange}/>
         </label>
     );

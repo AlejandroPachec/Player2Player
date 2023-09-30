@@ -30,10 +30,11 @@ const ProductPage = () => {
             await addOrderService(idProduct, token, { userSellerId });
         } catch (error) {
             setErrorBack(error.message);
+        } finally {
+            setTimeout(() => {
+                navigate('/');
+            }, 2000);
         }
-        setTimeout(() => {
-            navigate('/');
-        }, 2000);
     };
 
     return (
