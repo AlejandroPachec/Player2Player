@@ -23,10 +23,7 @@ const UserProfilePage = () => {
     const ratingsNumber = reviews?.length;
     const userProducts = user?.products;
     const sellingItems = userProducts?.filter((product) => product.availability === 1).length;
-    console.log(reviews);
-    console.log(userProducts);
     const [clicState, setClic] = useState('sell');
-
 
     if (loading) return <Loading/>;
     if (error) return <p>{error.message}</p>;
@@ -35,38 +32,63 @@ const UserProfilePage = () => {
         <>
             <MainHeader/>
             <main>
-                <nav className='profileMenu'>
-                    <a onClick = { () => { setClic('sell'); } }>
-                        <span>{sellingItems}</span>
-                        <p>En venta</p>
-                    </a>
-                    <a onClick = { () => { setClic('rate'); } } >
-                        <span>{ratingsNumber}</span>
-                        <p>Valoraciones</p>
-                    </a>
-                    <a onClick = { () => { setClic('information'); }}>
-                        <span>
-                            <BsPlusLg/>
-                        </span>
-                        <p>Información</p>
-                    </a>
-                </nav>
+                {
+                    userProducts && sellingItems && ratingsNumber
+                        ? <nav className='profileMenu'>
+                            <a onClick = { () => { setClic('sell'); } }>
+                                <span>{sellingItems}</span>
+                                <p>En venta</p>
+                            </a>
+                            <a onClick = { () => { setClic('rate'); } } >
+                                <span>{ratingsNumber}</span>
+                                <p>Valoraciones</p>
+                            </a>
+                            <a onClick = { () => { setClic('information'); }}>
+                                <span>
+                                    <BsPlusLg/>
+                                </span>
+                                <p>Información</p>
+                            </a>
+                        </nav>
+                        : <p>Algo ha salido mal</p>
+                }
+                { userInfo
+                    ? <div>
+                        <UserWithRating
+                            username={userInfo.first_name}
+                            lastName={userInfo.last_name}
+                            avatar={`${import.meta.env.VITE_BACK_URL}/uploads/${userInfo.avatar}`}
+                            idUser={idUser}/>
+                        <ReadOnlyRating value={user.avgReview.userAvgReviews} precision={0.5} readOnly/>
+                        <p>
+                            <img src={whatsapp} alt="Icono de whatsapp" />
+                                Whatsapp
+                        </p>
+                        <p>
+                            <img src={location} alt="Icono maps" />
+                            {userInfo.city}, {userInfo.postal_code}
+                        </p>
+                    </div>
+                    : clicState === 'information'
+                        ? <p>No se ha encontrado al usuario</p>
+                        : null
+                }
                 <section>
-
                     {
                         userProducts && clicState === 'sell'
-                            ? <ul>
+                            ? <ul id='productsOnSale'>
                                 {userProducts.filter((product) => product.availability === 1).map((product) => {
                                     return <li key={product.id}><ProductCard product={product}/></li>;
                                 })}
                             </ul>
-                            :clicState === 'sell' ? <p>Producto no encontrado</p>
+                            : clicState === 'sell'
+                                ? <p>Producto no encontrado</p>
                                 : null
                     }
 
                     {
                         reviews && clicState === 'rate'
-                            ? <ul>
+                            ? <ul id='userReviews'>
                                 {reviews.map((review) => {
                                     return <li key={review.product_id}>
                                         <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${review.product_images}`} alt="Foto del producto" />
@@ -80,28 +102,9 @@ const UserProfilePage = () => {
                                     </li>;
                                 })}
                             </ul>
-                            : clicState === 'rate' ? <p>El usuario no tiene reviews</p>
+                            : clicState === 'rate'
+                                ? <p>El usuario no tiene reviews</p>
                                 : null
-                    }
-
-                    { userInfo && clicState === 'information'
-                        ? <>
-                            <UserWithRating
-                                username={userInfo.first_name}
-                                lastName={userInfo.last_name}
-                                avatar={`${import.meta.env.VITE_BACK_URL}/uploads/${userInfo.avatar}`}
-                                idUser={userInfo.id}/>
-                            <p>
-                                <img src={whatsapp} alt="Icono de whatsapp" />
-                                Whatsapp
-                            </p>
-                            <p>
-                                <img src={location} alt="Icono maps" />
-                                {userInfo?.city}, {userInfo?.postal_code}
-                            </p>
-                        </>
-                        : clicState === 'information' ? <p>No se ha encontrado al usuario</p>
-                            : null
                     }
 
                     { clicState === 'information' && userInfo && userInfo.bio
@@ -130,13 +133,10 @@ const UserProfilePage = () => {
                             <img src={doubleCheck} alt="Icono de doble check" />
                         </article>
                         : clicState === 'information'
-                        ? <p>No se ha encontrado al usuario</p>
-                        : null
+                            ? <p>No se ha encontrado al usuario</p>
+                            : null
                     }
-
-
                 </section>
-
             </main>
             <Footer/>
         </>
