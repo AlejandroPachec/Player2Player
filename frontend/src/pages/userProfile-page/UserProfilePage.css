@@ -1,0 +1,9 @@
+@import url('../../index.css');
+
+.profileMenu{
+  background-image: var(--blackGradient);
+  display: inline-block;
+  border-radius: 40px;
+  padding: 1rem;
+  
+}

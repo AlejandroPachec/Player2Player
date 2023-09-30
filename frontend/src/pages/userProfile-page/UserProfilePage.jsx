@@ -12,6 +12,7 @@ import doubleCheck from '../../assets/Vector.svg';
 import ReadOnlyRating from '../../components/readOnly-rating/ReadOnlyRating';
 import emailIcon from '../../assets/emailIcon.svg';
 import { useState } from 'react';
+import './UserProfilePage.css';
 
 const UserProfilePage = () => {
     const { idUser } = useParams();
@@ -22,7 +23,8 @@ const UserProfilePage = () => {
     const ratingsNumber = reviews?.length;
     const userProducts = user?.products;
     const sellingItems = userProducts?.filter((product) => product.availability === 1).length;
-
+    console.log(reviews);
+    console.log(userProducts);
     const [clicState, setClic] = useState('sell');
 
 
@@ -33,7 +35,7 @@ const UserProfilePage = () => {
         <>
             <MainHeader/>
             <main>
-                <nav>
+                <nav className='profileMenu'>
                     <a onClick = { () => { setClic('sell'); } }>
                         <span>{sellingItems}</span>
                         <p>En venta</p>
@@ -63,8 +65,8 @@ const UserProfilePage = () => {
                     }
 
                     {
-                        reviews && reviews === 'rate'
-                            ? (<ul>
+                        reviews && clicState === 'rate'
+                            ? <ul>
                                 {reviews.map((review) => {
                                     return <li key={review.product_id}>
                                         <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${review.product_images}`} alt="Foto del producto" />
@@ -77,7 +79,7 @@ const UserProfilePage = () => {
                                         <ReadOnlyRating name="half-rating-read" value={parseInt(review.stars)} precision={0.5} readOnly />
                                     </li>;
                                 })}
-                            </ul>)
+                            </ul>
                             : clicState === 'rate' ? <p>El usuario no tiene reviews</p>
                                 : null
                     }
@@ -102,19 +104,19 @@ const UserProfilePage = () => {
                             : null
                     }
 
-                    {
-                        clicState === 'information' && userInfo && userInfo.bio
-                            ? (<article>
-                                <h2>Descripción</h2>
-                                <p>{bio}</p>
-                            </article>)
-                            : clicState === 'information' ? (
+                    { clicState === 'information' && userInfo && userInfo.bio
+                        ? (<article>
+                            <h2>Descripción</h2>
+                            <p>{bio}</p>
+                        </article>)
+                        : clicState === 'information'
+                            ? (
                                 <article>
                                     <h2>Descripción</h2>
                                     <p>¡Fantástico! ¡Como todos nuestros usuarios! </p>
                                 </article>
                             )
-                                : null
+                            : null
                     }
 
                     { userInfo && clicState === 'information'
@@ -127,8 +129,9 @@ const UserProfilePage = () => {
                             <span>Email</span>
                             <img src={doubleCheck} alt="Icono de doble check" />
                         </article>
-                        : clicState === 'information' ? <p>No se ha encontrado al usuario</p>
-                            : null
+                        : clicState === 'information'
+                        ? <p>No se ha encontrado al usuario</p>
+                        : null
                     }
 
 
