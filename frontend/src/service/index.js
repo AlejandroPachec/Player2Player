@@ -106,3 +106,23 @@ export const getUserReviewsService = async (idUser) => {
 
     return data.data;
 };
+
+export async function addProductService (formData, token) {
+    const response = await fetch(`${import.meta.env.VITE_BACK_URL}/products/addProduct`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            token
+        },
+        body: JSON.stringify(formData)
+    });
+
+    if (!response.ok) {
+        throw new Error('Error en la solicitud');
+    }
+
+    const data = await response.json();
+
+    return data;
+}
+
