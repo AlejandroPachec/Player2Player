@@ -87,7 +87,6 @@ export const addOrderService = async (idProduct, token, { userSellerId }) => {
 
 export const getUserProfileService = async (idUser) => {
     const response = await fetch(`${import.meta.env.VITE_BACK_URL}/user/profile/${idUser}`);
-
     const data = await response.json();
 
     if (!response.ok) {
@@ -97,3 +96,13 @@ export const getUserProfileService = async (idUser) => {
     return data.data;
 };
 
+export const getUserReviewsService = async (idUser) => {
+    const response = await fetch(`${import.meta.env.VITE_BACK_URL}/reviews/${idUser}`);
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error);
+    }
+
+    return data.data;
+};
