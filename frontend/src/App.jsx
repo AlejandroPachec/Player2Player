@@ -14,7 +14,7 @@ function App () {
     return (
         <Routes>
             <Route path='/product/addProduct' element={<AddProductPage/>} />
-            <Route path='/user/edit/:idUser' element={<EditUserPage/>} />
+            <Route path='/user/edit' element={<EditUserPage/>} />
             <Route path='/user/orders/:sellerUser' element={<OrderManagementPage/>} />
             <Route path='/user/profile/:idUser' element={<UserProfilePage/>}/>
             <Route path='/product/:idProduct' element={<ProductPage/>}/>
