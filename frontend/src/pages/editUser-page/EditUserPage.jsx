@@ -16,15 +16,15 @@ const EditUserPage = () => {
     const { token, user } = useContext(UserAuthContext);
     const [error, setError] = useState('');
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        bio: '',
-        city: '',
-        postalCode: '',
-        phone: '',
-        email: '',
-        password: '',
-        avatar: ''
+        firstName: '' || user.first_name,
+        lastName: '' || user.last_name,
+        bio: '' || user.bio,
+        city: '' || user.city,
+        postalCode: '' || user.postal_code,
+        phone: '' || user.phone_number,
+        email: '' || user.email,
+        password: '' || user.password,
+        avatar: [] || user.avatar
     });
 
 
@@ -73,17 +73,17 @@ const EditUserPage = () => {
             <main>
                 <h1>Editar perfil</h1>
                 <form onSubmit={handleSubmit}>
-                    <GeneralInput type={'text'} value={user.firstName} placeholder={'Nombre'} handleChange={handleChange}/>
-                    <GeneralInput type={'text'} value={user.lastName} placeholder={'Primer apellido'} handleChange={handleChange}/>
+                    <GeneralInput type={'text'} value={'firstName'} placeholder={'Nombre'} handleChange={handleChange}/>
+                    <GeneralInput type={'text'} value={'lastName'} placeholder={'Primer apellido'} handleChange={handleChange}/>
                     <TextArea
                         placeholder={'Biografía'}
-                        value={user.bio}
+                        value={'bio'}
                         handleChange={handleChange}
                     />
-                    <GeneralInput type={'text'} value={user.city} placeholder={'Ciudad'} handleChange={handleChange}/>
-                    <GeneralInput type={'text'} value={user.postalCode} placeholder={'Código postal'} handleChange={handleChange}/>
-                    <GeneralInput type={'phone'} value={user.phone} placeholder={'Teléfono'} handleChange={handleChange}/>
-                    <GeneralInput type={'email'} value={user.email} placeholder={'correo@ejemplo.com'} handleChange={handleChange}/>
+                    <GeneralInput type={'text'} value={'city'} placeholder={'Ciudad'} handleChange={handleChange}/>
+                    <GeneralInput type={'text'} value={'postalCode'} placeholder={'Código postal'} handleChange={handleChange}/>
+                    <GeneralInput type={'phone'} value={'phone'} placeholder={'Teléfono'} handleChange={handleChange}/>
+                    <GeneralInput type={'email'} value={'email'} placeholder={'correo@ejemplo.com'} handleChange={handleChange}/>
                     <Password value={'password'} placeholder={'Nueva contraseña'} handleChange={handleChange}/>
                     <Password value={'pass2'} placeholder={'Repite la contraseña'} handleChange={handleChange}/>
                     {error ? <p>{error}</p> : null}
