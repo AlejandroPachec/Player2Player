@@ -6,7 +6,7 @@ import TextArea from '../../components/text-area/TextArea';
 import SecondaryButton from '../../components/secondary-button/SecondaryButton';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import { addProductService } from '../../service';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function AddProductPage () {
     const { token } = useContext(UserAuthContext);
@@ -97,7 +97,9 @@ function AddProductPage () {
                         multiple
                         onChange={handleImages}
                     />
-                    <SecondaryButton text={'Cancelar'} />
+                    <Link to={'/'}>
+                        <SecondaryButton text={'Cancelar'} />
+                    </Link>
                     <MainButton text={'Añadir un producto'} type="submit" />
                 </form>
                 { error ? <p>{error}</p> : null}
