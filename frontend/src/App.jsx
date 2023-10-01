@@ -7,11 +7,13 @@ import NotFoundPage from './pages/notFound-page/NotFoundPage';
 import ProductPage from './pages/product-page/ProductPage';
 import UserProfilePage from './pages/userProfile-page/UserProfilePage';
 import AddProductPage from './pages/addProduct-page/AddProductPage';
+import OrderManagementPage from './pages/orderManagement-page/OrderManagementPage';
 
 function App () {
     return (
         <Routes>
             <Route path='/product/addProduct' element={<AddProductPage/>} />
+            <Route path='/user/orders/:sellerUser' element={<OrderManagementPage/>} />
             <Route path='/user/profile/:idUser' element={<UserProfilePage/>}/>
             <Route path='/product/:idProduct' element={<ProductPage/>}/>
             <Route path='/user/login' element={<LoginPage/>} />

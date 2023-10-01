@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import './productItem.css';
 
 const ProductItem = ({ product }) => {
     const { product_id: id, product_photos: photos, product_category: category, product_name: name, product_state: state, seller_city: sellerCity, product_time: time, product_price: price } = product;

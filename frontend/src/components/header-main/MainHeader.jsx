@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import Logo from '../logo/Logo';
 import LoginAvatar from '../logIn-avatar/LoginAvatar';
 import NoLoggedInAvatar from '../no-loggedin-avatar/NoLoggednInAvatar';
+import './mainHeader.css';
 
 const MainHeader = () => {
     const { token } = useContext(UserAuthContext);

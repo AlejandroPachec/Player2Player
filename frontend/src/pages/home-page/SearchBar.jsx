@@ -57,11 +57,15 @@ function SearchBar () {
     };
     return (
         <>
-            <SearchCategoryItem categoryText={'Consolas'} onClick={setCategory}/>
-            <SearchCategoryItem categoryText={'VideoJuegos'} onClick={setCategory}/>
-            <SearchCategoryItem categoryText={'Accesorios'} onClick={setCategory}/>
-            <SearchCategoryItem categoryText={'Retro'} onClick={setCategory}/>
-            <SearchCategoryItem categoryText={'Ordenadores'} onClick={setCategory}/>
+            <header>
+                <ul>
+                    <SearchCategoryItem categoryText={'Consolas'} onClick={setCategory}/>
+                    <SearchCategoryItem categoryText={'VideoJuegos'} onClick={setCategory}/>
+                    <SearchCategoryItem categoryText={'Accesorios'} onClick={setCategory}/>
+                    <SearchCategoryItem categoryText={'Retro'} onClick={setCategory}/>
+                    <SearchCategoryItem categoryText={'Ordenadores'} onClick={setCategory}/>
+                </ul>
+            </header>
             <form onSubmit={handleSubmit}>
                 <button type='submit'>
                     <img src={searchIcon} alt='Lupita buscar' />

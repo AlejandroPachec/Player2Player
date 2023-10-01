@@ -134,3 +134,19 @@ export const addProductService = async (token, formData) => {
         throw new Error(data.error);
     }
 };
+
+export const getUserOrdersService = async (sellerUser, token) => {
+    const response = await fetch(`${import.meta.env.VITE_BACK_URL}/orders/user/${sellerUser}`, {
+        method: 'GET',
+        headers: {
+            token
+        }
+    });
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error);
+    }
+
+    return data.data;
+};
