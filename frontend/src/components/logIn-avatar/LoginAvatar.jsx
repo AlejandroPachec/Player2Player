@@ -52,7 +52,9 @@ const LoginAvatar = () => {
                         <MenuItem onClick={handleClose}>Añadir producto</MenuItem>
                     </Link>
                     <MenuItem onClick={handleClose}>Editar perfil</MenuItem>
-                    <MenuItem onClick={handleClose}>Gestión de ventas</MenuItem>
+                    <Link to={`/user/orders/${user.id}`}>
+                        <MenuItem onClick={handleClose}>Gestión de ventas</MenuItem>
+                    </Link>
                     <MenuItem onClick={handleClose}>Ver pedidos</MenuItem>
                     <MenuItem onClick={handleClose}>Añadir valoración</MenuItem>
                     <MenuItem onClick={handleClose}>Cerrar sesión</MenuItem>
