@@ -1,4 +1,3 @@
-import HeaderSecond from '../../components/header-second/HeaderSecond';
 import Footer from '../../components/footer/Footer';
 import GeneralInput from '../../components/generalInput/GeneralInput';
 import Password from '../../components/password/Password';
@@ -8,68 +7,75 @@ import { editUserService } from '../../service';
 import { useNavigate } from 'react-router-dom';
 import TextArea from '../../components/text-area/TextArea';
 import SecondaryButton from '../../components/secondary-button/SecondaryButton';
-import Loading from '../../components/loading/Loading';
 import { UserAuthContext } from '../../context/UserAuthContext';
+import MainHeader from '../../components/header-main/MainHeader';
 
 const EditUserPage = () => {
     const navigate = useNavigate();
     const { token, user } = useContext(UserAuthContext);
-    const [error, setError] = useState('');
-    const [formData, setFormData] = useState({
-        firstName: '' || user.first_name,
-        lastName: '' || user.last_name,
-        bio: '' || user.bio,
-        city: '' || user.city,
-        postalCode: '' || user.postal_code,
-        phone: '' || user.phone_number,
-        email: '' || user.email,
-        password: '' || user.password,
-        avatar: [] || user.avatar
+    const [passError, setPassError] = useState('');
+    const [errorSubmit, setErrorSubmit] = useState('');
+
+    const [formValues, setFormValues] = useState({
+        firstName: '',
+        lastName: '',
+        bio: '',
+        city: '',
+        postalCode: '',
+        phone: '',
+        email: '',
+        password: '',
+        avatar: ''
     });
 
+    function handleChange (event) {
+        const newFormValues = event.target.value;
 
-    async function handleImages (event) {
-        setFormData({
-            ...formData,
-            [event.target.name]: [...event.target.files]
+        setFormValues({
+            ...formValues,
+            [event.target.name]: newFormValues
         });
     }
 
-    function handleChange (event) {
-        const newFormData = event.target.value;
-
-        setFormData({
-            ...formData,
-            [event.target.name]: newFormData
+    async function handleImages (event) {
+        setFormValues({
+            ...formValues,
+            [event.target.name]: event.target.files[0]
         });
     }
 
     async function handleSubmit (event) {
         event.preventDefault();
 
-        setError('');
+        if (formValues.password !== '' && formValues.pass !== '') {
+            if (formValues.password !== formValues.pass2) {
+                setPassError('Los campos de contraseña no coinciden');
+            }
+        }
 
-        if (formData.password !== formData.pass2) {
-            setError('Los campos de contraseña no coinciden');
+        const editedValues = {};
+        for (const value in formValues) {
+            if (value !== 'pass2') {
+                if (formValues[value] !== '') {
+                    console.log(value, formValues[value]);
+                    editedValues[value] = formValues[value];
+                }
+            }
         }
 
         try {
-            await editUserService(token, formData);
+            await editUserService(token, editedValues);
             setTimeout(() => {
-                navigate('/user/profile');
+                navigate(`/user/profile/${user.id}`);
             }, 3000);
         } catch (error) {
-            setError(error.message);
+            setErrorSubmit(error.message);
         }
-    }
-
-    if (!user) {
-        return <Loading />;
     }
 
     return (
         <>
-            <HeaderSecond/>
+            <MainHeader/>
             <main>
                 <h1>Editar perfil</h1>
                 <form onSubmit={handleSubmit}>
@@ -77,25 +83,25 @@ const EditUserPage = () => {
                     <GeneralInput type={'text'} value={'lastName'} placeholder={'Primer apellido'} handleChange={handleChange}/>
                     <TextArea
                         placeholder={'Biografía'}
-                        value={'bio'}
                         handleChange={handleChange}
+                        value={'bio'}
                     />
                     <GeneralInput type={'text'} value={'city'} placeholder={'Ciudad'} handleChange={handleChange}/>
-                    <GeneralInput type={'text'} value={'postalCode'} placeholder={'Código postal'} handleChange={handleChange}/>
                     <GeneralInput type={'phone'} value={'phone'} placeholder={'Teléfono'} handleChange={handleChange}/>
                     <GeneralInput type={'email'} value={'email'} placeholder={'correo@ejemplo.com'} handleChange={handleChange}/>
                     <Password value={'password'} placeholder={'Nueva contraseña'} handleChange={handleChange}/>
                     <Password value={'pass2'} placeholder={'Repite la contraseña'} handleChange={handleChange}/>
-                    {error ? <p>{error}</p> : null}
-                    <SecondaryButton type='button' text={'Cancelar'}/>
-                    <MainButton type='submit' text={'Guardar cambios'}/>
+                    {passError ? <p>{passError}</p> : null}
                     <input
                         placeholder='Selecciona tu foto de avatar'
                         type='file'
                         name='avatar'
                         onChange={handleImages}
                     />
+                    <SecondaryButton type='button' text={'Cancelar'}/>
+                    <MainButton type='submit' text={'Guardar cambios'}/>
                 </form>
+                { errorSubmit ? <p>{errorSubmit}</p> : null}
             </main>
             <Footer/>
         </>
@@ -103,3 +109,4 @@ const EditUserPage = () => {
 };
 
 export default EditUserPage;
+

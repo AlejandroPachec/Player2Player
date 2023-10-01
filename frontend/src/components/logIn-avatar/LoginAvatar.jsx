@@ -51,7 +51,9 @@ const LoginAvatar = () => {
                     <Link to={'/product/addProduct'}>
                         <MenuItem onClick={handleClose}>Añadir producto</MenuItem>
                     </Link>
-                    <MenuItem onClick={handleClose}>Editar perfil</MenuItem>
+                    <Link to={'/user/edit'}>
+                        <MenuItem onClick={handleClose}>Editar perfil</MenuItem>
+                    </Link>
                     <Link to={`/user/orders/${user.id}`}>
                         <MenuItem onClick={handleClose}>Gestión de ventas</MenuItem>
                     </Link>
