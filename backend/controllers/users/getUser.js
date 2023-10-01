@@ -29,19 +29,30 @@ async function getUser (req, res, next) {
         `, [userId]);
 
 
-        const [[products]] = await pool.query(`SELECT P.id, P.name, P.description, P.category, P.state, P.price, U.city, P.availability, P.created_at AS time, PP.name AS photo
+        const [products] = await pool.query(`
+        SELECT P.id, 
+        P.name, 
+        P.description, 
+        P.category, 
+        P.state, 
+        P.price, 
+        U.city, 
+        P.availability, 
+        P.created_at AS time, 
+        MAX(PP.name) AS photo
         FROM products P
         INNER JOIN users U ON P.user_id = U.id
         INNER JOIN product_photo PP ON PP.product_id = P.id
-        WHERE U.id = ?;`, [userId]);
-
+        WHERE U.id = ?
+        GROUP BY P.id, P.name, P.description, P.category, P.state, P.price, U.city, P.availability, P.created_at;
+        `, [userId]);
 
         res.status(200).send({
             status: 'ok',
             data: {
                 user,
                 avgReview,
-                products: [products]
+                products
             }
         });
     } catch (error) {
