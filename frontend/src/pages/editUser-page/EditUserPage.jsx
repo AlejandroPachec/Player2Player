@@ -3,10 +3,9 @@ import Footer from '../../components/footer/Footer';
 import GeneralInput from '../../components/generalInput/GeneralInput';
 import Password from '../../components/password/Password';
 import MainButton from '../../components/main-button/MainButton';
-import { useState, useEffect } from 'react';
-import { getUserService, editUserService } from '../../service';
+import { useState, useContext } from 'react';
+import { editUserService } from '../../service';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
 import TextArea from '../../components/text-area/TextArea';
 import SecondaryButton from '../../components/secondary-button/SecondaryButton';
 import Loading from '../../components/loading/Loading';
@@ -15,7 +14,8 @@ import { UserAuthContext } from '../../context/UserAuthContext';
 const EditUserPage = () => {
     const navigate = useNavigate();
     const { token, user } = useContext(UserAuthContext);
-    const [formValues, setFormValues] = useState({
+    const [error, setError] = useState('');
+    const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
         bio: '',
@@ -29,18 +29,18 @@ const EditUserPage = () => {
 
 
     async function handleImages (event) {
-        setFormValues({
-            ...formValues,
+        setFormData({
+            ...formData,
             [event.target.name]: [...event.target.files]
         });
     }
 
     function handleChange (event) {
-        const newFormValues = event.target.value;
+        const newFormData = event.target.value;
 
-        setFormValues({
-            ...formValues,
-            [event.target.name]: newFormValues
+        setFormData({
+            ...formData,
+            [event.target.name]: newFormData
         });
     }
 
@@ -49,12 +49,12 @@ const EditUserPage = () => {
 
         setError('');
 
-        if (formValues.password !== formValues.pass2) {
+        if (formData.password !== formData.pass2) {
             setError('Los campos de contraseña no coinciden');
         }
 
         try {
-            await editUserService(formValues);
+            await editUserService(token, formData);
             setTimeout(() => {
                 navigate('/user/profile');
             }, 3000);
@@ -77,9 +77,11 @@ const EditUserPage = () => {
                     <GeneralInput type={'text'} value={user.lastName} placeholder={'Primer apellido'} handleChange={handleChange}/>
                     <TextArea
                         placeholder={'Biografía'}
+                        value={user.bio}
                         handleChange={handleChange}
                     />
                     <GeneralInput type={'text'} value={user.city} placeholder={'Ciudad'} handleChange={handleChange}/>
+                    <GeneralInput type={'text'} value={user.postalCode} placeholder={'Código postal'} handleChange={handleChange}/>
                     <GeneralInput type={'phone'} value={user.phone} placeholder={'Teléfono'} handleChange={handleChange}/>
                     <GeneralInput type={'email'} value={user.email} placeholder={'correo@ejemplo.com'} handleChange={handleChange}/>
                     <Password value={'password'} placeholder={'Nueva contraseña'} handleChange={handleChange}/>
