@@ -21,6 +21,7 @@ function useGetUserOrders (sellerUser, token) {
 
         loadOrders();
     }, [sellerUser, token]);
+
     return { error, loading, userOrders };
 }
 

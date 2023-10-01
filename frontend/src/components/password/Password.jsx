@@ -4,7 +4,7 @@ import { useState } from 'react';
 import openEye from '../../assets/openEye.svg';
 import closedEye from '../../assets/closeEye.svg';
 
-function Password ({ value, handleChange }) {
+function Password ({ placeholder, value, handleChange }) {
     const [showPassword, setShowPassword] = useState(false);
 
     function togglePasswordVisibility () {
@@ -18,7 +18,7 @@ function Password ({ value, handleChange }) {
             <input
                 type={showPassword ? 'text' : 'password'}
                 className='password'
-                placeholder='Contraseña'
+                placeholder={placeholder}
                 name={value}
                 id={value}
                 onChange={handleChange}
@@ -35,7 +35,8 @@ function Password ({ value, handleChange }) {
 
 Password.propTypes = {
     value: PropTypes.string.isRequired,
-    handleChange: PropTypes.func.isRequired
+    handleChange: PropTypes.func.isRequired,
+    placeholder: PropTypes.string.isRequired
 };
 
 export default Password;

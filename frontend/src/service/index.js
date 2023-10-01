@@ -147,6 +147,34 @@ export const getUserOrdersService = async (sellerUser, token) => {
     if (!response.ok) {
         throw new Error(data.error);
     }
-
     return data.data;
+};
+
+export const editUserService = async (token, formData) => {
+    const editUserForm = new FormData();
+
+    editUserForm.append('firstName', formData.firstName);
+    editUserForm.append('lastName', formData.lastName);
+    editUserForm.append('bio', formData.bio);
+    editUserForm.append('city', formData.city);
+    editUserForm.append('postalCode', formData.postalCode);
+    editUserForm.append('email', formData.email);
+    editUserForm.append('phone', formData.phone);
+    editUserForm.append('password', formData.password);
+    editUserForm.append('avatar', formData.avatar);
+
+
+    const response = await fetch(`${import.meta.env.VITE_BACK_URL}/user/edit`, {
+        method: 'PUT',
+        headers: {
+            token
+        },
+        body: editUserForm
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error);
+    }
 };

@@ -8,11 +8,13 @@ import ProductPage from './pages/product-page/ProductPage';
 import UserProfilePage from './pages/userProfile-page/UserProfilePage';
 import AddProductPage from './pages/addProduct-page/AddProductPage';
 import OrderManagementPage from './pages/orderManagement-page/OrderManagementPage';
+import EditUserPage from './pages/editUser-page/EditUserPage';
 
 function App () {
     return (
         <Routes>
             <Route path='/product/addProduct' element={<AddProductPage/>} />
+            <Route path='/user/edit/:idUser' element={<EditUserPage/>} />
             <Route path='/user/orders/:sellerUser' element={<OrderManagementPage/>} />
             <Route path='/user/profile/:idUser' element={<UserProfilePage/>}/>
             <Route path='/product/:idProduct' element={<ProductPage/>}/>

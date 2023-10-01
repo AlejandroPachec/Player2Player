@@ -12,10 +12,10 @@ const UserProfilePage = () => {
     const { token } = useContext(UserAuthContext);
     const { loading, error, userOrders } = useGetUserOrders(sellerUser, token);
     const userInfo = userOrders?.ordersInfo;
-    console.log(userInfo);
     const avgRating = userOrders?.rating?.userAvgReviews;
     if (loading) return <Loading/>;
     if (error) return <p>{error.message}</p>;
+
 
     return (
         <>
@@ -37,15 +37,20 @@ const UserProfilePage = () => {
                     }
                 </section>
                 <section>
-                    <h2>Rechazadas</h2>
                     {
-                        userInfo
-                            ? <ul id='rejetedOrders'>
-                                {userInfo.filter((order) => order.status === 'Rechazado').map((order) => {
-                                    return <li key={order.id}><OrderCard order={order} avgRating={avgRating}/></li>;
-                                })}
-                            </ul>
+                        userInfo && userInfo.some((order) => {
+                            return order.status === 'Rechazado';
+                        })
+                            ? <>
+                                <h2>Rechazadas</h2>
+                                <ul id='rejetedOrders'>
+                                    {userInfo.filter((order) => order.status === 'Rechazado').map((order) => {
+                                        return <li key={order.id}><OrderCard order={order} avgRating={avgRating}/></li>;
+                                    })}
+                                </ul>
+                            </>
                             : <p>No has rechazado niguna solicitud</p>
+
                     }
                 </section>
             </main>
