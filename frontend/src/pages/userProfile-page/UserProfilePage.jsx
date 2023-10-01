@@ -59,10 +59,11 @@ const UserProfilePage = () => {
                             lastName={userInfo.last_name}
                             avatar={`${import.meta.env.VITE_BACK_URL}/uploads/${userInfo.avatar}`}
                             idUser={idUser}/>
-                        <ReadOnlyRating value={user.avgReview.userAvgReviews} precision={0.5} readOnly/>
+                        <ReadOnlyRating value={user.avgReview?.userAvgReviews} precision={0.5} readOnly/>
                         <p>
-                            <img src={whatsapp} alt="Icono de whatsapp" />
-                                Whatsapp
+                            <a href={`tel:${userInfo.phone_number}`}>
+                                <img src={whatsapp} alt="Icono de whatsapp" />Whatsapp
+                            </a>
                         </p>
                         <p>
                             <img src={location} alt="Icono maps" />
