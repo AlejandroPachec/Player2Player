@@ -14,45 +14,48 @@ const UserProfilePage = () => {
     const userInfo = userOrders?.ordersInfo;
     const avgRating = userOrders?.rating?.userAvgReviews;
     if (loading) return <Loading/>;
-    if (error) return <p>{error.message}</p>;
 
 
     return (
         <>
             <MainHeader/>
             <main>
-
-                <section>
-                    <h2>Solicitudes de compra pendientes</h2>
-                    {
-                        userInfo
-                            ? <ul id='pendingOrders'>
-                                {userInfo.filter((order) => order.status === 'Pendiente').map((order) => {
-                                    return <li key={order.id}>
-                                        <OrderCard order={order} avgRating={avgRating}/>
-                                    </li>;
-                                })}
-                            </ul>
-                            : <p>No tienes ninguna solicitud de compra pendiente</p>
-                    }
-                </section>
-                <section>
-                    {
-                        userInfo && userInfo.some((order) => {
-                            return order.status === 'Rechazado';
-                        })
-                            ? <>
-                                <h2>Rechazadas</h2>
-                                <ul id='rejetedOrders'>
-                                    {userInfo.filter((order) => order.status === 'Rechazado').map((order) => {
-                                        return <li key={order.id}><OrderCard order={order} avgRating={avgRating}/></li>;
-                                    })}
-                                </ul>
-                            </>
-                            : <p>No has rechazado niguna solicitud</p>
-
-                    }
-                </section>
+                {
+                    !error
+                        ? <>
+                            <section>
+                                <h2>Solicitudes de compra pendientes</h2>
+                                {
+                                    userInfo
+                                        ? <ul id='pendingOrders'>
+                                            {userInfo.filter((order) => order.status === 'Pendiente').map((order) => {
+                                                return <li key={order.id}>
+                                                    <OrderCard order={order} avgRating={avgRating}/>
+                                                </li>;
+                                            })}
+                                        </ul>
+                                        : <p>No tienes ninguna solicitud de compra pendiente</p>
+                                }
+                            </section>
+                            <section>
+                                {
+                                    userInfo && userInfo.some((order) => {
+                                        return order.status === 'Rechazado';
+                                    })
+                                        ? <>
+                                            <h2>Rechazadas</h2>
+                                            <ul id='rejetedOrders'>
+                                                {userInfo.filter((order) => order.status === 'Rechazado').map((order) => {
+                                                    return <li key={order.id}><OrderCard order={order} avgRating={avgRating}/></li>;
+                                                })}
+                                            </ul>
+                                        </>
+                                        : <p>No has rechazado niguna solicitud</p>
+                                }
+                            </section>
+                        </>
+                        : <p>{error}</p>
+                }
             </main>
             <Footer/>
         </>
