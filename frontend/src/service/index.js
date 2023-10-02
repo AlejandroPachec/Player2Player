@@ -178,3 +178,37 @@ export const seeOrdersService = async (token) => {
     }
     return data.data;
 };
+
+export const exchangeSetService = async (token, order) => {
+    const response = await fetch(`${import.meta.env.VITE_BACK_URL}/orders/confirm/${order.id}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            token
+        },
+        body: JSON.stringify({ exchangePlace: order.exchangePlace, exchangeTime: order.exchangeTime })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error);
+    }
+};
+
+export const rejectOrderService = async (token, idOrder) => {
+    const response = await fetch(`${import.meta.env.VITE_BACK_URL}/orders/reject/${idOrder}`, {
+        method: 'POST',
+        headers: {
+            token
+        }
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error);
+    }
+};
+
+

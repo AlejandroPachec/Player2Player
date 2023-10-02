@@ -12,6 +12,6 @@ orderRouter.post('/user/:idProduct', authUser, addOrder);
 orderRouter.get('/:idOrder?', authUser, getUserOrder);
 orderRouter.get('/user/:idUser', authUser, getAllUserOrders);
 orderRouter.put('/confirm/:idOrder', authUser, confirmOrder);
-orderRouter.put('/deny/:idOrder', authUser, rejectOrder);
+orderRouter.put('/reject/:idOrder', authUser, rejectOrder);
 
 module.exports = orderRouter;

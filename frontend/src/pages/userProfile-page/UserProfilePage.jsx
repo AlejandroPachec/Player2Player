@@ -33,24 +33,22 @@ const UserProfilePage = () => {
             <MainHeader/>
             <main>
                 {
-                    userProducts && sellingItems && ratingsNumber
-                        ? <nav className='profileMenu'>
-                            <a onClick = { () => { setClic('sell'); } }>
-                                <span>{sellingItems}</span>
-                                <p>En venta</p>
-                            </a>
-                            <a onClick = { () => { setClic('rate'); } } >
-                                <span>{ratingsNumber}</span>
-                                <p>Valoraciones</p>
-                            </a>
-                            <a onClick = { () => { setClic('information'); }}>
-                                <span>
-                                    <BsPlusLg/>
-                                </span>
-                                <p>Información</p>
-                            </a>
-                        </nav>
-                        : <p>Todavía no has subido ningún producto</p>
+                    <nav className='profileMenu'>
+                        <a onClick = { () => { setClic('sell'); } }>
+                            <span>{sellingItems}</span>
+                            <p>En venta</p>
+                        </a>
+                        <a onClick = { () => { setClic('rate'); } } >
+                            <span>{ratingsNumber}</span>
+                            <p>Valoraciones</p>
+                        </a>
+                        <a onClick = { () => { setClic('information'); }}>
+                            <span>
+                                <BsPlusLg/>
+                            </span>
+                            <p>Información</p>
+                        </a>
+                    </nav>
                 }
                 { userInfo
                     ? <div>
@@ -76,14 +74,14 @@ const UserProfilePage = () => {
                 }
                 <section>
                     {
-                        userProducts && clicState === 'sell'
+                        userProducts && clicState === 'sell' && sellingItems !== 0
                             ? <ul id='productsOnSale'>
                                 {userProducts.filter((product) => product.availability === 1).map((product) => {
                                     return <li key={product.id}><ProductCard product={product}/></li>;
                                 })}
                             </ul>
                             : clicState === 'sell'
-                                ? <p>Producto no encontrado</p>
+                                ? <p>No tienes productos en venta</p>
                                 : null
                     }
 
