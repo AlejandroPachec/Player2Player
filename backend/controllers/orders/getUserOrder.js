@@ -19,8 +19,14 @@ async function getUserOrder (req, res, next) {
             queryParams = [orderId, userId];
         } else {
             query = `
-                SELECT *
-                FROM orders
+                SELECT O.*, P.name, P.description, P.price, P.state, PP.product_photo
+                FROM orders O
+                INNER JOIN products P ON O.product_id = P.id
+                LEFT JOIN LATERAL (
+                SELECT MAX(name) AS product_photo
+                FROM product_photo
+                WHERE product_id = O.product_id
+                ) AS PP ON true
                 WHERE user_buyer_id = ?;
             `;
             queryParams = [userId];
