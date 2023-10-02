@@ -1,10 +1,20 @@
 const getPool = require('../../db/connectDB');
+const generateError = require('../../helpers/generateError');
 
 async function getAllUserOrder (req, res, next) {
     try {
         const pool = await getPool();
         const { idUser } = req.params;
 
+        const [ordersExist] = await pool.query(`
+                SELECT *
+                FROM orders
+                WHERE user_seller_id = ?;
+            `, [idUser]);
+
+        if (!ordersExist.length) {
+            return next(generateError('Todavia no has recibido ninguna oferta por tus productos', 403));
+        }
 
         const [ordersInfo] = await pool.query(`
         SELECT
@@ -48,6 +58,7 @@ async function getAllUserOrder (req, res, next) {
             }
         });
     } catch (error) {
+        console.log(error);
         next(error);
     }
 }
