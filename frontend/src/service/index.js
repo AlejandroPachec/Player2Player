@@ -150,13 +150,7 @@ export const getUserOrdersService = async (sellerUser, token) => {
     return data.data;
 };
 
-export const editUserService = async (token, editedValues) => {
-    const editUserForm = new FormData();
-
-    for (const value in editedValues) {
-        editUserForm.append(`${value}`, `${editedValues[value]}`);
-    }
-
+export const editUserService = async (token, editUserForm) => {
     const response = await fetch(`${import.meta.env.VITE_BACK_URL}/user/edit`, {
         method: 'PUT',
         headers: {
