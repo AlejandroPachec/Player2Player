@@ -5,7 +5,7 @@ input {
     color: var(--mainFontColor);
     box-shadow: var(--boxShadow);
     padding: 0.5rem;
-    border-radius: 0.8rem;
+    border-radius: 2.5rem;
     outline: none;
 }
 
@@ -14,7 +14,7 @@ input:hover {
 }
 
 input:focus {
-    border: 1px solid skyblue;
+    color: var(--inputFocus);
 }
 
 input::placeholder {

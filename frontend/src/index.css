@@ -10,7 +10,7 @@
   --secondryBackgroundColor: rgba(64, 61, 57, 0.13);
   --boxShadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   --mainFontColor: #fffcf2;
-  --seconderyFontColor: #eb5e28;
+  --secondaryFontColor: #eb5e28;
   --placeHolderFontColor: rgba(204, 197, 185, 0.62);
   --green: #32f569;
   --yellow: #eaee34;
@@ -18,7 +18,8 @@
   --orangeGradient: linear-gradient(180deg, #EB5E28 0%, #FF922E 100%);
   --blackGradient: linear-gradient(180deg, rgba(64, 63, 57, 0.63) 0%, rgba(64, 61, 57, 0.00) 100%);
   --subtitleColor: rgba(204, 197, 185, 0.75);
-  --inputHoverBoxShadow: 0 0 0 .10rem rgba(135, 207, 235, 0.186);
+  --inputHoverBoxShadow: 0 0 0 .10rem rgba(255, 146, 46, 0.186);
+  --inputFocus: rgb(255, 146, 46);
 }
 
 @font-face {
@@ -38,9 +39,15 @@
 }
 
 body {
-  margin: 0 8rem;
+  margin: 0 4rem;
   font-family: 'Poppins', sans-serif;
   background-color: var(--mainBackgroundColor);
   color: var(--mainFontColor);
+  text-align: center;
+}
+
+p, h1, h2, ul {
+  margin: 0;
+  padding: 0;
 }
 

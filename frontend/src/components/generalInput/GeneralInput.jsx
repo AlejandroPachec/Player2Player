@@ -9,7 +9,8 @@ function GeneralInput ({ placeholder, value, type, handleChange }) {
                 name={value}
                 id={value}
                 onChange={handleChange}
-                autoComplete={value}/>
+                autoComplete='off'
+            />
         </label>
     );
 }

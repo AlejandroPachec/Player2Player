@@ -29,14 +29,14 @@ const LoginAvatar = () => {
                     aria-expanded={open ? 'true' : undefined}
                     onClick={handleClick}
                 >
-                    <div>
+                    <div className='edited-avatar'>
                         <p>{user.first_name} {user.last_name[0]}.</p>
+                        {
+                            user.avatar
+                                ? <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${user.avatar}`} alt="Foto de perfil" />
+                                : <img src={defaultAvatar} alt='Avatar por defecto'/>
+                        }
                     </div>
-                    {
-                        user.avatar
-                            ? <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${user.avatar}`} alt="Foto de perfil" />
-                            : <img src={defaultAvatar} alt='Avatar por defecto'/>
-                    }
                 </Button>
                 <Menu
                     id="fade-menu"
