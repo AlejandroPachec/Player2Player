@@ -32,7 +32,7 @@ const ProductPage = () => {
             setErrorBack(error.message);
         } finally {
             setTimeout(() => {
-                navigate('/');
+                navigate('/user/orders');
             }, 2000);
         }
     };
