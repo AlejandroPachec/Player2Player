@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import './styles.css';
 
 const LoginAvatar = () => {
-    const { user } = useContext(UserAuthContext);
+    const { user, logout } = useContext(UserAuthContext);
     const [navigate, setNavigate] = useState(null);
     const open = Boolean(navigate);
     const handleClick = (event) => {
@@ -54,12 +54,19 @@ const LoginAvatar = () => {
                     <Link to={'/user/edit'}>
                         <MenuItem onClick={handleClose}>Editar perfil</MenuItem>
                     </Link>
-                    <Link to={`/user/orders/${user.id}`}>
-                        <MenuItem onClick={handleClose}>Gestión de ventas</MenuItem>
+                    <Link to={`/user/profile/${user.id}`}>
+                        <MenuItem onClick={handleClose}>Ver perfil</MenuItem>
                     </Link>
-                    <MenuItem onClick={handleClose}>Ver pedidos</MenuItem>
+                    <Link to={`/user/orders/${user.id}`}>
+                        <MenuItem onClick={handleClose}>Gestionar ventas</MenuItem>
+                    </Link>
+                    <Link to={'/user/orders'}>
+                        <MenuItem onClick={handleClose}>Ver pedidos</MenuItem>
+                    </Link>
                     <MenuItem onClick={handleClose}>Añadir valoración</MenuItem>
-                    <MenuItem onClick={handleClose}>Cerrar sesión</MenuItem>
+                    <Link to={'/'}>
+                        <MenuItem onClick={logout}>Cerrar sesión</MenuItem>
+                    </Link>
                 </Menu>
             </div>
 

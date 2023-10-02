@@ -50,7 +50,7 @@ const UserProfilePage = () => {
                                 <p>Información</p>
                             </a>
                         </nav>
-                        : <p>Algo ha salido mal</p>
+                        : <p>Todavía no has subido ningún producto</p>
                 }
                 { userInfo
                     ? <div>
