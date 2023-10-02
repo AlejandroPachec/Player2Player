@@ -10,11 +10,12 @@ import AddProductPage from './pages/addProduct-page/AddProductPage';
 import OrderManagementPage from './pages/orderManagement-page/OrderManagementPage';
 import EditUserPage from './pages/editUser-page/EditUserPage';
 import SeeOrdersPage from './pages/see-orders-page/SeeOrdersPage';
-
+import ExchangeSetPage from './pages/exchangeSet-page/ExchangeSetPage';
 function App () {
     return (
         <Routes>
             <Route path='/product/addProduct' element={<AddProductPage/>} />
+            <Route path='/order/exchangeSet/:idOrder' element={<ExchangeSetPage/>} />
             <Route path='/user/edit' element={<EditUserPage/>} />
             <Route path='/user/orders' element={<SeeOrdersPage/>}/>
             <Route path='/user/orders/:sellerUser' element={<OrderManagementPage/>} />
