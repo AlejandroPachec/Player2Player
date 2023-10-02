@@ -8,7 +8,7 @@ import LoginAvatar from '../../components/logIn-avatar/LoginAvatar';
 function HomePageHeader () {
     const { token } = useContext(UserAuthContext);
     return (
-        <header>
+        <header className='homepage-header'>
             <Logo />
             <SearchBar />
             {

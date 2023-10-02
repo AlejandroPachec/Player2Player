@@ -1,0 +1,11 @@
+footer {
+  margin: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+footer > a:hover {
+  transform: scale(1.2);
+}

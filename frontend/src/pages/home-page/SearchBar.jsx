@@ -56,8 +56,8 @@ function SearchBar () {
         }
     };
     return (
-        <>
-            <header>
+        <div className='search-bar-complete'>
+            <nav className='search-bar'>
                 <ul>
                     <SearchCategoryItem categoryText={'Consolas'} onClick={setCategory}/>
                     <SearchCategoryItem categoryText={'VideoJuegos'} onClick={setCategory}/>
@@ -65,13 +65,10 @@ function SearchBar () {
                     <SearchCategoryItem categoryText={'Retro'} onClick={setCategory}/>
                     <SearchCategoryItem categoryText={'Ordenadores'} onClick={setCategory}/>
                 </ul>
-            </header>
-            <form onSubmit={handleSubmit}>
-                <button type='submit'>
-                    <img src={searchIcon} alt='Lupita buscar' />
-                </button>
+            </nav>
+            <form onSubmit={handleSubmit} className='search-bar-form'>
                 <GeneralInput placeholder={'¿Qué es lo que buscas?'} type={'text'} value={'productName'} handleChange={handleChange}/>
-                <div>
+                <div className='input-price'>
                     <p>Entre</p>
                     <GeneralInput placeholder={'0'} type={'number'} value={'minPrice'} handleChange={handleChange}/>
                     <p>y</p>
@@ -79,11 +76,14 @@ function SearchBar () {
                     <p>€</p>
                 </div>
                 <GeneralInput placeholder={'¿Dónde lo buscas?'} type={'text'} value={'productLocation'} handleChange={handleChange} />
+                <button type='submit'>
+                    <img src={searchIcon} alt='Lupita buscar' />
+                </button>
                 {
-                    error ? <p>{error}</p> : null
+                    error ? <p className='slidebar-error'>{error}</p> : null
                 }
             </form>
-        </>
+        </div>
     );
 }
 
