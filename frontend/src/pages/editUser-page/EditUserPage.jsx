@@ -53,18 +53,19 @@ const EditUserPage = () => {
             }
         }
 
-        const editedValues = {};
+        const editUserForm = new FormData();
+
         for (const value in formValues) {
-            if (value !== 'pass2') {
-                if (formValues[value] !== '') {
-                    console.log(value, formValues[value]);
-                    editedValues[value] = formValues[value];
-                }
+            console.log(value, formValues[value]);
+            if (value !== 'pass2' && formValues[value] !== '') {
+                editUserForm.append(`${value}`, `${formValues[value]}`);
             }
         }
 
+        console.log(editUserForm);
+
         try {
-            await editUserService(token, editedValues);
+            await editUserService(token, editUserForm);
             setTimeout(() => {
                 navigate(`/user/profile/${user.id}`);
             }, 3000);
