@@ -58,8 +58,8 @@ const RegisterPage = () => {
                     <GeneralInput type={'text'} value={'lastName'} placeholder={'Primer apellido'} handleChange={handleChange}/>
                     <GeneralInput type={'phone'} value={'phone'} placeholder={'Teléfono'} handleChange={handleChange}/>
                     <GeneralInput type={'email'} value={'email'} placeholder={'correo@ejemplo.com'} handleChange={handleChange}/>
-                    <Password value={'password'} handleChange={handleChange}/>
-                    <Password value={'pass2'} handleChange={handleChange}/>
+                    <Password value={'password'} handleChange={handleChange} placeholder={'Contraseña'}/>
+                    <Password value={'pass2'} handleChange={handleChange} placeholder={'Repetir contraseña'}/>
                     {error ? <p>{error}</p> : null}
                     <MainButton type='submit' text={'Registrarse'}/>
                 </form>

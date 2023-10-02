@@ -49,7 +49,7 @@ const LoginPage = () => {
                 <div>
                     <form onSubmit={handleSubmit}>
                         <GeneralInput placeholder={'correo@ejemplo.com'} type={'email'} value={'email'} handleChange={handleChange}/>
-                        <Password value={'password'} handleChange={handleChange}/>
+                        <Password value={'password'} handleChange={handleChange} placeholder={'Contraseña'}/>
                         {
                             error ? <p>{error}</p> : null
                         }

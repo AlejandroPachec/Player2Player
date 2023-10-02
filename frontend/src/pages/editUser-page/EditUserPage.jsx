@@ -47,7 +47,7 @@ const EditUserPage = () => {
     async function handleSubmit (event) {
         event.preventDefault();
 
-        if (formValues.password !== '' && formValues.pass !== '') {
+        if (formValues.password !== '' && formValues.pass2 !== '') {
             if (formValues.password !== formValues.pass2) {
                 setPassError('Los campos de contraseña no coinciden');
             }

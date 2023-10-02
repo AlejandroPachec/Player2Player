@@ -165,3 +165,16 @@ export const editUserService = async (token, editUserForm) => {
         throw new Error(data.error);
     }
 };
+
+export const seeOrdersService = async (token) => {
+    const response = await fetch(`${import.meta.env.VITE_BACK_URL}/orders`, {
+        headers: {
+            token
+        }
+    });
+    const data = await response.json();
+    if (!response.ok) {
+        throw new Error(data.error);
+    }
+    return data.data;
+};
