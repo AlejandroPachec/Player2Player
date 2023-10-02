@@ -4,10 +4,20 @@ import { UserAuthContext } from '../../context/UserAuthContext';
 import { useContext } from 'react';
 import useSeeOrders from '../../hooks/useSeeOrders';
 import ProductOrderInfo from './ProductOrderInfo';
+import Loading from '../../components/loading/Loading';
 
 const SeeOrders = () => {
     const { token } = useContext(UserAuthContext);
     const { orders, error, loading } = useSeeOrders(token);
+
+    if (loading) {
+        return <Loading />;
+    }
+
+    if (error) {
+        return <p>{error.message}</p>;
+    }
+
     return (
         <>
             <MainHeader />
