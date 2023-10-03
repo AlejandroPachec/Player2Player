@@ -1,6 +1,7 @@
 import GeneralInput from '../../components/generalInput/GeneralInput';
 import MainHeader from '../../components/header-main/MainHeader';
 import MainButton from '../../components/main-button/MainButton';
+import Footer from '../../components/footer/Footer';
 import { useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { UserAuthContext } from '../../context/UserAuthContext';
@@ -16,20 +17,12 @@ const ExchangeSetPage = () => {
     const { idOrder } = useParams();
 
     const [formError, setFormError] = useState('');
+    const [timeValues, setTimeValues] = useState(null);
+    const [exchangePlace, setExchangePlace] = useState('');
 
-    const [formValues, setFormValues] = useState({
-        exchangePlace: '',
-        exchangeTime: dayjs()
-    });
 
     function handleChange (event) {
-        const newFormValues = event.target.value;
-
-        setFormValues({
-            ...formValues,
-            [event.target.name]: newFormValues
-        });
-        console.log(formValues);
+        setExchangePlace(event.target.value);
     }
 
     async function handleSubmit (event) {
@@ -38,11 +31,16 @@ const ExchangeSetPage = () => {
         setFormError('');
 
         try {
-            const exchangeDate = new Date(formValues.exchangeTime.$d);
-            const exchangePlace = formValues.exchangePlace;
-            const newFormvalues = { exchangePlace, exchangeDate };
-            console.log(idOrder);
-            await exchangeSetService(token, idOrder, newFormvalues);
+            const date = new Date(timeValues);
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            const hour = date.getHours();
+            const minute = date.getMinutes();
+
+            const exchangeTime = `${year}-${month}-${day} ${hour}:${minute}`;
+            const newFormData = { exchangePlace, exchangeTime };
+            await exchangeSetService(token, idOrder, newFormData);
         } catch (error) {
             setFormError(error.message);
         }
@@ -57,13 +55,14 @@ const ExchangeSetPage = () => {
                     <section>
                         <form onSubmit={handleSubmit}>
                             <GeneralInput placeholder='Lugar de entrega' type='text' value={'exchangePlace'} handleChange={handleChange}/>
-                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <LocalizationProvider dateAdapter={AdapterDayjs} >
                                 <DemoContainer
                                     components={[
                                         'MobileDateTimePicker'
-                                    ]}>
-                                    <DemoItem placeholder='Selecciona un día y una hora'>
-                                        <MobileDateTimePicker defaultValue={dayjs()} onChange={handleChange} name='exchangeTime'/>
+                                    ]}
+                                >
+                                    <DemoItem placeholder='Selecciona un día y una hora' >
+                                        <MobileDateTimePicker onChange={(newValue) => setTimeValues(newValue)}name='exchangeTime'/>
                                     </DemoItem>
                                 </DemoContainer>
                             </LocalizationProvider>
@@ -80,6 +79,7 @@ const ExchangeSetPage = () => {
                     </section>
                 </main>
             </div>
+            <Footer />
         </>
 
     );
