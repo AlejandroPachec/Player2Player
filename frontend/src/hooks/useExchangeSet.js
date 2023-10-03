@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
-import { exchangeSetService } from '../service';
+import { seeOrderByIdService } from '../service';
 
-function useExchangeSet (order, token) {
+function useExchangeSet (token, idOrder) {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const [exchangeData, setExchangeData] = useState(null);
+    const [orderById, setOrderById] = useState(null);
 
     useEffect(() => {
         const loadExchangeSet = async () => {
             try {
                 setLoading(true);
-                const exchangeSet = await exchangeSetService(order, token);
-                setExchangeData(exchangeSet);
+                const data = await seeOrderByIdService(token, idOrder);
+                setOrderById(data);
             } catch (error) {
                 setError(error.message);
             } finally {
@@ -20,9 +20,9 @@ function useExchangeSet (order, token) {
         };
 
         loadExchangeSet();
-    }, [order, token]);
+    }, [token, idOrder]);
 
-    return { error, loading, exchangeData };
+    return { error, loading, orderById };
 }
 
 export default useExchangeSet;
