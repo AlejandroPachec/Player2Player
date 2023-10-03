@@ -3,7 +3,7 @@ import UserWithRating from '../../components/user-with-rating/UserWithRating';
 import MainButton from '../../components/main-button/MainButton';
 import SecondaryButton from '../../components/secondary-button/SecondaryButton';
 import ReadOnlyRating from '../../components/readOnly-rating/ReadOnlyRating';
-import { rejectOrderService } from '../../service';
+/* import { rejectOrderService } from '../../service'; */
 import { useNavigate } from 'react-router-dom';
 
 const OrderCard = ({ order, avgRating }) => {
@@ -11,9 +11,11 @@ const OrderCard = ({ order, avgRating }) => {
     // function handleReject () {
     //     rejectOrderService(order.id);
     // }
-    // function handleAccept () {
-    //     navigate(`/order/exchangeSet/${order.id}`);
-    // }
+    const { id: idOrder } = order;
+
+    function handleAccept () {
+        navigate(`/order/exchangeSet/${idOrder}`);
+    }
 
     return (
         <article>
@@ -37,8 +39,8 @@ const OrderCard = ({ order, avgRating }) => {
                             : null
                         }
                         <ReadOnlyRating value={avgRating}/>
-                        <SecondaryButton text='Rechazar' onClick={handleReject} />
-                        <MainButton text='Aceptar' onClick={handleAccept}/>
+                        <SecondaryButton text='Rechazar' /* onClick={handleReject} */ />
+                        <MainButton text='Aceptar' handleClick={handleAccept}/>
                     </>
                     : null
             }
