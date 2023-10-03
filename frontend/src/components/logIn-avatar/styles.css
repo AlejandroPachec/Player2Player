@@ -22,4 +22,5 @@
 .edited-avatar > img {
   width: 56px;
   margin-left: 0.5rem;
+  border-radius: 100%;
 }

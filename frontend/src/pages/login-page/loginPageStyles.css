@@ -12,7 +12,7 @@ main.login-main div.login-image-container img.login-image {
 }
 
 main.login-main div.login-form-container {
-    background: var(--blackGradient);
+    background: var(--secondryBackgroundColor);
     box-shadow: var(--boxShadow);
     border-radius: 1rem;
     padding: 1.5rem 3rem;
