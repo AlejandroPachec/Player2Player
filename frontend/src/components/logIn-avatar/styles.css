@@ -16,6 +16,7 @@
   align-items: center;
   color: var(--mainFontColor);
   margin-right: 2rem;
+  border-radius: 50%;
 }
 
 .edited-avatar > img {

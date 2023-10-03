@@ -46,13 +46,15 @@ const LoginPage = () => {
         <>
             <HeaderSecond />
             <main className='login-main'>
-                <img src={LogInImage} alt="Imagen" />
+                <div className='login-image-container'>
+                    <img src={LogInImage} alt="Imagen" className='login-image'/>
+                </div>
                 <div className='login-form-container'>
                     <form onSubmit={handleSubmit} className='login-form'>
                         <GeneralInput placeholder={'correo@ejemplo.com'} type={'email'} value={'email'} handleChange={handleChange} />
                         <Password value={'password'} handleChange={handleChange} placeholder={'Contraseña'} />
                         {
-                            error ? <p>{error}</p> : null
+                            error ? <p className='login-error'>{error}</p> : null
                         }
                         <MainButton text={'Iniciar sesión'}></MainButton>
                     </form>
