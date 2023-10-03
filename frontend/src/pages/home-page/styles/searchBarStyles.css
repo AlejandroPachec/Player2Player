@@ -42,7 +42,7 @@
 
 .search-bar-form > button {
   position: absolute;
-  right: 0;
+  right: 20px;
   bottom: 5rem;
   width: 56px;
   height: 56px;
@@ -64,10 +64,18 @@
 }
 
 input[name='minPrice'], input[name='maxPrice'] {
-  width: 4rem;
+  width: 4.5rem;
   border-radius: 0.65rem;
   text-align: center;
 }
+
+input[name='minPrice']::-webkit-outer-spin-button, 
+input[name='minPrice']::-webkit-inner-spin-button, 
+input[name='maxPrice']::-webkit-outer-spin-button,
+input[name='maxPrice']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 
 input[name='productName'], input[name='productLocation'] {
   padding-left: 1rem;
