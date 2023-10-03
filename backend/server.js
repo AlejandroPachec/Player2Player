@@ -20,11 +20,13 @@ app.use('/products', productsRouter);
 app.use('/orders', ordersRouter);
 app.use('/reviews', reviewsRouter);
 
-app.use((error, req, res, next) => {
-    const errorCode = error.statusCode ?? 500;
+app.use((err, req, res, next) => {
+    console.error(err);
+
+    const errorCode = err.statusCode ?? 500;
 
     res.status(errorCode).send({
-        error: error.message
+        error: err.message
     });
 });
 
