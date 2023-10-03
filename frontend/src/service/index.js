@@ -179,14 +179,15 @@ export const seeOrdersService = async (token) => {
     return data.data;
 };
 
-export const exchangeSetService = async (token, order) => {
-    const response = await fetch(`${import.meta.env.VITE_BACK_URL}/orders/confirm/${order.id}`, {
+export const exchangeSetService = async (token, idOrder, newFormValues) => {
+    console.log(token, idOrder, newFormValues);
+    const response = await fetch(`${import.meta.env.VITE_BACK_URL}/orders/confirm/${idOrder}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             token
         },
-        body: JSON.stringify({ exchangePlace: order.exchangePlace, exchangeTime: order.exchangeTime })
+        body: JSON.stringify(newFormValues)
     });
 
     const data = await response.json();
