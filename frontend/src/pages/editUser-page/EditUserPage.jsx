@@ -56,19 +56,14 @@ const EditUserPage = () => {
         const editUserForm = new FormData();
 
         for (const value in formValues) {
-            console.log(value, formValues[value]);
             if (value !== 'pass2' && formValues[value] !== '') {
-                editUserForm.append(`${value}`, `${formValues[value]}`);
+                editUserForm.append(value, formValues[value]);
             }
         }
 
-        console.log(editUserForm);
-
         try {
             await editUserService(token, editUserForm);
-            setTimeout(() => {
-                navigate(`/user/profile/${user.id}`);
-            }, 3000);
+            navigate(`/user/profile/${user.id}`);
         } catch (error) {
             setErrorSubmit(error.message);
         }
