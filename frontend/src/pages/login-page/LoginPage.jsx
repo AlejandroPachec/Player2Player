@@ -4,6 +4,7 @@ import LogInImage from '../../assets/loginImg.webp';
 import GeneralInput from '../../components/generalInput/GeneralInput';
 import Password from '../../components/password/Password';
 import MainButton from '../../components/main-button/MainButton';
+import './loginPageStyles.css';
 import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { loginUserService } from '../../service';
@@ -44,21 +45,21 @@ const LoginPage = () => {
     return (
         <>
             <HeaderSecond />
-            <main>
+            <main className='login-main'>
                 <img src={LogInImage} alt="Imagen" />
-                <div>
-                    <form onSubmit={handleSubmit}>
-                        <GeneralInput placeholder={'correo@ejemplo.com'} type={'email'} value={'email'} handleChange={handleChange}/>
-                        <Password value={'password'} handleChange={handleChange} placeholder={'Contraseña'}/>
+                <div className='login-form-container'>
+                    <form onSubmit={handleSubmit} className='login-form'>
+                        <GeneralInput placeholder={'correo@ejemplo.com'} type={'email'} value={'email'} handleChange={handleChange} />
+                        <Password value={'password'} handleChange={handleChange} placeholder={'Contraseña'} />
                         {
                             error ? <p>{error}</p> : null
                         }
                         <MainButton text={'Iniciar sesión'}></MainButton>
-                        <div>
-                            <p>¿Todavía no tienes cuenta?</p>
-                            <Link to='/user/create' >Regístrate</Link>
-                        </div>
                     </form>
+                    <div className='no-account'>
+                        <p>¿Todavía no tienes cuenta?</p>
+                        <Link to='/user/create' >Regístrate</Link>
+                    </div>
                 </div>
             </main>
             <Footer />

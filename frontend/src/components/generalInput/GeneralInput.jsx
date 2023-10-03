@@ -4,6 +4,7 @@ function GeneralInput ({ placeholder, value, type, handleChange }) {
     return (
         <label>
             <input
+                className='general-input'
                 type={type}
                 placeholder={placeholder}
                 name={value}

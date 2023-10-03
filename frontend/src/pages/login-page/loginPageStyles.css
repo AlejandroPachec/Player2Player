@@ -1,0 +1,46 @@
+main.login-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+main.login-main img {
+    max-width: 100%;
+    height: auto;
+}
+
+main.login-main div.login-form-container {
+    background: var(--blackGradient);
+    box-shadow: var(--boxShadow);
+    border-radius: 1rem;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+div.login-form-container form.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+div.no-account {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+div.no-account a {
+    text-decoration: none;
+    color: var(--secondaryFontColor);
+}
+
+div.no-account a:hover {
+    transform: scale(1.1);
+}
+

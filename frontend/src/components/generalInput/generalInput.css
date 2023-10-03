@@ -1,22 +1,21 @@
-input {
-    font-family: 'Poppins';
+.general-input {
     border: none;
+    outline: none;
     background: var(--blackGradient);
     color: var(--mainFontColor);
     box-shadow: var(--boxShadow);
-    padding: 0.5rem;
+    padding: 1rem;
     border-radius: 2.5rem;
-    outline: none;
 }
 
-input:hover {
+.general-input:hover {
     box-shadow: var(--inputHoverBoxShadow);
 }
 
-input:focus {
+.general-input:focus {
     color: var(--inputFocus);
 }
 
-input::placeholder {
+.general-input::placeholder {
     color: var(--placeHolderFontColor);
 }
