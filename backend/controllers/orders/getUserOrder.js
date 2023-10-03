@@ -12,7 +12,7 @@ async function getUserOrder (req, res, next) {
 
         if (orderId) {
             query = `
-                SELECT O.*, P.name, P.description, P.price, P.state, P.created_at, PP.product_photo, U.first_name, U.last_name
+                SELECT O.*, P.name, P.description, P.price, P.state, P.created_at, PP.product_photo, UB.first_name, UB.last_name
                 FROM orders O
                 INNER JOIN products P ON O.product_id = P.id
                 LEFT JOIN LATERAL (
@@ -20,8 +20,8 @@ async function getUserOrder (req, res, next) {
                 FROM product_photo
                 WHERE product_id = O.product_id
                 ) AS PP ON true
-                INNER JOIN users U ON U.id = O.user_buyer_id
-                WHERE O.id = ? AND O.user_buyer_id = ?;
+                INNER JOIN users UB ON UB.id = O.user_buyer_id 
+                WHERE O.id = ? AND O.user_seller_id = ?;
             `;
             queryParams = [orderId, userId];
         } else {
