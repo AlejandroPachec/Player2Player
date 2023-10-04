@@ -27,6 +27,10 @@ async function rejectOrder (req, res, next) {
 
         await emailVerification(email, subject, html);
 
+        await pool.query(`
+            UPDATE orders SET status = 'Rechazado' WHERE id = ?
+        `, [idOrder]);
+
         res.status(200).send({
             status: 'Ok',
             message: 'Le enviaremos un email al comprador notificando el rechazo del pedido'
