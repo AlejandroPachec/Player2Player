@@ -12,10 +12,10 @@ const OrderCard = ({ order, avgRating }) => {
     const navigate = useNavigate();
     const { token } = useContext(UserAuthContext);
 
-    const { id: idOrder } = order;
+    const { id: idOrder, user_buyer_id: buyerId } = order;
 
     function handleAccept () {
-        navigate(`/order/exchangeSet/${idOrder}`);
+        navigate(`/order/exchangeSet/${idOrder}/${buyerId}`);
     }
 
     async function handleReject () {
