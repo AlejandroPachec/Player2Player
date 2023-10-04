@@ -5,7 +5,6 @@ import { useContext } from 'react';
 import useSeeOrders from '../../hooks/useSeeOrders';
 import ProductOrderInfo from './ProductOrderInfo';
 import Loading from '../../components/loading/Loading';
-import { Link } from 'react-router-dom';
 
 const SeeOrders = () => {
     const { token } = useContext(UserAuthContext);
@@ -46,9 +45,7 @@ const SeeOrders = () => {
                                         <ul>
                                             {orders.orders.filter((order) => order.status === 'Aceptado').map((order) => {
                                                 return <li key={order.id}>
-                                                    <Link to={`/order/accepted/${order.id}`}>
-                                                        <ProductOrderInfo order={order} />
-                                                    </Link>
+                                                    <ProductOrderInfo order={order} />
                                                 </li>;
                                             })}
                                         </ul>
