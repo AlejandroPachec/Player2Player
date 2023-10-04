@@ -5,11 +5,11 @@ function useSeeOrders (token) {
     const [orders, setOrders] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-
     useEffect(() => {
         const loadOrders = async () => {
             try {
                 setLoading(true);
+                console.log(token);
                 const data = await seeOrdersService(token);
 
                 setOrders(data);
