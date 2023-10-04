@@ -3,18 +3,24 @@ import UserWithRating from '../../components/user-with-rating/UserWithRating';
 import MainButton from '../../components/main-button/MainButton';
 import SecondaryButton from '../../components/secondary-button/SecondaryButton';
 import ReadOnlyRating from '../../components/readOnly-rating/ReadOnlyRating';
-/* import { rejectOrderService } from '../../service'; */
+import { rejectOrderService } from '../../service';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { UserAuthContext } from '../../context/UserAuthContext';
 
 const OrderCard = ({ order, avgRating }) => {
     const navigate = useNavigate();
-    // function handleReject () {
-    //     rejectOrderService(order.id);
-    // }
+    const { token } = useContext(UserAuthContext);
+
     const { id: idOrder } = order;
 
     function handleAccept () {
         navigate(`/order/exchangeSet/${idOrder}`);
+    }
+
+    async function handleReject () {
+        await rejectOrderService(token, idOrder);
+        window.location.reload();
     }
 
     return (
@@ -39,7 +45,7 @@ const OrderCard = ({ order, avgRating }) => {
                             : null
                         }
                         <ReadOnlyRating value={avgRating}/>
-                        <SecondaryButton text='Rechazar' /* onClick={handleReject} */ />
+                        <SecondaryButton text='Rechazar' handleClick={handleReject} />
                         <MainButton text='Aceptar' handleClick={handleAccept}/>
                     </>
                     : null

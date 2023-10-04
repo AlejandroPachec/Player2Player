@@ -198,8 +198,9 @@ export const exchangeSetService = async (token, idOrder, newFormData) => {
 };
 
 export const rejectOrderService = async (token, idOrder) => {
+    console.log(token, idOrder);
     const response = await fetch(`${import.meta.env.VITE_BACK_URL}/orders/reject/${idOrder}`, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
             token
         }
