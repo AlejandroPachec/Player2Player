@@ -107,6 +107,22 @@ export const registerUserService = async ({ firstName, lastName, email, phone, p
     }
 };
 
+
+export const getUserOrdersService = async (sellerUser, token) => {
+    const response = await fetch(`${import.meta.env.VITE_BACK_URL}/orders/user/${sellerUser}`, {
+        method: 'GET',
+        headers: {
+            token
+        }
+    });
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error);
+    }
+    return data.data;
+};
+
 export const addProductService = async (token, formData) => {
     const addProductForm = new FormData();
 
@@ -134,22 +150,6 @@ export const addProductService = async (token, formData) => {
         throw new Error(data.error);
     }
 };
-
-export const getUserOrdersService = async (sellerUser, token) => {
-    const response = await fetch(`${import.meta.env.VITE_BACK_URL}/orders/user/${sellerUser}`, {
-        method: 'GET',
-        headers: {
-            token
-        }
-    });
-    const data = await response.json();
-
-    if (!response.ok) {
-        throw new Error(data.error);
-    }
-    return data.data;
-};
-
 export const editUserService = async (token, editUserForm) => {
     const response = await fetch(`${import.meta.env.VITE_BACK_URL}/user/edit`, {
         method: 'PUT',
@@ -164,6 +164,7 @@ export const editUserService = async (token, editUserForm) => {
     if (!response.ok) {
         throw new Error(data.error);
     }
+    return data.data;
 };
 
 export const seeOrdersService = async (token) => {
