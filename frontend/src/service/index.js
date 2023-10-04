@@ -11,7 +11,7 @@ export const getAllProductsService = async () => {
 };
 
 export const getSearchProductsService = async (params) => {
-    const response = await fetch(`${import.meta.env.VITE_BACK_URL}/${params}`);
+    const response = await fetch(`${import.meta.env.VITE_BACK_URL}/products/?${params}`);
 
     const data = await response.json();
 
@@ -226,3 +226,14 @@ export const seeOrderByIdService = async (token, idOrder) => {
     return data.data;
 };
 
+export const getDataExchangeMap = async (exchangePlace) => {
+    const response = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${exchangePlace}&country_code=es&key=${import.meta.env.VITE_GEOLOC_API}`);
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error('Ha ocurrido un error al conectarse con la API');
+    }
+
+    return data.results[1].geometry;
+};

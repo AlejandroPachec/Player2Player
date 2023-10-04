@@ -22,7 +22,7 @@ const useSearchProducts = (params) => {
         };
 
         loadProducts();
-    }, [params]);
+    }, []);
 
     return { products, loading, error };
 };

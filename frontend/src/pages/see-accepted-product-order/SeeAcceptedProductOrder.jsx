@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import { useParams } from 'react-router-dom';
 import useExchangeSet from '../../hooks/useExchangeSet';
@@ -7,12 +7,33 @@ import Footer from '../../components/footer/Footer';
 import UserWithRating from '../../components/user-with-rating/UserWithRating';
 import ReadOnlyRating from '../../components/readOnly-rating/ReadOnlyRating';
 import Loading from '../../components/loading/Loading';
+import { getDataExchangeMap } from '../../service';
+import { GoogleMap, useLoadScript } from '@react-google-maps/api';
+import './map.css';
 
 const SeeAcceptedProductOrder = () => {
     const { token } = useContext(UserAuthContext);
     const { idOrder } = useParams();
     const { error, loading, orderById } = useExchangeSet(token, idOrder);
     const order = orderById?.orders;
+    const [latitude, setLatitude] = useState('');
+    const [longitude, setLongitude] = useState('');
+
+    const apiKey = import.meta.env.VITE_GOOGLE_MAPS;
+    const { isLoaded } = useLoadScript({ googleMapsApiKey: apiKey });
+
+    useEffect(() => {
+        const loadMap = async () => {
+            try {
+                const data = await getDataExchangeMap(orderById?.orders[0]?.exchange_place);
+                setLatitude(data.lat);
+                setLongitude(data.lng);
+            } catch (error) {
+                return error.message;
+            }
+        };
+        loadMap();
+    }, [orderById]);
 
     if (loading) return <Loading/>;
     if (error) return <p>{error.message}</p>;
@@ -34,6 +55,11 @@ const SeeAcceptedProductOrder = () => {
                                 <ReadOnlyRating value={order[0].userAvgReviews}/>
                                 <h2>Lugar de entrega</h2>
                                 <p>{order[0].exchange_place}</p>
+                                {
+                                    isLoaded && latitude && longitude
+                                        ? <GoogleMap zoom={15} center={{ lat: latitude, lng: longitude }} mapContainerClassName='map-container'/>
+                                        : null
+                                }
                                 <h2>Fecha de entrega</h2>
                                 <p>{order[0].exchange_time}</p>
                             </section>

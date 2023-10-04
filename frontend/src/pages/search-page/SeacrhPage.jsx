@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import useSearchProducts from '../../hooks/useSearchProducts';
 import Loading from '../../components/loading/Loading';
 import HomePageHeader from '../home-page/HomePageHeader';
@@ -7,8 +7,9 @@ import ProductItem from '../../components/product-item/ProductItem';
 
 const SearchPage = () => {
     const location = useLocation();
-    const params = new URLSearchParams(location.search);
-    const { products, loading, error } = useSearchProducts('products/?' + params);
+    const category = useParams();
+    console.log(category);
+    const { products, loading, error } = useSearchProducts(new URLSearchParams(location.search));
 
     if (loading) return <Loading/>;
     if (error) return <p>{error}</p>;

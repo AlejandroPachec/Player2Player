@@ -49,8 +49,8 @@ function SearchBar () {
         }
 
         if (queryParams.toString() !== '') {
-            params.push(`/products/?${queryParams.toString()}`);
-            navigate(params.toString());
+            params.push(`/?${queryParams.toString()}`);
+            navigate(`/search${params.toString()}`);
         } else {
             setError('Debes completar algún campo antes de buscar');
         }
