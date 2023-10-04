@@ -44,12 +44,11 @@ function AddProductPage () {
 
         try {
             await addProductService(token, formData);
-        } catch (error) {
-            setError(error.message);
-        } finally {
             setTimeout(() => {
                 navigate('/');
             }, 2000);
+        } catch (error) {
+            setError(error.message);
         }
     };
 
