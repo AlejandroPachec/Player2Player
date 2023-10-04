@@ -11,7 +11,6 @@ const UserAuthContextProvider = ({ children }) => {
     const [token, setToken] = useState(() => {
         return localStorage.getItem('token') || '';
     });
-
     useEffect(() => {
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
@@ -26,8 +25,20 @@ const UserAuthContextProvider = ({ children }) => {
         setToken(userAuth[0]);
         setUser(userAuth[1]);
     };
+    const updateUser = (token, newUser) => {
+        setToken(token);
+        setUser(prevUser => {
+            const updatedUser = { ...prevUser };
+            for (const [key, value] of Object.entries(newUser)) {
+                if (value !== '') {
+                    updatedUser[key] = value;
+                }
+            }
+            return updatedUser;
+        });
+    };
     return (
-        <UserAuthContext.Provider value={{ token, user, login, logout }}>
+        <UserAuthContext.Provider value={{ token, user, login, logout, updateUser }}>
             {children}
         </UserAuthContext.Provider>
     );

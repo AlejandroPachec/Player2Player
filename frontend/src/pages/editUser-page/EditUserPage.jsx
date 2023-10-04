@@ -12,7 +12,7 @@ import MainHeader from '../../components/header-main/MainHeader';
 
 const EditUserPage = () => {
     const navigate = useNavigate();
-    const { token, user } = useContext(UserAuthContext);
+    const { token, user, updateUser } = useContext(UserAuthContext);
     const [passError, setPassError] = useState('');
     const [errorSubmit, setErrorSubmit] = useState('');
 
@@ -62,9 +62,13 @@ const EditUserPage = () => {
         }
 
         try {
-            await editUserService(token, editUserForm);
+            console.log(formValues);
+            const data = await editUserService(token, editUserForm);
+            if (formValues.avatar !== '') { formValues.avatar = data.updatedUser.avatar; }
+            updateUser(token, formValues);
             navigate(`/user/profile/${user.id}`);
         } catch (error) {
+            console.log(error);
             setErrorSubmit(error.message);
         }
     }
