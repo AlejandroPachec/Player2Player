@@ -1,6 +1,15 @@
 .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
-  background-color: var(--blackGradient) !important;
+  background-color: var(--mainBackgroundColor) !important;
   color: var(--mainFontColor) !important;
+  border-radius: 1.25rem !important;
+}
+
+.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiMenuItem-root.MuiMenuItem-gutters.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+  color: var(--mainFontColor) !important;
+}
+
+.MuiButtonBase-root.MuiMenuItem-root.MuiMenuItem-gutters.MuiMenuItem-root.MuiMenuItem-gutters.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root:hover {
+  color: var(--secondaryFontColor) !important;
 }
 
 .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
