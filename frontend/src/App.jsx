@@ -26,7 +26,7 @@ function App () {
             <Route path='/product/:idProduct' element={<ProductPage/>}/>
             <Route path='/user/login' element={<LoginPage/>} />
             <Route path='/user/create' element={<RegisterPage/>} />
-            <Route path=':params' element={<SearchPage/>}/>
+            <Route path='/:params' element={<SearchPage/>}/>
             <Route path='/' element={<HomePage/>} />
             <Route path='*' element={<NotFoundPage/>} />
         </Routes>

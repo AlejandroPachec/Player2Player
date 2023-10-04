@@ -9,6 +9,7 @@ function useSeeOrders (token) {
         const loadOrders = async () => {
             try {
                 setLoading(true);
+                console.log(token);
                 const data = await seeOrdersService(token);
 
                 setOrders(data);

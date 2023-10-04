@@ -13,8 +13,6 @@ const SeeAcceptedProductOrder = () => {
     const { idOrder } = useParams();
     const { error, loading, orderById } = useExchangeSet(token, idOrder);
     const order = orderById?.orders;
-    console.log(error);
-    console.log(orderById);
 
     if (loading) return <Loading/>;
     if (error) return <p>{error.message}</p>;
