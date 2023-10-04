@@ -46,8 +46,9 @@ body {
   text-align: center;
 }
 
-p, h1, h2, ul {
+p, h1, h2, ul, a {
   margin: 0;
   padding: 0;
+  text-decoration: none;
 }
 
