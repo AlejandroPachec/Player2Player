@@ -27,6 +27,7 @@ const LoginPage = () => {
 
         try {
             const userAuth = await loginUserService(formValues);
+            console.log(userAuth);
             login(userAuth);
             navigate('/');
         } catch (error) {

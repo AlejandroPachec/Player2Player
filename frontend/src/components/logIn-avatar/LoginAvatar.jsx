@@ -12,6 +12,8 @@ const LoginAvatar = () => {
     const { user, logout } = useContext(UserAuthContext);
     const [navigate, setNavigate] = useState(null);
     const open = Boolean(navigate);
+    const name = user.firstName ? user.firstName : user.first_name;
+    const lastName = user.lastName ? user.lastName : user.last_name;
     const handleClick = (event) => {
         setNavigate(event.currentTarget);
     };
@@ -30,7 +32,7 @@ const LoginAvatar = () => {
                     onClick={handleClick}
                 >
                     <div className='edited-avatar'>
-                        <p>{user.first_name} {user.last_name[0]}.</p>
+                        <p>{name} {lastName}.</p>
                         {
                             user.avatar
                                 ? <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${user.avatar}`} alt="Foto de perfil" />
