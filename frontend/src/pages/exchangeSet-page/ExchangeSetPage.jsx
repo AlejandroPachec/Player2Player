@@ -3,7 +3,7 @@ import MainHeader from '../../components/header-main/MainHeader';
 import MainButton from '../../components/main-button/MainButton';
 import Footer from '../../components/footer/Footer';
 import { useState, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -20,11 +20,11 @@ const ExchangeSetPage = () => {
     const [formError, setFormError] = useState('');
     const [timeValues, setTimeValues] = useState(null);
     const [exchangePlace, setExchangePlace] = useState('');
+    const navigate = useNavigate();
 
     const { error, loading, orderById } = useExchangeSet(token, idOrder);
     const orders = orderById?.orders;
 
-    console.log(orderById);
     function handleChange (event) {
         setExchangePlace(event.target.value);
     }
@@ -47,6 +47,7 @@ const ExchangeSetPage = () => {
             const exchangeTime = `${year}-${month}-${day} ${hour}:${minute}`;
             const newFormData = { exchangePlace, exchangeTime };
             await exchangeSetService(token, idOrder, newFormData);
+            navigate('/user/orders');
         } catch (error) {
             setFormError(error.message);
         }

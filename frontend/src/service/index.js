@@ -180,7 +180,6 @@ export const seeOrdersService = async (token) => {
 };
 
 export const exchangeSetService = async (token, idOrder, newFormData) => {
-    console.log(newFormData);
     const response = await fetch(`${import.meta.env.VITE_BACK_URL}/orders/confirm/${idOrder}`, {
         method: 'PUT',
         headers: {
@@ -198,7 +197,6 @@ export const exchangeSetService = async (token, idOrder, newFormData) => {
 };
 
 export const rejectOrderService = async (token, idOrder) => {
-    console.log(token, idOrder);
     const response = await fetch(`${import.meta.env.VITE_BACK_URL}/orders/reject/${idOrder}`, {
         method: 'PUT',
         headers: {
