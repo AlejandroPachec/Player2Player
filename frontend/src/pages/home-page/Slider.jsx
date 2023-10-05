@@ -14,7 +14,7 @@ function UncontrolledExample () {
             <Carousel.Item className='orange-container'>
                 <img src={SliderOne} alt="Imagen" />
                 <p>¡Los <span className='bold'>CLÁSICOS</span> nunca pasan de moda! Encuentra tus tesoros retro en nuetra tienda de juegos de segunda mano.</p>
-                <Link to={'/products/?category=Retro'}><button>Descubrir</button></Link>
+                <Link to={'/search/?category=Retro'}><button>Descubrir</button></Link>
             </Carousel.Item>
             <Carousel.Item className='orange-container'>
                 <img src={SliderTwo} alt="Imagen" />
@@ -32,7 +32,7 @@ function UncontrolledExample () {
             <Carousel.Item className='orange-container'>
                 <img src={SliderThree} alt="Imagen" />
                 <p>¡Haz espacio para lo <span className="bold">NUEVO</span> y descubre ofertas emocionantes! Compra y vende entre personas de manera <span className="bold">SENCILLA</span> y <span className="bold">SEGURA</span></p>
-                <Link to={'/products'}><button>Compra ya</button></Link>
+                <Link to={'/search'}><button>Compra ya</button></Link>
             </Carousel.Item>
         </Carousel>
     );

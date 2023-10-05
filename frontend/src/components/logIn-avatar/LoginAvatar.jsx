@@ -65,9 +65,6 @@ const LoginAvatar = () => {
                     <Link to={'/user/orders'}>
                         <MenuItem onClick={handleClose}>Ver pedidos</MenuItem>
                     </Link>
-                    <Link to={'/reviews'}>
-                        <MenuItem onClick={handleClose}>Añadir valoración</MenuItem>
-                    </Link>
                     <Link to={'/'}>
                         <MenuItem onClick={logout}>Cerrar sesión</MenuItem>
                     </Link>
