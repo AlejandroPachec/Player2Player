@@ -62,7 +62,6 @@ const EditUserPage = () => {
         }
 
         try {
-            console.log(formValues);
             const data = await editUserService(token, editUserForm);
             if (formValues.avatar !== '') { formValues.avatar = data.updatedUser.avatar; }
             updateUser(token, formValues);

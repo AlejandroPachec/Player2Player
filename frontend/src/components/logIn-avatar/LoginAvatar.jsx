@@ -32,7 +32,7 @@ const LoginAvatar = () => {
                     onClick={handleClick}
                 >
                     <div className='edited-avatar'>
-                        <p>{name} {lastName}.</p>
+                        <p>{name} {lastName[0]}.</p>
                         {
                             user.avatar
                                 ? <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${user.avatar}`} alt="Foto de perfil" />

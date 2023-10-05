@@ -51,6 +51,7 @@ function SearchBar () {
         if (queryParams.toString() !== '') {
             params.push(`/?${queryParams.toString()}`);
             navigate(`/search${params.toString()}`);
+            window.location.reload();
         } else {
             setError('Debes completar algún campo antes de buscar');
         }

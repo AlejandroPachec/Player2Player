@@ -26,7 +26,6 @@ const UserAuthContextProvider = ({ children }) => {
         setUser(userAuth[1]);
     };
     const updateUser = (token, newUser) => {
-        console.log('Hola');
         setToken(token);
         setUser(prevUser => {
             const updatedUser = { ...prevUser };

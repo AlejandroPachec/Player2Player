@@ -23,7 +23,7 @@ function App () {
             <Route path='/user/orders' element={<SeeOrdersPage/>}/>
             <Route path='/user/orders/:sellerUser' element={<OrderManagementPage/>} />
             <Route path='/user/profile/:idUser' element={<UserProfilePage/>}/>
-            <Route path='/product/:idProduct' element={<ProductPage/>}/>
+            <Route path='search?/product/:idProduct' element={<ProductPage/>}/>
             <Route path='/user/login' element={<LoginPage/>} />
             <Route path='/user/create' element={<RegisterPage/>} />
             <Route path='/search/:category?:price?:name?:location?' element={<SearchPage/>}/>

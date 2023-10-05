@@ -24,7 +24,6 @@ const ExchangeSetPage = () => {
     const { error, loading, orderById } = useExchangeSet(token, idOrder);
     const orders = orderById?.orders;
 
-    console.log(orderById);
     function handleChange (event) {
         setExchangePlace(event.target.value);
     }
