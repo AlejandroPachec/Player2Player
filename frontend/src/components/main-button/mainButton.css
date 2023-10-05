@@ -1,5 +1,5 @@
 .mainButton {
-  padding: 0.8rem 1.5rem;
+    padding: 0.8rem 1.5rem;
 	background: var(--orangeGradient);
 	color: var(--mainFontColor);
 	font-family: 'Poppins';
