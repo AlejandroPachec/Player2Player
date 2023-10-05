@@ -1,0 +1,46 @@
+main.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  position: relative;
+}
+
+main.not-found > img {
+  width: 250px;
+  align-self: flex-end;
+  position: absolute;
+  top: -120px;
+  right: 200px;
+}
+
+main.not-found > h1 {
+  font-family: 'Press Start';
+  font-size: 5rem;
+}
+
+main.not-found > h1 > span {
+  color: var(--secondaryFontColor);
+}
+
+main.not-found > h2 {
+  font-weight: 600;
+  margin: 1rem 0 2rem 1rem;
+}
+
+main.not-found > h2 > span {
+  font-family: 'Press Start';
+  font-size: 1.5rem;
+}
+
+main.not-found > p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+main.not-found > button {
+  font-size: 1.3rem;
+  width: 17rem;
+  align-self: center;
+}
