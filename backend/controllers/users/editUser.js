@@ -2,6 +2,7 @@ const getPool = require('../../db/connectDB');
 const deletePhoto = require('../../helpers/deletePhoto');
 const generateError = require('../../helpers/generateError');
 const savePhoto = require('../../helpers/savePhoto');
+const bcrypt = require('bcrypt');
 const editUserSchema = require('../../schema/editUserSchema');
 const { photoSchema } = require('../../schema/PhotoSchema');
 
@@ -30,6 +31,8 @@ async function editUser (req, res, next) {
             return next(generateError('Debes modificar algún campo', 400));
         }
 
+        const hashedPassword = await bcrypt.hash(password, 10);
+
         const pool = await getPool();
 
         const [user] = await pool.query('SELECT avatar from users WHERE id = ?', [userId]);
@@ -56,7 +59,7 @@ async function editUser (req, res, next) {
             firstName,
             lastName,
             bio,
-            password,
+            hashedPassword,
             email,
             phone,
             city,
