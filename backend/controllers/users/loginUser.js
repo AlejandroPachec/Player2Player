@@ -19,14 +19,18 @@ async function loginUser (req, res, next) {
         const { email, password } = req.body;
 
         const [userInfo] = await pool.query(
-            'SELECT first_name, last_name, avatar, id, password FROM users WHERE email = ?;'
+            'SELECT first_name, last_name, avatar, id FROM users WHERE email = ?;'
+            , [email]);
+
+        const [[userPassword]] = await pool.query(
+            'SELECT password from users WHERE email = ?'
             , [email]);
 
         if (userInfo.length < 1) {
             return next(generateError('Email y/o contraseña incorrectos', 404));
         }
 
-        const validatePassword = await bcrypt.compare(password, userInfo[0].password);
+        const validatePassword = await bcrypt.compare(password, userPassword.password);
 
         if (!validatePassword) {
             return next(generateError('Email y/o contraseña incorrectos', 404));
