@@ -3,6 +3,8 @@ main.login-main {
     justify-content: center;
     gap: 2rem;
     margin-bottom: 1rem;
+    flex-grow: 1;
+    align-items: center;
 }
 
 main.login-main div.login-image-container img.login-image {
@@ -21,14 +23,21 @@ main.login-main div.login-form-container {
     gap: 1.5rem;
 }
 
+div.login-form-container {
+    height: 25rem;
+}
+
 div.login-form-container form.login-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 3rem;
-    margin-bottom: 1rem;
     position: relative;
+}
+
+form.login-form {
+    margin-top: 1rem;
 }
 
 form.login-form input {
@@ -37,6 +46,7 @@ form.login-form input {
 
 form.login-form > button {
     margin-top: 1.5rem;
+    font-size: 1.2rem;
 }
 
 div.no-account {
