@@ -19,7 +19,7 @@ async function loginUser (req, res, next) {
         const { email, password } = req.body;
 
         const [userInfo] = await pool.query(
-            'SELECT * FROM users WHERE email = ?;'
+            'SELECT first_name, last_name, avatar, id, password FROM users WHERE email = ?;'
             , [email]);
 
         if (userInfo.length < 1) {

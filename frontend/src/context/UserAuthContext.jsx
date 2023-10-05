@@ -30,7 +30,7 @@ const UserAuthContextProvider = ({ children }) => {
         setUser(prevUser => {
             const updatedUser = { ...prevUser };
             for (const [key, value] of Object.entries(newUser)) {
-                if (value !== '') {
+                if (value !== '' || Object.keys(newUser) === 'password') {
                     updatedUser[key] = value;
                 }
             }

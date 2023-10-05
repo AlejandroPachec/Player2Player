@@ -42,7 +42,7 @@ const editUserSchema = Joi.object({
         encoding: Joi.string(),
         tempFilePath: Joi.any(),
         truncated: Joi.boolean(),
-        mimetype: Joi.string().valid('image/jpg', 'image/jpeg', 'image/png').required(),
+        mimetype: Joi.string().valid('image/jpg', 'image/jpeg', 'image/png', 'image/webp').required(),
         md5: Joi.string(),
         mv: Joi.func()
     }).messages({

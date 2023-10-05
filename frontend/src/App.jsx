@@ -12,12 +12,10 @@ import EditUserPage from './pages/editUser-page/EditUserPage';
 import SeeOrdersPage from './pages/see-orders-page/SeeOrdersPage';
 import ExchangeSetPage from './pages/exchangeSet-page/ExchangeSetPage';
 import SeeAcceptedProductOrder from './pages/see-accepted-product-order/SeeAcceptedProductOrder';
-import CheckedReviewsPage from './pages/checkReviews-page/CheckReviewsPage';
 
 function App () {
     return (
         <Routes>
-            <Route path='/reviews' element={<CheckedReviewsPage/>}/>
             <Route path='/product/addProduct' element={<AddProductPage/>} />
             <Route path='/order/exchangeSet/:idOrder/:buyerId' element={<ExchangeSetPage/>} />
             <Route path='/order/accepted/:idOrder' element={<SeeAcceptedProductOrder/>}/>

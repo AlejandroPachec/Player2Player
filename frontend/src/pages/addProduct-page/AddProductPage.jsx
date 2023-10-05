@@ -63,9 +63,9 @@ function AddProductPage () {
                         type={'text'}
                         handleChange={handleChange}
                     />
-                    <label htmlFor="category">Categoría:</label>
                     <select name="category" id="category" onChange={handleChange}>
-                        <option value="Consolas" >Consolas</option>
+                        <option value="">Selecciona la categoría</option>
+                        <option value="Consolas">Consolas</option>
                         <option value="Videojuegos">Videojuegos</option>
                         <option value="Accesorios">Accesorios</option>
                         <option value="Retro">Retro</option>
@@ -77,9 +77,9 @@ function AddProductPage () {
                         type={'number'}
                         handleChange={handleChange}
                     />
-                    <label htmlFor="state">Estado:</label>
                     <select name="state" id="state" onChange={handleChange}>
-                        <option value="Nuevo" >Nuevo</option>
+                        <option value="">Selecciona el estado</option>
+                        <option value="Nuevo">Nuevo</option>
                         <option value="En buen estado">En buen estado</option>
                         <option value="Aceptable">Aceptable</option>
                         <option value="No da para más">No da para más</option>
