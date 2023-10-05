@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import MainButton from '../../components/main-button/MainButton';
+import { Link } from 'react-router-dom';
 
 const ProductOrderInfo = ({ order }) => {
     const date = order?.exchange_time < new Date();
@@ -13,7 +14,9 @@ const ProductOrderInfo = ({ order }) => {
             <p>{order.description}</p>
             {
                 date < new Date()
-                    ? <MainButton text={'Añadir valoración'}/>
+                    ? <Link to={`/order/addReview/${order.id}`}>
+                        <MainButton text={'Añadir valoración'}/>
+                    </Link>
                     : null
             }
         </article>
