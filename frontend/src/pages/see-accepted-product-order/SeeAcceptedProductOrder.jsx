@@ -61,7 +61,7 @@ const SeeAcceptedProductOrder = () => {
                                         : null
                                 }
                                 <h2>Fecha de entrega</h2>
-                                <p>{order[0].exchange_time}</p>
+                                <p>{new Date(order[0].exchange_time).toLocaleTimeString('es-ES', { month: 'long', day: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
                             </section>
                             <section>
                                 <h2>{order[0].name}</h2>
@@ -69,7 +69,7 @@ const SeeAcceptedProductOrder = () => {
                                 <p>{order[0].state}</p>
                                 <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${order[0].product_photo}`} alt="Foto del producto" />
                                 <p>{order[0].description}</p>
-                                <p>{order[0].exchange_place}, {order[0].exchange_time}</p>
+                                <p>{order[0].exchange_place}, {new Date(order[0].exchange_time).toLocaleString('es-ES', { month: 'short', day: '2-digit' })}</p>
                                 <p>{order[0].price} €</p>
                             </section>
                             <aside>
