@@ -4,13 +4,15 @@ import Loading from '../../components/loading/Loading';
 import HomePageHeader from '../home-page/HomePageHeader';
 import Footer from '../../components/footer/Footer';
 import ProductItem from '../../components/product-item/ProductItem';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const SearchPage = () => {
     const location = useLocation();
     const { products, loading, error } = useSearchProducts(new URLSearchParams(location.search));
 
     if (loading) return <Loading/>;
-    if (error) return <p>{error}</p>;
+    if (error) return toast.error(error);
 
     return (
         <>

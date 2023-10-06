@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { getAllProductsService } from '../service';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const useAllProducts = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
+    const [error] = useState('');
 
     useEffect(() => {
         const loadProducts = async () => {
@@ -15,7 +17,7 @@ const useAllProducts = () => {
 
                 setProducts(data);
             } catch (error) {
-                setError(error.message);
+                toast.error(error.message);
             } finally {
                 setLoading(false);
             }

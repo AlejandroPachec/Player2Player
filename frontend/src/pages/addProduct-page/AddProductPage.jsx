@@ -7,10 +7,11 @@ import SecondaryButton from '../../components/secondary-button/SecondaryButton';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import { addProductService } from '../../service';
 import { useNavigate, Link } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 function AddProductPage () {
     const { token } = useContext(UserAuthContext);
-    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -49,12 +50,9 @@ function AddProductPage () {
         e.preventDefault();
 
         try {
-            await addProductService(token, formData);
-            setTimeout(() => {
-                navigate('/');
-            }, 2000);
+            navigate('/');
         } catch (error) {
-            setError(error.message);
+            toast.error(error.message);
         }
     };
 
@@ -107,7 +105,6 @@ function AddProductPage () {
                     </Link>
                     <MainButton text={'Añadir un producto'} type="submit" />
                 </form>
-                { error ? <p>{error}</p> : null}
             </main>
         </>
     );

@@ -1,7 +1,7 @@
 import MainHeader from '../../components/header-main/MainHeader';
 import Footer from '../../components/footer/Footer';
 import useGetUserProfile from '../../hooks/useGetUserProfile';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import UserWithRating from '../../components/user-with-rating/UserWithRating';
 import whatsapp from '../../assets/whatsapp.svg';
 import location from '../../assets/location.svg';
@@ -13,6 +13,8 @@ import ReadOnlyRating from '../../components/readOnly-rating/ReadOnlyRating';
 import emailIcon from '../../assets/emailIcon.svg';
 import { useState } from 'react';
 import './UserProfilePage.css';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const UserProfilePage = () => {
     const { idUser } = useParams();
@@ -24,9 +26,13 @@ const UserProfilePage = () => {
     const userProducts = user?.products;
     const sellingItems = userProducts?.filter((product) => product.availability === 1).length;
     const [clicState, setClic] = useState('sell');
+    const navigate = useNavigate();
 
     if (loading) return <Loading/>;
-    if (error) return <p>{error.message}</p>;
+    if (error) {
+        navigate('/');
+        return toast.error(error);
+    }
 
     return (
         <>

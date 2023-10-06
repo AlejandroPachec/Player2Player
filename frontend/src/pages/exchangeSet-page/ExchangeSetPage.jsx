@@ -12,6 +12,8 @@ import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 import { exchangeSetService } from '../../service';
 import useExchangeSet from '../../hooks/useExchangeSet';
 import Loading from '../../components/loading/Loading';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ExchangeSetPage = () => {
     const { token } = useContext(UserAuthContext);
@@ -24,7 +26,6 @@ const ExchangeSetPage = () => {
         }
     }, []);
 
-    const [formError, setFormError] = useState('');
     const [timeValues, setTimeValues] = useState(null);
     const [exchangePlace, setExchangePlace] = useState('');
 
@@ -36,11 +37,9 @@ const ExchangeSetPage = () => {
     }
 
     if (loading) return <Loading />;
-    if (error) return <p>{error.message}</p>;
+    if (error) return toast.error(error);
     async function handleSubmit (event) {
         event.preventDefault();
-
-        setFormError('');
 
         try {
             const date = new Date(timeValues);
@@ -54,7 +53,7 @@ const ExchangeSetPage = () => {
             const newFormData = { exchangePlace, exchangeTime };
             await exchangeSetService(token, idOrder, newFormData);
         } catch (error) {
-            setFormError(error.message);
+            toast.error(error.message);
         }
     }
 
@@ -79,7 +78,6 @@ const ExchangeSetPage = () => {
                                 </DemoContainer>
                             </LocalizationProvider>
                             <MainButton type='submit' text='Enviar' />
-                            {formError ? <p>{formError}</p> : null}
                         </form>
                     </section>
 

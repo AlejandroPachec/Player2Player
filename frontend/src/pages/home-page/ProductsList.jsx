@@ -1,13 +1,14 @@
 import useAllProducts from '../../hooks/useAllProducts';
 import ProductItem from '../../components/product-item/ProductItem';
 import Loading from '../../components/loading/Loading';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ProductsList () {
     const { products, loading, error } = useAllProducts();
 
     if (loading) return <Loading />;
-    if (error) return <p>{error}</p>;
-
+    if (error) return toast.error(error);
 
     return (
         products.length

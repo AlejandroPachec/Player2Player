@@ -1,0 +1,11 @@
+.Toastify__toast-container.Toastify__toast-container--bottom-right {
+  width: 460px;
+  font-family: 'Poppins';
+}
+
+.Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--error.Toastify__toast--close-on-click {
+  background: rgba(64, 61, 57, 0.884);
+  color: var(--mainFontColor);
+  border-radius: 1rem;
+  box-shadow: var(--boxShadow);
+}

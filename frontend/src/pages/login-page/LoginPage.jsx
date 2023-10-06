@@ -11,7 +11,6 @@ import { loginUserService } from '../../service';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import '../../../src/index.css';
 
 const LoginPage = () => {
     const { login } = useContext(UserAuthContext);
@@ -20,13 +19,10 @@ const LoginPage = () => {
         password: ''
     });
 
-    const [error, setError] = useState('');
     const navigate = useNavigate();
 
     async function handleSubmit (event) {
         event.preventDefault();
-
-        setError('');
 
         try {
             const userAuth = await loginUserService(formValues);
@@ -56,9 +52,6 @@ const LoginPage = () => {
                     <form onSubmit={handleSubmit} className='login-form'>
                         <GeneralInput placeholder={'correo@ejemplo.com'} type={'email'} value={'email'} handleChange={handleChange} />
                         <Password value={'password'} handleChange={handleChange} placeholder={'Contraseña'} />
-                        {
-                            error ? <p className='login-error'>{error}</p> : null
-                        }
                         <MainButton text={'Iniciar sesión'}></MainButton>
                     </form>
                     <div className='no-account'>
