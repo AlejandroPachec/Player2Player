@@ -18,8 +18,8 @@ function App () {
     return (
         <Routes>
             <Route path='/product/addProduct' element={<AddProductPage/>} />
-            <Route path='/order/addReview/:idOrder' element={<AddReviewPage/>} />
             <Route path='/order/exchangeSet/:idOrder/:buyerId' element={<ExchangeSetPage/>} />
+            <Route path='/order/addReview/:idOrder' element={<AddReviewPage/>} />
             <Route path='/order/accepted/:idOrder' element={<SeeAcceptedProductOrder/>}/>
             <Route path='/user/edit' element={<EditUserPage/>} />
             <Route path='/user/orders' element={<SeeOrdersPage/>}/>

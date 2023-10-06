@@ -238,3 +238,21 @@ export const getDataExchangeMap = async (exchangePlace) => {
 
     return data.results[1].geometry;
 };
+
+export const addReviewService = async (token, formValues, orderId) => {
+    console.log(token, formValues, orderId);
+    const response = await fetch(`${import.meta.env.VITE_BACK_URL}/reviews/${orderId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            token
+        },
+        body: JSON.stringify(formValues)
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error);
+    }
+};

@@ -24,6 +24,7 @@ const UserProfilePage = () => {
     const userProducts = user?.products;
     const sellingItems = userProducts?.filter((product) => product.availability === 1).length;
     const [clicState, setClic] = useState('sell');
+    console.log(reviews);
 
     if (loading) return <Loading/>;
     if (error) return <p>{error.message}</p>;
@@ -97,7 +98,7 @@ const UserProfilePage = () => {
                                         </div>
                                         <p>{review.title}</p>
                                         <p>{review.text}</p>
-                                        <ReadOnlyRating name="half-rating-read" value={parseInt(review.stars)} precision={0.5} readOnly />
+                                        <ReadOnlyRating value={parseInt(review.stars)}/>
                                     </li>;
                                 })}
                             </ul>
