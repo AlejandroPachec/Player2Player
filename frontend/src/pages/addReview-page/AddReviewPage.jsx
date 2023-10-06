@@ -21,11 +21,9 @@ const AddReviewPage = () => {
         text: '',
         stars: 5
     });
-    console.log(formValues);
 
     const { idOrder } = useParams();
     const { orderById } = useExchangeSet(token, idOrder);
-    console.log(orderById);
     const handleChange = (e) => {
         setFormValues({ ...formValues, [e.target.name]: e.target.value });
     };

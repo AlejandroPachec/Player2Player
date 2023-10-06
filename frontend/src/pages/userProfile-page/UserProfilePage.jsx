@@ -24,7 +24,6 @@ const UserProfilePage = () => {
     const userProducts = user?.products;
     const sellingItems = userProducts?.filter((product) => product.availability === 1).length;
     const [clicState, setClic] = useState('sell');
-    console.log(reviews);
 
     if (loading) return <Loading/>;
     if (error) return <p>{error.message}</p>;
