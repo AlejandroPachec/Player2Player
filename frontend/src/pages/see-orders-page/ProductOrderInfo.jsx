@@ -13,7 +13,7 @@ const ProductOrderInfo = ({ order }) => {
             <p>{order.state}</p>
             <p>{order.description}</p>
             {
-                date < new Date()
+                date < new Date() && order.exchange_time !== null
                     ? <Link to={`/order/addReview/${order.id}`}>
                         <MainButton text={'Añadir valoración'}/>
                     </Link>
