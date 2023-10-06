@@ -2,7 +2,7 @@ import Footer from '../../components/footer/Footer';
 import GeneralInput from '../../components/generalInput/GeneralInput';
 import Password from '../../components/password/Password';
 import MainButton from '../../components/main-button/MainButton';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { editUserService } from '../../service';
 import { useNavigate } from 'react-router-dom';
 import TextArea from '../../components/text-area/TextArea';
@@ -15,6 +15,12 @@ const EditUserPage = () => {
     const { token, user, updateUser } = useContext(UserAuthContext);
     const [passError, setPassError] = useState('');
     const [errorSubmit, setErrorSubmit] = useState('');
+
+    useEffect(() => {
+        if (token === '' || !token) {
+            navigate('/user/login');
+        }
+    }, []);
 
     const [formValues, setFormValues] = useState({
         firstName: '',

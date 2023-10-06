@@ -2,8 +2,8 @@ import GeneralInput from '../../components/generalInput/GeneralInput';
 import MainHeader from '../../components/header-main/MainHeader';
 import MainButton from '../../components/main-button/MainButton';
 import Footer from '../../components/footer/Footer';
-import { useState, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useContext, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -16,6 +16,13 @@ import Loading from '../../components/loading/Loading';
 const ExchangeSetPage = () => {
     const { token } = useContext(UserAuthContext);
     const { idOrder } = useParams();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (token === '' || !token) {
+            navigate('/user/login');
+        }
+    }, []);
 
     const [formError, setFormError] = useState('');
     const [timeValues, setTimeValues] = useState(null);

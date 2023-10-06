@@ -1,5 +1,5 @@
-import { useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import MainHeader from '../../components/header-main/MainHeader';
 import Footer from '../../components/footer/Footer';
 import OrderCard from './OrderCard';
@@ -13,8 +13,15 @@ const UserProfilePage = () => {
     const { loading, error, userOrders } = useGetUserOrders(sellerUser, token);
     const userInfo = userOrders?.ordersInfo;
     const avgRating = userOrders?.rating?.userAvgReviews;
-    if (loading) return <Loading/>;
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        if (token === '' || !token) {
+            navigate('/user/login');
+        }
+    }, []);
+
+    if (loading) return <Loading/>;
 
     return (
         <>

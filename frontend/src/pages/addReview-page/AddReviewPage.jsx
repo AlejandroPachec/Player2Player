@@ -8,7 +8,7 @@ import SecondaryButton from '../../components/secondary-button/SecondaryButton';
 import MainButton from '../../components/main-button/MainButton';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import Rating from '@mui/material/Rating';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { addReviewService } from '../../service';
 import useExchangeSet from '../../hooks/useExchangeSet';
 import { UserAuthContext } from '../../context/UserAuthContext';
@@ -21,6 +21,12 @@ const AddReviewPage = () => {
         text: '',
         stars: 5
     });
+
+    useEffect(() => {
+        if (token === '' || !token) {
+            navigate('/user/login');
+        }
+    }, []);
 
     const { idOrder } = useParams();
     const { orderById } = useExchangeSet(token, idOrder);
