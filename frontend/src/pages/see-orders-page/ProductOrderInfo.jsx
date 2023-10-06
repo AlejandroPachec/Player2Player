@@ -5,10 +5,13 @@ import useCheckReviews from '../../hooks/useCheckReviews';
 import Loading from '../../components/loading/Loading';
 
 const ProductOrderInfo = ({ order }) => {
-    const date = order?.exchange_time < new Date();
+    const date = new Date();
     const navigate = useNavigate();
     const { error, loading, alreadyReviewed } = useCheckReviews(order.user_buyer_id);
     const userReviews = alreadyReviewed?.userReviews;
+
+    const isProductReviewed = userReviews?.some((review) => order.product_id === review.product_id);
+    const hasDeliveryTimePassed = date > new Date(order.exchange_time);
 
     if (loading) {
         return <Loading />;
@@ -30,15 +33,7 @@ const ProductOrderInfo = ({ order }) => {
                 <p>{order.description}</p>
             </article>
             {
-                date < new Date() &&
-                order.exchange_time !== null &&
-                userReviews &&
-                userReviews.some((review) => {
-                    if (order.product_id === review.product_id) {
-                        return false;
-                    }
-                    return true;
-                })
+                hasDeliveryTimePassed && !isProductReviewed
                     ? <MainButton text={'Añadir valoración'} handleClick={handleClick}/>
                     : null
             }
