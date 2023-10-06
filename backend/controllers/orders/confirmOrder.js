@@ -62,7 +62,7 @@ async function confirmOrder (req, res, next) {
                         <p>Recogida:</p>
                         <p>Hora: ${exchangeTime}</p>
                         <p>Lugar: ${exchangePlace}</p>
-                        <p>Comprueba el estado de tu pedido <a href="http://localhost:${PORT}/orders/${idOrder}">aquí</a></p>`; // Poner el puerto de front
+                        <p>Comprueba el estado de tu pedido <a href="http://localhost:5173/user/orders/${idOrder}">aquí</a></p>`;
 
 
         await emailVerification(email, subject, html);
