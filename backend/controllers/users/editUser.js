@@ -24,14 +24,17 @@ async function editUser (req, res, next) {
         }
 
         const userId = req.user.id;
-        const { firstName, lastName, bio, password, email, phone, city, postalCode } = req.body;
+        let { firstName, lastName, bio, password, email, phone, city, postalCode } = req.body;
         let avatar;
 
         if (!firstName && !lastName && !bio && !password && !email && !phone && !city && !postalCode && !req.files?.avatar) {
             return next(generateError('Debes modificar algún campo', 400));
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
+        if (password) {
+            password = await bcrypt.hash(password, 10);
+            return password;
+        }
 
         const pool = await getPool();
 
@@ -59,7 +62,7 @@ async function editUser (req, res, next) {
             firstName,
             lastName,
             bio,
-            hashedPassword,
+            password,
             email,
             phone,
             city,
