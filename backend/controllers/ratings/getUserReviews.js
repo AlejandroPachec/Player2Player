@@ -23,7 +23,7 @@ async function getUserReviews (req, res, next) {
 
         const [userReviews] = await pool.query(`
         SELECT R.title, R.text, R.stars, R.created_at, U.first_name, U.last_name, R.product_id,
-        GROUP_CONCAT(PP.name) AS product_images
+        MAX(PP.name) AS product_images
         FROM reviews R
         INNER JOIN users U ON R.user_buyer_id = U.id
         INNER JOIN product_photo PP ON R.product_id = PP.product_id

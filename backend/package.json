@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon ./server.js",
     "db": "node ./db/initDB.js",
-    "start": "node ./server.js"
+    "start": "node ./server.js", 
+    "backup": "node ./db/backupDB.js"
   },
   "author": "",
   "license": "ISC",

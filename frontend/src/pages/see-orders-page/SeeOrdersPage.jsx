@@ -14,6 +14,7 @@ const SeeOrders = () => {
     if (loading) {
         return <Loading />;
     }
+
     return (
         <>
             <MainHeader />
