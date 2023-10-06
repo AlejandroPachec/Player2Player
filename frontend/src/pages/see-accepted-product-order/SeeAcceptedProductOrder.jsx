@@ -10,6 +10,8 @@ import Loading from '../../components/loading/Loading';
 import { getDataExchangeMap } from '../../service';
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import './map.css';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const SeeAcceptedProductOrder = () => {
     const { token } = useContext(UserAuthContext);
@@ -36,14 +38,14 @@ const SeeAcceptedProductOrder = () => {
                 setLatitude(data.lat);
                 setLongitude(data.lng);
             } catch (error) {
-                return error.message;
+                return toast.error(error.message);
             }
         };
         loadMap();
     }, [orderById]);
 
     if (loading) return <Loading/>;
-    if (error) return <p>{error.message}</p>;
+    if (error) return toast.error(error);
 
     return (
         <>

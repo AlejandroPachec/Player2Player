@@ -6,6 +6,8 @@ import OrderCard from './OrderCard';
 import useGetUserOrders from '../../hooks/useGetUserOrders';
 import Loading from '../../components/loading/Loading';
 import { UserAuthContext } from '../../context/UserAuthContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UserProfilePage = () => {
     const { sellerUser } = useParams();
@@ -22,6 +24,7 @@ const UserProfilePage = () => {
     }, []);
 
     if (loading) return <Loading/>;
+    if (error) toast.error(error.message);
 
     return (
         <>
@@ -61,7 +64,7 @@ const UserProfilePage = () => {
                                 }
                             </section>
                         </>
-                        : <p>{error}</p>
+                        : null
                 }
             </main>
             <Footer/>

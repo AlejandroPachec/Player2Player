@@ -6,6 +6,9 @@ import MainButton from '../../components/main-button/MainButton';
 import { useState } from 'react';
 import { registerUserService } from '../../service';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './registerPage.css';
 
 const RegisterPage = () => {
     const navigate = useNavigate();
@@ -17,8 +20,6 @@ const RegisterPage = () => {
         password: '',
         pass2: ''
     });
-
-    const [error, setError] = useState('');
 
     function handleChange (event) {
         const newFormValues = event.target.value;
@@ -32,19 +33,15 @@ const RegisterPage = () => {
     async function handleSubmit (event) {
         event.preventDefault();
 
-        setError('');
-
         if (formValues.password !== formValues.pass2) {
-            setError('Los campos de contraseña no coinciden');
+            toast.error('Los campos de contraseña no coinciden');
         }
 
         try {
             await registerUserService(formValues);
-            setTimeout(() => {
-                navigate('/user/login');
-            }, 3000);
+            navigate('/user/login');
         } catch (error) {
-            setError(error.message);
+            toast.error(error.message);
         }
     }
 
@@ -60,7 +57,6 @@ const RegisterPage = () => {
                     <GeneralInput type={'email'} value={'email'} placeholder={'correo@ejemplo.com'} handleChange={handleChange}/>
                     <Password value={'password'} handleChange={handleChange} placeholder={'Contraseña'}/>
                     <Password value={'pass2'} handleChange={handleChange} placeholder={'Repetir contraseña'}/>
-                    {error ? <p>{error}</p> : null}
                     <MainButton type='submit' text={'Registrarse'}/>
                 </form>
             </main>

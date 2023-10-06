@@ -3,10 +3,11 @@ import SearchCategoryItem from './SearchCategoryItem';
 import searchIcon from '../../assets/search.svg';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SearchBar () {
     const navigate = useNavigate();
-    const [error, setError] = useState(null);
     const [formValues, setFormValues] = useState({
         productName: '',
         minPrice: '',
@@ -53,7 +54,7 @@ function SearchBar () {
             navigate(`/search${params.toString()}`);
             window.location.reload();
         } else {
-            setError('Debes completar algún campo antes de buscar');
+            toast.error('Debes completar algún campo antes de buscar');
         }
     };
     return (
@@ -80,9 +81,6 @@ function SearchBar () {
                 <button type='submit'>
                     <img src={searchIcon} alt='Lupita buscar' />
                 </button>
-                {
-                    error ? <p className='slidebar-error'>{error}</p> : null
-                }
             </form>
         </div>
     );

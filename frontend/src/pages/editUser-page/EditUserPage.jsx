@@ -9,12 +9,12 @@ import TextArea from '../../components/text-area/TextArea';
 import SecondaryButton from '../../components/secondary-button/SecondaryButton';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import MainHeader from '../../components/header-main/MainHeader';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditUserPage = () => {
     const navigate = useNavigate();
     const { token, user, updateUser } = useContext(UserAuthContext);
-    const [passError, setPassError] = useState('');
-    const [errorSubmit, setErrorSubmit] = useState('');
 
     useEffect(() => {
         if (token === '' || !token) {
@@ -55,7 +55,7 @@ const EditUserPage = () => {
 
         if (formValues.password !== '' && formValues.pass2 !== '') {
             if (formValues.password !== formValues.pass2) {
-                setPassError('Los campos de contraseña no coinciden');
+                toast.error('Los campos de contraseña no coinciden');
             }
         }
 
@@ -74,7 +74,7 @@ const EditUserPage = () => {
             navigate(`/user/profile/${user.id}`);
         } catch (error) {
             console.log(error);
-            setErrorSubmit(error.message);
+            toast.error(error.message);
         }
     }
 
@@ -96,7 +96,6 @@ const EditUserPage = () => {
                     <GeneralInput type={'email'} value={'email'} placeholder={'correo@ejemplo.com'} handleChange={handleChange}/>
                     <Password value={'password'} placeholder={'Nueva contraseña'} handleChange={handleChange}/>
                     <Password value={'pass2'} placeholder={'Repite la contraseña'} handleChange={handleChange}/>
-                    {passError ? <p>{passError}</p> : null}
                     <input
                         placeholder='Selecciona tu foto de avatar'
                         type='file'
@@ -106,7 +105,6 @@ const EditUserPage = () => {
                     <SecondaryButton type='button' text={'Cancelar'}/>
                     <MainButton type='submit' text={'Guardar cambios'}/>
                 </form>
-                { errorSubmit ? <p>{errorSubmit}</p> : null}
             </main>
             <Footer/>
         </>

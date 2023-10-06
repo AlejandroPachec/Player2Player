@@ -6,6 +6,8 @@ import useSeeOrders from '../../hooks/useSeeOrders';
 import ProductOrderInfo from './ProductOrderInfo';
 import Loading from '../../components/loading/Loading';
 import { Link, useNavigate } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const SeeOrders = () => {
     const { token } = useContext(UserAuthContext);
@@ -18,8 +20,11 @@ const SeeOrders = () => {
         }
     }, []);
 
-    if (loading) {
-        return <Loading />;
+    if (loading) return <Loading />;
+
+    if (error) {
+        toast.error(error);
+        navigate('/');
     }
 
     return (
@@ -39,7 +44,7 @@ const SeeOrders = () => {
                                                 <ProductOrderInfo order={order} />
                                             </li>;
                                         })
-                                        : <p>{error.message}</p>
+                                        : null
                                 }
 
                             </ul>

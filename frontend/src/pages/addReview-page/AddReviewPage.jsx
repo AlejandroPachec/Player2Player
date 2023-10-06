@@ -12,10 +12,11 @@ import { useState, useContext, useEffect } from 'react';
 import { addReviewService } from '../../service';
 import useExchangeSet from '../../hooks/useExchangeSet';
 import { UserAuthContext } from '../../context/UserAuthContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const AddReviewPage = () => {
     const { token } = useContext(UserAuthContext);
     const navigate = useNavigate();
-    const [errorForm, setErrorForm] = useState(null);
     const [formValues, setFormValues] = useState({
         title: '',
         text: '',
@@ -39,7 +40,7 @@ const AddReviewPage = () => {
             await addReviewService(token, formValues, idOrder);
             navigate('/user/orders');
         } catch (error) {
-            setErrorForm(error.message);
+            toast.error(error.message);
         }
     };
 
@@ -74,7 +75,6 @@ const AddReviewPage = () => {
                             <SecondaryButton text={'Cancelar'} type='button'/>
                         </Link>
                         <MainButton text={'Enviar'} type='submit'/>
-                        <p>{errorForm}</p>
                     </form>
                 </section>
             </main>

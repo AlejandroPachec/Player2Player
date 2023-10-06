@@ -6,13 +6,14 @@ import Loading from '../../components/loading/Loading';
 import UserWithRating from '../../components/user-with-rating/UserWithRating';
 import MainButton from '../../components/main-button/MainButton';
 import SliderPhotoProduct from './SliderPhotoProduct';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import { addOrderService } from '../../service';
 import ReadOnlyRating from '../../components/readOnly-rating/ReadOnlyRating';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const ProductPage = () => {
-    const [errorBack, setErrorBack] = useState(false);
     const { idProduct } = useParams();
     const { article, error, loading } = useGetProduct(idProduct);
     const { token } = useContext(UserAuthContext);
@@ -22,18 +23,16 @@ const ProductPage = () => {
     const userSellerId = user?.id;
 
     if (loading) return <Loading/>;
-    if (error) return <p>{error}</p>;
+    if (error) toast.error(error);
 
     const handleClick = async (event) => {
         event.preventDefault();
         try {
             await addOrderService(idProduct, token, { userSellerId });
         } catch (error) {
-            setErrorBack(error.message);
+            toast.error(error.message);
         } finally {
-            setTimeout(() => {
-                navigate('/user/orders');
-            }, 2000);
+            navigate('/user/orders');
         }
     };
 
@@ -65,9 +64,6 @@ const ProductPage = () => {
                         </article>
                     </>
                     : <p>No hemos encontrado el producto que buscabas</p>
-                }
-                {
-                    errorBack ? <p>{errorBack}</p> : null
                 }
             </main>
             <Footer/>

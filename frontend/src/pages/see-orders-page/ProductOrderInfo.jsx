@@ -3,6 +3,8 @@ import MainButton from '../../components/main-button/MainButton';
 import { useNavigate } from 'react-router-dom';
 import useCheckReviews from '../../hooks/useCheckReviews';
 import Loading from '../../components/loading/Loading';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const ProductOrderInfo = ({ order }) => {
     const date = new Date();
@@ -17,7 +19,7 @@ const ProductOrderInfo = ({ order }) => {
         return <Loading />;
     }
 
-    if (error) return <p>{error.message}</p>;
+    if (error) return toast.error(error);
     function handleClick (event) {
         event.preventDefault();
         navigate(`/order/addReview/${order.id}`);
