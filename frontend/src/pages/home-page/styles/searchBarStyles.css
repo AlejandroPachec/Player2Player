@@ -24,6 +24,10 @@
   color: var(--secondaryFontColor);
 }
 
+.search-bar button:focus {
+  color: var(--secondaryFontColor);
+}
+
 .search-bar > ul > button:first-child {
   border-radius: 2.5rem 0 0 2.5rem;
   padding-left: 2.5rem;
