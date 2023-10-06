@@ -13,25 +13,39 @@ import SeeOrdersPage from './pages/see-orders-page/SeeOrdersPage';
 import ExchangeSetPage from './pages/exchangeSet-page/ExchangeSetPage';
 import SeeAcceptedProductOrder from './pages/see-accepted-product-order/SeeAcceptedProductOrder';
 import AddReviewPage from './pages/addReview-page/AddReviewPage';
-
+import { ToastContainer } from 'react-toastify';
 function App () {
     return (
-        <Routes>
-            <Route path='/product/addProduct' element={<AddProductPage/>} />
-            <Route path='/order/exchangeSet/:idOrder/:buyerId' element={<ExchangeSetPage/>} />
-            <Route path='/order/addReview/:idOrder' element={<AddReviewPage/>} />
-            <Route path='/order/accepted/:idOrder' element={<SeeAcceptedProductOrder/>}/>
-            <Route path='/user/edit' element={<EditUserPage/>} />
-            <Route path='/user/orders' element={<SeeOrdersPage/>}/>
-            <Route path='/user/orders/:sellerUser' element={<OrderManagementPage/>} />
-            <Route path='/user/profile/:idUser' element={<UserProfilePage/>}/>
-            <Route path='search?/product/:idProduct' element={<ProductPage/>}/>
-            <Route path='/user/login' element={<LoginPage/>} />
-            <Route path='/user/create' element={<RegisterPage/>} />
-            <Route path='/search/:category?:price?:name?:location?' element={<SearchPage/>}/>
-            <Route path='/' element={<HomePage/>} />
-            <Route path='/*' element={<NotFoundPage/>} />
-        </Routes>
+        <>
+            <ToastContainer
+                position="bottom-right"
+                autoClose={50000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
+            <Routes>
+                <Route path='/product/addProduct' element={<AddProductPage/>} />
+                <Route path='/order/exchangeSet/:idOrder/:buyerId' element={<ExchangeSetPage/>} />
+                <Route path='/order/addReview/:idOrder' element={<AddReviewPage/>} />
+                <Route path='/order/accepted/:idOrder' element={<SeeAcceptedProductOrder/>}/>
+                <Route path='/user/edit' element={<EditUserPage/>} />
+                <Route path='/user/orders' element={<SeeOrdersPage/>}/>
+                <Route path='/user/orders/:sellerUser' element={<OrderManagementPage/>} />
+                <Route path='/user/profile/:idUser' element={<UserProfilePage/>}/>
+                <Route path='search?/product/:idProduct' element={<ProductPage/>}/>
+                <Route path='/user/login' element={<LoginPage/>} />
+                <Route path='/user/create' element={<RegisterPage/>} />
+                <Route path='/search/:category?:price?:name?:location?' element={<SearchPage/>}/>
+                <Route path='/' element={<HomePage/>} />
+                <Route path='/*' element={<NotFoundPage/>} />
+            </Routes>
+        </>
     );
 }
 

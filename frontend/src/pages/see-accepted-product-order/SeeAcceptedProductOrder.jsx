@@ -52,7 +52,7 @@ const SeeAcceptedProductOrder = () => {
                                     avatar={`${import.meta.env.VITE_BACK_URL}/uploads/${order[0].seller_avatar}`}
                                     idUser={order[0].user_seller_id}
                                 />
-                                <ReadOnlyRating value={order[0].userAvgReviews}/>
+                                <ReadOnlyRating value={order[0].userAvgReviews_seller}/>
                                 <h2>Lugar de entrega</h2>
                                 <p>{order[0].exchange_place}</p>
                                 {

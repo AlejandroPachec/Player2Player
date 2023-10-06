@@ -9,6 +9,9 @@ import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { loginUserService } from '../../service';
 import { UserAuthContext } from '../../context/UserAuthContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import '../../../src/index.css';
 
 const LoginPage = () => {
     const { login } = useContext(UserAuthContext);
@@ -30,7 +33,7 @@ const LoginPage = () => {
             login(userAuth);
             navigate('/');
         } catch (error) {
-            setError(error.message);
+            toast.error(error.message);
         }
     }
     const handleChange = (event) => {

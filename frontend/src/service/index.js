@@ -36,7 +36,7 @@ export const loginUserService = async ({ email, password }) => {
         throw new Error(data.error);
     }
 
-    return [data.data.token, data.data.userInfo[0]];
+    return [data.data.token, data.data.userInfo[0], data.data.message];
 };
 
 export const getProductByIdService = async (idProduct) => {
@@ -181,7 +181,6 @@ export const seeOrdersService = async (token) => {
 };
 
 export const exchangeSetService = async (token, idOrder, newFormData) => {
-    console.log(newFormData);
     const response = await fetch(`${import.meta.env.VITE_BACK_URL}/orders/confirm/${idOrder}`, {
         method: 'PUT',
         headers: {
@@ -199,7 +198,6 @@ export const exchangeSetService = async (token, idOrder, newFormData) => {
 };
 
 export const rejectOrderService = async (token, idOrder) => {
-    console.log(token, idOrder);
     const response = await fetch(`${import.meta.env.VITE_BACK_URL}/orders/reject/${idOrder}`, {
         method: 'PUT',
         headers: {
@@ -240,7 +238,6 @@ export const getDataExchangeMap = async (exchangePlace) => {
 };
 
 export const addReviewService = async (token, formValues, orderId) => {
-    console.log(token, formValues, orderId);
     const response = await fetch(`${import.meta.env.VITE_BACK_URL}/reviews/${orderId}`, {
         method: 'POST',
         headers: {
