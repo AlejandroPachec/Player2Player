@@ -377,14 +377,20 @@
 							}
 						},
 						"url": {
-							"raw": "{{server}}/orders/confirm/15de38ad-a00d-439e-8da9-773347369c13",
+							"raw": "{{server}}/orders/confirm/:idOrder",
 							"host": [
 								"{{server}}"
 							],
 							"path": [
 								"orders",
 								"confirm",
-								"15de38ad-a00d-439e-8da9-773347369c13"
+								":idOrder"
+							],
+							"variable": [
+								{
+									"key": "idOrder",
+									"value": ""
+								}
 							]
 						}
 					},
@@ -409,6 +415,70 @@
 							],
 							"path": [
 								"orders",
+								":idOrder"
+							],
+							"variable": [
+								{
+									"key": "idOrder",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUserOrders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{server}}/orders/user/:idUser",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"orders",
+								"user",
+								":idUser"
+							],
+							"variable": [
+								{
+									"key": "idUser",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rejetOrder",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{server}}/orders/reject/:idOrder",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"orders",
+								"reject",
 								":idOrder"
 							],
 							"variable": [

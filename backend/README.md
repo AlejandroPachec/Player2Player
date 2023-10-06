@@ -1,8 +1,6 @@
 # Player2Player - P2P Marketplace
 
-<div align="center"><img src="../logo.png" width="300px"></div>
-
-🚨🚧🚧 **EN CONSTRUCCIÓN** 🚧🚧🚨
+<div align="center"><img src="../frontend/src/assets/logo.webp" width="300px"></div>
 
 <ol id='menu'>
   <li>
@@ -50,6 +48,10 @@ La plataforma permite a los usuarios buscar productos, registrarse para obtener 
    ```
    npm run dev
    ```
+* Añadir datos de muestra a la base de datos
+  ```
+  npm run backup
+  ```
 
 ### Endpoints
   <table border>
@@ -140,6 +142,11 @@ La plataforma permite a los usuarios buscar productos, registrarse para obtener 
         <td align="center">PUT</td>
         <td>order/confirm/:idProduct</td>
         <td>Confirmar una venta</td>
+      </tr>
+      <tr>
+        <td align="center">PUT</td>
+        <td>order/reject/:idOrder</td>
+        <td>Rechazar una venta</td>
       </tr>
     </tbody>
   </table>
