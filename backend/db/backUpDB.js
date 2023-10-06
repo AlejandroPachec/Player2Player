@@ -46,7 +46,26 @@ async function backUpDB () {
     ('3f6d2b8c-79d0-44f9-a7c3-3d6e1cf9f17d', 'Mando Xbox', 'Mando Xbox Shock Blue Wireless y Bluethooth', 'Accesorios', 'Aceptable', 70.00, 0, NULL, NOW(), '45d84f9b-03a2-4d8c-af08-680efb8ca4ef'),
     ('6c6f2951-8e03-4ab0-b943-19e6e1b26b3d', 'Ratón inalámbrico Razer', 'Razer Viper Ultimate en casi perfecta condición. Ratón de lo mejor en el mercado. Inalámbrico. Viene con la caja y las instrucciones además de pegatinas.', 'Accesorios', 'En buen estado', 55.00, 0, NULL, NOW(), '45d84f9b-03a2-4d8c-af08-680efb8ca4ef'),
     ('bfa685f7-0c2c-4527-a7e9-8978c53446c0', 'Monitor Msi curvado', 'Lo he usado durante 5 meses me fue genial, ahora me compre otro y este no lo uso. Es de 75hz.', 'Accesorios', 'En buen estado', 100.00, 0, NULL, NOW(), '23f549c3-12c4-4e64-9ec3-5721a9c4d72c'),
-    ('7f1a5e8d-2a4e-4a88-bf4d-8b9f08c8b745', 'Guitarra Guitar Hero', 'Guitarra del juego guitar hero para la wii con muy poco uso.', 'Accesorios', 'En buen estado', 18.00, 0, NULL, NOW(), '716c7c46-d9f0-4b2a-8f8d-62d7df41820d');
+    ('7f1a5e8d-2a4e-4a88-bf4d-8b9f08c8b745', 'Guitarra Guitar Hero', 'Guitarra del juego guitar hero para la wii con muy poco uso.', 'Accesorios', 'En buen estado', 18.00, 0, NULL, NOW(), '716c7c46-d9f0-4b2a-8f8d-62d7df41820d'),
+    ('03a7d773-fa0e-4eb3-9a8c-02b8c6c9a418', 'Pokémon Verde Hoja', 'Pokémon Verde Hoja en perfecto estado. Incluye manuales y GameLink', 'Retro', 'En buen estado', 50.00, 1, NULL, NOW(), '56a789cc-2b8e-47f9-b2f6-81c8e73998dd'),
+    ('c951a704-2dbb-4e5e-8922-80f6f32b13b1', 'Monitor Samsung', 'Monitor Samsung curve de 27". Tiene poco uso, lo vendo por falta de espacio.', 'Accesorios', 'En buen estado', 120.00, 1, NULL, NOW(), '23f549c3-12c4-4e64-9ec3-5721a9c4d72c'),
+    ('0d786d48-568d-4ef4-9c5e-2a6cf07c09b6', 'Memoria RAM Corsair', 'Memoria RAM de 2x8GB DDR4. No tienen uso', 'Accesorios', 'Nuevo', 200.00, 1, NULL, NOW(), '23f549c3-12c4-4e64-9ec3-5721a9c4d72c'),
+    ('6a742d2c-af6d-4f02-84fc-9bb94d18f839', 'Animal Crossing', 'Juego de Animal Crossing New horizons para la nintendo Switch.', 'Videojuegos', 'En buen estado', 32.00, 1, NULL, NOW(), '45d84f9b-03a2-4d8c-af08-680efb8ca4ef'),
+    ('7c1f06a8-ecab-431d-a24e-8961f2a751a2', 'Ratón Logitech', 'Ratón inalámbrico de Logitech. Superspeed, rojo.', 'Accesorios', 'Aceptable', 60.00, 1, NULL, NOW(), '45d84f9b-03a2-4d8c-af08-680efb8ca4ef'),
+    ('6a8c1f06-ecab-431d-a24e-8961f2a751a2', 'Budokai PS2', 'Budokai Tenkaichi III para la PS2. Conserva también los libros de instrucciones', 'Retro', 'En buen estado', 16.00, 1, NULL, NOW(), '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7'),
+    ('3f3e9b8d-6a74-4d0a-91fc-9cbf1dce2d6e', 'Refrigeración líquida', 'Refrigeración líquida de Corsair. H115i PLATINUM. Va perefecta ', 'Accesorios', 'En buen estado', 250.00, 1, NULL, NOW(), '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7'),
+    ('5a63c7f0-9d23-4b7e-b912-841bc2e1a6dd', 'Pokémon Amarillo', 'Pokémon Amarillo en perfecto estado. Conserva todos los manuales y la caja en perfectas condiciones. Es de coleccionista', 'Retro', 'En buen estado', 120.00, 1, NULL, NOW(), 'f02baf4a-67d7-4c8e-92f0-e40c0e7cf1b1'),
+    ('2a98e7d3-6bc1-4f12-8a3d-9e95d8e623aa', 'Nintendo Switch', 'Nintendo switch con Mario Kart 8 y Super Mario Odyssey, Animal Crossing y Splatton 2. También incluye dos mandos y funda.', 'Consolas', 'Aceptable', 260.00, 1, NULL, NOW(), 'f02baf4a-67d7-4c8e-92f0-e40c0e7cf1b1'),
+    ('6e9a238f-37f5-4d92-9b48-7e695a7716b5', 'Tomb Raider 2', 'El juego funciona pero esta un poco rayado. La caja tampoco esta del todo bien', 'Retro', 'No da para más', 10.00, 0, NULL, NOW(), '45d84f9b-03a2-4d8c-af08-680efb8ca4ef'),
+    ('8c5d6a2b-af14-4e71-94f8-5b0d3e1f6c89', 'Elden Ring', 'Juego del año. Esta en perfecto estado.', 'Videojuegos', 'En buen estado', 40.00, 0, NULL, NOW(), 'f02baf4a-67d7-4c8e-92f0-e40c0e7cf1b1'),
+    ('3d1e8f7a-96c5-45b2-af9d-28e3b7f2a61d', 'Teclado macánico azul', 'Teclado mecánico. Switches cherry blue. No hace mucho ruido, poco uso.', 'Accesorios', 'En buen estado', 70.00, 0, NULL, NOW(), 'c586d7bd-9e93-43b7-a67d-32a68278981f'),
+    ('1f0d2e9c-b84a-46d7-85fc-ec1a67300f52', 'Wii', 'Nintendo Wii con todo incluido, base, mandos y algún juego.', 'Consolas', 'Aceptable', 30.00, 0, NULL, NOW(), '9a5e1a27-8e21-4f52-9547-6d4555a92456'),
+    ('5b7e2c1f-8d6a-493f-af57-6c918f3a2e04', 'PSP + Juegos', 'PSP, incluye cables, funda y una variedad de juegos. Perfecta para cuando viajas', 'Consolas', 'Aceptable', 50.00, 0, NULL, NOW(), '8f3c6e0a-2c7d-4dd2-9eef-77f27ecf31ac'),
+    ('4a3e5b1c-7d6f-4f8b-9a2e-c0816f9325da', 'PlayStation 5', 'Poco uso, era de mi hijo pero por portarse mal la vendo', 'Consolas', 'En buen estado', 700.00, 0, NULL, NOW(), '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af'),
+    ('2f6e7d1a-9b0d-4c5f-8a3e-61b1c4d0a827', 'EA Sports FC 24', 'juego recién salido. Me toco en un sorteo y no lo quiero, no me gusta el fútbol', 'Videojuegos', 'Nuevo', 60.00, 0, NULL, NOW(), '23f549c3-12c4-4e64-9ec3-5721a9c4d72c'),
+    ('9d8c2b6f-4e3a-45d7-8f1c-672a1e0b3f9c', 'Mario Maker', 'Diviertete dejando volar tu imaginación y la de los más pequeños. Juego enetretenido para pasar un rato en familia.', 'Videojuegos', 'En buen estado', 42.00, 0, NULL, NOW(), '56a789cc-2b8e-47f9-b2f6-81c8e73998dd'),
+    ('7a6b8d1e-2f4c-4d9b-9e5a-f6d82a1c0b3e', 'Oculus Quest II', 'A mi personalmente me marean un poco. A mi marido le van muy bien.', 'Accesorios', 'En buen estado', 180.00, 0, NULL, NOW(), '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7'),
+    ('0c4b8e3f-6a9d-4f5c-8b2e-1a7f23d96e5a', 'Bubble & Bobble NES', 'Juego superdivertido para juegar con amigos. Rememora tu infancia con unas partidillas.', 'Retro', 'Aceptable', 67.00, 0, NULL, NOW(), '716c7c46-d9f0-4b2a-8f8d-62d7df41820d');
     `);
 
         await pool.query(`INSERT INTO product_photo (id, name, modified_at, created_at, product_id)
@@ -89,10 +108,42 @@ async function backUpDB () {
     ('9b20ac23-07ea-487a-ba6a-4a88a3663c79', 'S4a9Cv8FbX3eNwR.webp', NULL, NOW(), '3f6d2b8c-79d0-44f9-a7c3-3d6e1cf9f17d'),
     ('e4976f3d-8361-49ef-a98a-fcb7fb7e9aa6', 'T5nDq8vWpR2aXzL.webp', NULL, NOW(), '6c6f2951-8e03-4ab0-b943-19e6e1b26b3d'),
     ('1bb34db7-8742-4f15-88e5-509e12e6e773', 'M2xNw8RvZ3qA9sK.webp', NULL, NOW(), 'bfa685f7-0c2c-4527-a7e9-8978c53446c0'),
-    ('6d9b3f6c-4e53-4aa5-9a8c-6e2c78ab951c', 'H8wS4tMnJzL6XpV.webp', NULL, NOW(), '7f1a5e8d-2a4e-4a88-bf4d-8b9f08c8b745');
+    ('6d9b3f6c-4e53-4aa5-9a8c-6e2c78ab951c', 'H8wS4tMnJzL6XpV.webp', NULL, NOW(), '7f1a5e8d-2a4e-4a88-bf4d-8b9f08c8b745'),
+    ('f36d3b0a-3e1d-4e07-9c68-ae1e8db0ef02', 'B0r3MzI7sXe1NvW.webp', NULL, NOW(), '03a7d773-fa0e-4eb3-9a8c-02b8c6c9a418'),
+    ('5e18e68e-29f9-45e0-85b1-912e9a7ef27a', 'D5k8HtY2zSv1QxJ.webp', NULL, NOW(), '03a7d773-fa0e-4eb3-9a8c-02b8c6c9a418'),
+    ('81eab68c-46c5-4a48-8629-6a9f1a9c94d1', 'L8s1GpR7jNw4XtK.webp', NULL, NOW(), '03a7d773-fa0e-4eb3-9a8c-02b8c6c9a418'),
+    ('efe1f2f0-9ebc-4b61-ba5e-4281f3f5e9b2', 'Y6q9ZdH2xVf5LpO.webp', NULL, NOW(), '03a7d773-fa0e-4eb3-9a8c-02b8c6c9a418'),
+    ('8c2a5f2d-d1eb-4f61-9278-036a3d5b3483', 'Q7rE9vY3sP1mK5t.webp', NULL, NOW(), 'c951a704-2dbb-4e5e-8922-80f6f32b13b1'),
+    ('7f4f1f79-042f-43a9-b0c5-6b8a39586c66', 'X9sC3pM6qK1tH5v.webp', NULL, NOW(), '0d786d48-568d-4ef4-9c5e-2a6cf07c09b6'),
+    ('d5f9ef1b-1c65-4c0b-8d0b-9d2d8d62d1a7', 'J3rP8xV5sM1qK9t.webp', NULL, NOW(), '0d786d48-568d-4ef4-9c5e-2a6cf07c09b6'),
+    ('43ef986e-2f12-4a08-bd57-761d7f098768', 'R5m8K1jP2vH9tLx.webp', NULL, NOW(), '6a742d2c-af6d-4f02-84fc-9bb94d18f839'),
+    ('9b1d3e55-8b3a-493a-9e25-2c0f539aa946', 'S3dG9fT5aR1qK6p.webp', NULL, NOW(), '6a742d2c-af6d-4f02-84fc-9bb94d18f839'),
+    ('d4c78987-82e2-4c07-9e76-fd5ffcaec212', 'L5sM8pR1jK2vH9t.webp', NULL, NOW(), '7c1f06a8-ecab-431d-a24e-8961f2a751a2'),
+    ('f9b3ce17-1ef1-43bb-a2cd-5b7d2e2e18e6', 'Q3rE5dW9fT7aR1q.webp', NULL, NOW(), '7c1f06a8-ecab-431d-a24e-8961f2a751a2'),
+    ('87d4c789-82e2-4c07-9e76-fd5ffcaec212', 'A3rE5dW9fT7aR1q.webp', NULL, NOW(), '6a8c1f06-ecab-431d-a24e-8961f2a751a2'),
+    ('17f9b3ce-1ef1-43bb-a2cd-5b7d2e2e18e6', 'X5sM8pR1jK2vH9t.webp', NULL, NOW(), '6a8c1f06-ecab-431d-a24e-8961f2a751a2'),
+    ('5c2b8d0f-81a6-4e53-92d9-7a59cfe347dd', 'P7sK1jM8pR5xV2H.webp', NULL, NOW(), '3f3e9b8d-6a74-4d0a-91fc-9cbf1dce2d6e'),
+    ('8e19a864-f13b-4594-a3df-c0127e45e498', 'Y2qW9aR1qK6pT5d.webp', NULL, NOW(), '3f3e9b8d-6a74-4d0a-91fc-9cbf1dce2d6e'),
+    ('f9a8c3d1-2b46-4e05-8c79-6d7a4e30e1a5', 'Q6rT9sF4zY7xV2p.webp', NULL, NOW(), '5a63c7f0-9d23-4b7e-b912-841bc2e1a6dd'),
+    ('71e2b5cf-d8a9-43e1-bf5a-6eae78fc45c3', 'J8s2M1jP5vK9rHx.webp', NULL, NOW(), '5a63c7f0-9d23-4b7e-b912-841bc2e1a6dd'),
+    ('e3f1b4d2-75a8-4f9d-92c6-eb036f4d3e61', 'T7sK1qM6pR9jX5v.webp', NULL, NOW(), '5a63c7f0-9d23-4b7e-b912-841bc2e1a6dd'),
+    ('745d6e32-82c5-4fae-9d28-e0f7a9bc14aa', 'M2sH1qR5jX8vP7w.webp', NULL, NOW(), '2a98e7d3-6bc1-4f12-8a3d-9e95d8e623aa'),
+    ('3b4a7e81-6f2d-4b9d-aa97-20a1d16f7fcf', 'L3xV9pR4jK7sT6w.webp', NULL, NOW(), '2a98e7d3-6bc1-4f12-8a3d-9e95d8e623aa'),
+    ('e91c0a7d-6e5f-4d31-9c42-18d267c451e1', 'H8wE5dQ2fT6sR1a.webp', NULL, NOW(), '2a98e7d3-6bc1-4f12-8a3d-9e95d8e623aa'),
+    ('f2c49d8e-e8a0-4f4e-ae3a-9ab15e677c62', 'G7rT9sK4zY3xV1p.webp', NULL, NOW(), '2a98e7d3-6bc1-4f12-8a3d-9e95d8e623aa'),
+    ('4f3a1e8d-5b2c-4d1e-9a2f-7b5c9f5c7d3e', 'X8s2M1jP5vK9rHx.webp', NULL, NOW(), '6e9a238f-37f5-4d92-9b48-7e695a7716b5'),
+    ('7d1c9e3e-1b7f-2e5c-8a3d-4f9c2b5a6d8e', 'R9dM1jQ8sT7xV2p.webp', NULL, NOW(), '8c5d6a2b-af14-4e71-94f8-5b0d3e1f6c89'),
+    ('2b1e8f3c-4c5b-6d7a-8e9f-1d3e5c7b2a9d', 'L5xV9pR4jK7sT6w.webp', NULL, NOW(), '3d1e8f7a-96c5-45b2-af9d-28e3b7f2a61d'),
+    ('9c8d1e5b-6f7a-2c3b-9a4d-1e8f3a2b5c7d', 'M7sH1qR5jX8vP7w.webp', NULL, NOW(), '1f0d2e9c-b84a-46d7-85fc-ec1a67300f52'),
+    ('6e7f8d9a-4c2b-5d3e-1f9c-7a8b2f5a1e9d', 'Q8rT9sK4zY3xV1p.webp', NULL, NOW(), '5b7e2c1f-8d6a-493f-af57-6c918f3a2e04'),
+    ('3f7d2e5c-8a9b-6e1d-4c5f-1a7b9d8c2b5a', 'H7wE5dQ2fT6sR1a.webp', NULL, NOW(), '4a3e5b1c-7d6f-4f8b-9a2e-c0816f9325da'),
+    ('1e2f3e4d-5b6c-7a8f-9d1c-2a3b4c5d6e7f', 'N5xV9pR4jK7sT6w.webp', NULL, NOW(), '2f6e7d1a-9b0d-4c5f-8a3e-61b1c4d0a827'),
+    ('8c9d2e3f-5b6c-7a8f-1e2d-4c3b5d6a7b8c', 'O2sH1qR5jX8vP7w.webp', NULL, NOW(), '9d8c2b6f-4e3a-45d7-8f1c-672a1e0b3f9c'),
+    ('6d7e8f9a-2b3c-4d5e-6f7a-8c9d1e2f3d4e', 'P8rT9sK4zY3xV1p.webp', NULL, NOW(), '7a6b8d1e-2f4c-4d9b-9e5a-f6d82a1c0b3e'),
+    ('1f2e3d4c-5b6a-7d8e-9f1c-2b3a4c5d6e7f', 'Y7wE5dQ2fT6sR1a.webp', NULL, NOW(), '0c4b8e3f-6a9d-4f5c-8b2e-1a7f23d96e5a');
     `);
 
-    await pool.query(`INSERT INTO reviews (id, title, text, stars, created_at, modified_at, product_id, user_seller_id, user_buyer_id)
+        await pool.query(`INSERT INTO reviews (id, title, text, stars, created_at, modified_at, product_id, user_seller_id, user_buyer_id)
     VALUES
     ('c62f1f91-62a1-4be0-9a25-e02e7d27f8bf', 'Vino en su caja, todo perfecto', 'Todo perfecto!! Buena comunicacion, simpatico y atento! De 10!!', '5', NOW(), NULL, '9b9821c9-20c7-4f85-8f0b-0e2db0d99e99', '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af', '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7'),
     ('2c4c6a2d-86c8-4e94-8b4f-5240b899a9d2', 'Excelente', 'Vendedor muy recomendable', '4', NOW(), NULL, 'a9d99eae-8697-4e12-88f0-152ad1f876c0', '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af', '56a789cc-2b8e-47f9-b2f6-81c8e73998dd'),
@@ -110,23 +161,22 @@ async function backUpDB () {
     ('e45f678f-8844-4f2b-9b68-1c38ffdb22a9', 'Es inalámbrico', 'Excelente servicio', '4', NOW(), NULL, '6c6f2951-8e03-4ab0-b943-19e6e1b26b3d', '45d84f9b-03a2-4d8c-af08-680efb8ca4ef', '8f3c6e0a-2c7d-4dd2-9eef-77f27ecf31ac'),
     ('82e4e63b-937d-4e1d-8349-4c62cfc153bb', 'Muy buen estado', 'Perfecto gracias', '3', NOW(), NULL, 'bfa685f7-0c2c-4527-a7e9-8978c53446c0', '23f549c3-12c4-4e64-9ec3-5721a9c4d72c', '9a5e1a27-8e21-4f52-9547-6d4555a92456'),
     ('9d7e3e6c-9621-41d9-9fc0-9c5f6a34e6c8', 'Atenta y rápida', 'Sin ningún problema, repetiría sin dudarlo.', '5', NOW(), NULL, '7f1a5e8d-2a4e-4a88-bf4d-8b9f08c8b745', '716c7c46-d9f0-4b2a-8f8d-62d7df41820d', '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af');
-
     `);
 
 
-    /*    await pool.query(`INSERT INTO orders (id, exchange_place, exchange_time, user_buyer_id, user_seller_id, product_id, created_at)
+        await pool.query(`INSERT INTO orders (id, exchange_place, exchange_time, user_buyer_id, status, user_seller_id, product_id, created_at)
     VALUES
-    ('5b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed1', 'Lugar1', '2023-09-15 10:00:00', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed1', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed2', '2b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed1', NOW()),
-    ('5b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed2', 'Lugar2', '2023-09-15 11:00:00', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed2', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed3', '2b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed2', NOW()),
-    ('5b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed3', 'Lugar3', '2023-09-15 12:00:00', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed3', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed4', '2b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed3', NOW()),
-    ('5b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed4', 'Lugar4', '2023-09-15 13:00:00', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed4', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed5', '2b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed4', NOW()),
-    ('5b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed5', 'Lugar5', '2023-09-15 14:00:00', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed5', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed1', '2b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed5', NOW()),
-    ('5b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed6', 'Lugar6', '2023-09-15 15:00:00', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed1', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed2', '2b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed1', NOW()),
-    ('5b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed7', 'Lugar7', '2023-09-15 16:00:00', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed2', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed3', '2b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed2', NOW()),
-    ('5b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed8', 'Lugar8', '2023-09-15 17:00:00', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed3', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed4', '2b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed3', NOW()),
-    ('5b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed9', 'Lugar9', '2023-09-15 18:00:00', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed4', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed5', '2b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed4', NOW()),
-    ('5b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed0', 'Lugar10', '2023-09-15 19:00:00', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed5', '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed1', '2b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed5', NOW());
-    `); */
+    ('4d11f8a1-1e68-4ef0-a7f2-3d7d3b1c94d6', 'Madrid', '2023-12-11 10:00:00', '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af', 'Aceptado', '45d84f9b-03a2-4d8c-af08-680efb8ca4ef', '6e9a238f-37f5-4d92-9b48-7e695a7716b5', NOW()),
+    ('6c2b8d0f-7b3a-49e0-82d9-7a59cfe34ab8', 'A Coruña', '2023-12-02 11:00:00', '23f549c3-12c4-4e64-9ec3-5721a9c4d72c', 'Aceptado', 'f02baf4a-67d7-4c8e-92f0-e40c0e7cf1b1', '8c5d6a2b-af14-4e71-94f8-5b0d3e1f6c89', NOW()),
+    ('a1e8c2e3-1f13-45bb-a2cd-5b7d2e2e18f7', 'Pontevedra', '2023-12-22 12:00:00', '45d84f9b-03a2-4d8c-af08-680efb8ca4ef', 'Aceptado', 'c586d7bd-9e93-43b7-a67d-32a68278981f', '3d1e8f7a-96c5-45b2-af9d-28e3b7f2a61d', NOW()),
+    ('b3f9ce17-4ef1-48bb-a1cd-5b7d2e2e18e6', 'Vigo', '2023-12-28 13:00:00', '56a789cc-2b8e-47f9-b2f6-81c8e73998dd', 'Aceptado', '9a5e1a27-8e21-4f52-9547-6d4555a92456', '1f0d2e9c-b84a-46d7-85fc-ec1a67300f52', NOW()),
+    ('8f9b3ce1-5ef1-47bb-a2cd-5b7d2e2e18e6', 'Ourense', '2023-12-17 14:00:00', '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7', 'Aceptado', '8f3c6e0a-2c7d-4dd2-9eef-77f27ecf31ac', '5b7e2c1f-8d6a-493f-af57-6c918f3a2e04', NOW()),
+    ('2e2e18e6-3f9b3ce1-48bb-a2cd-5b7d2e1ef1e6', 'Málaga', '2023-12-15 15:00:00', '716c7c46-d9f0-4b2a-8f8d-62d7df41820d', 'Aceptado', '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af', '4a3e5b1c-7d6f-4f8b-9a2e-c0816f9325da', NOW()),
+    ('c3e1ef1e-4b1b-4c1d-9e2f-7a5c9f9f5c7d', 'Sevilla', '2023-12-08 16:00:00', '8f3c6e0a-2c7d-4dd2-9eef-77f27ecf31ac', 'Aceptado', '23f549c3-12c4-4e64-9ec3-5721a9c4d72c', '2f6e7d1a-9b0d-4c5f-8a3e-61b1c4d0a827', NOW()),
+    ('d3e1ef1e-5b1b-5c1d-8e2f-6a5c9f9f4c7d', 'Alicante', '2023-12-12 17:00:00', '9a5e1a27-8e21-4f52-9547-6d4555a92456', 'Aceptado', '56a789cc-2b8e-47f9-b2f6-81c8e73998dd', '9d8c2b6f-4e3a-45d7-8f1c-672a1e0b3f9c', NOW()),
+    ('e3e1ef1e-6b1b-6c1d-7e2f-5a5c9f9f3c7d', 'Badajoz', '2023-12-23 18:00:00', 'c586d7bd-9e93-43b7-a67d-32a68278981f', 'Aceptado', '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7', '7a6b8d1e-2f4c-4d9b-9e5a-f6d82a1c0b3e', NOW()),
+    ('f3e1ef1e-7b1b-7c1d-6e2f-4a5c9f9f2c7d', 'Murcia', '2023-12-30 19:00:00', 'f02baf4a-67d7-4c8e-92f0-e40c0e7cf1b1', 'Aceptado', '716c7c46-d9f0-4b2a-8f8d-62d7df41820d', '0c4b8e3f-6a9d-4f5c-8b2e-1a7f23d96e5a', NOW());
+    `);
 
         process.exit(0);
     } catch (error) {
