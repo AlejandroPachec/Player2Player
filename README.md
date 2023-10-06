@@ -148,7 +148,7 @@ A continuación se describen las **principales funcionalidades** del proyecto co
 
 </div>
 
-- (MAS COMPRADORES PARA EL MISMO PRODUCTO)
+- Cuando el vendedor acepta un pedido, se envía un correo electrónico automático al resto de interesados para informarles de que el producto ya no se encuentra disponible
 
 <br/>
 
