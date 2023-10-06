@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import MainHeader from '../../components/header-main/MainHeader';
 import MainButton from '../../components/main-button/MainButton';
 import GeneralInput from '../../components/generalInput/GeneralInput';
@@ -12,6 +12,12 @@ function AddProductPage () {
     const { token } = useContext(UserAuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (token === '' || !token) {
+            navigate('/user/login');
+        }
+    }, []);
 
     const [formData, setFormData] = useState({
         title: '',

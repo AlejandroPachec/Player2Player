@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from 'react';
 import { UserAuthContext } from '../../context/UserAuthContext';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useExchangeSet from '../../hooks/useExchangeSet';
 import MainHeader from '../../components/header-main/MainHeader';
 import Footer from '../../components/footer/Footer';
@@ -18,9 +18,16 @@ const SeeAcceptedProductOrder = () => {
     const order = orderById?.orders;
     const [latitude, setLatitude] = useState('');
     const [longitude, setLongitude] = useState('');
+    const navigate = useNavigate();
 
     const apiKey = import.meta.env.VITE_GOOGLE_MAPS;
     const { isLoaded } = useLoadScript({ googleMapsApiKey: apiKey });
+
+    useEffect(() => {
+        if (token === '' || !token) {
+            navigate('/user/login');
+        }
+    }, []);
 
     useEffect(() => {
         const loadMap = async () => {

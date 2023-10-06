@@ -1,15 +1,22 @@
 import Footer from '../../components/footer/Footer';
 import MainHeader from '../../components/header-main/MainHeader';
 import { UserAuthContext } from '../../context/UserAuthContext';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import useSeeOrders from '../../hooks/useSeeOrders';
 import ProductOrderInfo from './ProductOrderInfo';
 import Loading from '../../components/loading/Loading';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SeeOrders = () => {
     const { token } = useContext(UserAuthContext);
     const { orders, error, loading } = useSeeOrders(token);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (token === '' || !token) {
+            navigate('/user/login');
+        }
+    }, []);
 
     if (loading) {
         return <Loading />;

@@ -57,7 +57,7 @@ const OrderCard = ({ order, avgRating }) => {
 
 OrderCard.propTypes = {
     order: PropTypes.object.isRequired,
-    avgRating: PropTypes.number.isRequired
+    avgRating: PropTypes.number
 };
 
 export default OrderCard;
