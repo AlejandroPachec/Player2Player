@@ -38,9 +38,9 @@ async function getUserOrder (req, res, next) {
             FROM product_photo
             WHERE product_id = O.product_id
         ) AS PP ON true
-        INNER JOIN users UB ON UB.id = O.user_buyer_id
-        INNER JOIN users U ON U.id = O.user_seller_id
-        INNER JOIN reviews R ON O.user_buyer_id = R.user_buyer_id
+        LEFT JOIN users UB ON UB.id = O.user_buyer_id
+        LEFT JOIN users U ON U.id = O.user_seller_id
+        LEFT JOIN reviews R ON O.user_buyer_id = R.user_buyer_id
         WHERE (O.id = ? AND (O.user_buyer_id = ? OR O.user_seller_id = ?))
         GROUP BY
             O.id,

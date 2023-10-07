@@ -60,7 +60,7 @@ const UserProfilePage = () => {
                                                 })}
                                             </ul>
                                         </>
-                                        : <p>No has rechazado niguna solicitud</p>
+                                        : null
                                 }
                             </section>
                         </>

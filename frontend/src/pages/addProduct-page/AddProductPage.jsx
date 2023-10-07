@@ -50,7 +50,9 @@ function AddProductPage () {
         e.preventDefault();
 
         try {
+            await addProductService(token, formData);
             navigate('/');
+            toast.success('Producto añadido correctamente');
         } catch (error) {
             toast.error(error.message);
         }

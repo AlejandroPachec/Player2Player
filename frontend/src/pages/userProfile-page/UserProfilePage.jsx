@@ -13,7 +13,6 @@ import ReadOnlyRating from '../../components/readOnly-rating/ReadOnlyRating';
 import emailIcon from '../../assets/emailIcon.svg';
 import { useState } from 'react';
 import './UserProfilePage.css';
-import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
 const UserProfilePage = () => {
