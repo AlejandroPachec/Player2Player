@@ -10,7 +10,6 @@ import SecondaryButton from '../../components/secondary-button/SecondaryButton';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import MainHeader from '../../components/header-main/MainHeader';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const EditUserPage = () => {
     const navigate = useNavigate();
@@ -72,6 +71,7 @@ const EditUserPage = () => {
             if (formValues.avatar !== '') { formValues.avatar = data.updatedUser.avatar; }
             updateUser(token, formValues);
             navigate(`/user/profile/${user.id}`);
+            toast.success('Usuario editado correctamente');
         } catch (error) {
             console.log(error);
             toast.error(error.message);

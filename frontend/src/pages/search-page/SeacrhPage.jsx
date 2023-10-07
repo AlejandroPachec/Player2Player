@@ -4,7 +4,6 @@ import Loading from '../../components/loading/Loading';
 import HomePageHeader from '../home-page/HomePageHeader';
 import Footer from '../../components/footer/Footer';
 import ProductItem from '../../components/product-item/ProductItem';
-import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
 const SearchPage = () => {

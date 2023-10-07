@@ -6,7 +6,6 @@ import useSeeOrders from '../../hooks/useSeeOrders';
 import ProductOrderInfo from './ProductOrderInfo';
 import Loading from '../../components/loading/Loading';
 import { Link, useNavigate } from 'react-router-dom';
-import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
 const SeeOrders = () => {

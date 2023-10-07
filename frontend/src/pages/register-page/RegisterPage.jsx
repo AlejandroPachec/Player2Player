@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { registerUserService } from '../../service';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import './registerPage.css';
 
 const RegisterPage = () => {
@@ -40,6 +39,7 @@ const RegisterPage = () => {
         try {
             await registerUserService(formValues);
             navigate('/user/login');
+            toast.success(`Te has registrado correctamente. Player ${formValues.firstName} ready! 🎮`);
         } catch (error) {
             toast.error(error.message);
         }

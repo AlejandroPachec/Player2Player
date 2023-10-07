@@ -10,7 +10,6 @@ import { useContext } from 'react';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import { addOrderService } from '../../service';
 import ReadOnlyRating from '../../components/readOnly-rating/ReadOnlyRating';
-import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
 const ProductPage = () => {
@@ -29,6 +28,7 @@ const ProductPage = () => {
         event.preventDefault();
         try {
             await addOrderService(idProduct, token, { userSellerId });
+            toast.success('Producto reservado, pronto recibirás una respuesta del vendedor');
         } catch (error) {
             toast.error(error.message);
         } finally {

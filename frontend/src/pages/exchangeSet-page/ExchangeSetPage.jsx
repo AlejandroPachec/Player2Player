@@ -13,7 +13,6 @@ import { exchangeSetService } from '../../service';
 import useExchangeSet from '../../hooks/useExchangeSet';
 import Loading from '../../components/loading/Loading';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const ExchangeSetPage = () => {
     const { token } = useContext(UserAuthContext);
@@ -52,6 +51,7 @@ const ExchangeSetPage = () => {
             const exchangeTime = `${year}-${month}-${day} ${hour}:${minute}`;
             const newFormData = { exchangePlace, exchangeTime };
             await exchangeSetService(token, idOrder, newFormData);
+            toast.success('Le enviaremos un email al comprador con los datos');
         } catch (error) {
             toast.error(error.message);
         }

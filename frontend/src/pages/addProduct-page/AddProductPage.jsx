@@ -7,7 +7,6 @@ import SecondaryButton from '../../components/secondary-button/SecondaryButton';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import { addProductService } from '../../service';
 import { useNavigate, Link } from 'react-router-dom';
-import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
 function AddProductPage () {
@@ -52,7 +51,7 @@ function AddProductPage () {
         try {
             await addProductService(token, formData);
             navigate('/');
-            toast.success('Producto añadido correctamente');
+            toast.success('Producto añadido correctamente ');
         } catch (error) {
             toast.error(error.message);
         }

@@ -10,7 +10,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { loginUserService } from '../../service';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const LoginPage = () => {
     const { login } = useContext(UserAuthContext);

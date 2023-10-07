@@ -10,7 +10,6 @@ import Loading from '../../components/loading/Loading';
 import { getDataExchangeMap } from '../../service';
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import './map.css';
-import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
 const SeeAcceptedProductOrder = () => {
@@ -38,7 +37,7 @@ const SeeAcceptedProductOrder = () => {
                 setLatitude(data.lat);
                 setLongitude(data.lng);
             } catch (error) {
-                return toast.error(error.message);
+                throw new Error(error.message);
             }
         };
         loadMap();

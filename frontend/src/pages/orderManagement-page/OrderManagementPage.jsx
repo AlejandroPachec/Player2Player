@@ -7,7 +7,6 @@ import useGetUserOrders from '../../hooks/useGetUserOrders';
 import Loading from '../../components/loading/Loading';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const UserProfilePage = () => {
     const { sellerUser } = useParams();

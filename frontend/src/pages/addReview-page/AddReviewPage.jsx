@@ -13,7 +13,7 @@ import { addReviewService } from '../../service';
 import useExchangeSet from '../../hooks/useExchangeSet';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 const AddReviewPage = () => {
     const { token } = useContext(UserAuthContext);
     const navigate = useNavigate();
@@ -39,6 +39,7 @@ const AddReviewPage = () => {
         try {
             await addReviewService(token, formValues, idOrder);
             navigate('/user/orders');
+            toast.success('Valoración añadida correctamente');
         } catch (error) {
             toast.error(error.message);
         }
