@@ -15,7 +15,7 @@ import Loading from '../../components/loading/Loading';
 import { toast } from 'react-toastify';
 
 const ExchangeSetPage = () => {
-    const { token } = useContext(UserAuthContext);
+    const { token, user } = useContext(UserAuthContext);
     const { idOrder } = useParams();
     const navigate = useNavigate();
 
@@ -52,6 +52,7 @@ const ExchangeSetPage = () => {
             const newFormData = { exchangePlace, exchangeTime };
             await exchangeSetService(token, idOrder, newFormData);
             toast.success('Le enviaremos un email al comprador con los datos');
+            navigate(`/user/orders/${user.id}`);
         } catch (error) {
             toast.error(error.message);
         }

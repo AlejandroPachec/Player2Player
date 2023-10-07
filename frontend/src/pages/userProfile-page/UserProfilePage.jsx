@@ -1,7 +1,7 @@
 import MainHeader from '../../components/header-main/MainHeader';
 import Footer from '../../components/footer/Footer';
 import useGetUserProfile from '../../hooks/useGetUserProfile';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import UserWithRating from '../../components/user-with-rating/UserWithRating';
 import whatsapp from '../../assets/whatsapp.svg';
 import location from '../../assets/location.svg';
@@ -60,7 +60,7 @@ const UserProfilePage = () => {
                         <UserWithRating
                             username={userInfo.first_name}
                             lastName={userInfo.last_name}
-                            avatar={`${import.meta.env.VITE_BACK_URL}/uploads/${userInfo.avatar}`}
+                            avatar={userInfo.avatar}
                             idUser={idUser}/>
                         <ReadOnlyRating value={user.avgReview?.userAvgReviews} precision={0.5} readOnly/>
                         <p>
@@ -82,7 +82,11 @@ const UserProfilePage = () => {
                         userProducts && clicState === 'sell' && sellingItems !== 0
                             ? <ul id='productsOnSale'>
                                 {userProducts.filter((product) => product.availability === 1).map((product) => {
-                                    return <li key={product.id}><ProductCard product={product}/></li>;
+                                    return <li key={product.id}>
+                                        <Link to={`/product/${product.id}`}>
+                                            <ProductCard product={product}/>
+                                        </Link>
+                                    </li>;
                                 })}
                             </ul>
                             : clicState === 'sell'

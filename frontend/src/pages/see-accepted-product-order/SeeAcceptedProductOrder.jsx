@@ -57,7 +57,7 @@ const SeeAcceptedProductOrder = () => {
                                 <UserWithRating
                                     username={order[0].seller_first_name}
                                     lastName={order[0].seller_last_name}
-                                    avatar={`${import.meta.env.VITE_BACK_URL}/uploads/${order[0].seller_avatar}`}
+                                    avatar={order[0].seller_avatar}
                                     idUser={order[0].user_seller_id}
                                 />
                                 <ReadOnlyRating value={order[0].userAvgReviews_seller}/>

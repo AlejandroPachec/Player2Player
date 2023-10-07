@@ -13,6 +13,7 @@ const OrderCard = ({ order, avgRating }) => {
     const { token } = useContext(UserAuthContext);
 
     const { id: idOrder } = order;
+    console.log(order);
 
 
     function handleAccept () {
@@ -37,14 +38,11 @@ const OrderCard = ({ order, avgRating }) => {
             {
                 order.status === 'Pendiente'
                     ? <>
-                        { order.avatar
-                            ? <UserWithRating
-                                username={order.seller_first_name}
-                                lastName={order.seller_last_name}
-                                avatar={`${import.meta.env.VITE_BACK_URL}/uploads/${order.avatar}`}
-                                idUser={order.user_buyer_id} />
-                            : null
-                        }
+                        <UserWithRating
+                            username={order.seller_first_name}
+                            lastName={order.seller_last_name}
+                            avatar={order.avatar}
+                            idUser={order.user_buyer_id} />
                         <ReadOnlyRating value={avgRating}/>
                         <SecondaryButton text='Rechazar' handleClick={handleReject} />
                         <MainButton text='Aceptar' handleClick={handleAccept}/>
