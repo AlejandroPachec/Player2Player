@@ -64,6 +64,7 @@ function AddProductPage () {
             <MainHeader />
             <main>
                 <form onSubmit={handleFormSubmit} className='add-product-form'>
+                    <h1>Información del producto</h1>
                     <div className='container-add-product-form'>
                         <GeneralInput
                             placeholder={'¿Qué estás vendiendo?'}

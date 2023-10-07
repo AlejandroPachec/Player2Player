@@ -22,28 +22,49 @@ const UserProfilePage = () => {
         }
     }, []);
 
-    if (loading) return <Loading/>;
-    if (error) toast.error(error.message);
+    useEffect(() => {
+        const checkingOrders = async () => {
+            try {
+                if (loading) {
+                    <Loading />;
+                    if (!userOrders?.ordersInfo) {
+                        toast.error('No has recibido ninguna oferta por tus productos, te notificaremos cuando alguien muestre interés.');
+                        navigate('/');
+                    }
+                }
+            } catch (error) {
+                toast.error(error.message);
+            }
+        };
+        checkingOrders();
+    }, []);
+
+    if (error) {
+        toast.error(`${error}, te notificaremos cuando alguien muestre interés.`);
+        navigate('/');
+    }
 
     return (
         <>
-            <MainHeader/>
+            <MainHeader />
             <main>
                 {
                     !error
                         ? <>
                             <section>
-                                <h2>Solicitudes de compra pendientes</h2>
                                 {
-                                    userInfo
+                                    userInfo && userInfo.some((order) => {
+                                        return order.status === 'Pendiente';
+                                    })
                                         ? <ul id='pendingOrders'>
+                                            <h2>Solicitudes de compra pendientes</h2>
                                             {userInfo.filter((order) => order.status === 'Pendiente').map((order) => {
                                                 return <li key={order.id}>
-                                                    <OrderCard order={order} avgRating={avgRating}/>
+                                                    <OrderCard order={order} avgRating={avgRating} />
                                                 </li>;
                                             })}
                                         </ul>
-                                        : <p>No tienes ninguna solicitud de compra pendiente</p>
+                                        : null
                                 }
                             </section>
                             <section>
@@ -55,7 +76,23 @@ const UserProfilePage = () => {
                                             <h2>Rechazadas</h2>
                                             <ul id='rejetedOrders'>
                                                 {userInfo.filter((order) => order.status === 'Rechazado').map((order) => {
-                                                    return <li key={order.id}><OrderCard order={order} avgRating={avgRating}/></li>;
+                                                    return <li key={order.id}><OrderCard order={order} avgRating={avgRating} /></li>;
+                                                })}
+                                            </ul>
+                                        </>
+                                        : null
+                                }
+                            </section>
+                            <section>
+                                {
+                                    userInfo && userInfo.some((order) => {
+                                        return order.status === 'Aceptado';
+                                    })
+                                        ? <>
+                                            <h2>Aceptadas</h2>
+                                            <ul id='rejetedOrders'>
+                                                {userInfo.filter((order) => order.status === 'Aceptado').map((order) => {
+                                                    return <li key={order.id}><OrderCard order={order} avgRating={avgRating} /></li>;
                                                 })}
                                             </ul>
                                         </>
@@ -66,7 +103,7 @@ const UserProfilePage = () => {
                         : null
                 }
             </main>
-            <Footer/>
+            <Footer />
         </>
     );
 };

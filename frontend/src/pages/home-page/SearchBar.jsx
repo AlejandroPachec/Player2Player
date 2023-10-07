@@ -72,9 +72,9 @@ function SearchBar () {
                 <GeneralInput placeholder={'¿Qué es lo que buscas?'} type={'text'} value={'productName'} handleChange={handleChange}/>
                 <div className='input-price'>
                     <p>Entre</p>
-                    <GeneralInput placeholder={'0'} type={'number'} value={'minPrice'} handleChange={handleChange}/>
+                    <GeneralInput placeholder={'0'} type={'number'} value={'minPrice'} handleChange={handleChange} min={1}/>
                     <p>y</p>
-                    <GeneralInput placeholder={'1000'} type={'number'} value={'maxPrice'} handleChange={handleChange} />
+                    <GeneralInput placeholder={'1000'} type={'number'} value={'maxPrice'} handleChange={handleChange} min={1}/>
                     <p>€</p>
                 </div>
                 <GeneralInput placeholder={'¿Dónde lo buscas?'} type={'text'} value={'productLocation'} handleChange={handleChange} />

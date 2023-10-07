@@ -6,6 +6,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
+}
+
+.container-add-product-form {
+  display: flex;
+  gap: 2rem;
 }
 
 .container-add-product-form #title {

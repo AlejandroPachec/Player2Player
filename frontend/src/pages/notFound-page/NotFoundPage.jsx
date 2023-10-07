@@ -13,10 +13,10 @@ const NotFoundPage = () => {
     return (
         <>
             <HeaderSecond />
-            <main>
-                <img src={gameOverImage} alt="Imagen de Game Over" />
-                <h1>GAME OVER</h1>
-                <h2>PUNTUACIÓN 404</h2>
+            <main className='not-found-container'>
+                <img src={gameOverImage} alt="Imagen de Game Over" className='game-over-image'/>
+                <h1>GAME <br /> <span>OVER</span></h1>
+                <h2>PUNTUACIÓN <span>404</span></h2>
                 <p>¡Más suerte la próxima vez!</p>
                 <MainButton text={'Volver a cargar'} handleClick={handleClick}/>
             </main>
