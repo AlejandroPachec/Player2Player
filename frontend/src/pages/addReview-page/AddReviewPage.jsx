@@ -56,7 +56,7 @@ const AddReviewPage = () => {
                             <UserWithRating
                                 username={orderById.orders[0].seller_first_name}
                                 lastName={orderById.orders[0].seller_last_name}
-                                avatar={`${import.meta.env.VITE_BACK_URL}/uploads/${orderById.orders[0].seller_avatar}`}
+                                avatar={orderById.orders[0].seller_avatar}
                                 idUser={orderById.orders[0].user_seller_id}/>
                             <ReadOnlyRating value={orderById.orders[0].userAvgReviews_seller}/>
                             <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${orderById.orders[0].product_photo}`} alt="Foto del producto" />
