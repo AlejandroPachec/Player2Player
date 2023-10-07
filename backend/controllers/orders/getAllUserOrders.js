@@ -13,7 +13,7 @@ async function getAllUserOrder (req, res, next) {
             `, [idUser]);
 
         if (!ordersExist.length) {
-            return next(generateError('Todavia no has recibido ninguna oferta por tus productos', 403));
+            return next(generateError('No has recibido ninguna oferta por tus productos', 403));
         }
 
         const [ordersInfo] = await pool.query(`
@@ -32,12 +32,12 @@ async function getAllUserOrder (req, res, next) {
         U.city,
         MAX(PP.name) AS product_photo
         FROM orders O
-        INNER JOIN products P ON O.product_id = P.id
-        INNER JOIN (SELECT product_id, MAX(name) AS name
+        LEFT JOIN products P ON O.product_id = P.id
+        LEFT JOIN (SELECT product_id, MAX(name) AS name
         FROM product_photo
         GROUP BY product_id
         ) AS PP ON O.product_id = PP.product_id
-        INNER JOIN users U ON O.user_buyer_id = U.id
+        LEFT JOIN users U ON O.user_buyer_id = U.id
         WHERE
         O.user_seller_id = ?
         GROUP BY O.id, O.product_id, O.created_at, O.user_buyer_id, O.status, P.name, 
