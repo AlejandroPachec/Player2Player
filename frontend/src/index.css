@@ -40,6 +40,12 @@
   url('./assets/fonts/PressStart2P-Regular.ttf');
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 body {
   margin: 0 4rem;
   font-family: 'Poppins', sans-serif;
@@ -48,8 +54,28 @@ body {
   text-align: center;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+}
+
 p, h1, h2, ul, a {
   margin: 0;
   padding: 0;
   text-decoration: none;
+}
+
+.Toastify__toast-container.Toastify__toast-container--bottom-right {
+  width: 460px;
+  font-family: 'Poppins';
+}
+
+.Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--error.Toastify__toast--close-on-click {
+  background: rgba(64, 61, 57, 0.884);
+  color: var(--mainFontColor);
+  border-radius: 1rem;
+  box-shadow: var(--boxShadow);
 }

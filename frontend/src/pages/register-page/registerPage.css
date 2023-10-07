@@ -1,11 +1,41 @@
-.Toastify__toast-container.Toastify__toast-container--bottom-right {
-  width: 460px;
-  font-family: 'Poppins';
+
+.register-form-container {
+  background-color: var(--secondryBackgroundColor);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-grow: 1;
+  border-radius: 2.5rem;
+  box-shadow: var(--boxShadow);
+  width: 65vw;
 }
 
-.Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--error.Toastify__toast--close-on-click {
-  background: rgba(64, 61, 57, 0.884);
-  color: var(--mainFontColor);
-  border-radius: 1rem;
-  box-shadow: var(--boxShadow);
+.register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.register-form-container > h1 {
+  font-size: 1.3rem;
+  width: 100%;
+  text-align: left;
+  margin-left: 13rem;
+}
+
+.group-input-register {
+  display: flex;
+  gap: 2rem;
+}
+
+.group-input-register > label > input  {
+  width: 20rem;
+}
+
+.register-form > button {
+  margin-top: 0.8rem;
 }

@@ -45,20 +45,22 @@ const LoginPage = () => {
         <>
             <HeaderSecond />
             <main className='login-main'>
-                <div className='login-image-container'>
-                    <img src={LogInImage} alt="Imagen" className='login-image'/>
-                </div>
-                <div className='login-form-container'>
-                    <form onSubmit={handleSubmit} className='login-form'>
-                        <GeneralInput placeholder={'correo@ejemplo.com'} type={'email'} value={'email'} handleChange={handleChange} />
-                        <Password value={'password'} handleChange={handleChange} placeholder={'Contraseña'} />
-                        <MainButton text={'Iniciar sesión'}></MainButton>
-                    </form>
-                    <div className='no-account'>
-                        <p>¿Todavía no tienes cuenta?</p>
-                        <Link to='/user/create' >Regístrate</Link>
+                <section className="login-section">
+                    <div className='login-image-container'>
+                        <img src={LogInImage} alt="Imagen" className='login-image'/>
                     </div>
-                </div>
+                    <div className='login-form-container'>
+                        <form onSubmit={handleSubmit} className='login-form'>
+                            <GeneralInput placeholder={'correo@ejemplo.com'} type={'email'} value={'email'} handleChange={handleChange} />
+                            <Password value={'password'} handleChange={handleChange} placeholder={'Contraseña'} />
+                            <MainButton text={'Iniciar sesión'}></MainButton>
+                        </form>
+                        <div className='no-account'>
+                            <p>¿Todavía no tienes cuenta?</p>
+                            <Link to='/user/create' >Regístrate</Link>
+                        </div>
+                    </div>
+                </section>
             </main>
             <Footer />
         </>

@@ -49,16 +49,24 @@ const RegisterPage = () => {
         <>
             <HeaderSecond/>
             <main>
-                <h1>Registro</h1>
-                <form onSubmit={handleSubmit}>
-                    <GeneralInput type={'text'} value={'firstName'} placeholder={'Nombre'} handleChange={handleChange}/>
-                    <GeneralInput type={'text'} value={'lastName'} placeholder={'Primer apellido'} handleChange={handleChange}/>
-                    <GeneralInput type={'phone'} value={'phone'} placeholder={'Teléfono'} handleChange={handleChange}/>
-                    <GeneralInput type={'email'} value={'email'} placeholder={'correo@ejemplo.com'} handleChange={handleChange}/>
-                    <Password value={'password'} handleChange={handleChange} placeholder={'Contraseña'}/>
-                    <Password value={'pass2'} handleChange={handleChange} placeholder={'Repetir contraseña'}/>
-                    <MainButton type='submit' text={'Registrarse'}/>
-                </form>
+                <div className="register-form-container">
+                    <h1>Registro</h1>
+                    <form onSubmit={handleSubmit} className='register-form'>
+                        <div className="group-input-register">
+                            <GeneralInput type={'text'} value={'firstName'} placeholder={'Nombre'} handleChange={handleChange}/>
+                            <GeneralInput type={'text'} value={'lastName'} placeholder={'Primer apellido'} handleChange={handleChange}/>
+                        </div>
+                        <div className='group-input-register'>
+                            <GeneralInput type={'phone'} value={'phone'} placeholder={'Teléfono'} handleChange={handleChange}/>
+                            <GeneralInput type={'email'} value={'email'} placeholder={'correo@ejemplo.com'} handleChange={handleChange}/>
+                        </div>
+                        <div className='group-input-register'>
+                            <Password value={'password'} handleChange={handleChange} placeholder={'Contraseña'}/>
+                            <Password value={'pass2'} handleChange={handleChange} placeholder={'Repetir contraseña'}/>
+                        </div>
+                        <MainButton type='submit' text={'Registrarse'}/>
+                    </form>
+                </div>
             </main>
             <Footer/>
         </>
