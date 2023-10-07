@@ -7,6 +7,16 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  border-radius: 1.5rem;
+  box-shadow: var(--boxShadow);
+}
+
+.add-product-form > h1 {
+  font-size: 1rem;
+  font-weight: bolder;
+  width: 100%;
+  text-align: left;
+  margin: 1.5rem 0 0 3rem;
 }
 
 .container-add-product-form {
@@ -28,7 +38,9 @@
   box-shadow: var(--boxShadow);
   padding: 1rem;
   border-radius: 2.5rem;
-  width: 20rem;
+  width: 25rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 option {
@@ -38,4 +50,69 @@ option {
 
 .container-add-product-form #category:hover {
   color: var(--placeHolderFontColor);
+}
+
+.image-input::file-selector-button {
+  background: transparent;
+  border: none;
+  color: var(--mainFontColor);
+}
+
+.price-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 48%;
+}
+
+input[name='price']::-webkit-outer-spin-button, 
+input[name='price']::-webkit-inner-spin-button, 
+input[name='price']::-webkit-outer-spin-button,
+input[name='pPrice']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.price-input > label > input {
+  width: 4.5rem;
+  border-radius: 0.65rem;
+  text-align: center;
+}
+
+.container-add-product-form.state-price {
+  justify-content: space-between;
+  width: 87%;
+}
+
+.textArea {
+  width: 52rem;
+  height: 6rem;
+}
+
+.container-image-input {
+  display: flex;
+  gap: 1.3rem;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.container-image-input > p {
+  font-size: 0.7rem;
+  color: var(--placeHolderFontColor);
+}
+
+.image-input {
+  width: 25rem;
+  align-self: flex-start;
+  margin-left: 3.9rem;
+}
+
+.container-form-buttons {
+  margin: 0.5rem 0 1.3rem 0;
+  display: flex;
+  gap: 1.3rem;
+  width: 100%;
+  justify-content: flex-end;
+  margin-right: 7.7rem;
 }

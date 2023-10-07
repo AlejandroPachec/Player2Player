@@ -36,7 +36,31 @@ const UserProfilePage = () => {
     return (
         <>
             <MainHeader/>
-            <main>
+            <main className='main-profile-page'>
+                { userInfo
+                    ? <div className='user-info-profile'>
+                        <UserWithRating
+                            username={userInfo.first_name}
+                            lastName={userInfo.last_name}
+                            avatar={userInfo.avatar}
+                            idUser={idUser}/>
+                        <ReadOnlyRating value={user.avgReview?.userAvgReviews} precision={0.5} readOnly/>
+                        <div className='tel-location-container'>
+                            <p>
+                                <a href={`tel:${userInfo.phone_number}`}>
+                                    <img src={whatsapp} alt="Icono de whatsapp" className='icon-profile'/>Whatsapp
+                                </a>
+                            </p>
+                            <p>
+                                <img src={location} alt="Icono maps" className='icon-profile'/>
+                                {userInfo.city}, {userInfo.postal_code}
+                            </p>
+                        </div>
+                    </div>
+                    : clicState === 'information'
+                        ? <p>No se ha encontrado al usuario</p>
+                        : null
+                }
                 {
                     <nav className='profileMenu'>
                         <a onClick = { () => { setClic('sell'); } }>
@@ -55,29 +79,7 @@ const UserProfilePage = () => {
                         </a>
                     </nav>
                 }
-                { userInfo
-                    ? <div>
-                        <UserWithRating
-                            username={userInfo.first_name}
-                            lastName={userInfo.last_name}
-                            avatar={userInfo.avatar}
-                            idUser={idUser}/>
-                        <ReadOnlyRating value={user.avgReview?.userAvgReviews} precision={0.5} readOnly/>
-                        <p>
-                            <a href={`tel:${userInfo.phone_number}`}>
-                                <img src={whatsapp} alt="Icono de whatsapp" />Whatsapp
-                            </a>
-                        </p>
-                        <p>
-                            <img src={location} alt="Icono maps" />
-                            {userInfo.city}, {userInfo.postal_code}
-                        </p>
-                    </div>
-                    : clicState === 'information'
-                        ? <p>No se ha encontrado al usuario</p>
-                        : null
-                }
-                <section>
+                <section className='products-sale'>
                     {
                         userProducts && clicState === 'sell' && sellingItems !== 0
                             ? <ul id='productsOnSale'>
