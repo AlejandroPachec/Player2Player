@@ -1,6 +1,6 @@
 const Joi = require('joi');
 const generateError = require('../../helpers/generateError');
-const getConnection = require('../../db/connectDB');
+const getPool = require('../../db/connectDB');
 
 async function activateUser (req, res, next) {
     const registrationCodeSchema = Joi.string().uuid().required();
@@ -14,7 +14,7 @@ async function activateUser (req, res, next) {
     }
 
     try {
-        const pool = await getConnection();
+        const pool = await getPool();
 
         const [[idUser]] = await pool.query('SELECT id FROM users WHERE registration_code = ?', [registrationCode]);
 
