@@ -10,6 +10,7 @@
   border-radius: 2.5rem;
   box-shadow: var(--boxShadow);
   width: 65vw;
+  max-height: 60vh;
 }
 
 .register-form {
@@ -22,9 +23,11 @@
 
 .register-form-container > h1 {
   font-size: 1.3rem;
+  font-weight: bolder;
   width: 100%;
   text-align: left;
-  margin-left: 13rem;
+  margin-left: 14rem;
+  margin-bottom: 0.8rem;
 }
 
 .group-input-register {
@@ -38,4 +41,5 @@
 
 .register-form > button {
   margin-top: 0.8rem;
+  width: 12rem;
 }

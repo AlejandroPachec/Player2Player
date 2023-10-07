@@ -38,6 +38,7 @@ form.login-form input {
 
 form.login-form > button {
     margin-top: 1rem;
+    width: 12rem;
 }
 
 div.no-account {

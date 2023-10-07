@@ -8,7 +8,7 @@ import './mainHeader.css';
 const MainHeader = () => {
     const { token } = useContext(UserAuthContext);
     return (
-        <header>
+        <header className='header-main'>
             <Logo/>
             {
                 token ? <LoginAvatar/> : <NoLoggedInAvatar/>

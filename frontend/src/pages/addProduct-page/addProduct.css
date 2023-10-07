@@ -1,0 +1,35 @@
+.add-product-form {
+  min-height: 70vh;
+  width: 70vw;
+  background: var(--secondryBackgroundColor);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-add-product-form #title {
+  width: 25rem;
+}
+
+.container-add-product-form #category, 
+.container-add-product-form #state,
+.image-input {
+  border: none;
+  outline: none;
+  background: var(--blackGradient);
+  color: var(--mainFontColor);
+  box-shadow: var(--boxShadow);
+  padding: 1rem;
+  border-radius: 2.5rem;
+  width: 20rem;
+}
+
+option {
+  background: rgba(64, 61, 57);
+  color: var(--mainFontColor);
+}
+
+.container-add-product-form #category:hover {
+  color: var(--placeHolderFontColor);
+}

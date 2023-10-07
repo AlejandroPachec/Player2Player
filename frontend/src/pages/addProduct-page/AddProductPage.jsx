@@ -8,6 +8,8 @@ import { UserAuthContext } from '../../context/UserAuthContext';
 import { addProductService } from '../../service';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Footer from '../../components/footer/Footer';
+import './addProduct.css';
 
 function AddProductPage () {
     const { token } = useContext(UserAuthContext);
@@ -61,52 +63,59 @@ function AddProductPage () {
         <>
             <MainHeader />
             <main>
-                <form onSubmit={handleFormSubmit}>
-                    <GeneralInput
-                        placeholder={'¿Qué estás vendiendo?'}
-                        value={'title'}
-                        type={'text'}
-                        handleChange={handleChange}
-                    />
-                    <select name="category" id="category" onChange={handleChange}>
-                        <option value="">Selecciona la categoría</option>
-                        <option value="Consolas">Consolas</option>
-                        <option value="Videojuegos">Videojuegos</option>
-                        <option value="Accesorios">Accesorios</option>
-                        <option value="Retro">Retro</option>
-                        <option value="Ordenadores">Ordenadores</option>
-                    </select>
-                    <GeneralInput
-                        placeholder={'Precio'}
-                        value={'price'}
-                        type={'number'}
-                        handleChange={handleChange}
-                    />
-                    <select name="state" id="state" onChange={handleChange}>
-                        <option value="">Selecciona el estado</option>
-                        <option value="Nuevo">Nuevo</option>
-                        <option value="En buen estado">En buen estado</option>
-                        <option value="Aceptable">Aceptable</option>
-                        <option value="No da para más">No da para más</option>
-                    </select>
+                <form onSubmit={handleFormSubmit} className='add-product-form'>
+                    <div className='container-add-product-form'>
+                        <GeneralInput
+                            placeholder={'¿Qué estás vendiendo?'}
+                            value={'title'}
+                            type={'text'}
+                            handleChange={handleChange}
+                        />
+                        <select name="category" id="category" onChange={handleChange}>
+                            <option value="">Selecciona la categoría</option>
+                            <option value="Consolas">Consolas</option>
+                            <option value="Videojuegos">Videojuegos</option>
+                            <option value="Accesorios">Accesorios</option>
+                            <option value="Retro">Retro</option>
+                            <option value="Ordenadores">Ordenadores</option>
+                        </select>
+                    </div>
+                    <div className='container-add-product-form'>
+                        <select name="state" id="state" onChange={handleChange}>
+                            <option value="">Selecciona el estado</option>
+                            <option value="Nuevo">Nuevo</option>
+                            <option value="En buen estado">En buen estado</option>
+                            <option value="Aceptable">Aceptable</option>
+                            <option value="No da para más">No da para más</option>
+                        </select>
+                        <GeneralInput
+                            placeholder={'0'}
+                            value={'price'}
+                            type={'number'}
+                            handleChange={handleChange}
+                        />
+                    </div>
                     <TextArea
                         placeholder={'Descripción'}
                         value={'description'}
                         handleChange={handleChange}
                     />
-                    <input
+                    <input className='image-input'
                         placeholder='Selecciona las fotos de tu producto'
                         type='file'
                         name='photos'
                         multiple
                         onChange={handleImages}
                     />
-                    <Link to={'/'}>
-                        <SecondaryButton text={'Cancelar'} />
-                    </Link>
-                    <MainButton text={'Añadir un producto'} type="submit" />
+                    <div className='container-form-buttons'>
+                        <Link to={'/'}>
+                            <SecondaryButton text={'Cancelar'} />
+                        </Link>
+                        <MainButton text={'Añadir un producto'} type="submit" />
+                    </div>
                 </form>
             </main>
+            <Footer />
         </>
     );
 }

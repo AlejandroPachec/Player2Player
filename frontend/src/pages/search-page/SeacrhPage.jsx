@@ -5,6 +5,7 @@ import HomePageHeader from '../home-page/HomePageHeader';
 import Footer from '../../components/footer/Footer';
 import ProductItem from '../../components/product-item/ProductItem';
 import { toast } from 'react-toastify';
+import './searchPage.css';
 
 const SearchPage = () => {
     const location = useLocation();
@@ -16,7 +17,7 @@ const SearchPage = () => {
     return (
         <>
             <HomePageHeader/>
-            <main>
+            <main className='search-page-main'>
                 <h1>Productos seleccionados</h1>
                 {
                     products.length
