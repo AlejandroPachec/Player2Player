@@ -81,7 +81,7 @@ function AddProductPage () {
                             <option value="Ordenadores">Ordenadores</option>
                         </select>
                     </div>
-                    <div className='container-add-product-form'>
+                    <div className='container-add-product-form state-price'>
                         <select name="state" id="state" onChange={handleChange}>
                             <option value="">Selecciona el estado</option>
                             <option value="Nuevo">Nuevo</option>
@@ -89,25 +89,32 @@ function AddProductPage () {
                             <option value="Aceptable">Aceptable</option>
                             <option value="No da para más">No da para más</option>
                         </select>
-                        <GeneralInput
-                            placeholder={'0'}
-                            value={'price'}
-                            type={'number'}
-                            handleChange={handleChange}
-                        />
+                        <div className='price-input'>
+                            <p>Precio</p>
+                            <GeneralInput
+                                placeholder={'0'}
+                                value={'price'}
+                                type={'number'}
+                                handleChange={handleChange}
+                            />
+                            <p>€</p>
+                        </div>
                     </div>
                     <TextArea
                         placeholder={'Descripción'}
                         value={'description'}
                         handleChange={handleChange}
                     />
-                    <input className='image-input'
-                        placeholder='Selecciona las fotos de tu producto'
-                        type='file'
-                        name='photos'
-                        multiple
-                        onChange={handleImages}
-                    />
+                    <div className='container-image-input'>
+                        <input className='image-input'
+                            placeholder='Selecciona las fotos de tu producto'
+                            type='file'
+                            name='photos'
+                            multiple
+                            onChange={handleImages}
+                        />
+                        <p>(Sube al menos 4 fotos para hacerlo más llamativo)</p>
+                    </div>
                     <div className='container-form-buttons'>
                         <Link to={'/'}>
                             <SecondaryButton text={'Cancelar'} />

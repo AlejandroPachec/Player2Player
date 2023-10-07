@@ -4,9 +4,7 @@
     background: var(--blackGradient);
     color: var(--mainFontColor);
     box-shadow: var(--boxShadow);
-    width: 80%;
-    height: 8rem;
-    border-radius: 1.5rem 1rem 0.8rem 0rem;
+    border-radius: 1.5rem;
     padding: 1rem;
     border: none;
     outline: none;

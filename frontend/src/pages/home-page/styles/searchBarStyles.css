@@ -41,12 +41,11 @@
   display: flex;
   position: relative;
   gap: 1.5rem;
-  padding-left: 0.7rem;
 }
 
 .search-bar-form > button {
   position: absolute;
-  right: 20px;
+  right: 5px;
   bottom: 5rem;
   width: 56px;
   height: 56px;
