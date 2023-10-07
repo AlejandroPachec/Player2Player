@@ -73,7 +73,8 @@ p, h1, h2, ul, a {
   font-family: 'Poppins';
 }
 
-.Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--error.Toastify__toast--close-on-click {
+.Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--error.Toastify__toast--close-on-click, 
+.Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--success.Toastify__toast--close-on-click {
   background: rgba(64, 61, 57, 0.884);
   color: var(--mainFontColor);
   border-radius: 1rem;
