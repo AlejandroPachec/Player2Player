@@ -33,7 +33,6 @@ async function editUser (req, res, next) {
 
         if (password) {
             password = await bcrypt.hash(password, 10);
-            return password;
         }
 
         const pool = await getPool();

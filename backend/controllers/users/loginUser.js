@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const getConnection = require('../../db/connectDB');
+const getPool = require('../../db/connectDB');
 const loginUserSchema = require('../../schema/loginUserSchema');
 const generateError = require('../../helpers/generateError');
 const { SECRET } = require('../../config');
@@ -14,7 +14,7 @@ async function loginUser (req, res, next) {
     }
 
     try {
-        const pool = await getConnection();
+        const pool = await getPool();
 
         const { email, password } = req.body;
 

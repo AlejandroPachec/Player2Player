@@ -1,10 +1,10 @@
-const getConnection = require('../../db/connectDB');
+const getPool = require('../../db/connectDB');
 const generateError = require('../../helpers/generateError');
 const Joi = require('joi');
 
 async function getUserReviews (req, res, next) {
     const { idUser } = req.params;
-    const pool = await getConnection();
+    const pool = await getPool();
 
     const idUserSchema = Joi.string().uuid().required();
 

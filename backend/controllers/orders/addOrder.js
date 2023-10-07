@@ -1,4 +1,4 @@
-const getConnection = require('../../db/connectDB');
+const getPool = require('../../db/connectDB');
 const emailVerification = require('../../helpers/emailVerification');
 const Joi = require('joi');
 const generateError = require('../../helpers/generateError');
@@ -17,7 +17,7 @@ async function addOrder (req, res, next) {
     }
 
     try {
-        const pool = await getConnection();
+        const pool = await getPool();
 
         const id = crypto.randomUUID();
         const userBuyerId = req.user.id;
