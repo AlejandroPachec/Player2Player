@@ -28,6 +28,7 @@ const LoginPage = () => {
             const userAuth = await loginUserService(formValues);
             login(userAuth);
             navigate('/');
+            toast.success('Bienvenid@ a P2P MarketPlace 🤗. Esperamos que encuentres lo que estás buscando 😁');
         } catch (error) {
             toast.error(error.message);
         }

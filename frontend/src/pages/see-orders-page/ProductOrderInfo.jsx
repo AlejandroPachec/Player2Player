@@ -3,7 +3,6 @@ import MainButton from '../../components/main-button/MainButton';
 import { useNavigate } from 'react-router-dom';
 import useCheckReviews from '../../hooks/useCheckReviews';
 import Loading from '../../components/loading/Loading';
-import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
 const ProductOrderInfo = ({ order }) => {
@@ -35,7 +34,7 @@ const ProductOrderInfo = ({ order }) => {
                 <p>{order.description}</p>
             </article>
             {
-                hasDeliveryTimePassed && !isProductReviewed
+                hasDeliveryTimePassed && !isProductReviewed && order.status === 'Aceptado'
                     ? <MainButton text={'Añadir valoración'} handleClick={handleClick}/>
                     : null
             }

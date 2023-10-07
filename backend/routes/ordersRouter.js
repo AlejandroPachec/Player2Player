@@ -9,7 +9,7 @@ const rejectOrder = require('../controllers/orders/rejectOrder');
 const getAllUserOrders = require('../controllers/orders/getAllUserOrders');
 
 orderRouter.post('/user/:idProduct', authUser, addOrder);
-orderRouter.get('/:idOrder?', authUser, getUserOrder);
+orderRouter.get('/:idOrder', authUser, getUserOrder);
 orderRouter.get('/user/:idUser', authUser, getAllUserOrders);
 orderRouter.put('/confirm/:idOrder', authUser, confirmOrder);
 orderRouter.put('/reject/:idOrder', authUser, rejectOrder);

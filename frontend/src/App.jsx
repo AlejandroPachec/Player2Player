@@ -31,7 +31,7 @@ function App () {
             />
             <Routes>
                 <Route path='/product/addProduct' element={<AddProductPage/>} />
-                <Route path='/order/exchangeSet/:idOrder/:buyerId' element={<ExchangeSetPage/>} />
+                <Route path='/order/exchangeSet/:idOrder' element={<ExchangeSetPage/>} />
                 <Route path='/order/addReview/:idOrder' element={<AddReviewPage/>} />
                 <Route path='/order/accepted/:idOrder' element={<SeeAcceptedProductOrder/>}/>
                 <Route path='/user/edit' element={<EditUserPage/>} />

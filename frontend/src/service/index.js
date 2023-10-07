@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 export const getAllProductsService = async () => {
     const response = await fetch(`${import.meta.env.VITE_BACK_URL}/products`);
 
@@ -219,6 +220,7 @@ export const seeOrderByIdService = async (token, idOrder) => {
         }
     });
     const data = await response.json();
+    console.log(data);
     if (!response.ok) {
         throw new Error(data.error);
     }
