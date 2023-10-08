@@ -71,3 +71,8 @@
     color: var(--placeHolderFontColor);
 
 }
+
+.product-description {
+    text-align: left;
+    min-height: 50px;
+}

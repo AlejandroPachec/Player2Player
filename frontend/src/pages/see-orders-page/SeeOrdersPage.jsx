@@ -12,6 +12,8 @@ const SeeOrders = () => {
     const { token } = useContext(UserAuthContext);
     const { orders, error, loading } = useSeeOrders(token);
     const navigate = useNavigate();
+    console.log(orders);
+
 
     useEffect(() => {
         if (token === '' || !token) {
