@@ -1,0 +1,98 @@
+.see-product-container{
+    background: var(--secondryBackgroundColor);
+    box-shadow: var(--boxShadow);
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 65%;
+    gap: 1.5rem;
+    padding: 2rem 3rem;
+}
+
+.product-owner-info {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.product-owner-info > a {
+    color: var(--mainFontColor);
+}
+
+.product-owner-info > a > div {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+}
+
+.product-owner-info > a > div > img {
+    width: 3.3rem;
+    height: 3.3rem;
+}
+
+
+.product-owner-info .MuiRating-root.MuiRating-sizeMedium.Mui-readOnly.MuiRating-readOnly.css-ryrseu-MuiRating-root {
+    position: absolute;
+    top: 1.3rem;
+    left: 4.2rem;
+}
+
+.product-info-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 0.5rem;
+}
+
+.product-info > h2 {
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+}
+
+.product-info > p.product-category {
+    max-width: 7rem;
+    text-align: left;
+    background: rgba(64, 61, 57, 0.63);
+    padding: 0.4rem 0.7rem;
+    border-radius: 2.5rem;
+    font-size: 0.6rem;
+}
+
+.product-info > p.product-description {
+    text-align: left;
+    font-size: 0.8rem;
+}
+
+.time-state-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-info .time-state-container > p.user-location-time {
+    color: var(--subtitleColor);
+    font-size: 0.5rem;
+}
+
+.product-info > p.product-price {
+    width: 100%;
+    text-align: right;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.product-info > button {
+    align-self: flex-end;
+    width: 9rem;
+    margin-top: 1rem;
+}
