@@ -1,10 +1,14 @@
 footer {
-  margin: 0.7rem;
+  margin: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  font-size: 0.9rem;
+  font-size: 0.6rem;
+}
+
+footer > a > img {
+  width: 15px;
 }
 
 footer > a:hover {

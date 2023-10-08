@@ -27,7 +27,7 @@ const UserProfilePage = () => {
     const [clicState, setClic] = useState('sell');
     const navigate = useNavigate();
 
-    if (loading) return <Loading/>;
+    if (loading) return <Loading />;
     if (error) {
         navigate('/');
         return toast.error(error);
@@ -35,24 +35,24 @@ const UserProfilePage = () => {
 
     return (
         <>
-            <MainHeader/>
+            <MainHeader />
             <main className='main-profile-page'>
-                { userInfo
+                {userInfo
                     ? <div className='user-info-profile'>
                         <UserWithRating
                             username={userInfo.first_name}
                             lastName={userInfo.last_name}
                             avatar={userInfo.avatar}
-                            idUser={idUser}/>
-                        <ReadOnlyRating value={user.avgReview?.userAvgReviews} precision={0.5} readOnly/>
+                            idUser={idUser} />
+                        <ReadOnlyRating value={user.avgReview?.userAvgReviews} precision={0.5} readOnly />
                         <div className='tel-location-container'>
                             <p>
                                 <a href={`tel:${userInfo.phone_number}`}>
-                                    <img src={whatsapp} alt="Icono de whatsapp" className='icon-profile'/>Whatsapp
+                                    <img src={whatsapp} alt="Icono de whatsapp" className='icon-profile' />Whatsapp
                                 </a>
                             </p>
                             <p>
-                                <img src={location} alt="Icono maps" className='icon-profile'/>
+                                <img src={location} alt="Icono maps" className='icon-profile' />
                                 {userInfo.city}, {userInfo.postal_code}
                             </p>
                         </div>
@@ -63,77 +63,87 @@ const UserProfilePage = () => {
                 }
                 {
                     <nav className='profileMenu'>
-                        <a onClick = { () => { setClic('sell'); } }>
+                        <a onClick={() => { setClic('sell'); }}>
                             <span>{sellingItems}</span>
                             <p>En venta</p>
                         </a>
-                        <a onClick = { () => { setClic('rate'); } } >
+                        <a onClick={() => { setClic('rate'); }} >
                             <span>{ratingsNumber}</span>
                             <p>Valoraciones</p>
                         </a>
-                        <a onClick = { () => { setClic('information'); }}>
+                        <a onClick={() => { setClic('information'); }}>
                             <span>
-                                <BsPlusLg/>
+                                <BsPlusLg />
                             </span>
                             <p>Información</p>
                         </a>
                     </nav>
                 }
-                <section className='products-sale'>
-                    {
-                        userProducts && clicState === 'sell' && sellingItems !== 0
-                            ? <ul id='productsOnSale'>
+                {
+                    userProducts && clicState === 'sell' && sellingItems !== 0
+                        ?
+                        <section>
+                            <ul id='productsOnSale'>
                                 {userProducts.filter((product) => product.availability === 1).map((product) => {
                                     return <li key={product.id}>
                                         <Link to={`/product/${product.id}`}>
-                                            <ProductCard product={product}/>
+                                            <ProductCard product={product} />
                                         </Link>
                                     </li>;
                                 })}
                             </ul>
-                            : clicState === 'sell'
-                                ? <p>No tienes productos en venta</p>
-                                : null
-                    }
+                        </section>
+                        : clicState === 'sell'
+                            ? <p>Todavía no vendes ningún producto</p>
+                            : null
+                }
 
-                    {
-                        reviews && clicState === 'rate'
-                            ? <ul id='userReviews'>
+                {
+                    reviews && clicState === 'rate'
+                        ? <section>
+                            <ul id='userReviews'>
                                 {reviews.map((review) => {
                                     return <li key={review.product_id}>
-                                        <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${review.product_images}`} alt="Foto del producto" />
-                                        <div>
-                                            <span>Por {review.first_name} {review.last_name} el </span>
-                                            <span>{new Date(review.created_at).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: '2-digit' })}</span>
+                                        <div className='userReview-info-container'>
+                                            <div className='userReviews-img-container'>
+                                                <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${review.product_images}`} alt="Foto del producto" />
+                                            </div>
+                                            <p>{review.title}</p>
+                                            <div>
+                                                <span>Por {review.first_name} {review.last_name} el </span>
+                                                <p>{review.text}</p>
+                                                <span>{new Date(review.created_at).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: '2-digit' })}</span>
+                                            </div>
+                                            <ReadOnlyRating value={parseInt(review.stars)} />
                                         </div>
-                                        <p>{review.title}</p>
-                                        <p>{review.text}</p>
-                                        <ReadOnlyRating value={parseInt(review.stars)}/>
                                     </li>;
                                 })}
                             </ul>
-                            : clicState === 'rate'
-                                ? <p>El usuario no tiene reviews</p>
-                                : null
-                    }
-
-                    { clicState === 'information' && userInfo && userInfo.bio
-                        ? (<article>
-                            <h2>Descripción</h2>
-                            <p>{bio}</p>
-                        </article>)
-                        : clicState === 'information'
-                            ? (
-                                <article>
-                                    <h2>Descripción</h2>
-                                    <p>¡Fantástico! ¡Como todos nuestros usuarios! </p>
-                                </article>
-                            )
+                        </section>
+                        : clicState === 'rate'
+                            ? <p>El usuario no tiene reviews</p>
                             : null
-                    }
+                }
 
-                    { userInfo && clicState === 'information'
-                        ? <article>
+                {clicState === 'information' && userInfo && userInfo.bio
+                    ? (<article>
+                        <h2>Descripción</h2>
+                        <p>{bio}</p>
+                    </article>)
+                    : clicState === 'information'
+                        ? <section>(
+                            <article>
+                                <h2>Descripción</h2>
+                                <p>¡Fantástico! ¡Como todos nuestros usuarios! </p>
+                            </article>
+                            )
+                        </section>
+                        : null
+                }
+
+                {userInfo && clicState === 'information'
+                    ? <section>
+                        <article>
                             <h2>Información verificada</h2>
                             <img src={whatsapp} alt="Icono de whatsapp" />
                             <span>Whatsapp</span>
@@ -142,13 +152,14 @@ const UserProfilePage = () => {
                             <span>Email</span>
                             <img src={doubleCheck} alt="Icono de doble check" />
                         </article>
-                        : clicState === 'information'
-                            ? <p>No se ha encontrado al usuario</p>
-                            : null
-                    }
-                </section>
+                    </section>
+                    : clicState === 'information'
+                        ? <p>No se ha encontrado al usuario</p>
+                        : null
+                }
+
             </main>
-            <Footer/>
+            <Footer />
         </>
     );
 };
