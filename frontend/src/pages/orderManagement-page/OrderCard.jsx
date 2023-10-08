@@ -2,18 +2,18 @@ import PropTypes from 'prop-types';
 import UserWithRating from '../../components/user-with-rating/UserWithRating';
 import MainButton from '../../components/main-button/MainButton';
 import SecondaryButton from '../../components/secondary-button/SecondaryButton';
-import ReadOnlyRating from '../../components/readOnly-rating/ReadOnlyRating';
+// import ReadOnlyRating from '../../components/readOnly-rating/ReadOnlyRating';
 import { rejectOrderService } from '../../service';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserAuthContext } from '../../context/UserAuthContext';
+import './OrderCard.css';
 
 const OrderCard = ({ order, avgRating }) => {
     const navigate = useNavigate();
     const { token } = useContext(UserAuthContext);
 
     const { id: idOrder } = order;
-    console.log(order);
 
 
     function handleAccept () {
@@ -26,30 +26,39 @@ const OrderCard = ({ order, avgRating }) => {
     }
 
     return (
-        <article>
-            <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${order.product_photo}`} alt="Foto del producto" />
-            <h2>{order.product_name}</h2>
-            {
-                order.status === 'Pendiente'
-                    ? <p>{order.price} €</p>
-                    : null
-            }
-            <p>{order.description}</p>
-            {
-                order.status === 'Pendiente'
-                    ? <>
-                        <UserWithRating
-                            username={order.seller_first_name}
-                            lastName={order.seller_last_name}
-                            avatar={order.avatar}
-                            idUser={order.user_buyer_id} />
-                        <ReadOnlyRating value={avgRating}/>
-                        <SecondaryButton text='Rechazar' handleClick={handleReject} />
-                        <MainButton text='Aceptar' handleClick={handleAccept}/>
-                    </>
-                    : null
-            }
-            <p>Por {order.seller_first_name} {order.seller_last_name} el {new Date(order.created_at).toLocaleDateString('es-ES', { month: 'long', day: '2-digit' })} de {new Date(order.created_at).getFullYear()}</p>
+        <article className='orders-manage-card'>
+            <img className='product-img' src={`${import.meta.env.VITE_BACK_URL}/uploads/${order.product_photo}`} alt="Foto del producto" />
+            <div className='product-info'>
+                <div className='main-info-wrapper'>
+                    <h2>{order.product_name}</h2>
+                    {
+                        order.status === 'Pendiente'
+                            ? <p className='price'>{order.price} €</p>
+                            : null
+                    }
+                </div>
+                <p className='product-description'>{order.description}</p>
+                {
+                    order.status === 'Pendiente'
+                        ? <>
+                            <div className='buyer-info-wrapper'>
+                                <UserWithRating
+                                    className='buyer-info'
+                                    username={order.seller_first_name}
+                                    lastName={order.seller_last_name}
+                                    avatar={order.avatar}
+                                    idUser={order.user_buyer_id} />
+                                {/* <ReadOnlyRating className='order-read-only-rating' value={avgRating}/> */}
+                            </div>
+                            <div className='button-wrapper'>
+                                <p>{new Date(order.created_at).toLocaleDateString('es-ES', { month: 'long', day: '2-digit' })} de {new Date(order.created_at).getFullYear()}</p>
+                                <SecondaryButton text='Rechazar' handleClick={handleReject} />
+                                <MainButton text='Aceptar' handleClick={handleAccept}/>
+                            </div>
+                        </>
+                        : null
+                }
+            </div>
         </article>
     );
 };

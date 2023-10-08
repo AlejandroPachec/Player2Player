@@ -1,0 +1,22 @@
+
+.orderManagement-main {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--mainBackgroundColor);
+  }
+
+.orders-section {
+  background-color: #403d3921;
+  border-radius: 40px;
+  box-shadow: 0px 4px 4px #00000040;
+  margin: 1rem;
+  width: 80%;
+  }
+.orders-section-rejected {
+  background-color: rgba(0, 0, 0, 0.135);
+  border-radius: 40px;
+  box-shadow: 0px 4px 4px #00000009;
+  margin: 1rem;
+  width: 80%;
+  filter: opacity(0.25);
+  }

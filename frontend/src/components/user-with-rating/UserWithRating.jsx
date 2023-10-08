@@ -1,17 +1,18 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import defaultAvatar from '../../assets/defaultAvatar.webp';
+import './UserWithRating.css';
 
 const UserWithRating = ({ username, lastName, avatar, idUser }) => {
     return (
         <Link to={`/user/profile/${idUser}`}>
-            <div>
+            <div className='avatar-and-fullname'>
                 {
                     avatar
-                        ? <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${avatar}`} alt="Foto de perfil" />
-                        : <img src={defaultAvatar} alt='Avatar por defecto'/>
+                        ? <img className='user-avatar' src={`${import.meta.env.VITE_BACK_URL}/uploads/${avatar}`} alt="Foto de perfil" />
+                        : <img className='user-avatar' src={defaultAvatar} alt='Avatar por defecto'/>
                 }
-                <p>{username} {lastName}</p>
+                <p className='name-lastname'>{username} {lastName}</p>
             </div>
         </Link>
     );
