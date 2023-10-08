@@ -20,6 +20,14 @@
   align-self: flex-start;
 }
 
+.profileMenu > a > p {
+  margin-top: 0.3rem;
+}
+
+.profileMenu > a > p:hover {
+  color: var(--secondaryFontColor);
+}
+
 .user-info-profile {
   width: 80%;
   height: 6rem;
@@ -32,6 +40,10 @@
   border-radius: 1.5rem;
   position: relative;
   grid-area: 1 / 1 / 2 / 3;
+}
+
+.user-info-profile > a {
+  color: var(--mainFontColor);
 }
 
 .user-info-profile > a > div {
@@ -78,6 +90,7 @@
 section.products-sale {
   background: var(--blackGradient);
   width: 73%;
+  height: 93%;
   min-height: 336px;
   grid-area: 2 / 2 / 3 /3;
   align-self: flex-start;
