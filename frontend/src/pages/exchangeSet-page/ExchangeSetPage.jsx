@@ -13,6 +13,7 @@ import { exchangeSetService } from '../../service';
 import useExchangeSet from '../../hooks/useExchangeSet';
 import Loading from '../../components/loading/Loading';
 import { toast } from 'react-toastify';
+import './exchangePageStyle.css';
 
 const ExchangeSetPage = () => {
     const { token, user } = useContext(UserAuthContext);
@@ -61,41 +62,49 @@ const ExchangeSetPage = () => {
     return (
         <>
             <MainHeader />
-            <div>
-                <main>
+            <main>
+                <div className="exchange-data-container">
                     <h1>Datos de la entrega</h1>
-                    <section>
-                        <form onSubmit={handleSubmit}>
-                            <GeneralInput placeholder='Lugar de entrega' type='text' value={'exchangePlace'} handleChange={handleChange} />
-                            <LocalizationProvider dateAdapter={AdapterDayjs} >
-                                <DemoContainer
-                                    components={[
-                                        'MobileDateTimePicker'
-                                    ]}
-                                >
-                                    <DemoItem placeholder='Selecciona un día y una hora' >
-                                        <MobileDateTimePicker onChange={(newValue) => setTimeValues(newValue)} name='exchangeTime' />
-                                    </DemoItem>
-                                </DemoContainer>
-                            </LocalizationProvider>
-                            <MainButton type='submit' text='Enviar' />
-                        </form>
-                    </section>
-
-                    <section>
-                        {
-                            orders
-                                ? <>
-                                    <h2>{orders[0].name}</h2>
-                                    <p>{orders[0].price}</p>
-                                    <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${orders[0].product_photo}`} alt="Foto producto" />
-                                    <p>Por {orders[0].first_name} {orders[0].last_name}, el {new Date(orders[0].created_at).toLocaleDateString('es-ES', { month: 'long', day: '2-digit', year: 'numeric' })}</p>
-                                </>
-                                : null
-                        }
-                    </section>
-                </main>
-            </div>
+                    <div className="exchange-section-container">
+                        <section className='exchange-data-section'>
+                            <form onSubmit={handleSubmit} className='exchange-form'>
+                                <GeneralInput placeholder='Lugar de entrega' type='text' value={'exchangePlace'} handleChange={handleChange} />
+                                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                    <DemoContainer
+                                        components={[
+                                            'MobileDateTimePicker'
+                                        ]}
+                                    >
+                                        <DemoItem placeholder='Selecciona un día y una hora'>
+                                            <MobileDateTimePicker onChange={(newValue) => setTimeValues(newValue)} name='exchangeTime' />
+                                        </DemoItem>
+                                    </DemoContainer>
+                                </LocalizationProvider>
+                                <MainButton type='submit' text='Enviar' />
+                            </form>
+                        </section>
+                        <section className='exchange-product-section'>
+                            {
+                                orders
+                                    ? <>
+                                        <div className="exchange-product-name">
+                                            <h2>{orders[0].name}</h2>
+                                            <p>{orders[0].price} €</p>
+                                        </div>
+                                        <div className="exchange-product-complete-info">
+                                            <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${orders[0].product_photo}`} alt="Foto producto" />
+                                            <div className="exchange-product-text-info">
+                                                <p>{orders[0].description}</p>
+                                                <p className='exchange-buyer'>Por {orders[0].buyer_first_name} {orders[0].buyer_last_name}, el {new Date(orders[0].created_at).toLocaleDateString('es-ES', { month: 'long', day: '2-digit', year: 'numeric' })}</p>
+                                            </div>
+                                        </div>
+                                    </>
+                                    : null
+                            }
+                        </section>
+                    </div>
+                </div>
+            </main>
             <Footer />
         </>
 

@@ -1,0 +1,96 @@
+.exchange-data-container {
+    background-color: var(--secondryBackgroundColor);
+    box-shadow: var(--boxShadow);
+    width: 75%;
+    padding: 2rem 3rem;
+    border-radius: 1.5rem;
+}
+
+.exchange-data-container > h1 {
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.exchange-section-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.exchange-data-section {
+    width: 47rem;
+    background: var(--blackGradient);
+    box-shadow: var(--boxShadow);
+    border-radius: 1.5rem;
+    padding: 2rem 1rem;
+}
+
+.exchange-data-section > form.exchange-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.exchange-data-section > form.exchange-form > label > input {
+    width: 18rem;
+}
+
+.exchange-data-section > form.exchange-form > button {
+    width: 10rem;
+}
+
+.exchange-product-section {
+    background: var(--blackGradient);
+    box-shadow: var(--boxShadow);
+    border-radius: 1.5rem;
+    padding: 1rem;
+    width: 37rem;
+    text-align: left;
+}
+
+.exchange-product-section .exchange-product-name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.exchange-product-section .exchange-product-name > h2 {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.exchange-product-section .exchange-product-name > p {
+    font-weight: 800;
+    font-family: 'Poppins-ExtraBold';
+    font-size: 1.3rem;
+}
+
+.exchange-product-complete-info {
+    display: flex;
+    gap: 1rem;
+}
+
+.exchange-product-section .exchange-product-complete-info > img {
+    width: 8rem;
+    height: 8rem;
+    object-fit: cover;
+    border-radius: 1.5rem;
+}
+
+.exchange-product-complete-info .exchange-product-text-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+}
+
+.exchange-product-complete-info .exchange-product-text-info > p.exchange-buyer{
+    color: var(--subtitleColor);
+}
+
