@@ -79,85 +79,99 @@ const UserProfilePage = () => {
                         </a>
                     </nav>
                 }
-                {
-                    userProducts && clicState === 'sell' && sellingItems !== 0
-                        ?
-                        <section>
-                            <ul id='productsOnSale'>
-                                {userProducts.filter((product) => product.availability === 1).map((product) => {
-                                    return <li key={product.id}>
-                                        <Link to={`/product/${product.id}`}>
-                                            <ProductCard product={product} />
-                                        </Link>
-                                    </li>;
-                                })}
-                            </ul>
-                        </section>
-                        : clicState === 'sell'
-                            ? <p>Todavía no vendes ningún producto</p>
-                            : null
-                }
+                <div className='profile-sections-wrapper'>
+                    {
+                        userProducts && clicState === 'sell' && sellingItems !== 0
+                            ? <section>
+                                <ul id='productsOnSale'>
+                                    {userProducts.filter((product) => product.availability === 1).map((product) => {
+                                        return <li key={product.id}>
+                                            <Link to={`/product/${product.id}`}>
+                                                <ProductCard product={product} />
+                                            </Link>
+                                        </li>;
+                                    })}
+                                </ul>
+                            </section>
+                            : clicState === 'sell'
+                                ? <p>Todavía no vendes ningún producto</p>
+                                : null
+                    }
 
-                {
-                    reviews && clicState === 'rate'
-                        ? <section>
-                            <ul id='userReviews'>
-                                {reviews.map((review) => {
-                                    return <li key={review.product_id}>
-                                        <div className='userReview-info-container'>
-                                            <div className='userReviews-img-container'>
-                                                <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${review.product_images}`} alt="Foto del producto" />
+                    {
+                        reviews && clicState === 'rate'
+                            ? <section>
+                                <ul id='userReviews'>
+                                    {reviews.map((review) => {
+                                        return <li key={review.product_id}>
+                                            <div className='userReview-info-container'>
+                                                <div className='userReviews-img-container'>
+                                                    <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${review.product_images}`} alt="Foto del producto" />
+                                                </div>
+                                                <p>{review.title}</p>
+                                                <div>
+                                                    <span>Por {review.first_name} {review.last_name} el </span>
+                                                    <p>{review.text}</p>
+                                                    <span>{new Date(review.created_at).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: '2-digit' })}</span>
+                                                </div>
+                                                <ReadOnlyRating value={parseInt(review.stars)} />
                                             </div>
-                                            <p>{review.title}</p>
-                                            <div>
-                                                <span>Por {review.first_name} {review.last_name} el </span>
-                                                <p>{review.text}</p>
-                                                <span>{new Date(review.created_at).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: '2-digit' })}</span>
-                                            </div>
-                                            <ReadOnlyRating value={parseInt(review.stars)} />
+                                        </li>;
+                                    })}
+                                </ul>
+                            </section>
+                            : clicState === 'rate'
+                                ? <p>El usuario no tiene reviews</p>
+                                : null
+                    }
+
+                    <section className='more-info-profile-section'>
+                        {
+                            clicState === 'information' && userInfo && userInfo.bio
+
+                                ? <>
+                                    <article>
+                                        <h2>Descripción</h2>
+                                        <div className='bio-frame'>
+                                            <p className='text-wrapper-bio'>{bio}</p>
                                         </div>
-                                    </li>;
-                                })}
-                            </ul>
-                        </section>
-                        : clicState === 'rate'
-                            ? <p>El usuario no tiene reviews</p>
-                            : null
-                }
+                                    </article>
+                                </>
+                                : clicState === 'information'
+                                    ? (<article>
+                                        <div className='bio-frame'>
+                                            <h2>Descripción</h2>
+                                            <p className='text-wrapper-bio'>
+                                                {userInfo.first_name} aún no ha proporcionado una biografía.</p>
+                                        </div>
+                                    </article>)
+                                    : null
+                        }
 
-                {clicState === 'information' && userInfo && userInfo.bio
-                    ? (<article>
-                        <h2>Descripción</h2>
-                        <p>{bio}</p>
-                    </article>)
-                    : clicState === 'information'
-                        ? <section>(
-                            <article>
-                                <h2>Descripción</h2>
-                                <p>¡Fantástico! ¡Como todos nuestros usuarios! </p>
-                            </article>
-                            )
-                        </section>
-                        : null
-                }
-
-                {userInfo && clicState === 'information'
-                    ? <section>
-                        <article>
-                            <h2>Información verificada</h2>
-                            <img src={whatsapp} alt="Icono de whatsapp" />
-                            <span>Whatsapp</span>
-                            <img src={doubleCheck} alt="Icono de doble check" />
-                            <img src={emailIcon} alt="Icono de email" />
-                            <span>Email</span>
-                            <img src={doubleCheck} alt="Icono de doble check" />
-                        </article>
                     </section>
-                    : clicState === 'information'
-                        ? <p>No se ha encontrado al usuario</p>
-                        : null
-                }
 
+
+                    {userInfo && clicState === 'information'
+                        ? <section className='bio-frame'>
+                            <article className='verified-user-data'>
+                                <h2>Información verificada</h2>
+                                <div className='profile-verified-user-data-wrapper'>
+                                    <img src={whatsapp} alt="Icono de whatsapp" />
+                                    <span>Whatsapp</span>
+                                    <img src={doubleCheck} alt="Icono de doble check" />
+                                </div>
+                                <div className='profile-verified-user-data-wrapper'>
+                                    <img src={emailIcon} alt="Icono de email" />
+                                    <span>Email</span>
+                                    <img src={doubleCheck} alt="Icono de doble check" />
+                                </div>
+                            </article>
+                        </section>
+                        : clicState === 'information'
+                            ? <p>No se ha encontrado al usuario</p>
+                            : null
+                    }
+                </div>
             </main>
             <Footer />
         </>

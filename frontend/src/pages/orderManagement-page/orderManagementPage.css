@@ -11,6 +11,7 @@
   box-shadow: 0px 4px 4px #00000040;
   margin: 1rem;
   width: 80%;
+  padding-top: 1rem;
   }
 .orders-section-rejected {
   background-color: rgba(0, 0, 0, 0.135);
