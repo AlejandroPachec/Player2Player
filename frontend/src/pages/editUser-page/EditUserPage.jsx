@@ -83,21 +83,26 @@ const EditUserPage = () => {
         <>
             <MainHeader/>
             <main className='edit-user-main'>
+                <h1 className='edit-user-title'>Editar perfil</h1>
                 <div className='edit-info-container'>
                     <form className='edit-info-form' onSubmit={handleSubmit}>
-                        <GeneralInput className='general-input-edit' type={'text'} value={'firstName'} placeholder={'Nombre'} handleChange={handleChange}/>
+                        <GeneralInput
+                            id='edit-input'
+                            className='general-input-edit'
+                            type={'text'} value={'firstName'} placeholder={'Nombre'} handleChange={handleChange}/>
                         <GeneralInput className='general-input-edit' type={'text'} value={'lastName'} placeholder={'Primer apellido'} handleChange={handleChange}/>
-                        <TextArea className='text-area-edit-profile'
-                            placeholder={'Biografía'}
-                            handleChange={handleChange}
-                            value={'bio'}
-                        />
                         <GeneralInput className='general-input-edit' type={'text'} value={'city'} placeholder={'Ciudad'} handleChange={handleChange}/>
                         <GeneralInput className='general-input-edit' type={'text'} value={'postalCode'} placeholder={'Código postal'} handleChange={handleChange}/>
                         <GeneralInput className='general-input-edit' type={'phone'} value={'phone'} placeholder={'Teléfono'} handleChange={handleChange}/>
                         <GeneralInput className='general-input-edit' type={'email'} value={'email'} placeholder={'correo@ejemplo.com'} handleChange={handleChange}/>
                         <Password value={'edit-password'} placeholder={'Nueva contraseña'} handleChange={handleChange}/>
                         <Password value={'edit-pass2'} placeholder={'Repite la contraseña'} handleChange={handleChange}/>
+
+                        <TextArea className='text-area-edit-profile'
+                            placeholder={'Biografía'}
+                            handleChange={handleChange}
+                            value={'bio'}
+                        />
                         <label htmlFor="imageUpload" className="edit-addAvatar">Selecciona tu avatar</label>
                         <input
                             id='imageUpload'
@@ -107,6 +112,8 @@ const EditUserPage = () => {
                             name='avatar'
                             onChange={handleImages}
                         />
+
+
                         <div className='edit-buttons'>
                             <SecondaryButton type='button' text={'Cancelar'}/>
                             <MainButton type='submit' text={'Guardar cambios'}/>

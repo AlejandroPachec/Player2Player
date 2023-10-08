@@ -1,53 +1,27 @@
 .edit-user-main {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 78vh;
-  width: 100%;
-  margin-bottom: 0;
+  margin-bottom: 4rem;
+  margin-top: 2rem;
 
 }
-
-
 .edit-info-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: var(--blackGradient);
+  background-color: var(--secondryBackgroundColor);
   border-radius: 40px;
   box-shadow: var(--boxShadow);
-  width: 80%;
-  height: 100%;
+  width: 55%;
 }
 
 .edit-info-form {
   display: flex;
   flex-direction: row;
-  gap: 1rem;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 80%;
-  padding: 1rem;
-}
-
-.text-area-edit-profile {
-  display: flex;
-  flex-direction: column;
   gap: 1rem;
-  width: 53rem;
+  padding: 2rem;
+  justify-content: space-between;
 }
 
-.general-input-edit {
-  width: 30rem;
-}
-
-.edit-password {
-  width: 22rem;
-}
-
-.edit-addAvatar {
-  width: 22rem;
+#bio.textArea {
+ width: 38rem;
 }
 
 .edit-addAvatar {
@@ -75,4 +49,11 @@
   justify-content:end;
   align-items: center;
   width: 100%;
+  padding-top: 2rem;
+}
+
+.edit-user-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
 }
