@@ -106,7 +106,10 @@ function AddProductPage () {
                         handleChange={handleChange}
                     />
                     <div className='container-image-input'>
+                        <label htmlFor="imageUpload" className='image-input-label'>Selecciona las fotos de tu producto</label>
                         <input className='image-input'
+                            id='imageUpload'
+                            style= {{ display: 'none' }}
                             placeholder='Selecciona las fotos de tu producto'
                             type='file'
                             name='photos'

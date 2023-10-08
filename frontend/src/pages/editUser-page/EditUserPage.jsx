@@ -10,6 +10,7 @@ import SecondaryButton from '../../components/secondary-button/SecondaryButton';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import MainHeader from '../../components/header-main/MainHeader';
 import { toast } from 'react-toastify';
+import './editUserPage.css';
 
 const EditUserPage = () => {
     const navigate = useNavigate();
@@ -81,30 +82,37 @@ const EditUserPage = () => {
     return (
         <>
             <MainHeader/>
-            <main>
-                <h1>Editar perfil</h1>
-                <form onSubmit={handleSubmit}>
-                    <GeneralInput type={'text'} value={'firstName'} placeholder={'Nombre'} handleChange={handleChange}/>
-                    <GeneralInput type={'text'} value={'lastName'} placeholder={'Primer apellido'} handleChange={handleChange}/>
-                    <TextArea
-                        placeholder={'Biografía'}
-                        handleChange={handleChange}
-                        value={'bio'}
-                    />
-                    <GeneralInput type={'text'} value={'city'} placeholder={'Ciudad'} handleChange={handleChange}/>
-                    <GeneralInput type={'phone'} value={'phone'} placeholder={'Teléfono'} handleChange={handleChange}/>
-                    <GeneralInput type={'email'} value={'email'} placeholder={'correo@ejemplo.com'} handleChange={handleChange}/>
-                    <Password value={'password'} placeholder={'Nueva contraseña'} handleChange={handleChange}/>
-                    <Password value={'pass2'} placeholder={'Repite la contraseña'} handleChange={handleChange}/>
-                    <input
-                        placeholder='Selecciona tu foto de avatar'
-                        type='file'
-                        name='avatar'
-                        onChange={handleImages}
-                    />
-                    <SecondaryButton type='button' text={'Cancelar'}/>
-                    <MainButton type='submit' text={'Guardar cambios'}/>
-                </form>
+            <main className='edit-user-main'>
+                <div className='edit-info-container'>
+                    <form className='edit-info-form' onSubmit={handleSubmit}>
+                        <GeneralInput className='general-input-edit' type={'text'} value={'firstName'} placeholder={'Nombre'} handleChange={handleChange}/>
+                        <GeneralInput className='general-input-edit' type={'text'} value={'lastName'} placeholder={'Primer apellido'} handleChange={handleChange}/>
+                        <TextArea className='text-area-edit-profile'
+                            placeholder={'Biografía'}
+                            handleChange={handleChange}
+                            value={'bio'}
+                        />
+                        <GeneralInput className='general-input-edit' type={'text'} value={'city'} placeholder={'Ciudad'} handleChange={handleChange}/>
+                        <GeneralInput className='general-input-edit' type={'text'} value={'postalCode'} placeholder={'Código postal'} handleChange={handleChange}/>
+                        <GeneralInput className='general-input-edit' type={'phone'} value={'phone'} placeholder={'Teléfono'} handleChange={handleChange}/>
+                        <GeneralInput className='general-input-edit' type={'email'} value={'email'} placeholder={'correo@ejemplo.com'} handleChange={handleChange}/>
+                        <Password value={'edit-password'} placeholder={'Nueva contraseña'} handleChange={handleChange}/>
+                        <Password value={'edit-pass2'} placeholder={'Repite la contraseña'} handleChange={handleChange}/>
+                        <label htmlFor="imageUpload" className="edit-addAvatar">Selecciona tu avatar</label>
+                        <input
+                            id='imageUpload'
+                            className='edit-user-fileInput'
+                            style={{ display: 'none' }}
+                            type='file'
+                            name='avatar'
+                            onChange={handleImages}
+                        />
+                        <div className='edit-buttons'>
+                            <SecondaryButton type='button' text={'Cancelar'}/>
+                            <MainButton type='submit' text={'Guardar cambios'}/>
+                        </div>
+                    </form>
+                </div>
             </main>
             <Footer/>
         </>

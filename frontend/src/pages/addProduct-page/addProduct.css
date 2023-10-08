@@ -116,3 +116,22 @@ input[name='pPrice']::-webkit-inner-spin-button {
   justify-content: flex-end;
   margin-right: 7.7rem;
 }
+
+.image-input-label {
+  border: none;
+  outline: none;
+  background: var(--blackGradient);
+  color: var(--mainFontColor);
+  box-shadow: var(--boxShadow);
+  padding: 1rem;
+  border-radius: 2.5rem;
+  margin-left: 3.5rem;
+}
+
+.image-input-label:hover {
+  box-shadow: var(--inputHoverBoxShadow);
+}
+
+.image-input-label:focus {
+  color: var(--inputFocus);
+}
