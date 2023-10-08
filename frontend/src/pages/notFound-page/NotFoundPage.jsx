@@ -3,6 +3,7 @@ import Footer from '../../components/footer/Footer';
 import MainButton from '../../components/main-button/MainButton';
 import gameOverImage from '../../assets/space.webp';
 import { useNavigate } from 'react-router-dom';
+import './notFoundStyles.css';
 const NotFoundPage = () => {
     const navigate = useNavigate();
 
