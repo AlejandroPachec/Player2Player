@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const SliderPhotoProduct = ({ productImages }) => {
     return (
         <>
-            <Carousel>
+            <Carousel className='product-photos-slider'>
                 {
                     productImages?.map((image) => {
                         return (
