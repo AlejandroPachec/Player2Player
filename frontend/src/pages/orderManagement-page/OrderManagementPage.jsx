@@ -7,6 +7,7 @@ import useGetUserOrders from '../../hooks/useGetUserOrders';
 import Loading from '../../components/loading/Loading';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import { toast } from 'react-toastify';
+import './OrderManagementPage.css';
 
 const UserProfilePage = () => {
     const { sellerUser } = useParams();
@@ -47,27 +48,28 @@ const UserProfilePage = () => {
     return (
         <>
             <MainHeader />
-            <main>
+            <main className='orderManagement-main'>
                 {
                     !error
                         ? <>
-                            <section>
+                            <section className='orders-section'>
                                 {
                                     userInfo && userInfo.some((order) => {
                                         return order.status === 'Pendiente';
                                     })
-                                        ? <ul id='pendingOrders'>
-                                            <h2>Solicitudes de compra pendientes</h2>
-                                            {userInfo.filter((order) => order.status === 'Pendiente').map((order) => {
-                                                return <li key={order.id}>
-                                                    <OrderCard order={order} avgRating={avgRating} />
-                                                </li>;
-                                            })}
-                                        </ul>
+                                        ? <><h2>Pendientes</h2>
+                                            <ul id='pendingOrders'>
+                                                {userInfo.filter((order) => order.status === 'Pendiente').map((order) => {
+                                                    return <li key={order.id}>
+                                                        <OrderCard order={order} avgRating={avgRating} />
+                                                    </li>;
+                                                })}
+                                            </ul>
+                                        </>
                                         : null
                                 }
                             </section>
-                            <section>
+                            <section className='orders-section-rejected'>
                                 {
                                     userInfo && userInfo.some((order) => {
                                         return order.status === 'Rechazado';
@@ -83,7 +85,7 @@ const UserProfilePage = () => {
                                         : null
                                 }
                             </section>
-                            <section>
+                            <section className='orders-section'>
                                 {
                                     userInfo && userInfo.some((order) => {
                                         return order.status === 'Aceptado';

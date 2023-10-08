@@ -1,0 +1,18 @@
+.user-avatar {width: 56px;
+border-radius: 100%;
+}
+
+.avatar-and-fullname {
+display: flex;
+gap: 1rem;
+align-items: center;
+color: var(--mainFontColor);
+margin-right: 2rem;
+}
+
+.name-lastname {
+  font-family: "Poppins-ExtraBold", Helvetica;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: normal;
+}
