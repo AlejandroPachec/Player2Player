@@ -54,7 +54,9 @@
 }
 
 .product-info > h2 {
-    font-weight: bold;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 800;
     margin-bottom: 0.4rem;
 }
 
@@ -87,12 +89,13 @@
 .product-info > p.product-price {
     width: 100%;
     text-align: right;
-    font-weight: bold;
-    font-size: 2rem;
+    font-weight: 800;
+    font-size: 2.5rem;
+    font-family: 'Popins-ExtraBold';
 }
 
 .product-info > button {
     align-self: flex-end;
     width: 9rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
