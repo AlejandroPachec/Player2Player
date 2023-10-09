@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import defaultAvatar from '../../assets/defaultAvatar.webp';
-import './UserWithRating.css';
+import './userWithRating.css';
 
 const UserWithRating = ({ username, lastName, avatar, idUser }) => {
     return (

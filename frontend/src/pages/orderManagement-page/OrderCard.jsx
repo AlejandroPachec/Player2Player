@@ -7,7 +7,7 @@ import { rejectOrderService } from '../../service';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserAuthContext } from '../../context/UserAuthContext';
-import './OrderCard.css';
+import './orderCard.css';
 
 const OrderCard = ({ order, avgRating }) => {
     const navigate = useNavigate();
