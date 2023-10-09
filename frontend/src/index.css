@@ -80,3 +80,9 @@ p, h1, h2, ul, a {
   border-radius: 1rem;
   box-shadow: var(--boxShadow);
 }
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+  background-color: var(--secondryBackgroundColor);
+  box-shadow: var(--boxShadow);
+  border-radius: 1.5rem;
+}

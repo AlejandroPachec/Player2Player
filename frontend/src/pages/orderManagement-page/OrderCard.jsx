@@ -27,7 +27,7 @@ const OrderCard = ({ order, avgRating }) => {
 
     return (
         <article className='orders-manage-card'>
-            <img className='product-img' src={`${import.meta.env.VITE_BACK_URL}/uploads/${order.product_photo}`} alt="Foto del producto" />
+            <img className='product-img-orders' src={`${import.meta.env.VITE_BACK_URL}/uploads/${order.product_photo}`} alt="Foto del producto" />
             <div className='product-info-order'>
                 <div className='main-info-wrapper'>
                     <h2>{order.product_name}</h2>

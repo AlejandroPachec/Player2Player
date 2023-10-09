@@ -94,3 +94,17 @@
     color: var(--subtitleColor);
 }
 
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+    height: 1.4375em;
+    margin: 0;
+    display: block;
+    -webkit-animation-name: mui-auto-fill-cancel;
+    animation-name: mui-auto-fill-cancel;
+    -webkit-animation-duration: 10ms;
+    animation-duration: 10ms;
+    padding: 16.5px 14px;
+    background: var(--blackGradient);
+    box-shadow: var(--boxShadow);
+    border-radius: 2.5rem;
+    border: none;
+}

@@ -79,6 +79,10 @@ const EditUserPage = () => {
         }
     }
 
+    const handleCancel = function handleCancel (event) {
+        event.preventDefault();
+        navigate(`/user/profile/${user.id}`);
+    };
     return (
         <>
             <MainHeader/>
@@ -115,7 +119,7 @@ const EditUserPage = () => {
 
 
                         <div className='edit-buttons'>
-                            <SecondaryButton type='button' text={'Cancelar'}/>
+                            <SecondaryButton type='button' text={'Cancelar'} handleClick={handleCancel}/>
                             <MainButton type='submit' text={'Guardar cambios'}/>
                         </div>
                     </form>
