@@ -11,7 +11,6 @@
 .product-info-order {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
     margin: 1rem;
     width: 100%;
 }
@@ -52,10 +51,10 @@
     line-height: normal;
 }
 
-.product-img {
+.product-img-orders {
   width: 18rem;
   max-width: 15rem;
-  border-radius: 40px;
+  border-radius: 20px;
   margin: 1rem;
 }
 .button-wrapper > p {

@@ -76,7 +76,9 @@ const ExchangeSetPage = () => {
                                         ]}
                                     >
                                         <DemoItem placeholder='Selecciona un día y una hora'>
-                                            <MobileDateTimePicker onChange={(newValue) => setTimeValues(newValue)} name='exchangeTime' />
+                                            <MobileDateTimePicker
+                                                sx={{ color: 'white' }}
+                                                onChange={(newValue) => setTimeValues(newValue)} name='exchangeTime' />
                                         </DemoItem>
                                     </DemoContainer>
                                 </LocalizationProvider>

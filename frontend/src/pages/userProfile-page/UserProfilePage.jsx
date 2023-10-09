@@ -108,13 +108,15 @@ const UserProfilePage = () => {
                                                 <div className='userReviews-img-container'>
                                                     <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${review.product_images}`} alt="Foto del producto" />
                                                 </div>
-                                                <p>{review.title}</p>
-                                                <div>
-                                                    <span>Por {review.first_name} {review.last_name} el </span>
+                                                <div className='review-text-content'>
+                                                    <h2>{review.title}</h2>
+                                                    <ReadOnlyRating value={parseInt(review.stars)} />
                                                     <p>{review.text}</p>
-                                                    <span>{new Date(review.created_at).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: '2-digit' })}</span>
+                                                    <div>
+                                                        <span>Por {review.first_name} {review.last_name} el </span>
+                                                        <span>{new Date(review.created_at).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: '2-digit' })}</span>
+                                                    </div>
                                                 </div>
-                                                <ReadOnlyRating value={parseInt(review.stars)} />
                                             </div>
                                         </li>;
                                     })}
@@ -131,7 +133,7 @@ const UserProfilePage = () => {
 
                                 ? <>
                                     <article>
-                                        <h2>Descripción</h2>
+                                        <h2 className='titles-moreInfo'>Descripción</h2>
                                         <div className='bio-frame'>
                                             <p className='text-wrapper-bio'>{bio}</p>
                                         </div>
@@ -154,7 +156,7 @@ const UserProfilePage = () => {
                     {userInfo && clicState === 'information'
                         ? <section className='bio-frame'>
                             <article className='verified-user-data'>
-                                <h2>Información verificada</h2>
+                                <h2 className='title-info-verified'>Información verificada</h2>
                                 <div className='profile-verified-user-data-wrapper'>
                                     <img src={whatsapp} alt="Icono de whatsapp" />
                                     <span>Whatsapp</span>
