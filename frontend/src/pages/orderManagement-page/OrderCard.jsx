@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import UserWithRating from '../../components/user-with-rating/UserWithRating';
 import MainButton from '../../components/main-button/MainButton';
 import SecondaryButton from '../../components/secondary-button/SecondaryButton';
-// import ReadOnlyRating from '../../components/readOnly-rating/ReadOnlyRating';
+import ReadOnlyRating from '../../components/readOnly-rating/ReadOnlyRating';
 import { rejectOrderService } from '../../service';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
@@ -48,7 +48,7 @@ const OrderCard = ({ order, avgRating }) => {
                                     lastName={order.seller_last_name}
                                     avatar={order.avatar}
                                     idUser={order.user_buyer_id} />
-                                {/* <ReadOnlyRating className='order-read-only-rating' value={avgRating}/> */}
+                                <ReadOnlyRating className='order-read-only-rating' value={avgRating}/>
                             </div>
                             <div className='button-wrapper'>
                                 <p>{new Date(order.created_at).toLocaleDateString('es-ES', { month: 'long', day: '2-digit' })} de {new Date(order.created_at).getFullYear()}</p>
