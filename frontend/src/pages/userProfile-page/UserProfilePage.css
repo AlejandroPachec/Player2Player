@@ -6,6 +6,7 @@
   justify-items: center;
   align-self: center;
   margin-top: -5px;
+  flex-grow: 0;
 }
 
 .profileMenu{

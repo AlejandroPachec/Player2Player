@@ -7,6 +7,7 @@ import ProductOrderInfo from './ProductOrderInfo';
 import Loading from '../../components/loading/Loading';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import './seeOrdersPage.css';
 
 const SeeOrders = () => {
     const { token } = useContext(UserAuthContext);
@@ -31,13 +32,13 @@ const SeeOrders = () => {
     return (
         <>
             <MainHeader />
-            <main>
+            <main className='see-your-orders-main'>
                 { error
                     ? <p>{'No tienes ningún pedido de momento'}</p>
                     : <>
-                        <section>
-                            <h2>Tus Pedidos</h2>
-                            <ul>
+                        <section className='your-orders-section'>
+                            <h2>Pendientes</h2>
+                            <ul id='your-pending-orders'>
                                 {
                                     orders.orders
                                         ? orders.orders.filter((order) => order.status === 'Pendiente').map((order) => {
@@ -50,14 +51,14 @@ const SeeOrders = () => {
 
                             </ul>
                         </section>
-                        <section>
+                        <section className='your-orders-section'>
                             {
                                 orders.orders && orders.orders.some((order) => {
                                     return order.status === 'Aceptado';
                                 })
                                     ? <>
                                         <h2>Aceptados</h2>
-                                        <ul>
+                                        <ul id='your-accepted-orders-list'>
                                             {orders.orders.filter((order) => order.status === 'Aceptado').map((order) => {
                                                 return <li key={order.id}>
                                                     <Link to={`/order/accepted/${order.id}`}>
@@ -70,14 +71,14 @@ const SeeOrders = () => {
                                     : null
                             }
                         </section>
-                        <section>
+                        <section className='your-rejected-orders-section'>
                             {
                                 orders.orders && orders.orders.some((order) => {
                                     return order.status === 'Rechazado';
                                 })
                                     ? <>
                                         <h2>Rechazados</h2>
-                                        <ul>
+                                        <ul className='your-rejected-orders-list'>
                                             {orders.orders.filter((order) => order.status === 'Rechazado').map((order) => {
                                                 return <li key={order.id}>
                                                     <ProductOrderInfo order={order} />

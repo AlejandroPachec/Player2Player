@@ -5,6 +5,7 @@ import useCheckReviews from '../../hooks/useCheckReviews';
 import Loading from '../../components/loading/Loading';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
+import './productOrderInfo.css';
 
 const ProductOrderInfo = ({ order }) => {
     const date = new Date();
@@ -45,18 +46,24 @@ const ProductOrderInfo = ({ order }) => {
 
     return (
         <>
-            <article>
+            <article className='see-your-orders-card'>
                 <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${order.product_photo}`} alt="Imagen del producto" />
-                <h3>{order.name}</h3>
-                <p>{order.price} €</p>
-                <p style={{ color: stateColor }}>{order.state}</p>
-                <p>{order.description}</p>
+                <div className='see-your-orders-card-info'>
+                    <div className='see-your-orders-name-price'>
+                        <h3>{order.name}</h3>
+                        <p>{order.price} €</p>
+                    </div>
+                    <div>
+                        <p style={{ color: stateColor }}>{order.state}</p>
+                        <p>{order.description}</p>
+                        {
+                            hasDeliveryTimePassed && !isProductReviewed && order.status === 'Aceptado'
+                                ? <MainButton text={'Añadir valoración'} handleClick={handleClick}/>
+                                : null
+                        }
+                    </div>
+                </div>
             </article>
-            {
-                hasDeliveryTimePassed && !isProductReviewed && order.status === 'Aceptado'
-                    ? <MainButton text={'Añadir valoración'} handleClick={handleClick}/>
-                    : null
-            }
         </>
     );
 };

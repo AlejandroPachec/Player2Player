@@ -1,0 +1,40 @@
+.see-your-orders-main {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--mainBackgroundColor);
+  }
+
+.your-orders-section {
+  background-color: #403d3921;
+  border-radius: 40px;
+  box-shadow: 0px 4px 4px #00000040;
+  margin: 1rem;
+  width: 80%;
+  padding: 1.5rem;
+
+  }
+.your-rejected-orders-section {
+  background-color: rgba(0, 0, 0, 0.135);
+  border-radius: 40px;
+  box-shadow: 0px 4px 4px #00000009;
+  margin: 1rem;
+  width: 80%;
+  filter: opacity(0.25);
+  }
+
+  .your-orders-section > h2{
+    font-family: "Poppins-ExtraBold", Helvetica;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: normal;
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+  .your-rejected-orders-section > h2{
+    font-family: "Poppins-ExtraBold", Helvetica;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: normal;
+    margin: 0;
+    margin-bottom: 1rem;
+  }
