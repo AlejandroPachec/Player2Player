@@ -1,0 +1,157 @@
+.accepted-order-info-conatiner {
+    background-color: var(--secondryBackgroundColor);
+    box-shadow: var(--boxShadow);
+    border-radius: 1.5rem;
+    width: 85%;
+    padding: 1rem 2rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+}
+
+.acceped-order-section-container {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 3rem;
+}
+
+.map-and-date-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-rating-and-stars {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.user-rating-and-stars > a {
+    color: var(--mainFontColor);
+}
+
+.user-rating-and-stars > a > div {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+}
+
+.user-rating-and-stars > a > div > img {
+    width: 3.3rem;
+    height: 3.3rem;
+}
+
+
+.user-rating-and-stars .MuiRating-root.MuiRating-sizeMedium.Mui-readOnly.MuiRating-readOnly.css-ryrseu-MuiRating-root {
+    position: absolute;
+    top: 1.3rem;
+    left: 4.2rem;
+}
+
+.map-time-date-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+}
+
+.map-time-date-container > h2 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.map-time-date-container > p {
+    color: var(--subtitleColor);
+    font-size: 0.5rem;
+}
+
+.order-product-info-secion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.order-accept-product-full-info {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.order-accept-product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.order-accept-product-info > p {
+    width: 100%;
+    text-align: left;
+}
+
+.description-p-order {
+    font-size: 0.7rem;
+}
+
+.order-accept-product-info > p.go-to-right {
+    text-align: right;
+}
+
+.order-product-info-secion > .order-accept-product-full-info > img {
+    width: 12rem;
+    height: 11rem;
+    border-radius: 2rem;
+    object-fit: cover;
+}
+
+.order-product-info-secion > .order-name-category-conainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-product-info-secion > .order-name-category-conainer > h2 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.order-product-info-secion > .order-name-category-conainer > p {
+    max-width: 7rem;
+    text-align: left;
+    background: rgba(64, 61, 57, 0.63);
+    padding: 0.4rem 0.7rem;
+    border-radius: 2.5rem;
+    font-size: 0.6rem;
+}
+
+.accept-order-city {
+    color: var(--subtitleColor);
+    font-size: 0.5rem;
+}
+
+.accept-order-price {
+    font-weight: 800;
+    font-family: 'Poppins-ExtraBold';
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+.accept-order-state {
+    color: var(--subtitleColor);
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.accepted-order-info-conatiner > aside {
+    font-size: 0.8rem;
+    border: 1px solid rgb(255, 146, 46);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    width: 20rem;
+    text-align: left;
+    position: absolute;
+    right: 3rem;
+    bottom: 1rem;
+}

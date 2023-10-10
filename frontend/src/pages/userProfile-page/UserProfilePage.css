@@ -124,6 +124,7 @@ section.products-sale {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  flex-wrap: wrap;
   width: 100%;
   justify-content: center;
   gap: 1rem;
