@@ -14,6 +14,7 @@ const ProductOrderInfo = ({ order }) => {
     const userReviews = alreadyReviewed?.userReviews;
 
     const isProductReviewed = userReviews?.some((review) => order.product_id === review.product_id);
+
     const hasDeliveryTimePassed = date > new Date(order.exchange_time);
 
     const [stateColor, setStateColor] = useState('');
