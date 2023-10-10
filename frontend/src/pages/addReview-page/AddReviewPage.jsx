@@ -13,6 +13,7 @@ import { addReviewService } from '../../service';
 import useExchangeSet from '../../hooks/useExchangeSet';
 import { UserAuthContext } from '../../context/UserAuthContext';
 import { toast } from 'react-toastify';
+import './addReviewPage.css';
 
 const AddReviewPage = () => {
     const { token } = useContext(UserAuthContext);
@@ -52,32 +53,38 @@ const AddReviewPage = () => {
                 <h1>¿Cómo ha sido tu experiencia</h1>
                 {
                     orderById
-                        ? <section>
-                            <UserWithRating
-                                username={orderById.orders[0].seller_first_name}
-                                lastName={orderById.orders[0].seller_last_name}
-                                avatar={orderById.orders[0].seller_avatar}
-                                idUser={orderById.orders[0].user_seller_id}/>
-                            <ReadOnlyRating value={orderById.orders[0].userAvgReviews_seller}/>
-                            <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${orderById.orders[0].product_photo}`} alt="Foto del producto" />
+                        ? <section className='add-review-card-container'>
+                            <div className='add-review-card-left-content'>
+                                <div className='add-review-seller-info'>
+                                    <UserWithRating
+                                        username={orderById.orders[0].seller_first_name}
+                                        lastName={orderById.orders[0].seller_last_name}
+                                        avatar={orderById.orders[0].seller_avatar}
+                                        idUser={orderById.orders[0].user_seller_id}/>
+                                    <ReadOnlyRating value={orderById.orders[0].userAvgReviews_seller}/>
+                                </div>
+                                <img src={`${import.meta.env.VITE_BACK_URL}/uploads/${orderById.orders[0].product_photo}`} alt="Foto del producto" />
+                            </div>
+
+
+                            <div className='add-review-card-right-content'>
+                                <form id={'adding-review-form'} onSubmit={handleSubmit}>
+                                    <GeneralInput type={'text'} placeholder={'Título'} value={'title'} handleChange={handleChange}/>
+                                    <Rating
+                                        name="stars"
+                                        value={formValues.stars}
+                                        onChange={handleChange}
+                                    />
+                                    <TextArea placeholder={'Añade aquí la valoración de tu experiencia'} value={'text'} handleChange={handleChange}/>
+                                    <Link to={'/user/orders'}>
+                                        <SecondaryButton text={'Cancelar'} type='button'/>
+                                    </Link>
+                                    <MainButton text={'Enviar'} type='submit'/>
+                                </form>
+                            </div>
                         </section>
                         : null
                 }
-                <section>
-                    <form onSubmit={handleSubmit}>
-                        <GeneralInput type={'text'} placeholder={'Título'} value={'title'} handleChange={handleChange}/>
-                        <Rating
-                            name="stars"
-                            value={formValues.stars}
-                            onChange={handleChange}
-                        />
-                        <TextArea placeholder={'Añade aquí la valoración de tu experiencia'} value={'text'} handleChange={handleChange}/>
-                        <Link to={'/user/orders'}>
-                            <SecondaryButton text={'Cancelar'} type='button'/>
-                        </Link>
-                        <MainButton text={'Enviar'} type='submit'/>
-                    </form>
-                </section>
             </main>
             <Footer/>
         </>

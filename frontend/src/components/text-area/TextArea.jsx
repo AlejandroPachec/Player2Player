@@ -3,7 +3,7 @@ import './textArea.css';
 
 function TextArea ({ placeholder, value, handleChange }) {
     return (
-        <label>
+        <label id='text-area-label'>
             <textarea
                 className='textArea'
                 placeholder={placeholder}
