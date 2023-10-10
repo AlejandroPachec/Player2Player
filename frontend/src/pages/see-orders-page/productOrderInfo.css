@@ -4,12 +4,14 @@
   padding: 2rem;
   border-radius: 20px;
   background-color: var(--mainBackgroundColor);
-  box-shadow: var(--boxShadow)
+  box-shadow: var(--boxShadow);
+  margin-top: 1.5rem;
 }
 
 .see-your-orders-card img {
   max-width: 150px;
-  height: auto; 
+  height: 180px; 
+  object-fit: cover;
   border-radius: 10px;
 }
 
