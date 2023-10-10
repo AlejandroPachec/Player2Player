@@ -1,4 +1,3 @@
-import { toast } from 'react-toastify';
 export const getAllProductsService = async () => {
     const response = await fetch(`${import.meta.env.VITE_BACK_URL}/products`);
 
