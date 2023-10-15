@@ -3,7 +3,7 @@
     box-shadow: var(--boxShadow);
     border-radius: 1.5rem;
     width: 85%;
-    padding: 1rem 2rem 2.5rem;
+    padding: 1rem 2rem 0.5rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -102,7 +102,7 @@
 .order-product-info-secion > .order-accept-product-full-info > img {
     width: 12rem;
     height: 11rem;
-    border-radius: 2rem;
+    border-radius: 1.4rem;
     object-fit: cover;
 }
 
@@ -115,15 +115,6 @@
 .order-product-info-secion > .order-name-category-conainer > h2 {
     font-size: 1rem;
     font-weight: bold;
-}
-
-.order-product-info-secion > .order-name-category-conainer > p {
-    max-width: 7rem;
-    text-align: left;
-    background: rgba(64, 61, 57, 0.63);
-    padding: 0.4rem 0.7rem;
-    border-radius: 2.5rem;
-    font-size: 0.6rem;
 }
 
 .accept-order-city {
@@ -152,6 +143,16 @@
     width: 20rem;
     text-align: left;
     position: absolute;
+    right: 5rem;
+    bottom: 3rem;
+}
+
+.map-time-date-container > h3 {
+    font-size: 0.8rem;
+    border: 1px solid rgb(255, 146, 46);
+    border-radius: 1rem;
+    padding: 0.5rem;
+    text-align: left;
     right: 3rem;
     bottom: 1rem;
 }

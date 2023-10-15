@@ -23,7 +23,7 @@ const LoginAvatar = () => {
 
     return (
         <>
-            <div>
+            <div className='avatar-all-across'>
                 <Button
                     id="fade-button"
                     aria-controls={open ? 'fade-menu' : undefined}
