@@ -52,7 +52,7 @@ const AddReviewPage = () => {
                 {
                     orderById
                         ? <section className='add-review-card-container'>
-                            <h1>¿Cómo ha sido tu experiencia</h1>
+                            <h1>¿Cómo ha sido tu experiencia?</h1>
                             <div className='add-review-complete-info'>
                                 <div className='add-review-card-left-content'>
                                     <div className='add-review-seller-info'>

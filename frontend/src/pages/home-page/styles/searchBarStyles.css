@@ -90,3 +90,62 @@ input[name='productName'], input[name='productLocation'] {
   font-size: 0.9rem;
   color: var(--red);
 }
+
+@media (max-width: 768px) {
+  .search-bar-complete {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .search-bar > ul > button:first-child {
+    border-radius: 2.5rem;
+    padding-left: 2.5rem;
+  }
+  
+  .search-bar > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+  }
+  
+  .search-bar-form > ul > button {
+    border-radius: 2.5rem;
+  }
+
+  .search-bar-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+
+  .search-bar-form > button:last-child {
+    align-self: center;
+    position: relative;
+    right: 0;
+    bottom: 0;
+    width: 56px;
+    height: 56px;
+    border: none;
+    border-radius: 50%;
+    background: var(--orangeGradient);
+    padding-right: 0px;
+  }
+
+  .input-price {
+    align-self: center;
+    gap: 0.5rem;
+  }
+
+  input[name='minPrice'], input[name='maxPrice'] {
+    width: 3.5rem;
+  }
+
+  input[name='productName'], input[name='productLocation'] {
+    padding-left: 0.5rem;
+  }
+}

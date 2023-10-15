@@ -4,3 +4,27 @@
   justify-content: space-between;
   align-items: flex-start;
 }
+
+@media (max-width: 768px) {
+  .homepage-header {
+    display: grid;
+    grid-gap: 20px;
+    align-items: center;
+    grid-template-areas:
+      'logo avatar'
+      'search search';
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  #logo {
+    grid-area: logo;
+  }
+  
+  .avatar-all-across {
+    grid-area: avatar;
+  }
+  
+  .search-bar-complete {
+    grid-area: search;
+  }
+}

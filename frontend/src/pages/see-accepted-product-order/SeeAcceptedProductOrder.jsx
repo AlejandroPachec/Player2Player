@@ -70,9 +70,10 @@ const SeeAcceptedProductOrder = () => {
                                         <p>{order[0].exchange_place}</p>
                                         {
                                             isLoaded && latitude && longitude
-                                                ? <GoogleMap zoom={15} center={{ lat: latitude, lng: longitude }} mapContainerClassName='map-container' />
+                                                ? <GoogleMap zoom={9} center={{ lat: latitude, lng: longitude }} mapContainerClassName='map-container' />
                                                 : null
                                         }
+                                        <h3>Ponte en contacto con el vendedor para concretar una ubicación de forma más exacta</h3>
                                         <h2>Fecha de entrega</h2>
                                         <p>{new Date(order[0].exchange_time).toLocaleTimeString('es-ES', { month: 'long', day: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
                                     </div>
@@ -94,7 +95,7 @@ const SeeAcceptedProductOrder = () => {
                                 </section>
                             </div>
                             <aside>
-                                <p>Recuerda que tu <span>valoración</span> es <span>importante</span>. Valorar al vendedor es una manera de
+                                <p>Recuerda que tu <strong>valoración</strong> es <span>importante</span>. Valorar al vendedor es una manera de
                                     agradecer su servicio y ¡compartir tu experiencia con otros compradores!</p>
                             </aside>
                         </div>
