@@ -19,10 +19,18 @@
   padding: 2rem;
   justify-content: space-between;
 }
-
-#bio.textArea {
- width: 38rem;
+.edit-info-form > label{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
 }
+.edit-info-form > label > input {
+  min-width: 17rem;
+ 
+}
+
 
 .edit-addAvatar {
   border: none;

@@ -1,4 +1,4 @@
-.accepted-order-info-conatiner {
+.accepted-order-info-container {
     background-color: var(--secondryBackgroundColor);
     box-shadow: var(--boxShadow);
     border-radius: 1.5rem;
@@ -64,7 +64,6 @@
 
 .map-time-date-container > p {
     color: var(--subtitleColor);
-    font-size: 0.5rem;
 }
 
 .order-product-info-secion {
@@ -106,13 +105,13 @@
     object-fit: cover;
 }
 
-.order-product-info-secion > .order-name-category-conainer {
+.order-product-info-secion > .order-name-category-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.order-product-info-secion > .order-name-category-conainer > h2 {
+.order-product-info-secion > .order-name-category-container > h2 {
     font-size: 1rem;
     font-weight: bold;
 }
@@ -135,16 +134,16 @@
     margin-bottom: 0.5rem;
 }
 
-.accepted-order-info-conatiner > aside {
+.accepted-order-info-container > aside {
     font-size: 0.8rem;
     border: 1px solid rgb(255, 146, 46);
     border-radius: 1rem;
     padding: 0.5rem;
-    width: 20rem;
+    max-width: 22.2rem;
     text-align: left;
     position: absolute;
-    right: 5rem;
-    bottom: 3rem;
+    right: 3rem;
+    bottom: 1.8rem;
 }
 
 .map-time-date-container > h3 {
