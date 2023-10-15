@@ -53,7 +53,7 @@ const SeeAcceptedProductOrder = () => {
             <main>
                 {
                     order
-                        ? <div className='accepted-order-info-conatiner'>
+                        ? <div className='accepted-order-info-container'>
                             <div className="user-rating-and-stars">
                                 <UserWithRating
                                     username={order[0].seller_first_name}
@@ -73,7 +73,7 @@ const SeeAcceptedProductOrder = () => {
                                                 ? <GoogleMap zoom={9} center={{ lat: latitude, lng: longitude }} mapContainerClassName='map-container' />
                                                 : null
                                         }
-                                        <h3>Ponte en contacto con el vendedor para concretar una ubicación de forma más exacta</h3>
+                                        <h3>Contacta con el vendedor para fijar una <strong>ubicación</strong> concreta</h3>
                                         <h2>Fecha de entrega</h2>
                                         <p>{new Date(order[0].exchange_time).toLocaleTimeString('es-ES', { month: 'long', day: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}</p>
                                     </div>
@@ -95,7 +95,7 @@ const SeeAcceptedProductOrder = () => {
                                 </section>
                             </div>
                             <aside>
-                                <p>Recuerda que tu <strong>valoración</strong> es <span>importante</span>. Valorar al vendedor es una manera de
+                                <p>Recuerda que tu <strong>valoración</strong> es <span>importante</span>. <br /> Valorar al vendedor es una manera de
                                     agradecer su servicio y ¡compartir tu experiencia con otros compradores!</p>
                             </aside>
                         </div>
