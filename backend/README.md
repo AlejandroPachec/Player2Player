@@ -36,10 +36,7 @@ La plataforma permite a los usuarios buscar productos, registrarse para obtener 
     ```
     npm install 
     ```
-* Crear la base de datos en MySQL Workbench
-   ```sql
-   CREATE DATABASE IF NOT EXISTS p2p_db;
-   ```
+    
 * Ejecutar la base de datos
     ```
     npm run db
