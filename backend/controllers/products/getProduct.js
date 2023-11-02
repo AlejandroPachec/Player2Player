@@ -1,7 +1,5 @@
 const getPool = require('../../db/connectDB');
-const path = require('node:path');
 require('dotenv').config();
-const { UPLOADS_DIR } = require('../../config');
 const generateError = require('../../helpers/generateError');
 
 async function getProduct (req, res, next) {

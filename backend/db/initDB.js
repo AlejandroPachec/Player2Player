@@ -1,11 +1,12 @@
 const getPool = require('./connectDB');
+const { MYSQL_DB_NAME } = require('../config');
 
 async function createDB () {
     try {
         const pool = await getPool();
 
-        await pool.query('CREATE DATABASE IF NOT EXISTS p2p_db;');
-        await pool.query('USE p2p_db;');
+        await pool.query(`CREATE DATABASE IF NOT EXISTS ${MYSQL_DB_NAME};`);
+        await pool.query(`USE ${MYSQL_DB_NAME};`);
 
         await pool.query(
             'DROP TABLE IF EXISTS  orders, reviews, product_photo, products, users;'
