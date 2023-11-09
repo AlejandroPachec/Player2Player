@@ -4,6 +4,7 @@ const Joi = require('joi');
 const generateError = require('../../helpers/generateError');
 const crypto = require('crypto');
 const { PORT } = require('../../config');
+const newOrder = require('../../emails/newOrder');
 
 async function addOrder (req, res, next) {
     const userSellerIdSchema = Joi.string().uuid().required();
@@ -51,7 +52,9 @@ async function addOrder (req, res, next) {
         `, [userSellerId]);
 
         const subject = '[Player2Player] Propuesta de compra';
-        const html = `<p>Confirma tu venta en <a href="http://localhost:${PORT}/orders/confirm/${id}}">este enlace</a></p>`;
+        const link = `http://localhost:5173/user/orders/${userSellerId}`;
+        const html = newOrder(link);
+
 
         await emailVerification(email, subject, html);
 

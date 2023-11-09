@@ -3,6 +3,7 @@ const generateError = require('../../helpers/generateError');
 const emailVerification = require('../../helpers/emailVerification');
 const confirmOrderSchema = require('../../schema/confirmOrderSchema');
 const { PORT } = require('../../config');
+const acceptPurchase = require('../../emails/acceptPurchase');
 
 async function confirmOrder (req, res, next) {
     try {
