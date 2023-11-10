@@ -2,7 +2,7 @@ const getPool = require('../../db/connectDB');
 const generateError = require('../../helpers/generateError');
 const emailVerification = require('../../helpers/emailVerification');
 const confirmOrderSchema = require('../../schema/confirmOrderSchema');
-const { PORT } = require('../../config');
+const adviceAvailability = require('../../emails/adviceAvailability');
 const acceptPurchase = require('../../emails/acceptPurchase');
 
 async function confirmOrder (req, res, next) {
@@ -59,11 +59,9 @@ async function confirmOrder (req, res, next) {
 
         const subject = '[Player2Player] Confirmación del pedido';
 
-        const html = `<p>Disfruta de tu compra</p>
-                        <p>Recogida:</p>
-                        <p>Hora: ${exchangeTime}</p>
-                        <p>Lugar: ${exchangePlace}</p>
-                        <p>Comprueba el estado de tu pedido <a href="http://localhost:5173/user/orders/${idOrder}">aquí</a></p>`;
+        const linkAccepted = `http://localhost:5173/order/accepted/${idOrder}`;
+
+        const html = acceptPurchase(linkAccepted, exchangeTime, exchangePlace);
 
 
         await emailVerification(email, subject, html);
@@ -83,9 +81,10 @@ async function confirmOrder (req, res, next) {
             `, [order.product_id]);
 
             const rejectionSubject = '[Player2Player] Producto no disponible';
+            const link = 'http://localhost:5173';
 
-            const rejectionHtml = `<p>Lo sentimos mucho, este producto ya no está disponible</p>
-            <p>Pero tenemos buenas noticias: Tienes miles de productos que explorar en Player2Player, ¡te esperamos <a href="http://localhost:${PORT}/">aquí!</a></p>`;
+            const rejectionHtml = adviceAvailability(link);
+
 
             for (const email of emails) {
                 await emailVerification(email.email, rejectionSubject, rejectionHtml);

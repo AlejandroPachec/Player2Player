@@ -65,7 +65,27 @@ async function backUpDB () {
     ('2f6e7d1a-9b0d-4c5f-8a3e-61b1c4d0a827', 'EA Sports FC 24', 'juego recién salido. Me toco en un sorteo y no lo quiero, no me gusta el fútbol', 'Videojuegos', 'Nuevo', 60.00, 0, NULL, NOW(), '23f549c3-12c4-4e64-9ec3-5721a9c4d72c'),
     ('9d8c2b6f-4e3a-45d7-8f1c-672a1e0b3f9c', 'Mario Maker', 'Diviertete dejando volar tu imaginación y la de los más pequeños. Juego enetretenido para pasar un rato en familia.', 'Videojuegos', 'En buen estado', 42.00, 0, NULL, NOW(), '56a789cc-2b8e-47f9-b2f6-81c8e73998dd'),
     ('7a6b8d1e-2f4c-4d9b-9e5a-f6d82a1c0b3e', 'Oculus Quest II', 'A mi personalmente me marean un poco. A mi marido le van muy bien.', 'Accesorios', 'En buen estado', 180.00, 0, NULL, NOW(), '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7'),
-    ('0c4b8e3f-6a9d-4f5c-8b2e-1a7f23d96e5a', 'Bubble & Bobble NES', 'Juego superdivertido para juegar con amigos. Rememora tu infancia con unas partidillas.', 'Retro', 'Aceptable', 67.00, 0, NULL, NOW(), '716c7c46-d9f0-4b2a-8f8d-62d7df41820d');
+    ('0c4b8e3f-6a9d-4f5c-8b2e-1a7f23d96e5a', 'Bubble & Bobble NES', 'Juego superdivertido para juegar con amigos. Rememora tu infancia con unas partidillas.', 'Retro', 'Aceptable', 67.00, 0, NULL, NOW(), '716c7c46-d9f0-4b2a-8f8d-62d7df41820d'),
+    ('7c335836-5c49-4f1f-a97c-0c3b94505b6f', 'Steam Deck', 'Consola portatil negra, en perfecto estado. Con funda y cargador propio', 'Consolas', 'En buen estado', 300.00, 1, NULL, NOW(), '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af'),
+    ('3e6faa0f-45ea-4b63-a7a1-8f036964b20d', 'Tarjeta gráfica', 'Gráfica Gaming NVIDIA GTX 970 4G. Marca MSI.', 'Accesorios', 'En buen estado', 105.00, 1, NULL, NOW(), '56a789cc-2b8e-47f9-b2f6-81c8e73998dd'),
+    ('1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p', 'Inazuma Eleven', 'Juego de futbol para la Wii. Nuevo a estrenar, conserva el plástico', 'videojuegos', 'Nuevo', 25.00, 1, NULL, NOW(), 'f02baf4a-67d7-4c8e-92f0-e40c0e7cf1b1'),
+    ('550e8400-e29b-41d4-a716-446655440000', 'Starfield', 'Increíble juego del espacio. Es para la Xbox serie X. Esta nuevo, sin abrir', 'videojuegos', 'Nuevo', 70.00, 1, NULL, NOW(), '9a5e1a27-8e21-4f52-9547-6d4555a92456'),
+    ('6d2f8b94-99a3-4d72-8d8c-1b87493f607a', 'Master Sistem', 'Videoconsola muy antigua. La encontre en el trastero de mis padres. Esta muy sucia pero todavía funciona', 'Retro', 'No da para más', 80.00, 1, NULL, NOW(), '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7'),
+    ('a0e42cde-768c-4fd1-8d6e-2f0e763f3b0a', 'Diablo II', 'El mejor RPG en tercera persona de todos los tiempos.', 'Retro', 'En buen estado', 30.00, 1, NULL, NOW(), 'c586d7bd-9e93-43b7-a67d-32a68278981f'),
+    ('9a6e8f2d-4c0b-439f-81d1-7c3a2e9d5b1f', 'Hocus Pocus', 'Juego de plataformas de 1994. Está en perfectas condiciones. Sólo para quien sepa apreciarlo', 'Retro', 'En buen estado', 17.00, 1, NULL, NOW(), '8f3c6e0a-2c7d-4dd2-9eef-77f27ecf31ac'),
+    ('f1a2c3e4-5d6e-7f8g-9h0i-1j2k3l4m5n6o', 'PC de sobremesa', 'Ordenador viejo. Lo vendo por que me ocupa espacio. Sirve para trabajos de ofimática. Vendo todo lo que se ve en la foto', 'Ordenadores', 'No da para más', 40.00, 1, NULL, NOW(), '45d84f9b-03a2-4d8c-af08-680efb8ca4ef'),
+    ('1d2e3f4g-5h6i7j8k-9l0m1n2o3p4q', 'Ordenador Portátil', 'Portátil Gaming MSI con tarjeta gráfica RTX. Sólo se uso para estudiar, esta nuevo, tal y como se ve en las fotos', 'Ordenadores', 'En buen estado', 340.00, 1, NULL, NOW(), '23f549c3-12c4-4e64-9ec3-5721a9c4d72c'),
+    ('9i8j7k6l-5m4n3o2p-1q0r9s8t7u6v5w', 'Web Cam', 'Webcam Logitech Brio. Resolucion 720p. Se ve bastante bien.', 'Accesorios', 'En buen estado', 50.00, 1, NULL, NOW(), '716c7c46-d9f0-4b2a-8f8d-62d7df41820d'),
+    ('4a5b6c7d-8e9f-0g1h-2i3j-4k5l6m7n8o9', 'Game Boy con juegos', 'Primer Game boy con tres juegos. Los juegos también incluyen las fundas. Funciona correctamente', 'Retro', 'Aceptable', 50.00, 1, NULL, NOW(), '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af'),
+    ('1q2r3s4t-5u6v7w8x-9y0z1a2b3c4d', 'Impresora 3D', 'Fantástica impresora 3D. Hace poco ruido, la vendo por que compre otra mejor. También incluye hilos blanco y rojo', 'Accesorios', 'En buen estado', 185.00, 1, NULL, NOW(), '56a789cc-2b8e-47f9-b2f6-81c8e73998dd'),
+    ('6a7b8c9d-0e1f-2g3h-4i5j-6k7l8m9n0o1p', 'Juegos Spectrum', 'Increíble colección de juegos del Spectrum. Estan en perfecto estado. Considerados coleccionismo', 'Retro', 'En buen estado', 100.00, 1, NULL, NOW(), 'f02baf4a-67d7-4c8e-92f0-e40c0e7cf1b1'),
+    ('3a2b1c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p', 'Asus ROG', 'Videoconsola portatil de la marca ASUS. Es como tener un ordenador portátil. Juega a tus juegos favoritos en cualquier momento', 'Consolas', 'En buen estado', 475.00, 1, NULL, NOW(), '9a5e1a27-8e21-4f52-9547-6d4555a92456'),
+    ('1h2j3k4l-5z6x7c8v-9b0n1m2a3s4d5f', 'Silla simulación', 'Silla de simulación de F1. Ocupa mucho espacio, necesito venderla rápido', 'Accesorios', 'En buen estado', 300.00, 1, NULL, NOW(), '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7'),
+    ('1o2p3q4r-5s6t7u8v-9w0x1y2z3a4b5', 'Pokémon Arceus', 'Pokémon Arceus para nintendo switch. Nuevo, con todos los manuales', 'Videojuegos', 'En buen estado', 36.00, 1, NULL, NOW(), 'c586d7bd-9e93-43b7-a67d-32a68278981f'),
+    ('1c2d3e4f-5g6h7i8j-9k0l1m2n3o4p', 'Terraria', 'Juego de plataformas, supervivencia y construcción. Muy adictivo. Para la Xbox', 'Videojuegos', 'En buen estado', 12.00, 1, NULL, NOW(), '8f3c6e0a-2c7d-4dd2-9eef-77f27ecf31ac'),
+    ('6r7s8t9u-0v1w2x3y-4z5a6b7c8d9e', 'Mando Xbox', 'Mando para la Xbox. Edición especial. Color morado metalizado', 'Accesorios', 'En buen estado', 60.00, 1, NULL, NOW(), '45d84f9b-03a2-4d8c-af08-680efb8ca4ef'),
+    ('4u7d8a9f-0l1e2a3m-4a5c6i7o8n9a', 'Atari', 'Consola original en perfecto estado. Marca Atari, con mandos también original. Se vende con la colección de juegos que se ve en las fotos', 'Retro', 'En buen estado', 175.00, 1, NULL, NOW(), '23f549c3-12c4-4e64-9ec3-5721a9c4d72c'),
+    ('6t7a8r9d-0s1a2l3t-4a5m6a7n8o9r', 'Call Of Duty', 'Juego para PS4. Call of Duty Balck Ops IV. Edición especialista', 'Videojuegos', 'En buen estado', 25.00, 1, NULL, NOW(), '716c7c46-d9f0-4b2a-8f8d-62d7df41820d');
     `);
 
         await pool.query(`INSERT INTO product_photo (id, name, modified_at, created_at, product_id)
@@ -140,7 +160,34 @@ async function backUpDB () {
     ('1e2f3e4d-5b6c-7a8f-9d1c-2a3b4c5d6e7f', 'N5xV9pR4jK7sT6w.webp', NULL, NOW(), '2f6e7d1a-9b0d-4c5f-8a3e-61b1c4d0a827'),
     ('8c9d2e3f-5b6c-7a8f-1e2d-4c3b5d6a7b8c', 'O2sH1qR5jX8vP7w.webp', NULL, NOW(), '9d8c2b6f-4e3a-45d7-8f1c-672a1e0b3f9c'),
     ('6d7e8f9a-2b3c-4d5e-6f7a-8c9d1e2f3d4e', 'P8rT9sK4zY3xV1p.webp', NULL, NOW(), '7a6b8d1e-2f4c-4d9b-9e5a-f6d82a1c0b3e'),
-    ('1f2e3d4c-5b6a-7d8e-9f1c-2b3a4c5d6e7f', 'Y7wE5dQ2fT6sR1a.webp', NULL, NOW(), '0c4b8e3f-6a9d-4f5c-8b2e-1a7f23d96e5a');
+    ('1f2e3d4c-5b6a-7d8e-9f1c-2b3a4c5d6e7f', 'Y7wE5dQ2fT6sR1a.webp', NULL, NOW(), '0c4b8e3f-6a9d-4f5c-8b2e-1a7f23d96e5a'),
+    ('a5b8c4d2-9f3e-4a1d-b6c7-1e0f5ab9c8d7', 'Kp7Rq2wLm9NpYeX.webp', NULL, NOW(), '7c335836-5c49-4f1f-a97c-0c3b94505b6f'),
+    ('7e8cd821-6e12-4f52-82f7-9a45d3f0be35', 'jR5yT2kLpNqEw8s.webp', NULL, NOW(), '3e6faa0f-45ea-4b63-a7a1-8f036964b20d'),
+    ('7q8r9s0t-u1v2w3x4-y5z6a7b8c9d0', 'xY7pRq2wLm9NpYe.webp', NULL, NOW(), '1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p'),
+    ('5df41881-3aed-4bf9-87b9-7ee32e0dd1d5', 'Rq2wLm9NpYeXa5C.webp', NULL, NOW(), '550e8400-e29b-41d4-a716-446655440000'),
+    ('5e7a9d6c-32b1-47e9-a4b8-cb3f21d8c6e3', 'XyZ1aB2cDeFgHiJ.webp', NULL, NOW(), '6d2f8b94-99a3-4d72-8d8c-1b87493f607a'),
+    ('7b3f8e12-6c9d-4a4c-8f29-1a0d5e9f1c80', 'Lg5Jp2zWxTqMeR8.webp', NULL, NOW(), 'a0e42cde-768c-4fd1-8d6e-2f0e763f3b0a'),
+    ('c0f7e9d4-a1b2-4e3d-9f6c-5d8e7a0b1c2d', 'mPq2rWxLk9eNpYt.webp', NULL, NOW(), '9a6e8f2d-4c0b-439f-81d1-7c3a2e9d5b1f'),
+    ('4p5q6r7s-8t9u0v1w-2x3y4z5a6b7c8d9', 'Lm9NpYeXaB2cDeF.webp', NULL, NOW(), 'f1a2c3e4-5d6e-7f8g-9h0i-1j2k3l4m5n6o'),
+    ('4r5s6t7u-8v9w0x1y-2z3a4b5c6d7e8f9', 'zH3tKsG7rVq1wP2.webp', NULL, NOW(), '1d2e3f4g-5h6i7j8k-9l0m1n2o3p4q'),
+    ('4x3y2z1a-b9c8d7e6f5g4h3i2j1k', 'Lq2wMn9YpYeXa5C.webp', NULL, NOW(), '9i8j7k6l-5m4n3o2p-1q0r9s8t7u6v5w'),
+    ('0p1q2r3s-4t5u6v7w-8x9y0z1a2b3c', 'QwErTyUiOpAsDfG.webp', NULL, NOW(), '4a5b6c7d-8e9f-0g1h-2i3j-4k5l6m7n8o9'),
+    ('d4e5f6g7-h8i9j0k1-l2m3n4o5p6q7r', 'ZxVbNmLkJhGfDsA.webp', NULL, NOW(), '4a5b6c7d-8e9f-0g1h-2i3j-4k5l6m7n8o9'),
+    ('9a8b7c6d-5e4f-3g2h-1i0j-9k8l7m6n5o4p', 'AbCdEfGhIjKlMnOp.webp', NULL, NOW(), '1q2r3s4t-5u6v7w8x-9y0z1a2b3c4d'),
+    ('0q1r2s3t-4u5v6w7x-8y9z0a1b2c3d', 'XyZaBcDeFgHiJkL.webp', NULL, NOW(), '1q2r3s4t-5u6v7w8x-9y0z1a2b3c4d'),
+    ('3q4r5s6t-7u8v9w0x-1y2z3a4b5c6d7e', 'HqWnM1XeYp9YsTz.webp', NULL, NOW(), '6a7b8c9d-0e1f-2g3h-4i5j-6k7l8m9n0o1p'),
+    ('4q3r5s6t-7u8v9w0x-1y2z3a4b5c6d7e', 'Xp9YmLnKjAqBe1d.webp', NULL, NOW(), '3a2b1c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p'),
+    ('9f8g7h6i-5j4k3l2m-1n0o9p8q7r6s5t', '5wQzXaBcDeFgH9.webp', NULL, NOW(), '3a2b1c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p'),
+    ('6g7h8j9k-0l1m2n3o-4p5q6r7s8t9u0', 'YzAbCdEfGhIjKlMn.webp', NULL, NOW(), '1h2j3k4l-5z6x7c8v-9b0n1m2a3s4d5f'),
+    ('1v2w3x4y-5z6a7b8c-9d0e1f2g3h4i5', 'NpQrStUvWxYzAbC.webp', NULL, NOW(), '1h2j3k4l-5z6x7c8v-9b0n1m2a3s4d5f'),
+    ('6c7d8e9f-0g1h2i3j-4k5l6m7n8o9p0', 'DzEbFgHiJkLmNpQr.webp', NULL, NOW(), '1o2p3q4r-5s6t7u8v-9w0x1y2z3a4b5'),
+    ('1j2k3l4m-5n6o7p8q-9r0s1t2u3v4w', 'StUvWxYzAbCdEfGh.webp', NULL, NOW(), '1o2p3q4r-5s6t7u8v-9w0x1y2z3a4b5'),
+    ('1q2w3e4r-5t6y7u8i-9o0p1a2s3d4f5', '5o6p7q8r9s0t1u.webp', NULL, NOW(), '1c2d3e4f-5g6h7i8j-9k0l1m2n3o4p'),
+    ('1n2o3p4q-5r6s7t8u-9v0w1x2y3z4a', '1c2d3e4f5g6h7i.webp', NULL, NOW(), '1c2d3e4f-5g6h7i8j-9k0l1m2n3o4p'),
+    ('6x7y8z9a-0b1c2d3e-4f5g6h7i8j9k', '6t7u8v9w0x1y2z.webp', NULL, NOW(), '6r7s8t9u-0v1w2x3y-4z5a6b7c8d9e'),
+    ('1l2o3r4e-5m6i7p8s-9u0m1o2t3a4s', '4u7d8a9f0l1e2a.webp', NULL, NOW(), '4u7d8a9f-0l1e2a3m-4a5c6i7o8n9a'),
+    ('6t7r8i9n-0g1u2l3a-4t5i6n7h8a9c', '1l2o3r4e5m6i7p8s.webp', NULL, NOW(), '4u7d8a9f-0l1e2a3m-4a5c6i7o8n9a'),
+    ('1j2u3n4i-5o6t7a8l-9l0a1h2u3m4a', '6c7o8n9t0e1n.webp', NULL, NOW(), '6t7a8r9d-0s1a2l3t-4a5m6a7n8o9r');
     `);
 
         await pool.query(`INSERT INTO reviews (id, title, text, stars, created_at, modified_at, product_id, user_seller_id, user_buyer_id)
@@ -175,7 +222,27 @@ async function backUpDB () {
     ('c3e1ef1e-4b1b-4c1d-9e2f-7a5c9f9f5c7d', 'Sevilla', '2023-12-08 16:00:00', '8f3c6e0a-2c7d-4dd2-9eef-77f27ecf31ac', 'Aceptado', '23f549c3-12c4-4e64-9ec3-5721a9c4d72c', '2f6e7d1a-9b0d-4c5f-8a3e-61b1c4d0a827', NOW()),
     ('d3e1ef1e-5b1b-5c1d-8e2f-6a5c9f9f4c7d', 'Alicante', '2023-12-12 17:00:00', '9a5e1a27-8e21-4f52-9547-6d4555a92456', 'Aceptado', '56a789cc-2b8e-47f9-b2f6-81c8e73998dd', '9d8c2b6f-4e3a-45d7-8f1c-672a1e0b3f9c', NOW()),
     ('e3e1ef1e-6b1b-6c1d-7e2f-5a5c9f9f3c7d', 'Badajoz', '2023-12-23 18:00:00', 'c586d7bd-9e93-43b7-a67d-32a68278981f', 'Aceptado', '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7', '7a6b8d1e-2f4c-4d9b-9e5a-f6d82a1c0b3e', NOW()),
-    ('f3e1ef1e-7b1b-7c1d-6e2f-4a5c9f9f2c7d', 'Murcia', '2023-12-30 19:00:00', 'f02baf4a-67d7-4c8e-92f0-e40c0e7cf1b1', 'Aceptado', '716c7c46-d9f0-4b2a-8f8d-62d7df41820d', '0c4b8e3f-6a9d-4f5c-8b2e-1a7f23d96e5a', NOW());
+    ('f3e1ef1e-7b1b-7c1d-6e2f-4a5c9f9f2c7d', 'Murcia', '2023-12-30 19:00:00', 'f02baf4a-67d7-4c8e-92f0-e40c0e7cf1b1', 'Aceptado', '716c7c46-d9f0-4b2a-8f8d-62d7df41820d', '0c4b8e3f-6a9d-4f5c-8b2e-1a7f23d96e5a', NOW()),
+    ('2f87a9b0-ded4-4f50-b0c6-57d9c0a49a93', 'Teruel', '2023-09-30 19:00:00', '9a5e1a27-8e21-4f52-9547-6d4555a92456', 'Pendiente', '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af', '7c335836-5c49-4f1f-a97c-0c3b94505b6f', NOW()),
+    ('4f1d2e3f-5a6b-4c7d-8e9f-a0b1c2d3e4f5', 'Barcelona', '2023-09-12 19:00:00', '8f3c6e0a-2c7d-4dd2-9eef-77f27ecf31ac', 'Pendiente', '56a789cc-2b8e-47f9-b2f6-81c8e73998dd', '3e6faa0f-45ea-4b63-a7a1-8f036964b20d', NOW()),
+    ('e1f2g3h4-i5j6k7l8-m9n0o1p2q3r4s', 'Marbella', '2023-09-23 19:00:00', '56a789cc-2b8e-47f9-b2f6-81c8e73998dd', 'Pendiente', 'f02baf4a-67d7-4c8e-92f0-e40c0e7cf1b1', '1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p', NOW()),
+    ('3a83bf5c-2f8b-4c69-8590-1e1c244a601f', 'Huelva', '2023-10-06 19:00:00', '45d84f9b-03a2-4d8c-af08-680efb8ca4ef', 'Pendiente', '9a5e1a27-8e21-4f52-9547-6d4555a92456', '550e8400-e29b-41d4-a716-446655440000', NOW()),
+    ('8f936d6b-af90-4d03-aa6b-74fc28b4ef93', 'Cádiz', '2023-10-01 19:00:00', '716c7c46-d9f0-4b2a-8f8d-62d7df41820d', 'Pendiente', '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7', '6d2f8b94-99a3-4d72-8d8c-1b87493f607a', NOW()),
+    ('5f72e1a3-6b84-42d9-83ca-1d70e0f9d27d', 'Córdoba', '2023-09-01 19:00:00', '23f549c3-12c4-4e64-9ec3-5721a9c4d72c', 'Pendiente', 'c586d7bd-9e93-43b7-a67d-32a68278981f', 'a0e42cde-768c-4fd1-8d6e-2f0e763f3b0a', NOW()),
+    ('4d5e6f7a-1b2c-3d4e-5f6a-7b8c9d0e1f2g', 'Ourense', '2023-09-18 19:00:00', '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af', 'Pendiente', '8f3c6e0a-2c7d-4dd2-9eef-77f27ecf31ac', '9a6e8f2d-4c0b-439f-81d1-7c3a2e9d5b1f', NOW()),
+    ('6e7f8g9h-0i1j2k3l-4m5n6o7p-8q9r0s1t2u', 'Oviedo', '2023-09-11 19:00:00', '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7', 'Pendiente', '45d84f9b-03a2-4d8c-af08-680efb8ca4ef', 'f1a2c3e4-5d6e-7f8g-9h0i-1j2k3l4m5n6o', NOW()),
+    ('6g7h8i9j-0k1l2m3n-4o5p6q7r-8s9t0u1v', 'Santander', '2023-08-13 19:00:00', 'c586d7bd-9e93-43b7-a67d-32a68278981f', 'Pendiente', '23f549c3-12c4-4e64-9ec3-5721a9c4d72c', '1d2e3f4g-5h6i7j8k-9l0m1n2o3p4q', NOW()),
+    ('l0m1n2o3p-4q5r6s7t-8u9v0w1x2y3z', 'Bilbao', '2023-07-07 19:00:00', 'f02baf4a-67d7-4c8e-92f0-e40c0e7cf1b1', 'Pendiente', '716c7c46-d9f0-4b2a-8f8d-62d7df41820d', '9i8j7k6l-5m4n3o2p-1q0r9s8t7u6v5w', NOW()),
+    ('5e6f7g8h-9i0j1k2l-3m4n5o6p7q8r', 'La Rioja', '2023-07-15 19:00:00', '23f549c3-12c4-4e64-9ec3-5721a9c4d72c', 'Rechazado', '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af', '4a5b6c7d-8e9f-0g1h-2i3j-4k5l6m7n8o9', NOW()),
+    ('4e5f6g7h-8i9j0k1l-2m3n4o5p6q7r', 'Tarragona', '2023-08-15 19:00:00', '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7', 'Rechazado', '56a789cc-2b8e-47f9-b2f6-81c8e73998dd', '1q2r3s4t-5u6v7w8x-9y0z1a2b3c4d', NOW()),
+    ('8f9g0h1i-2j3k4l5m-6n7o8p9q0r1s2t', 'Logroño', '2023-09-23 19:00:00', '716c7c46-d9f0-4b2a-8f8d-62d7df41820d', 'Rechazado', 'f02baf4a-67d7-4c8e-92f0-e40c0e7cf1b1', '6a7b8c9d-0e1f-2g3h-4i5j-6k7l8m9n0o1p', NOW()),
+    ('6q7w8e9r-0t1y2u3i-4o5p6a7s8d9f0g', 'Álava', '2023-10-04 19:00:00', '8dcd6ef6-35e0-4eb1-9e20-44d77eb5c2af', 'Rechazado', '9a5e1a27-8e21-4f52-9547-6d4555a92456', '3a2b1c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p', NOW()),
+    ('6a7b8c9d-0e1f2g3h-4i5j6k7l8m9n0', 'Zamora', '2023-05-04 19:00:00', '8f3c6e0a-2c7d-4dd2-9eef-77f27ecf31ac', 'Rechazado', '67a1f10d-3db9-4a0e-ba9c-88c5d1f4d6f7', '1h2j3k4l-5z6x7c8v-9b0n1m2a3s4d5f', NOW()),
+    ('5o6p7q8r-9s0t1u2v-3w4x5y6z7a8b9', 'Granada', '2023-06-04 19:00:00', 'f02baf4a-67d7-4c8e-92f0-e40c0e7cf1b1', 'Rechazado', 'c586d7bd-9e93-43b7-a67d-32a68278981f', '1o2p3q4r-5s6t7u8v-9w0x1y2z3a4b5', NOW()),
+    ('5q6r7s8t-9u0v1w2x-3y4z5a6b7c8d9', 'Lugo', '2023-07-14 19:00:00', '56a789cc-2b8e-47f9-b2f6-81c8e73998dd', 'Rechazado', '8f3c6e0a-2c7d-4dd2-9eef-77f27ecf31ac', '1c2d3e4f-5g6h7i8j-9k0l1m2n3o4p', NOW()),
+    ('1n2o3p4q-5r6s7t8u-9v0w1x2y3z4a', 'Tenerife', '2023-09-14 19:00:00', 'c586d7bd-9e93-43b7-a67d-32a68278981f', 'Rechazado', '45d84f9b-03a2-4d8c-af08-680efb8ca4ef', '6r7s8t9u-0v1w2x3y-4z5a6b7c8d9e', NOW()),
+    ('1r2a3n4d-5o6m7u8i-9d0o1l2p3a4q', 'Mallorca', '2023-10-02 19:00:00', '9a5e1a27-8e21-4f52-9547-6d4555a92456', 'Rechazado', '23f549c3-12c4-4e64-9ec3-5721a9c4d72c', '4u7d8a9f-0l1e2a3m-4a5c6i7o8n9a', NOW()),
+    ('1t2a3m4i-5n6d7o8c-9o0r1t2a3l4e', 'Jaén', '2023-08-22 19:00:00', '45d84f9b-03a2-4d8c-af08-680efb8ca4ef', 'Rechazado', '716c7c46-d9f0-4b2a-8f8d-62d7df41820d', '6t7a8r9d-0s1a2l3t-4a5m6a7n8o9r', NOW());
     `);
 
         process.exit(0);

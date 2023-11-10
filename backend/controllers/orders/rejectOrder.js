@@ -1,7 +1,7 @@
 const getPool = require('../../db/connectDB');
 const generateError = require('../../helpers/generateError');
 const emailVerification = require('../../helpers/emailVerification');
-const { PORT } = require('../../config');
+const rejectOrderEmail = require('../../emails/rejectOrderEmail');
 
 async function rejectOrder (req, res, next) {
     try {
@@ -21,9 +21,9 @@ async function rejectOrder (req, res, next) {
             [order.user_buyer_id]);
 
         const subject = '[Player2Player] Tu pedido ha sido rechazado';
+        const link = 'http://localhost:5173';
 
-        const html = `<p>Ups! Lo sentimos, tu pedido ha sido rechazado</p>
-                        <p>Pero tenemos buenas noticias: Tienes miles de productos que explorar en Player2Player, ¡te esperamos <a href="http://localhost:${PORT}/">aquí!</a></p>`;
+        const html = rejectOrderEmail(link);
 
         await emailVerification(email, subject, html);
 

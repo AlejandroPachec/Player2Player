@@ -3,7 +3,6 @@ const emailVerification = require('../../helpers/emailVerification');
 const Joi = require('joi');
 const generateError = require('../../helpers/generateError');
 const crypto = require('crypto');
-const { PORT } = require('../../config');
 const newOrder = require('../../emails/newOrder');
 
 async function addOrder (req, res, next) {
@@ -54,7 +53,6 @@ async function addOrder (req, res, next) {
         const subject = '[Player2Player] Propuesta de compra';
         const link = `http://localhost:5173/user/orders/${userSellerId}`;
         const html = newOrder(link);
-
 
         await emailVerification(email, subject, html);
 

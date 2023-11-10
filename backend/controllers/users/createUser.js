@@ -5,6 +5,7 @@ const createUserSchema = require('../../schema/createUserSchema');
 const generateError = require('../../helpers/generateError');
 const { PORT } = require('../../config');
 const emailVerification = require('../../helpers/emailVerification');
+const verifyAccountEmail = require('../../emails/verifyAccount');
 require('dotenv').config();
 
 async function createUser (req, res, next) {
@@ -32,8 +33,9 @@ async function createUser (req, res, next) {
             values (?, ?, ?, ?, ?, ?, ?)`, [id, firstName, lastName, email, hashedPassword, registrationCode, phone]);
 
         const subject = '[Player2Player] Completa tu registro';
+        const link = `http://localhost:${PORT}/user/activate/${registrationCode}`;
+        const html = verifyAccountEmail(link);
 
-        const html = `<p>Activa tu usuario en <a href="http://localhost:${PORT}/user/activate/${registrationCode}">este enlace</a></p>`;
 
         await emailVerification(email, subject, html);
 
